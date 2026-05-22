@@ -8,8 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-primary);
+  --font-cabinet: var(--font-primary);
+  --font-montserrat: var(--font-secondary);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +23,26 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-primary), Arial, Helvetica, sans-serif;
+}
+
+p,
+input,
+textarea,
+button,
+a,
+.font-secondary {
+  font-family: var(--font-secondary), Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-primary {
+  font-family: var(--font-primary), Arial, Helvetica, sans-serif;
 }
 
 /* Animated header */
@@ -470,9 +490,17 @@ body {
    Pure React Expertise Carousel
 ================================ */
 
+.expertise-carousel {
+  --expertise-step: clamp(108px, 26vw, 178px);
+  --expertise-active-scale: 1.08;
+  --expertise-side-scale: 0.9;
+  height: clamp(190px, 38vw, 310px);
+  max-width: min(100%, 920px);
+}
+
 .expertise-card-pure {
-  width: 108px;
-  height: 128px;
+  width: clamp(112px, 22vw, 168px);
+  height: clamp(152px, 30vw, 226px);
   min-height: 0;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.72);
 }
@@ -520,8 +548,10 @@ body {
 
 /* Tablet */
 @media (max-width: 1024px) {
-  .expertise-card-pure {
-    width: 108px;
+  .expertise-carousel {
+    --expertise-step: clamp(102px, 24vw, 148px);
+    --expertise-active-scale: 1.06;
+    --expertise-side-scale: 0.88;
   }
 }
 
@@ -532,17 +562,42 @@ body {
     padding-right: 10px;
   }
 
-  .expertise-card-pure {
-    width: 104px;
-    height: 126px;
-    min-height: 0;
+  .expertise-carousel {
+    --expertise-step: clamp(86px, 28vw, 124px);
+    --expertise-active-scale: 1.06;
+    --expertise-side-scale: 0.78;
+    height: 210px;
   }
 }
 
 @media (max-width: 640px) {
+  .expertise-carousel {
+    --expertise-step: clamp(74px, 29vw, 102px);
+    --expertise-active-scale: 1.05;
+    --expertise-side-scale: 0.7;
+    height: 180px;
+  }
+
   .expertise-card-pure {
-    width: 92px;
-    height: 116px;
+    width: clamp(98px, 36vw, 118px);
+    height: 148px;
+  }
+}
+
+@media (max-width: 420px) {
+  .expertise-carousel {
+    --expertise-step: 74px;
+    --expertise-side-scale: 0.62;
+    height: 165px;
+  }
+
+  .expertise-card-pure {
+    width: 102px;
+    height: 138px;
+  }
+
+  .expertise-card-pure h3 {
+    font-size: 8px;
   }
 }
 

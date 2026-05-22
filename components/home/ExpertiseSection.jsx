@@ -77,16 +77,15 @@ export default function ExpertiseSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-black px-4 py-24 text-white md:py-32">
-      {/* Background Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-[58%] h-[430px] w-[430px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f47a3c]/10 blur-[130px]" />
+    <section className="expertise-section relative overflow-hidden bg-black px-3 py-16 text-white md:py-20">
+      <div className="pointer-events-none absolute left-1/2 top-[58%] h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f47a3c]/8 blur-[100px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl">
+      <div className="relative z-10 mx-auto max-w-5xl">
         {/* Title */}
-        <div className="mb-16 text-center">
-          <h2 className="text-3xl font-medium tracking-tight text-white md:text-5xl">
+        <div className="mb-8 text-center md:mb-10">
+          <h2 className="text-xl font-normal tracking-normal text-white md:text-2xl">
             Design &amp; Expertise{" "}
-            <span className="inline-flex items-center gap-2 text-[#f47a3c]">
+            <span className="inline-flex items-center gap-1.5 text-[#f47a3c]">
               <span className="text-[#f47a3c]/70">[</span>
               Spaces
               <span className="text-[#f47a3c]/70">]</span>
@@ -95,23 +94,25 @@ export default function ExpertiseSection() {
         </div>
 
         {/* Carousel Area */}
-        <div className="relative mx-auto h-[360px] max-w-7xl overflow-hidden md:h-[390px]">
+        <div className="expertise-carousel relative mx-auto overflow-hidden">
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
             aria-label="Previous slide"
-            className="absolute left-0 top-1/2 z-30 -translate-y-1/2 text-white/60 transition hover:text-[#f47a3c]"
+            suppressHydrationWarning
+            className="absolute left-0 top-1/2 z-30 -translate-y-1/2 text-white/60 transition hover:text-[#f47a3c] md:left-2"
           >
-            <ChevronLeft size={26} />
+            <ChevronLeft size={16} strokeWidth={1.7} />
           </button>
 
           {/* Right Arrow */}
           <button
             onClick={nextSlide}
             aria-label="Next slide"
-            className="absolute right-0 top-1/2 z-30 -translate-y-1/2 text-white/60 transition hover:text-[#f47a3c]"
+            suppressHydrationWarning
+            className="absolute right-0 top-1/2 z-30 -translate-y-1/2 text-white/60 transition hover:text-[#f47a3c] md:right-2"
           >
-            <ChevronRight size={26} />
+            <ChevronRight size={16} strokeWidth={1.7} />
           </button>
 
           {/* Cards */}
@@ -126,21 +127,21 @@ export default function ExpertiseSection() {
                 <article
                   key={item.id}
                   onClick={() => setActiveIndex(index)}
-                  className={`expertise-card-pure absolute cursor-pointer overflow-hidden rounded-[22px] border bg-[#090909] transition-all duration-700 ease-out ${
+                  className={`expertise-card-pure absolute cursor-pointer overflow-hidden rounded-lg border bg-[#090909] transition-all duration-700 ease-out ${
                     isActive
                       ? "z-20 border-white/80 opacity-100"
                       : "z-10 border-white/25 opacity-35"
                   } ${!isVisible ? "pointer-events-none opacity-0" : ""}`}
                   style={{
                     transform: `
-                      translateX(${position * 215}px)
-                      scale(${isActive ? 1.12 : 0.88})
+                      translateX(calc(${position} * var(--expertise-step)))
+                      scale(${isActive ? "var(--expertise-active-scale)" : "var(--expertise-side-scale)"})
                     `,
                   }}
                 >
                   {/* Number */}
                   <div
-                    className={`absolute right-3 top-3 z-20 rounded-bl-2xl rounded-tr-[18px] bg-black/80 px-4 py-2 text-lg font-bold tracking-widest ${
+                    className={`absolute right-0 top-0 z-20 rounded-bl-lg rounded-tr-lg bg-black/85 px-2.5 py-1.5 text-[10px] font-semibold leading-none tracking-widest ${
                       isActive ? "text-white" : "text-white/45"
                     }`}
                   >
@@ -148,20 +149,20 @@ export default function ExpertiseSection() {
                   </div>
 
                   {/* Image */}
-                  <div className="relative h-[285px] w-full overflow-hidden rounded-[18px] md:h-[305px]">
+                  <div className="relative h-full w-full overflow-hidden rounded-md">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="h-full w-full object-cover transition duration-700 hover:scale-110"
+                      className="h-full w-full object-cover transition duration-700 hover:scale-105"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10" />
                   </div>
 
                   {/* Title */}
-                  <div className="absolute bottom-0 left-0 z-20 w-full p-4">
+                  <div className="absolute bottom-0 left-0 z-20 w-full px-2.5 pb-2.5">
                     <h3
-                      className={`text-sm font-semibold md:text-base ${
+                      className={`text-[10px] font-normal leading-tight md:text-xs ${
                         isActive ? "text-white" : "text-white/60"
                       }`}
                     >
