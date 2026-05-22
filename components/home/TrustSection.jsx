@@ -2,17 +2,17 @@ const trustLogos = [
   {
     id: 1,
     name: "NCompass",
-    image: "/images/trust/ncompass.png",
+    image: "/logo-1.png",
   },
   {
     id: 2,
     name: "Pinnacle Studio",
-    image: "/images/trust/pinnacle-studio.png",
+    image: "/logo-2.png",
   },
   {
     id: 3,
     name: "Purva Somerset",
-    image: "/images/trust/purva-somerset.png",
+    image: "/logo-3.png",
   },
 ];
 
