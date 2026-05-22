@@ -80,7 +80,7 @@ export default function Hero() {
         </div>
 
         {/* Content Comes After Scroll */}
-        <div
+        {/* <div
           className="absolute inset-0 z-20 flex items-center justify-center px-6 text-center"
           style={{
             opacity: Math.max((progress - 0.45) / 0.55, 0),
@@ -118,7 +118,7 @@ export default function Hero() {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Scroll Text */}
         <div
