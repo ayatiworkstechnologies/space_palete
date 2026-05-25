@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import BracketSpaces from "@/components/BracketSpaces";
 
 const expertiseItems = [
   {
@@ -85,11 +86,7 @@ export default function ExpertiseSection() {
         <div className="mb-12 text-center md:mb-16">
           <h2 className="text-3xl font-normal leading-tight text-white md:text-5xl">
             Design &amp; Expertise{" "}
-            <span className="inline-flex items-center gap-2 text-[#f47a3c]">
-              <span className="text-[#f47a3c]/70">[</span>
-              Spaces
-              <span className="text-[#f47a3c]/70">]</span>
-            </span>
+            <BracketSpaces />
           </h2>
         </div>
 

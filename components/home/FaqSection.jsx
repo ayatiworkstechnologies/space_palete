@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import BracketSpaces from "@/components/BracketSpaces";
 
 const faqs = [
   {
@@ -49,11 +50,7 @@ export default function FaqSection() {
             <br />
             Inspired
             <br />
-            <span className="mt-5 inline-flex items-center gap-3 text-[#f47a3c]">
-              <span className="text-[#f47a3c]/70">[</span>
-              Spaces
-              <span className="text-[#f47a3c]/70">]</span>
-            </span>
+            <BracketSpaces className="mt-5" />
           </h2>
 
           <p className="mt-10 max-w-sm text-sm leading-6 text-white/65 md:text-base">

@@ -1,14 +1,15 @@
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import BracketSpaces from "@/components/BracketSpaces";
 
 export default function ProjectProfileSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-black px-6 py-16 text-white md:py-20"
+      className="relative overflow-hidden bg-black px-6 py-16 text-white md:py-20 lg:px-14 xl:px-20"
     >
       <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] [background-size:120px_120px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_12%,black_88%,transparent_100%)] md:[background-size:180px_180px]" />
 
-      <div className="relative z-10 mx-auto grid max-w-6xl gap-16 md:grid-cols-[1.12fr_0.88fr] lg:gap-28">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1500px] gap-16 md:grid-cols-[1.2fr_0.8fr] lg:gap-32 xl:gap-40">
         {/* LEFT FORM */}
         <div>
           <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
@@ -33,7 +34,7 @@ export default function ProjectProfileSection() {
               <div>
                 <input
                   type="tel"
-                  placeholder="Phone Numer"
+                  placeholder="Phone Number"
                   suppressHydrationWarning
                   className="w-full border-0 border-b border-white/20 bg-transparent px-4 pb-3.5 text-sm text-white outline-none transition placeholder:text-white/45 focus:border-[#f47a3c]"
                 />
@@ -86,38 +87,34 @@ export default function ProjectProfileSection() {
           <h2 className="text-3xl font-medium leading-[0.95] tracking-tight md:text-4xl">
             Share Your <br />
             Vision{" "}
-            <span className="inline-flex items-center gap-2 text-[#f47a3c]">
-              <span className="text-[#f47a3c]/70">[</span>
-              Spaces
-              <span className="text-[#f47a3c]/70">]</span>
-            </span>
+            <BracketSpaces className="ml-1 align-middle text-[0.92em]" />
           </h2>
 
           <div className="mt-9 space-y-7">
             <div>
               <div className="flex items-center gap-3">
-                <Mail size={16} strokeWidth={1.8} />
+                <Mail size={20} strokeWidth={1.7} />
                 <h3 className="text-base font-normal text-white md:text-lg">Contact Our Studio</h3>
               </div>
-              <a href="mailto:uma@spacepalette.net" className="mt-3 block pl-7 text-xs leading-relaxed text-white/45 transition hover:text-[#f47a3c]">
+              <a href="mailto:uma@spacepalette.net" className="mt-3 block pl-8 text-xs leading-relaxed text-white/45 transition hover:text-[#f47a3c]">
                 uma@spacepalette.net
               </a>
             </div>
 
             <div>
               <div className="flex items-center gap-3">
-                <Phone size={16} strokeWidth={1.8} />
+                <Phone size={20} strokeWidth={1.7} />
                 <h3 className="text-base font-normal text-white md:text-lg">Speak With Our Studio</h3>
               </div>
-              <a href="tel:+918688098077" className="mt-3 block pl-7 text-xs leading-relaxed text-white/45 transition hover:text-[#f47a3c]">+91 8688098077</a>
+              <a href="tel:+918688098077" className="mt-3 block pl-8 text-xs leading-relaxed text-white/45 transition hover:text-[#f47a3c]">+91 8688098077</a>
             </div>
 
             <div>
               <div className="flex items-center gap-3">
-                <MapPin size={16} strokeWidth={1.8} />
+                <MapPin size={20} strokeWidth={1.7} />
                 <h3 className="text-base font-normal text-white md:text-lg">Head quarters</h3>
               </div>
-              <p className="mt-3 block pl-7 text-xs leading-relaxed text-white/45">
+              <p className="mt-3 block pl-8 text-xs leading-relaxed text-white/45">
                 No.46, 3rd Floor, GSquare Building,
                 <br />
                 Rajiv Gandhi Salai, OMR, Kandanchavadi,
@@ -128,10 +125,10 @@ export default function ProjectProfileSection() {
 
             <div>
               <div className="flex items-center gap-3">
-                <MapPin size={16} strokeWidth={1.8} />
+                <MapPin size={20} strokeWidth={1.7} />
                 <h3 className="text-base font-normal text-white md:text-lg">Another Locations</h3>
               </div>
-              <p className="mt-3 block pl-7 text-xs leading-relaxed text-white/45">
+              <p className="mt-3 block pl-8 text-xs leading-relaxed text-white/45">
                 Bangalore, Hyderabad, Coimbatore.
               </p>
             </div>

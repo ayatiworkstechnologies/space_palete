@@ -1,3 +1,5 @@
+import BracketSpaces from "@/components/BracketSpaces";
+
 const trustLogos = [
   {
     id: 1,
@@ -27,11 +29,7 @@ export default function TrustSection() {
         <div className="text-center">
           <h2 className="text-3xl font-medium tracking-tight text-white md:text-5xl">
             Trust Across{" "}
-            <span className="inline-flex items-center gap-2 text-[#f47a3c]">
-              <span className="text-[#f47a3c]/70">[</span>
-              Spaces
-              <span className="text-[#f47a3c]/70">]</span>
-            </span>
+            <BracketSpaces />
           </h2>
         </div>
 
