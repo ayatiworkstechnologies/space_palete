@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section id="home" className="relative h-[58vh] min-h-[420px] overflow-hidden bg-black max-md:h-[100svh] max-md:min-h-[100svh] max-md:snap-start max-md:snap-always md:h-[68vh] lg:h-[76vh]">
+    <section id="home" className="relative h-[100svh] min-h-[100svh] overflow-hidden bg-black">
       <video
         className="absolute inset-0 h-full w-full object-cover"
         src="/hero.mp4"

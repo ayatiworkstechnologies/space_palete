@@ -21,8 +21,8 @@ export default function Header() {
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${
         isScrolled
-          ? "bg-black/60 shadow-[0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl"
-          : "bg-black/20 backdrop-blur-[2px]"
+          ? "bg-white/82 shadow-[0_1px_0_rgba(0,0,0,0.08)] backdrop-blur-xl"
+          : "bg-white/55 shadow-[0_1px_0_rgba(255,255,255,0.28)] backdrop-blur-md"
       }`}
     >
       <div className="relative mx-auto flex h-20 max-w-7xl items-center justify-between px-6 md:h-24">
@@ -36,11 +36,11 @@ export default function Header() {
             width={180}
             height={80}
             priority
-            className="h-auto w-[66px] drop-shadow-[0_18px_35px_rgba(0,0,0,0.55)] transition duration-500 md:w-[86px]"
+            className="h-auto w-[66px] drop-shadow-[0_18px_35px_rgba(0,0,0,0.25)] transition duration-500 md:w-[86px]"
           />
         </a>
 
-        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-12 text-sm font-medium text-white/90 md:flex">
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-12 text-base font-semibold text-black/75 md:flex">
           <a href="#about" className="transition hover:text-[#f47a3c]">
             About
           </a>
@@ -52,7 +52,7 @@ export default function Header() {
         <div className="flex items-center justify-end">
           <a
             href="#contact"
-            className="inline-flex items-center justify-center border border-white/55 px-4 py-2 text-xs font-semibold text-white transition duration-300 hover:border-[#f47a3c] hover:bg-[#f47a3c] hover:text-black md:px-5 md:py-2.5"
+            className="inline-flex items-center justify-center border border-black/35 px-4 py-2 text-xs font-semibold text-black/80 transition duration-300 hover:border-[#f47a3c] hover:bg-[#f47a3c] hover:text-white md:px-6 md:py-3 md:text-sm"
           >
             Contact
           </a>

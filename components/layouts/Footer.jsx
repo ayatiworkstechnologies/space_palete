@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import Image from "next/image";
 
 function SocialIcon({ children, size = 16 }) {
   return (
@@ -47,20 +47,83 @@ function YoutubeIcon({ size }) {
   );
 }
 
+function ThreadsIcon({ size }) {
+  return (
+    <SocialIcon size={size}>
+      <path d="M12.17 2C6.56 2 3.02 5.58 3.02 11.08c0 5.64 3.62 10.92 9.28 10.92 5.04 0 8.18-3.09 8.18-7.08 0-3.18-1.76-5.17-5.01-5.94-.42-2.34-1.83-3.67-4.1-3.67-2.1 0-3.74 1.16-4.55 3.16l1.96.84c.5-1.28 1.36-1.93 2.56-1.93 1.07 0 1.76.62 2.02 1.79-.34-.02-.69-.03-1.05-.03-3.03 0-4.84 1.39-4.84 3.67 0 2.09 1.64 3.56 3.98 3.56 2.42 0 3.95-1.39 4.14-3.72l.02-.25c1.78.58 2.59 1.72 2.59 3.52 0 2.75-2.22 4.73-5.83 4.73-4.28 0-7.05-4.08-7.05-8.65 0-4.31 2.61-6.95 6.9-6.95 3.01 0 5.16 1.36 6.49 4.14l2-.95C18.98 4.18 16.14 2 12.17 2Zm-.7 12.34c-1.1 0-1.8-.6-1.8-1.55 0-1.12.95-1.73 2.68-1.73.4 0 .79.03 1.18.08v.35c0 1.82-.72 2.85-2.06 2.85Z" />
+    </SocialIcon>
+  );
+}
+
+function PinterestIcon({ size }) {
+  return (
+    <SocialIcon size={size}>
+      <path d="M12.18 2C6.67 2 3 5.72 3 10.55c0 3.05 1.72 5.45 3.95 6.4.37.16.58.01.66-.4.06-.31.22-1.36.3-1.78.1-.57.06-.76-.33-1.22-.8-.96-1.31-2.2-1.31-3.96 0-4.02 3.01-7.82 8.14-7.82 4.44 0 7.55 2.71 7.55 6.58 0 4.94-2.47 8.38-5.67 8.38-1.77 0-3.09-1.46-2.67-3.26.51-2.14 1.49-4.45 1.49-5.99 0-1.38-.74-2.53-2.28-2.53-1.81 0-3.27 1.87-3.27 4.38 0 1.6.54 2.68.54 2.68s-1.79 7.57-2.12 8.98c-.37 1.57-.22 3.78-.06 5.21.04.39.55.52.76.18.74-1.2 1.59-2.98 1.99-4.5.16-.59.8-3.05.8-3.05.43.82 1.68 1.51 3.01 1.51 3.96 0 6.82-3.64 6.82-8.16C21 5.02 17.35 2 12.18 2Z" />
+    </SocialIcon>
+  );
+}
+
+const socialLinks = [
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/spacepalette22/",
+    icon: FacebookIcon,
+    size: 16,
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/spacepalette_urban/",
+    icon: InstagramIcon,
+    size: 16,
+  },
+  {
+    label: "Threads",
+    href: "https://www.threads.com/@spacepalette_urban",
+    icon: ThreadsIcon,
+    size: 16,
+  },
+  {
+    label: "X",
+    href: "https://x.com/offPaletteSpace",
+    icon: null,
+    size: 16,
+  },
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@Spacepalette-designs",
+    icon: YoutubeIcon,
+    size: 17,
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/space-palette-india",
+    icon: LinkedinIcon,
+    size: 16,
+  },
+  {
+    label: "Pinterest",
+    href: "https://in.pinterest.com/spacepalettedesigns/",
+    icon: PinterestIcon,
+    size: 16,
+  },
+];
+
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-black px-6 text-white max-md:min-h-[100svh] max-md:snap-start max-md:snap-always">
+    <footer className="relative overflow-hidden bg-black px-6 text-white md:px-6">
       <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:115px_115px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_90%,transparent_100%)] md:[background-size:145px_145px]" />
 
-      <div className="relative z-10 mx-auto max-w-6xl border-t border-white/10">
-        <nav className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 py-8 text-lg text-white">
-          <a href="#home" className="transition duration-300 hover:text-[#f47a3c]">
+      <div className="relative z-10 mx-auto max-w-6xl border-t border-white/10 max-md:border-t-0">
+        
+
+        <nav className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 py-8 text-lg text-white max-md:block max-md:border-b max-md:border-white/10 max-md:py-3 max-md:text-center max-md:text-xl">
+          <a href="#home" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
             Home
           </a>
-          <a href="#about" className="transition duration-300 hover:text-[#f47a3c]">
+          <a href="#about" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
             About us
           </a>
-          <a href="#projects" className="transition duration-300 hover:text-[#f47a3c]">
+          <a href="#projects" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
             Projects
           </a>
           <a href="#contact" className="transition duration-300 hover:text-[#f47a3c]">
@@ -68,34 +131,31 @@ export default function Footer() {
           </a>
         </nav>
 
-        <div className="flex items-center justify-center gap-7 pb-7">
-          <a
-            href="https://wa.me/918688098077"
-            target="_blank"
-            aria-label="WhatsApp"
-            className="inline-flex items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]"
-          >
-            <MessageCircle size={14} />
-          </a>
-          <a href="#" aria-label="Instagram" className="inline-flex items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]">
-            <InstagramIcon size={14} />
-          </a>
-          <a href="#" aria-label="X" className="inline-flex items-center justify-center text-sm text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]">
-            X
-          </a>
-          <a href="#" aria-label="Facebook" className="inline-flex items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]">
-            <FacebookIcon size={14} />
-          </a>
-          <a href="#" aria-label="LinkedIn" className="inline-flex items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]">
-            <LinkedinIcon size={14} />
-          </a>
-          <a href="#" aria-label="YouTube" className="inline-flex items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]">
-            <YoutubeIcon size={15} />
-          </a>
+        <div className="mx-auto flex max-w-xl flex-wrap items-center justify-center gap-7 pb-7 max-md:grid max-md:grid-cols-7 max-md:border-b max-md:border-white/10 max-md:gap-3 max-md:py-8">
+          {socialLinks.map((social) => {
+            const Icon = social.icon;
+
+            return (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                className="inline-flex h-9 w-9 items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c] max-md:h-8 max-md:w-8"
+              >
+                {Icon ? (
+                  <Icon size={social.size} />
+                ) : (
+                  <span className="text-sm font-medium leading-none">X</span>
+                )}
+              </a>
+            );
+          })}
         </div>
 
-        <div className="border-t border-white/10 py-4 text-center">
-          <p className="text-[11px] leading-5 text-white/65">
+        <div className="border-t border-white/10 py-4 text-center max-md:border-t-0 max-md:py-5">
+          <p className="mx-auto max-w-2xl text-lg leading-7 text-white/65 md:text-xl md:leading-8">
             Copyright &copy;2026 spacepalette - All right reserved | Designed &amp;
             Developed by{" "}
             <a

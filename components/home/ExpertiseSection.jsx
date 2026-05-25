@@ -77,13 +77,29 @@ export default function ExpertiseSection() {
     return diff;
   };
 
+  const getScale = (position) => {
+    const distance = Math.abs(position);
+
+    if (distance === 0) return "var(--expertise-active-scale)";
+    if (distance === 1) return "var(--expertise-near-scale)";
+    return "var(--expertise-far-scale)";
+  };
+
+  const getOpacityClass = (position, isActive) => {
+    const distance = Math.abs(position);
+
+    if (isActive) return "opacity-100";
+    if (distance === 1) return "opacity-65";
+    return "opacity-28";
+  };
+
   return (
-    <section id="projects" className="relative overflow-hidden bg-black px-3 py-20 text-white max-md:flex max-md:min-h-[100svh] max-md:snap-start max-md:snap-always max-md:items-center md:py-28">
+    <section id="projects" className="relative overflow-hidden bg-black py-16 text-white md:py-24">
       <div className="pointer-events-none absolute left-1/2 top-[58%] h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f47a3c]/8 blur-[110px]" />
 
-      <div className="relative z-10 mx-auto max-w-5xl">
+      <div className="relative z-10 mx-auto w-full max-w-none">
         {/* Title */}
-        <div className="mb-12 text-center md:mb-16">
+        <div className="mb-12 text-center md:mb-14">
           <h2 className="text-3xl font-normal leading-tight text-white md:text-5xl">
             Design &amp; Expertise{" "}
             <BracketSpaces />
@@ -91,13 +107,13 @@ export default function ExpertiseSection() {
         </div>
 
         {/* Carousel Area */}
-        <div className="relative mx-auto h-[250px] max-w-[1160px] overflow-hidden [--expertise-active-scale:1.08] [--expertise-side-scale:0.76] [--expertise-step:clamp(102px,31vw,142px)] sm:h-[310px] sm:[--expertise-side-scale:0.82] sm:[--expertise-step:clamp(128px,28vw,180px)] md:h-[clamp(340px,42vw,440px)] md:[--expertise-active-scale:1.12] md:[--expertise-side-scale:0.9] md:[--expertise-step:clamp(178px,25vw,250px)]">
+        <div className="relative mx-auto h-[350px] w-full max-w-full overflow-hidden [--expertise-active-scale:1.12] [--expertise-near-scale:0.86] [--expertise-far-scale:0.64] [--expertise-step:clamp(120px,33vw,165px)] sm:h-[410px] sm:[--expertise-step:clamp(168px,29vw,230px)] md:h-[470px] md:[--expertise-active-scale:1.1] md:[--expertise-near-scale:0.82] md:[--expertise-far-scale:0.6] md:[--expertise-step:clamp(245px,21vw,330px)] lg:[--expertise-step:clamp(290px,22vw,390px)]">
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
             aria-label="Previous slide"
             suppressHydrationWarning
-            className="absolute left-0 top-1/2 z-30 -translate-y-1/2 text-white/60 transition hover:text-[#f47a3c] md:left-2"
+            className="absolute left-3 top-1/2 z-30 -translate-y-1/2 text-white/60 transition hover:text-[#f47a3c] md:left-8"
           >
             <ChevronLeft size={16} strokeWidth={1.7} />
           </button>
@@ -107,7 +123,7 @@ export default function ExpertiseSection() {
             onClick={nextSlide}
             aria-label="Next slide"
             suppressHydrationWarning
-            className="absolute right-0 top-1/2 z-30 -translate-y-1/2 text-white/60 transition hover:text-[#f47a3c] md:right-2"
+            className="absolute right-3 top-1/2 z-30 -translate-y-1/2 text-white/60 transition hover:text-[#f47a3c] md:right-8"
           >
             <ChevronRight size={16} strokeWidth={1.7} />
           </button>
@@ -124,21 +140,23 @@ export default function ExpertiseSection() {
                 <article
                   key={item.id}
                   onClick={() => setActiveIndex(index)}
-                  className={`absolute h-[210px] w-[clamp(138px,43vw,168px)] cursor-pointer overflow-hidden rounded-lg border bg-[#090909] shadow-[0_12px_32px_rgba(0,0,0,0.72)] transition-all duration-700 ease-out before:pointer-events-none before:absolute before:inset-1 before:z-10 before:rounded-md before:border before:border-white/20 before:content-[''] after:absolute after:inset-x-3 after:-bottom-3 after:h-6 after:rounded-full after:bg-white/15 after:opacity-0 after:blur-2xl after:transition-opacity after:duration-500 hover:before:border-white/40 sm:h-[270px] sm:w-[clamp(170px,25vw,220px)] md:h-[clamp(300px,34vw,380px)] md:w-[clamp(190px,22vw,260px)] ${
+                  className={`absolute h-[280px] w-[clamp(180px,50vw,230px)] cursor-pointer overflow-hidden rounded-lg border bg-[#090909] shadow-[0_12px_32px_rgba(0,0,0,0.72)] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] before:pointer-events-none before:absolute before:inset-1 before:z-10 before:rounded-md before:border before:border-white/20 before:content-[''] after:absolute after:inset-x-3 after:-bottom-3 after:h-8 after:rounded-full after:bg-white/15 after:opacity-0 after:blur-2xl after:transition-opacity after:duration-700 hover:before:border-white/40 sm:h-[340px] sm:w-[clamp(220px,29vw,285px)] md:h-[380px] md:w-[285px] lg:h-[400px] lg:w-[300px] ${
                     isActive
-                      ? "z-20 border-white/80 opacity-100 shadow-[0_0_0_1px_rgba(255,255,255,0.32),0_18px_46px_rgba(0,0,0,0.86)] before:border-white/80 after:opacity-100"
-                      : "z-10 border-white/25 opacity-35"
+                      ? "z-30 border-white/85 shadow-[0_0_0_1px_rgba(255,255,255,0.34),0_22px_55px_rgba(0,0,0,0.9)] before:border-white/85 after:opacity-100"
+                      : "z-10 border-white/25"
+                  } ${getOpacityClass(position, isActive)} ${
+                    Math.abs(position) === 1 ? "z-20" : ""
                   } ${!isVisible ? "pointer-events-none opacity-0" : ""}`}
                   style={{
                     transform: `
                       translateX(calc(${position} * var(--expertise-step)))
-                      scale(${isActive ? "var(--expertise-active-scale)" : "var(--expertise-side-scale)"})
+                      scale(${getScale(position)})
                     `,
                   }}
                 >
                   {/* Number */}
                   <div
-                    className={`absolute right-0 top-0 z-20 rounded-bl-lg rounded-tr-lg bg-black/85 px-3 py-2 text-xs font-semibold leading-none tracking-widest ${
+                    className={`absolute right-0 top-0 z-20 rounded-bl-lg rounded-tr-lg bg-black/85 px-4 py-2.5 text-sm font-semibold leading-none tracking-widest transition-colors duration-700 ${
                       isActive ? "text-white" : "text-white/45"
                     }`}
                   >
@@ -159,7 +177,7 @@ export default function ExpertiseSection() {
                   {/* Title */}
                   <div className="absolute bottom-0 left-0 z-20 w-full px-2.5 pb-2.5">
                     <h3
-                      className={`text-xs font-normal leading-tight md:text-base ${
+                      className={`text-sm font-semibold leading-tight transition-colors duration-700 md:text-lg ${
                         isActive ? "text-white" : "text-white/60"
                       }`}
                     >

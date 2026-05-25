@@ -56,7 +56,7 @@ export default function VisualStorySection() {
   };
 
   return (
-    <section className="relative min-h-[75vh] overflow-hidden bg-black px-6 py-20 text-white max-md:flex max-md:min-h-[100svh] max-md:snap-start max-md:snap-always max-md:items-center md:py-28">
+    <section className="relative min-h-[75vh] overflow-hidden bg-black px-6 py-20 text-white md:py-28">
       <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:120px_120px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_82%,transparent_100%)] md:[background-size:180px_180px]" />
 
       {/* Soft Glow */}
@@ -124,7 +124,7 @@ export default function VisualStorySection() {
                     className={`mx-auto leading-8 ${
                       isActive
                         ? "max-w-2xl text-lg text-white md:text-xl"
-                        : "max-w-xl text-sm text-white/40 md:text-base"
+                        : "max-w-xl text-lg text-white/40 md:text-xl"
                     }`}
                   >
                     {isActive && story.id === 2 ? (

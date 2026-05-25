@@ -35,7 +35,7 @@ export default function FaqSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="relative min-h-[82vh] overflow-hidden bg-black px-6 py-20 text-white max-md:min-h-[100svh] max-md:snap-start max-md:snap-always md:py-32">
+    <section className="relative min-h-[82vh] overflow-hidden bg-black px-6 py-20 text-white md:py-32">
       {/* Background Fade */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-1/3 bg-gradient-to-r from-white/[0.03] to-transparent" />
       <div className="pointer-events-none absolute right-0 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-[#f47a3c]/5 blur-[120px]" />
@@ -53,7 +53,7 @@ export default function FaqSection() {
             <BracketSpaces className="mt-5" />
           </h2>
 
-          <p className="mt-10 max-w-sm text-sm leading-6 text-white/65 md:text-base">
+          <p className="mt-10 max-w-sm text-lg leading-7 text-white/65 md:text-xl md:leading-8">
             Find clear answers to common questions about our design process,
             timelines, materials, and turnkey execution. We believe every
             successful project begins with transparency, thoughtful planning, and
@@ -92,7 +92,7 @@ export default function FaqSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="max-w-3xl text-sm leading-6 text-white/72 md:text-base">
+                    <p className="max-w-3xl text-lg leading-7 text-white/72 md:text-xl md:leading-8">
                       {faq.answer}
                     </p>
                   </div>

@@ -3,17 +3,27 @@
 import { useEffect } from "react";
 
 const motionSelectors = [
-  ".home-page > section:not(:first-child)",
-  ".home-page > section:not(:first-child) h2",
-  ".home-page > section:not(:first-child) p",
-  ".home-page > section:not(:first-child) a",
-  ".home-page > section:not(:first-child) button",
-  ".expertise-card-pure",
-  ".trust-logo-card",
-  ".story-card",
-  ".form-line-group",
-  ".contact-info-item",
+  "main > section:not(:first-of-type)",
+  "main > section:not(:first-of-type) h2",
+  "main > section:not(:first-of-type) p",
+  "main > section:not(:first-of-type) form",
+  "main > section:not(:first-of-type) article",
+  "main > section:not(:first-of-type) img",
+  "main > section:not(:first-of-type) button",
+  "main > section:not(:first-of-type) a",
 ];
+
+const hiddenClasses = [
+  "opacity-0",
+  "translate-y-6",
+  "blur-[2px]",
+  "transition-all",
+  "duration-700",
+  "ease-out",
+  "will-change-transform",
+];
+
+const visibleClasses = ["opacity-100", "translate-y-0", "blur-0"];
 
 export default function ScrollMotion() {
   useEffect(() => {
@@ -30,22 +40,23 @@ export default function ScrollMotion() {
     );
 
     elements.forEach((element, index) => {
-      element.classList.add("scroll-motion");
-      element.style.setProperty("--motion-delay", `${(index % 6) * 55}ms`);
+      element.classList.add(...hiddenClasses);
+      element.style.transitionDelay = `${(index % 5) * 45}ms`;
     });
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("scroll-motion-visible");
+            entry.target.classList.remove("opacity-0", "translate-y-6", "blur-[2px]");
+            entry.target.classList.add(...visibleClasses);
             observer.unobserve(entry.target);
           }
         });
       },
       {
-        rootMargin: "0px 0px -12% 0px",
-        threshold: 0.12,
+        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.1,
       },
     );
 

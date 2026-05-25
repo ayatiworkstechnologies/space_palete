@@ -5,22 +5,22 @@ export default function ProjectProfileSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-black px-6 py-16 text-white max-md:min-h-[100svh] max-md:snap-start max-md:snap-always md:py-20 lg:px-14 xl:px-20"
+      className="relative overflow-hidden bg-black px-6 py-16 text-white md:py-20 lg:px-14 xl:px-20"
     >
       <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] [background-size:120px_120px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_12%,black_88%,transparent_100%)] md:[background-size:180px_180px]" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1500px] gap-16 md:grid-cols-[1.2fr_0.8fr] lg:gap-32 xl:gap-40">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1500px] gap-14 md:grid-cols-[1.2fr_0.8fr] lg:gap-32 xl:gap-40">
         {/* LEFT FORM */}
         <div>
-          <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
+          <h2 className="text-3xl font-medium leading-tight md:text-4xl">
             Project Profile
           </h2>
 
-          <p className="mt-4 text-xs leading-5 text-white/85">
+          <p className="mt-4 text-lg leading-7 text-white/75 md:text-xl md:leading-8 md:text-white/85">
             Let us understand your space and design goals.
           </p>
 
-          <form className="mt-7 space-y-8">
+          <form className="mt-7 space-y-7 md:space-y-8">
             <div>
               <input
                 type="text"
@@ -87,16 +87,18 @@ export default function ProjectProfileSection() {
           <h2 className="text-3xl font-medium leading-[0.95] tracking-tight md:text-4xl">
             Share Your <br />
             Vision{" "}
-            <BracketSpaces className="ml-1 align-middle text-[0.92em]" />
+            <BracketSpaces className="align-middle text-[0.9em]" />
           </h2>
 
-          <div className="mt-9 space-y-7">
+          <div className="mt-9 space-y-6 md:space-y-7">
             <div>
               <div className="flex items-center gap-3">
                 <Mail size={20} strokeWidth={1.7} />
-                <h3 className="text-base font-normal text-white md:text-lg">Contact Our Studio</h3>
+                <h3 className="text-base font-normal text-white md:text-lg">
+                  Contact Our Studio
+                </h3>
               </div>
-              <a href="mailto:uma@spacepalette.net" className="mt-3 block pl-8 text-xs leading-relaxed text-white/45 transition hover:text-[#f47a3c]">
+              <a href="mailto:uma@spacepalette.net" className="mt-3 block pl-8 text-sm leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-xs">
                 uma@spacepalette.net
               </a>
             </div>
@@ -104,9 +106,13 @@ export default function ProjectProfileSection() {
             <div>
               <div className="flex items-center gap-3">
                 <Phone size={20} strokeWidth={1.7} />
-                <h3 className="text-base font-normal text-white md:text-lg">Speak With Our Studio</h3>
+                <h3 className="text-base font-normal text-white md:text-lg">
+                  Speak With Our Studio
+                </h3>
               </div>
-              <a href="tel:+918688098077" className="mt-3 block pl-8 text-xs leading-relaxed text-white/45 transition hover:text-[#f47a3c]">+91 8688098077</a>
+              <a href="tel:+918688098077" className="mt-3 block pl-8 text-sm leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-xs">
+                +91 8688098077
+              </a>
             </div>
 
             <div>
@@ -114,7 +120,7 @@ export default function ProjectProfileSection() {
                 <MapPin size={20} strokeWidth={1.7} />
                 <h3 className="text-base font-normal text-white md:text-lg">Head quarters</h3>
               </div>
-              <p className="mt-3 block pl-8 text-xs leading-relaxed text-white/45">
+              <p className="mt-3 block pl-8 text-lg leading-7 text-white/45 md:text-xl md:leading-8">
                 No.46, 3rd Floor, GSquare Building,
                 <br />
                 Rajiv Gandhi Salai, OMR, Kandanchavadi,
@@ -126,9 +132,11 @@ export default function ProjectProfileSection() {
             <div>
               <div className="flex items-center gap-3">
                 <MapPin size={20} strokeWidth={1.7} />
-                <h3 className="text-base font-normal text-white md:text-lg">Another Locations</h3>
+                <h3 className="text-base font-normal text-white md:text-lg">
+                  Another Locations
+                </h3>
               </div>
-              <p className="mt-3 block pl-8 text-xs leading-relaxed text-white/45">
+              <p className="mt-3 block pl-8 text-lg leading-7 text-white/45 md:text-xl md:leading-8">
                 Bangalore, Hyderabad, Coimbatore.
               </p>
             </div>
