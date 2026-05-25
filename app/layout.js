@@ -26,9 +26,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${cabinetGrotesk.variable} ${montserrat.variable} h-full antialiased`}
+      className={`${cabinetGrotesk.variable} ${montserrat.variable} h-full scroll-smooth antialiased max-md:snap-y max-md:snap-mandatory`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col max-md:snap-y max-md:snap-mandatory">
         <Header />
         {children}
         <Footer />

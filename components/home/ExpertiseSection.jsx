@@ -78,7 +78,7 @@ export default function ExpertiseSection() {
   };
 
   return (
-    <section id="projects" className="relative overflow-hidden bg-black px-3 py-20 text-white md:py-28">
+    <section id="projects" className="relative overflow-hidden bg-black px-3 py-20 text-white max-md:flex max-md:min-h-[100svh] max-md:snap-start max-md:snap-always max-md:items-center md:py-28">
       <div className="pointer-events-none absolute left-1/2 top-[58%] h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f47a3c]/8 blur-[110px]" />
 
       <div className="relative z-10 mx-auto max-w-5xl">

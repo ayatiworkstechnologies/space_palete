@@ -5,7 +5,7 @@ export default function ProjectProfileSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-black px-6 py-16 text-white md:py-20 lg:px-14 xl:px-20"
+      className="relative overflow-hidden bg-black px-6 py-16 text-white max-md:min-h-[100svh] max-md:snap-start max-md:snap-always md:py-20 lg:px-14 xl:px-20"
     >
       <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] [background-size:120px_120px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_12%,black_88%,transparent_100%)] md:[background-size:180px_180px]" />
 

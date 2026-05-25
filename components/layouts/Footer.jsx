@@ -49,7 +49,7 @@ function YoutubeIcon({ size }) {
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-black px-6 text-white">
+    <footer className="relative overflow-hidden bg-black px-6 text-white max-md:min-h-[100svh] max-md:snap-start max-md:snap-always">
       <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:115px_115px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_90%,transparent_100%)] md:[background-size:145px_145px]" />
 
       <div className="relative z-10 mx-auto max-w-6xl border-t border-white/10">

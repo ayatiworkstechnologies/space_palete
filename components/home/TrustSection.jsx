@@ -20,7 +20,7 @@ const trustLogos = [
 
 export default function TrustSection() {
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-24 text-white md:py-28">
+    <section className="relative overflow-hidden bg-black px-6 py-24 text-white max-md:flex max-md:min-h-[100svh] max-md:snap-start max-md:snap-always max-md:items-center md:py-28">
       {/* Soft background glow */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-[100px]" />
 
