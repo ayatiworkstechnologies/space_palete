@@ -36,7 +36,7 @@ export default function Header() {
             width={180}
             height={80}
             priority
-            className="h-auto w-[66px] drop-shadow-[0_18px_35px_rgba(0,0,0,0.25)] transition duration-500 md:w-[86px]"
+            className="h-auto w-[66px] transition duration-500 md:w-[86px]"
           />
         </a>
 

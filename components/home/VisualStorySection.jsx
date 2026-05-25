@@ -71,7 +71,7 @@ export default function VisualStorySection() {
 
         {/* Stories */}
         <div
-          className="relative mx-auto mt-10 h-[360px] max-w-5xl overflow-hidden md:mt-12"
+          className="relative mx-auto mt-10 h-[430px] max-w-5xl overflow-hidden md:mt-12 md:h-[480px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -95,7 +95,7 @@ export default function VisualStorySection() {
             <ChevronDown size={18} strokeWidth={1.6} />
           </button>
 
-          <div className="absolute inset-x-0 top-1/2 h-[280px] -translate-y-1/2">
+          <div className="absolute inset-x-0 top-1/2 h-[340px] -translate-y-1/2 md:h-[380px]">
             {stories.map((story, index) => {
               const position = getPosition(index);
               const isActive = position === 0;
@@ -103,28 +103,28 @@ export default function VisualStorySection() {
               return (
                 <article
                   key={story.id}
-                  className={`absolute left-0 right-0 top-1/2 mx-auto w-[min(100%,820px)] border-y border-white/10 px-10 py-7 transition-all duration-700 ease-out md:px-20 ${
+                  className={`absolute left-0 right-0 top-1/2 mx-auto w-[min(100%,900px)] border-y border-white/10 px-12 py-8 transition-all duration-700 ease-out md:px-28 ${
                     isActive
-                      ? "z-20 max-w-3xl opacity-100 before:absolute before:bottom-[-1px] before:left-[8%] before:right-[8%] before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.7),transparent)] before:content-[''] after:absolute after:-bottom-5 after:left-[15%] after:right-[15%] after:h-9 after:rounded-full after:bg-white/10 after:blur-2xl after:content-['']"
-                      : "z-10 max-w-2xl opacity-20"
+                      ? "z-20 max-w-4xl opacity-100 before:absolute before:bottom-[-1px] before:left-[10%] before:right-[10%] before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.7),transparent)] before:content-[''] after:absolute after:-bottom-5 after:left-[18%] after:right-[18%] after:h-9 after:rounded-full after:bg-white/10 after:blur-2xl after:content-['']"
+                      : "z-10 max-w-3xl opacity-12"
                   }`}
                   style={{
-                    transform: `translateY(calc(-50% + ${position * 118}px)) scale(${isActive ? 1 : 0.94})`,
+                    transform: `translateY(calc(-50% + ${position * 165}px)) scale(${isActive ? 1 : 0.92})`,
                     pointerEvents: isActive ? "auto" : "none",
                   }}
                 >
                   {isActive && (
                     <>
-                      <Quote className="absolute left-2 top-7 h-8 w-8 fill-white text-white md:left-4 md:h-12 md:w-12" />
-                      <Quote className="absolute bottom-7 right-2 h-8 w-8 rotate-180 fill-white text-white md:right-4 md:h-12 md:w-12" />
+                      <Quote className="absolute left-3 top-1/2 h-9 w-9 -translate-y-1/2 fill-white text-white md:left-8 md:h-14 md:w-14" />
+                      <Quote className="absolute bottom-1/2 right-3 h-9 w-9 translate-y-1/2 rotate-180 fill-white text-white md:right-8 md:h-14 md:w-14" />
                     </>
                   )}
 
                   <p
                     className={`mx-auto leading-8 ${
                       isActive
-                        ? "max-w-2xl text-lg text-white md:text-xl"
-                        : "max-w-xl text-lg text-white/40 md:text-xl"
+                        ? "max-w-2xl text-lg text-white md:text-xl md:leading-9"
+                        : "max-w-2xl text-lg text-white/35 md:text-xl md:leading-9"
                     }`}
                   >
                     {isActive && story.id === 2 ? (

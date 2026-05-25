@@ -98,7 +98,7 @@ export default function ProjectProfileSection() {
                   Contact Our Studio
                 </h3>
               </div>
-              <a href="mailto:uma@spacepalette.net" className="mt-3 block pl-8 text-sm leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-xs">
+              <a href="mailto:uma@spacepalette.net" className="mt-3 block pl-8 text-lg leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-lg">
                 uma@spacepalette.net
               </a>
             </div>
@@ -110,7 +110,7 @@ export default function ProjectProfileSection() {
                   Speak With Our Studio
                 </h3>
               </div>
-              <a href="tel:+918688098077" className="mt-3 block pl-8 text-sm leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-xs">
+              <a href="tel:+918688098077" className="mt-3 block pl-8 text-lg leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-lg">
                 +91 8688098077
               </a>
             </div>

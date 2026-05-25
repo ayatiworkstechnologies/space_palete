@@ -1,4 +1,5 @@
 import ExpertiseSection from "@/components/home/ExpertiseSection";
+import DesignExpertiseShowcase from "@/components/home/DesignExpertiseShowcase";
 import Hero from "@/components/home/hero";
 import ProjectProfileSection from "@/components/home/ProjectProfileSection";
 import PurposeSection from "@/components/home/PurposeSection";
@@ -50,6 +51,7 @@ export default function Home() {
       />
       <Hero />
       <PurposeSection />
+      <DesignExpertiseShowcase />
       <ExpertiseSection />
       <TrustSection />
       <VisualStorySection />
