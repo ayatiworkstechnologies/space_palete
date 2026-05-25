@@ -25,14 +25,10 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="flex h-24 items-center justify-center px-6">
+      <div className="mx-auto grid h-24 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-6">
         <a
           href="/"
-          className={`relative inline-flex h-[68px] w-[132px] items-center justify-center border transition-all duration-500 ${
-            isScrolled
-              ? "scale-100 border-white/10 bg-black/35 opacity-100"
-              : "scale-90 border-transparent bg-transparent opacity-0"
-          }`}
+          className="inline-flex w-fit items-center justify-center"
         >
           <Image
             src="/space-logo.svg"
@@ -40,9 +36,27 @@ export default function Header() {
             width={180}
             height={80}
             priority
-            className="h-auto w-[86px] drop-shadow-[0_18px_35px_rgba(0,0,0,0.35)] md:w-[92px]"
+            className="h-auto w-[78px] drop-shadow-[0_18px_35px_rgba(0,0,0,0.45)] transition duration-500 md:w-[92px]"
           />
         </a>
+
+        <nav className="hidden items-center gap-10 text-sm font-medium text-white/85 md:flex">
+          <a href="#about" className="transition hover:text-[#f47a3c]">
+            About
+          </a>
+          <a href="#projects" className="transition hover:text-[#f47a3c]">
+            Projects
+          </a>
+        </nav>
+
+        <div className="flex justify-end">
+          <a
+            href="#contact"
+            className="inline-flex items-center justify-center border border-white/55 px-4 py-2 text-xs font-semibold text-white transition duration-300 hover:border-[#f47a3c] hover:bg-[#f47a3c] hover:text-black md:px-5 md:py-2.5"
+          >
+            Contact
+          </a>
+        </div>
       </div>
     </header>
   );
