@@ -34,15 +34,15 @@ export default function FaqSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="faq-section relative overflow-hidden bg-black px-6 py-24 text-white md:py-32">
+    <section className="relative min-h-[82vh] overflow-hidden bg-black px-6 py-20 text-white md:py-32">
       {/* Background Fade */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-1/3 bg-gradient-to-r from-white/[0.03] to-transparent" />
       <div className="pointer-events-none absolute right-0 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-[#f47a3c]/5 blur-[120px]" />
 
       <div className="relative z-10 mx-auto grid max-w-7xl gap-16 md:grid-cols-[0.8fr_1.2fr] lg:gap-24">
         {/* Left Content */}
-        <div className="faq-left">
-          <h2 className="text-5xl font-medium leading-[0.95] tracking-tight text-white md:text-7xl">
+        <div>
+          <h2 className="text-5xl font-medium leading-[0.95] text-white md:text-7xl">
             Answers
             <br />
             for
@@ -65,7 +65,7 @@ export default function FaqSection() {
         </div>
 
         {/* Right FAQs */}
-        <div className="faq-list">
+        <div>
           {faqs.map((faq, index) => {
             const isActive = activeIndex === index;
 
@@ -75,7 +75,7 @@ export default function FaqSection() {
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 suppressHydrationWarning
-                className={`faq-item group w-full border-b border-white/8 py-7 text-left transition-all duration-500 ${
+                className={`group relative w-full border-b border-white/10 py-6 text-left transition-all duration-500 md:py-7 ${
                   isActive ? "opacity-100" : "opacity-25 hover:opacity-60"
                 }`}
               >
@@ -101,7 +101,9 @@ export default function FaqSection() {
                   </div>
                 </div>
 
-                {isActive && <div className="faq-active-glow mt-6" />}
+                {isActive && (
+                  <div className="mt-6 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.45),transparent)] shadow-[0_14px_38px_rgba(244,122,60,0.25)]" />
+                )}
               </button>
             );
           })}

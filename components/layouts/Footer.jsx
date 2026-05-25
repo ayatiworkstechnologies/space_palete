@@ -1,4 +1,4 @@
-import { MessageCircle, ArrowRight } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 function SocialIcon({ children, size = 16 }) {
   return (
@@ -49,120 +49,54 @@ function YoutubeIcon({ size }) {
 
 export default function Footer() {
   return (
-    <footer className="footer-section relative overflow-hidden bg-black px-6 pt-20 text-white md:pt-24">
-      {/* Grid Background */}
-      <div className="footer-grid pointer-events-none absolute inset-0" />
+    <footer className="relative overflow-hidden bg-black px-6 text-white">
+      <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:115px_115px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_90%,transparent_100%)] md:[background-size:145px_145px]" />
 
-      <div className="relative z-10 mx-auto max-w-7xl">
-        <div className="grid gap-14 border-b border-white/10 pb-16 md:grid-cols-[1.1fr_1.1fr_1.1fr] md:gap-16">
-          {/* Left */}
-          <div className="footer-reveal">
-            <h2 className="max-w-md text-3xl font-medium leading-tight tracking-tight md:text-5xl">
-              Creating{" "}
-              <span className="inline-flex items-center gap-2 text-[#f47a3c]">
-                <span className="text-[#f47a3c]/70">[</span>
-                Spaces
-                <span className="text-[#f47a3c]/70">]</span>
-              </span>
-              <br />
-              that reflect your lifestyle and aspirations.
-            </h2>
+      <div className="relative z-10 mx-auto max-w-6xl border-t border-white/10">
+        <nav className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 py-8 text-lg text-white">
+          <a href="#home" className="transition duration-300 hover:text-[#f47a3c]">
+            Home
+          </a>
+          <a href="#about" className="transition duration-300 hover:text-[#f47a3c]">
+            About us
+          </a>
+          <a href="#projects" className="transition duration-300 hover:text-[#f47a3c]">
+            Projects
+          </a>
+          <a href="#contact" className="transition duration-300 hover:text-[#f47a3c]">
+            Contact Us
+          </a>
+        </nav>
 
-            <div className="mt-12 flex items-center gap-7">
-              <a
-                href="https://wa.me/918688098077"
-                target="_blank"
-                aria-label="WhatsApp"
-                className="footer-social"
-              >
-                <MessageCircle size={16} />
-              </a>
-
-              <a href="#" aria-label="Instagram" className="footer-social">
-                <InstagramIcon size={16} />
-              </a>
-
-              <a href="#" aria-label="X" className="footer-social text-sm">
-                X
-              </a>
-
-              <a href="#" aria-label="Facebook" className="footer-social">
-                <FacebookIcon size={16} />
-              </a>
-
-              <a href="#" aria-label="LinkedIn" className="footer-social">
-                <LinkedinIcon size={16} />
-              </a>
-
-              <a href="#" aria-label="YouTube" className="footer-social">
-                <YoutubeIcon size={17} />
-              </a>
-            </div>
-          </div>
-
-          {/* Middle Links */}
-          <div className="footer-reveal footer-delay-1 grid grid-cols-2 gap-x-12 gap-y-8 md:pt-2">
-            <a href="#home" className="footer-link">
-              Home
-            </a>
-            <a href="#services" className="footer-link">
-              Our Services
-            </a>
-            <a href="#about" className="footer-link">
-              About us
-            </a>
-            <a href="#works" className="footer-link">
-              Our Works
-            </a>
-            <a href="#contact" className="footer-link">
-              Contact Us
-            </a>
-            <a href="#testimonial" className="footer-link">
-              Testimonial
-            </a>
-          </div>
-
-          {/* Right Newsletter */}
-          <div className="footer-reveal footer-delay-2 md:pt-1">
-            <h3 className="text-3xl font-medium tracking-tight md:text-5xl">
-              Stay Inspired
-            </h3>
-
-            <p className="mt-7 max-w-sm text-sm leading-6 text-white/70 md:text-base">
-              Subscribe for refined interior ideas, design updates, and curated
-              inspiration from Space Palette.
-            </p>
-
-            <form className="mt-8 max-w-sm">
-              <div className="flex items-center border-b border-white/20">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  suppressHydrationWarning
-                  className="w-full bg-transparent px-0 py-4 text-sm text-white outline-none placeholder:text-white/30"
-                />
-
-                <button
-                  type="submit"
-                  aria-label="Subscribe"
-                  suppressHydrationWarning
-                  className="text-white/50 transition hover:text-[#f47a3c]"
-                >
-                  <ArrowRight size={18} />
-                </button>
-              </div>
-
-              <p className="mt-8 text-base text-white/70">
-                Thank you for subscribing.
-              </p>
-            </form>
-          </div>
+        <div className="flex items-center justify-center gap-7 pb-7">
+          <a
+            href="https://wa.me/918688098077"
+            target="_blank"
+            aria-label="WhatsApp"
+            className="inline-flex items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]"
+          >
+            <MessageCircle size={14} />
+          </a>
+          <a href="#" aria-label="Instagram" className="inline-flex items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]">
+            <InstagramIcon size={14} />
+          </a>
+          <a href="#" aria-label="X" className="inline-flex items-center justify-center text-sm text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]">
+            X
+          </a>
+          <a href="#" aria-label="Facebook" className="inline-flex items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]">
+            <FacebookIcon size={14} />
+          </a>
+          <a href="#" aria-label="LinkedIn" className="inline-flex items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]">
+            <LinkedinIcon size={14} />
+          </a>
+          <a href="#" aria-label="YouTube" className="inline-flex items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c]">
+            <YoutubeIcon size={15} />
+          </a>
         </div>
 
-        {/* Bottom */}
-        <div className="py-9 text-center">
-          <p className="text-xs leading-6 text-white/65">
-            Copyright ©2026 spacepalette - All right reserved | Designed &amp;
+        <div className="border-t border-white/10 py-4 text-center">
+          <p className="text-[11px] leading-5 text-white/65">
+            Copyright &copy;2026 spacepalette - All right reserved | Designed &amp;
             Developed by{" "}
             <a
               href="https://www.ayatiworks.com/"

@@ -25,16 +25,15 @@ const stories = [
 
 export default function VisualStorySection() {
   return (
-    <section className="stories-section relative overflow-hidden bg-black px-6 py-24 text-white md:py-32">
-      {/* Grid Background */}
-      <div className="stories-grid pointer-events-none absolute inset-0" />
+    <section className="relative min-h-[75vh] overflow-hidden bg-black px-6 py-20 text-white md:py-28">
+      <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:120px_120px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_82%,transparent_100%)] md:[background-size:180px_180px]" />
 
       {/* Soft Glow */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-[120px]" />
 
       <div className="relative z-10 mx-auto max-w-5xl text-center">
         {/* Title */}
-        <h2 className="story-reveal text-3xl font-medium tracking-tight md:text-5xl">
+        <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
           Stories Behind{" "}
           <span className="inline-flex items-center gap-2 text-[#f47a3c]">
             <span className="text-[#f47a3c]/70">[</span>
@@ -48,14 +47,11 @@ export default function VisualStorySection() {
           {stories.map((story, index) => (
             <article
               key={story.id}
-              className={`story-card relative mx-auto border-y border-white/10 py-7 transition-all duration-700 ${
+              className={`relative mx-auto border-y border-white/10 py-7 transition-all duration-700 ${
                 story.active
-                  ? "active-story max-w-3xl opacity-100"
+                  ? "max-w-3xl opacity-100 before:absolute before:bottom-[-1px] before:left-[8%] before:right-[8%] before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.7),transparent)] before:content-[''] after:absolute after:-bottom-5 after:left-[15%] after:right-[15%] after:h-9 after:rounded-full after:bg-white/10 after:blur-2xl after:content-['']"
                   : "max-w-2xl opacity-20"
               }`}
-              style={{
-                animationDelay: `${index * 0.16}s`,
-              }}
             >
               {story.active && (
                 <>

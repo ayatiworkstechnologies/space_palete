@@ -77,15 +77,15 @@ export default function ExpertiseSection() {
   };
 
   return (
-    <section className="expertise-section relative overflow-hidden bg-black px-3 py-16 text-white md:py-20">
-      <div className="pointer-events-none absolute left-1/2 top-[58%] h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f47a3c]/8 blur-[100px]" />
+    <section id="projects" className="relative overflow-hidden bg-black px-3 py-20 text-white md:py-28">
+      <div className="pointer-events-none absolute left-1/2 top-[58%] h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f47a3c]/8 blur-[110px]" />
 
       <div className="relative z-10 mx-auto max-w-5xl">
         {/* Title */}
-        <div className="mb-8 text-center md:mb-10">
-          <h2 className="text-xl font-normal tracking-normal text-white md:text-2xl">
+        <div className="mb-12 text-center md:mb-16">
+          <h2 className="text-3xl font-normal leading-tight text-white md:text-5xl">
             Design &amp; Expertise{" "}
-            <span className="inline-flex items-center gap-1.5 text-[#f47a3c]">
+            <span className="inline-flex items-center gap-2 text-[#f47a3c]">
               <span className="text-[#f47a3c]/70">[</span>
               Spaces
               <span className="text-[#f47a3c]/70">]</span>
@@ -94,7 +94,7 @@ export default function ExpertiseSection() {
         </div>
 
         {/* Carousel Area */}
-        <div className="expertise-carousel relative mx-auto overflow-hidden">
+        <div className="relative mx-auto h-[250px] max-w-[1160px] overflow-hidden [--expertise-active-scale:1.08] [--expertise-side-scale:0.76] [--expertise-step:clamp(102px,31vw,142px)] sm:h-[310px] sm:[--expertise-side-scale:0.82] sm:[--expertise-step:clamp(128px,28vw,180px)] md:h-[clamp(340px,42vw,440px)] md:[--expertise-active-scale:1.12] md:[--expertise-side-scale:0.9] md:[--expertise-step:clamp(178px,25vw,250px)]">
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
@@ -127,9 +127,9 @@ export default function ExpertiseSection() {
                 <article
                   key={item.id}
                   onClick={() => setActiveIndex(index)}
-                  className={`expertise-card-pure absolute cursor-pointer overflow-hidden rounded-lg border bg-[#090909] transition-all duration-700 ease-out ${
+                  className={`absolute h-[210px] w-[clamp(138px,43vw,168px)] cursor-pointer overflow-hidden rounded-lg border bg-[#090909] shadow-[0_12px_32px_rgba(0,0,0,0.72)] transition-all duration-700 ease-out before:pointer-events-none before:absolute before:inset-1 before:z-10 before:rounded-md before:border before:border-white/20 before:content-[''] after:absolute after:inset-x-3 after:-bottom-3 after:h-6 after:rounded-full after:bg-white/15 after:opacity-0 after:blur-2xl after:transition-opacity after:duration-500 hover:before:border-white/40 sm:h-[270px] sm:w-[clamp(170px,25vw,220px)] md:h-[clamp(300px,34vw,380px)] md:w-[clamp(190px,22vw,260px)] ${
                     isActive
-                      ? "z-20 border-white/80 opacity-100"
+                      ? "z-20 border-white/80 opacity-100 shadow-[0_0_0_1px_rgba(255,255,255,0.32),0_18px_46px_rgba(0,0,0,0.86)] before:border-white/80 after:opacity-100"
                       : "z-10 border-white/25 opacity-35"
                   } ${!isVisible ? "pointer-events-none opacity-0" : ""}`}
                   style={{
@@ -141,7 +141,7 @@ export default function ExpertiseSection() {
                 >
                   {/* Number */}
                   <div
-                    className={`absolute right-0 top-0 z-20 rounded-bl-lg rounded-tr-lg bg-black/85 px-2.5 py-1.5 text-[10px] font-semibold leading-none tracking-widest ${
+                    className={`absolute right-0 top-0 z-20 rounded-bl-lg rounded-tr-lg bg-black/85 px-3 py-2 text-xs font-semibold leading-none tracking-widest ${
                       isActive ? "text-white" : "text-white/45"
                     }`}
                   >
@@ -162,7 +162,7 @@ export default function ExpertiseSection() {
                   {/* Title */}
                   <div className="absolute bottom-0 left-0 z-20 w-full px-2.5 pb-2.5">
                     <h3
-                      className={`text-[10px] font-normal leading-tight md:text-xs ${
+                      className={`text-xs font-normal leading-tight md:text-base ${
                         isActive ? "text-white" : "text-white/60"
                       }`}
                     >
