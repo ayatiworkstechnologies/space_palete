@@ -140,10 +140,10 @@ export default function ExpertiseSection() {
                 <article
                   key={item.id}
                   onClick={() => setActiveIndex(index)}
-                  className={`absolute h-[280px] w-[clamp(180px,50vw,230px)] cursor-pointer overflow-hidden rounded-lg border bg-[#090909] shadow-[0_12px_32px_rgba(0,0,0,0.72)] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] before:pointer-events-none before:absolute before:inset-1 before:z-10 before:rounded-md before:border before:border-white/20 before:content-[''] after:absolute after:inset-x-3 after:-bottom-3 after:h-8 after:rounded-full after:bg-white/15 after:opacity-0 after:blur-2xl after:transition-opacity after:duration-700 hover:before:border-white/40 sm:h-[340px] sm:w-[clamp(220px,29vw,285px)] md:h-[380px] md:w-[285px] lg:h-[400px] lg:w-[300px] ${
+                  className={`absolute h-[280px] w-[clamp(180px,50vw,230px)] cursor-pointer rounded-[26px] border bg-black p-2 shadow-[0_12px_32px_rgba(0,0,0,0.72)] transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] after:absolute after:inset-x-7 after:-bottom-4 after:h-9 after:rounded-full after:bg-white/15 after:opacity-0 after:blur-2xl after:transition-opacity after:duration-700 sm:h-[340px] sm:w-[clamp(220px,29vw,285px)] md:h-[380px] md:w-[285px] lg:h-[400px] lg:w-[300px] ${
                     isActive
-                      ? "z-30 border-white/85 shadow-[0_0_0_1px_rgba(255,255,255,0.34),0_22px_55px_rgba(0,0,0,0.9)] before:border-white/85 after:opacity-100"
-                      : "z-10 border-white/25"
+                      ? "z-30 border-white shadow-[0_0_0_1px_rgba(255,255,255,0.18),0_22px_55px_rgba(0,0,0,0.9)] after:opacity-100"
+                      : "z-10 border-white/30"
                   } ${getOpacityClass(position, isActive)} ${
                     Math.abs(position) === 1 ? "z-20" : ""
                   } ${!isVisible ? "pointer-events-none opacity-0" : ""}`}
@@ -153,10 +153,10 @@ export default function ExpertiseSection() {
                       scale(${getScale(position)})
                     `,
                   }}
-                >
+                  >
                   {/* Number */}
                   <div
-                    className={`absolute right-0 top-0 z-20 rounded-bl-lg rounded-tr-lg bg-black/85 px-4 py-2.5 text-sm font-semibold leading-none tracking-widest transition-colors duration-700 ${
+                    className={`absolute right-2 top-2 z-30 rounded-bl-[22px] rounded-tr-[20px] bg-black px-4 py-3 text-xl font-bold leading-none tracking-wide transition-colors duration-700 md:text-2xl ${
                       isActive ? "text-white" : "text-white/45"
                     }`}
                   >
@@ -164,25 +164,25 @@ export default function ExpertiseSection() {
                   </div>
 
                   {/* Image */}
-                  <div className="relative h-full w-full overflow-hidden rounded-md">
+                  <div className="relative h-full w-full overflow-hidden rounded-[20px]">
                     <img
                       src={item.image}
                       alt={item.title}
                       className="h-full w-full object-cover transition duration-700 hover:scale-105"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-black/10" />
-                  </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-black/5" />
 
-                  {/* Title */}
-                  <div className="absolute bottom-0 left-0 z-20 w-full px-2.5 pb-2.5">
-                    <h3
-                      className={`text-sm font-semibold leading-tight transition-colors duration-700 md:text-lg ${
-                        isActive ? "text-white" : "text-white/60"
-                      }`}
-                    >
-                      {item.title}
-                    </h3>
+                    {/* Title */}
+                    <div className="absolute bottom-0 left-0 z-20 w-full px-3 pb-3">
+                      <h3
+                        className={`text-lg font-bold leading-tight transition-colors duration-700 md:text-2xl ${
+                          isActive ? "text-white" : "text-white/60"
+                        }`}
+                      >
+                        {item.title}
+                      </h3>
+                    </div>
                   </div>
                 </article>
               );
