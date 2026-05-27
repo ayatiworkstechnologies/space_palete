@@ -1,0 +1,61 @@
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+export default function ProjectDetailsIntro({ project }) {
+  const [highlightWord, ...restTitle] = project.title.split(" ");
+
+  return (
+    <section className="relative bg-black px-6 py-20 text-white md:px-12 md:py-28 lg:px-20">
+      <div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-[1fr_0.82fr] lg:gap-28">
+        <motion.div
+          initial={{ opacity: 0, x: -55 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.28 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <h2 className="text-[32px] font-light tracking-[-0.03em] md:text-[46px]">
+            {highlightWord}{" "}
+            <span className="text-[#f47a3c]">
+              {restTitle.join(" ") || "Project"}
+            </span>
+          </h2>
+
+          <div className="mt-8 max-w-xl space-y-6 text-[12px] leading-6 tracking-[0.2em] text-white/72 md:text-[13px] md:leading-7">
+            {project.description.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+
+          <div className="mt-10 max-w-[460px]">
+            {project.details.map(([label, value]) => (
+              <div
+                key={label}
+                className="grid grid-cols-[0.7fr_1fr] border-b border-white/12 py-4 text-[13px] tracking-[0.2em]"
+              >
+                <span className="text-white">{label}</span>
+                <span className="text-white/65">{value}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 55, scale: 0.94 }}
+          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.28 }}
+          transition={{ delay: 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="relative ml-auto h-[420px] w-full max-w-[430px] overflow-hidden md:h-[560px]"
+        >
+          <Image
+            src={project.coverImage}
+            alt={`${project.title} interior`}
+            fill
+            className="object-cover transition duration-700 hover:scale-105"
+          />
+        </motion.div>
+      </div>
+    </section>
+  );
+}

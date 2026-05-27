@@ -8,6 +8,7 @@ import VisualStorySection from "@/components/home/VisualStorySection";
 import FaqSection from "@/components/home/FaqSection";
 import ScrollMotion from "@/components/home/ScrollMotion";
 import HbaStylePage from "@/components/home/HbaStylePage";
+import BackgroundVectors from "@/components/layouts/BackgroundVectors";
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
@@ -42,7 +43,8 @@ const localBusinessJsonLd = {
 
 export default function Home() {
   return (
-    <main className="overflow-clip bg-black text-white">
+    <main className="relative overflow-clip bg-black text-white">
+      <BackgroundVectors />
       <ScrollMotion />
       <script
         type="application/ld+json"
@@ -50,14 +52,16 @@ export default function Home() {
           __html: JSON.stringify(localBusinessJsonLd),
         }}
       />
-      <Hero />
-      <PurposeSection />
+      <div className="relative z-10">
+        <Hero />
+        <PurposeSection />
       {/* <DesignExpertiseShowcase />
       <ExpertiseSection /> */}
-      <HbaStylePage />
-      <TrustSection />
-      <VisualStorySection />
-      <ProjectProfileSection />
+        <HbaStylePage />
+        <TrustSection />
+        <VisualStorySection />
+        <ProjectProfileSection />
+      </div>
       {/* <FaqSection /> */}
     </main>
   );

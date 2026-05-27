@@ -42,7 +42,6 @@ export default function TrustSection() {
   return (
     <section className="relative -mt-px overflow-hidden bg-black px-0 py-24 text-white md:px-6 md:py-32">
       {/* Smooth top blending from previous section */}
-      <div className="pointer-events-none absolute left-0 top-0 h-32 w-full bg-gradient-to-b from-[#061f1d] via-black/80 to-transparent" />
 
       {/* Soft background glow */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-[120px]" />

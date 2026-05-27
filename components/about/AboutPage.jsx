@@ -1,21 +1,23 @@
 "use client";
 
+import BackgroundVectors from "@/components/layouts/BackgroundVectors";
 import AboutHero from "./AboutHero";
 import AboutIntro from "./AboutIntro";
 import FoundersSection from "./FoundersSection";
 import TeamSection from "./TeamSection";
 import ServicesProcess from "./ServicesProcess";
-import AboutFooter from "./AboutFooter";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-black text-white">
-      <AboutHero />
-      <AboutIntro />
-      <FoundersSection />
-      <TeamSection />
-      <ServicesProcess />
-      <AboutFooter />
+    <main className="relative min-h-screen overflow-hidden bg-black text-white">
+      <BackgroundVectors />
+      <div className="relative z-10">
+        <AboutHero />
+        <AboutIntro />
+        <FoundersSection />
+        <TeamSection />
+        <ServicesProcess />
+      </div>
     </main>
   );
 }

@@ -1,29 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  --background: #061f1d;
+  --background: #000000;
   --foreground: #ffffff;
+  --accent: #f47a3c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
 
   --font-sans: var(--font-primary);
   --font-cabinet: var(--font-primary);
   --font-montserrat: var(--font-secondary);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
+  overscroll-behavior: none;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-primary), Arial, Helvetica, sans-serif;
-  overscroll-behavior: none;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
 }
 
 /* Secondary font */
@@ -45,4 +61,110 @@ h5,
 h6,
 .font-primary {
   font-family: var(--font-primary), Arial, Helvetica, sans-serif;
+}
+
+/* Smooth anchor offset for fixed header */
+section {
+  scroll-margin-top: 90px;
+}
+
+/* Inputs */
+input,
+textarea,
+button {
+  outline: none;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optional clean scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(244, 122, 60, 0.65);
+}
+
+.vector-burst {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.16) 0 2px,
+    transparent 2.5px
+  );
+  background-size: 18px 18px;
+  filter: blur(0.2px);
+}
+
+.vector-burst-top {
+  mask-image: radial-gradient(circle at center, black 0 9%, rgba(0, 0, 0, 0.92) 20%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0 9%, rgba(0, 0, 0, 0.92) 20%, transparent 72%);
+  transform: scale(1.32);
+}
+
+.vector-burst-left {
+  mask-image: radial-gradient(circle at center, black 0 12%, rgba(0, 0, 0, 0.88) 24%, transparent 74%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0 12%, rgba(0, 0, 0, 0.88) 24%, transparent 74%);
+  transform: scale(1.18);
+}
+
+.vector-burst-bottom {
+  mask-image: radial-gradient(circle at center, black 0 10%, rgba(0, 0, 0, 0.85) 22%, transparent 74%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0 10%, rgba(0, 0, 0, 0.85) 22%, transparent 74%);
+}
+
+.vector-burst-side-left {
+  mask-image: radial-gradient(circle at center, black 0 10%, rgba(0, 0, 0, 0.82) 22%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0 10%, rgba(0, 0, 0, 0.82) 22%, transparent 72%);
+  transform: scale(0.96);
+}
+
+.vector-burst-side-right {
+  mask-image: radial-gradient(circle at center, black 0 10%, rgba(0, 0, 0, 0.82) 22%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0 10%, rgba(0, 0, 0, 0.82) 22%, transparent 72%);
+  transform: scale(1.02);
+}
+
+.vector-burst-upper-left {
+  mask-image: radial-gradient(circle at center, black 0 8%, rgba(0, 0, 0, 0.8) 18%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0 8%, rgba(0, 0, 0, 0.8) 18%, transparent 70%);
+  transform: scale(0.85);
+}
+
+.vector-burst-lower-left {
+  mask-image: radial-gradient(circle at center, black 0 9%, rgba(0, 0, 0, 0.8) 18%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0 9%, rgba(0, 0, 0, 0.8) 18%, transparent 72%);
+  transform: scale(0.9);
+}
+
+.vector-burst-mid-right {
+  mask-image: radial-gradient(circle at center, black 0 8%, rgba(0, 0, 0, 0.78) 18%, transparent 70%);
+  -webkit-mask-image: radial-gradient(circle at center, black 0 8%, rgba(0, 0, 0, 0.78) 18%, transparent 70%);
+  transform: scale(0.88);
+}
+
+.vector-wave {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.14) 0 1.5px,
+    transparent 1.9px
+  );
+  background-size: 14px 14px;
+  mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.96) 42%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.96) 42%, transparent 100%);
+  transform: perspective(900px) rotateX(66deg) rotateZ(-7deg) scale(1.22);
+  transform-origin: top center;
 }

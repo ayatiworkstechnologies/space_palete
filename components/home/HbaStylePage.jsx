@@ -4,36 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
-
-const projects = [
-  {
-    title: "Jumeirah Marsa Al Arab",
-    image: "/1.png",
-    studio: "HBA Dubai & Light Directions",
-    type: "Hotel & Branded Residences",
-    location: "Dubai",
-    year: "2025",
-    href: "#",
-  },
-  {
-    title: "Luxury Coastal Residence",
-    image: "/2.png",
-    studio: "HBA Residential",
-    type: "Private Residence",
-    location: "UAE",
-    year: "2024",
-    href: "#",
-  },
-  {
-    title: "Urban Hospitality Lounge",
-    image: "/3.png",
-    studio: "HBA Hospitality",
-    type: "Hotel Interior",
-    location: "Singapore",
-    year: "2024",
-    href: "#",
-  },
-];
+import { projectEntries } from "@/components/project/projectData";
 
 function ProjectShowcaseCard({ project, index }) {
   const sectionRef = useRef(null);
@@ -121,7 +92,7 @@ function ProjectShowcaseCard({ project, index }) {
     <section
       ref={sectionRef}
       className="relative min-h-[175vh] bg-black"
-      style={{ zIndex: projects.length - index }}
+      style={{ zIndex: projectEntries.length - index }}
     >
       <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-black">
         {/* Project Number */}
@@ -148,7 +119,7 @@ function ProjectShowcaseCard({ project, index }) {
             "
           >
             <Image
-              src={project.image}
+              src={project.coverImage}
               alt={project.title}
               fill
               priority={index === 0}
@@ -180,7 +151,7 @@ function ProjectShowcaseCard({ project, index }) {
               </h2>
 
               <Link
-                href={project.href}
+                href={`/projects/${project.slug}`}
                 className="
                   mt-7 inline-flex items-center rounded-full
                   border border-white/75 px-7 py-3
@@ -257,9 +228,9 @@ export default function HbaStylePage() {
       />
 
       <section className="relative bg-black">
-        {projects.map((project, index) => (
+        {projectEntries.map((project, index) => (
           <ProjectShowcaseCard
-            key={project.title}
+            key={project.slug}
             project={project}
             index={index}
           />
