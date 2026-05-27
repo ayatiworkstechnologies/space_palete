@@ -2,6 +2,7 @@
 
 import { ChevronDown, ChevronUp, Quote } from "lucide-react";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import BracketSpaces from "@/components/BracketSpaces";
 
 const stories = [
@@ -37,11 +38,9 @@ export default function VisualStorySection() {
   };
 
   useEffect(() => {
-    if (isPaused) {
-      return;
-    }
+    if (isPaused) return;
 
-    const timer = setInterval(showNext, 3000);
+    const timer = setInterval(showNext, 3200);
 
     return () => clearInterval(timer);
   }, [isPaused]);
@@ -57,20 +56,56 @@ export default function VisualStorySection() {
 
   return (
     <section className="relative min-h-[75vh] overflow-hidden bg-black px-6 py-20 text-white md:py-28">
-      <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:120px_120px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_82%,transparent_100%)] md:[background-size:180px_180px]" />
+      {/* Moving dotted background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 opacity-80">
+          {Array.from({ length: 42 }).map((_, index) => (
+            <span
+              key={index}
+              className="story-dot absolute block rounded-full bg-white/45"
+              style={{
+                left: `${(index * 19) % 100}%`,
+                top: `${(index * 31) % 100}%`,
+                width: `${index % 3 === 0 ? 4 : 2}px`,
+                height: `${index % 3 === 0 ? 4 : 2}px`,
+                animationDelay: `${index * 0.17}s`,
+                animationDuration: `${3.5 + (index % 5) * 0.7}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Soft dark mask */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.22)_40%,rgba(0,0,0,0.88)_100%)]" />
+      </div>
 
       {/* Soft Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f47a3c]/10 blur-[120px]" />
 
-      <div className="relative z-10 mx-auto max-w-6xl text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-10 mx-auto max-w-6xl text-center"
+      >
         {/* Title */}
-        <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
-          Stories Behind{" "}
-          <BracketSpaces />
-        </h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          className="text-3xl font-medium tracking-tight md:text-5xl"
+        >
+          Stories Behind <BracketSpaces />
+        </motion.h2>
 
         {/* Stories */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 55, scale: 0.96 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ delay: 0.15, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto mt-10 h-[430px] max-w-5xl overflow-hidden md:mt-12 md:h-[480px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
@@ -80,7 +115,7 @@ export default function VisualStorySection() {
             onClick={showPrevious}
             aria-label="Previous story"
             suppressHydrationWarning
-            className="absolute left-1/2 top-0 z-30 -translate-x-1/2 text-white/60 transition hover:-translate-y-0.5 hover:text-[#f47a3c]"
+            className="absolute left-1/2 top-0 z-30 -translate-x-1/2 text-white/60 transition duration-300 hover:-translate-y-0.5 hover:text-[#f47a3c]"
           >
             <ChevronUp size={18} strokeWidth={1.6} />
           </button>
@@ -90,7 +125,7 @@ export default function VisualStorySection() {
             onClick={showNext}
             aria-label="Next story"
             suppressHydrationWarning
-            className="absolute bottom-0 left-1/2 z-30 -translate-x-1/2 text-white/60 transition hover:translate-y-0.5 hover:text-[#f47a3c]"
+            className="absolute bottom-0 left-1/2 z-30 -translate-x-1/2 text-white/60 transition duration-300 hover:translate-y-0.5 hover:text-[#f47a3c]"
           >
             <ChevronDown size={18} strokeWidth={1.6} />
           </button>
@@ -103,13 +138,15 @@ export default function VisualStorySection() {
               return (
                 <article
                   key={story.id}
-                  className={`absolute left-0 right-0 top-1/2 mx-auto w-[min(100%,900px)] border-y border-white/10 px-12 py-8 transition-all duration-700 ease-out md:px-28 ${
+                  className={`absolute left-0 right-0 top-1/2 mx-auto w-[min(100%,900px)] border-y border-white/10 px-8 py-8 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:px-28 ${
                     isActive
-                      ? "z-20 max-w-4xl opacity-100 before:absolute before:bottom-[-1px] before:left-[10%] before:right-[10%] before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.7),transparent)] before:content-[''] after:absolute after:-bottom-5 after:left-[18%] after:right-[18%] after:h-9 after:rounded-full after:bg-white/10 after:blur-2xl after:content-['']"
-                      : "z-10 max-w-3xl opacity-12"
+                      ? "z-20 max-w-4xl opacity-100 before:absolute before:bottom-[-1px] before:left-[10%] before:right-[10%] before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.75),transparent)] before:content-[''] after:absolute after:-bottom-5 after:left-[18%] after:right-[18%] after:h-9 after:rounded-full after:bg-[#f47a3c]/15 after:blur-2xl after:content-['']"
+                      : "z-10 max-w-3xl opacity-20 blur-[0.4px]"
                   }`}
                   style={{
-                    transform: `translateY(calc(-50% + ${position * 165}px)) scale(${isActive ? 1 : 0.92})`,
+                    transform: `translateY(calc(-50% + ${
+                      position * 165
+                    }px)) scale(${isActive ? 1 : 0.92})`,
                     pointerEvents: isActive ? "auto" : "none",
                   }}
                 >
@@ -151,17 +188,49 @@ export default function VisualStorySection() {
           </div>
 
           <div
-            className={`pointer-events-none absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-gradient-to-b from-[#f47a3c] to-transparent transition-opacity duration-300 ${
+            className={`pointer-events-none absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-gradient-to-b from-[#f47a3c] to-transparent transition-opacity duration-500 ${
               isPaused ? "opacity-0" : "opacity-60"
             }`}
           />
+
           <div
-            className={`pointer-events-none absolute bottom-0 left-1/2 h-10 w-px -translate-x-1/2 bg-gradient-to-t from-[#f47a3c] to-transparent transition-opacity duration-300 ${
+            className={`pointer-events-none absolute bottom-0 left-1/2 h-10 w-px -translate-x-1/2 bg-gradient-to-t from-[#f47a3c] to-transparent transition-opacity duration-500 ${
               isPaused ? "opacity-0" : "opacity-60"
             }`}
           />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
+
+      <style>{`
+        @keyframes storyDotMove {
+          0% {
+            transform: translate3d(0, 0, 0) scale(0.8);
+            opacity: 0.15;
+          }
+
+          35% {
+            opacity: 0.75;
+          }
+
+          50% {
+            transform: translate3d(18px, -24px, 0) scale(1.2);
+            opacity: 1;
+          }
+
+          100% {
+            transform: translate3d(-12px, 20px, 0) scale(0.75);
+            opacity: 0.12;
+          }
+        }
+
+        .story-dot {
+          animation-name: storyDotMove;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          will-change: transform, opacity;
+        }
+      `}</style>
     </section>
   );
 }

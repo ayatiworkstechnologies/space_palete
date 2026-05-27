@@ -1,6 +1,9 @@
-import Image from "next/image";
+"use client";
 
-function SocialIcon({ children, size = 16 }) {
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+function SocialIcon({ children, size = 22 }) {
   return (
     <svg
       aria-hidden="true"
@@ -68,55 +71,83 @@ const socialLinks = [
     label: "Facebook",
     href: "https://www.facebook.com/spacepalette22/",
     icon: FacebookIcon,
-    size: 16,
+    size: 22,
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/spacepalette_urban/",
     icon: InstagramIcon,
-    size: 16,
+    size: 22,
   },
   {
     label: "Threads",
     href: "https://www.threads.com/@spacepalette_urban",
     icon: ThreadsIcon,
-    size: 16,
+    size: 22,
   },
   {
     label: "X",
     href: "https://x.com/offPaletteSpace",
     icon: null,
-    size: 16,
+    size: 22,
   },
   {
     label: "YouTube",
     href: "https://www.youtube.com/@Spacepalette-designs",
     icon: YoutubeIcon,
-    size: 17,
+    size: 24,
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/space-palette-india",
     icon: LinkedinIcon,
-    size: 16,
+    size: 22,
   },
   {
     label: "Pinterest",
     href: "https://in.pinterest.com/spacepalettedesigns/",
     icon: PinterestIcon,
-    size: 16,
+    size: 22,
   },
 ];
 
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-black px-6 text-white md:px-6">
-      <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:115px_115px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_8%,black_90%,transparent_100%)] md:[background-size:145px_145px]" />
+      {/* Animated dotted background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {Array.from({ length: 38 }).map((_, index) => (
+          <span
+            key={index}
+            className="footer-dot absolute block rounded-full bg-white/35"
+            style={{
+              left: `${(index * 23) % 100}%`,
+              top: `${(index * 37) % 100}%`,
+              width: `${index % 5 === 0 ? 3 : 2}px`,
+              height: `${index % 5 === 0 ? 3 : 2}px`,
+              animationDelay: `${index * 0.14}s`,
+              animationDuration: `${3.5 + (index % 5) * 0.65}s`,
+            }}
+          />
+        ))}
 
-      <div className="relative z-10 mx-auto max-w-6xl border-t border-white/10 max-md:border-t-0">
-        
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.34)_42%,rgba(0,0,0,0.96)_100%)]" />
+      </div>
 
-        <nav className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 py-8 text-lg text-white max-md:block max-md:border-b max-md:border-white/10 max-md:py-3 max-md:text-center max-md:text-xl">
+      <motion.div
+        initial={{ opacity: 0, y: 55 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.22 }}
+        transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-10 mx-auto max-w-6xl border-t border-white/10 max-md:border-t-0"
+      >
+        <motion.nav
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
+          className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 py-9 text-lg text-white max-md:block max-md:border-b max-md:border-white/10 max-md:py-4 max-md:text-center max-md:text-xl"
+        >
           <a href="#home" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
             Home
           </a>
@@ -129,45 +160,111 @@ export default function Footer() {
           <a href="#contact" className="transition duration-300 hover:text-[#f47a3c]">
             Contact Us
           </a>
-        </nav>
+        </motion.nav>
 
-        <div className="mx-auto flex max-w-xl flex-wrap items-center justify-center gap-7 pb-7 max-md:grid max-md:grid-cols-7 max-md:border-b max-md:border-white/10 max-md:gap-3 max-md:py-8">
-          {socialLinks.map((social) => {
+        <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-5 pb-8 max-md:grid max-md:grid-cols-4 max-md:border-b max-md:border-white/10 max-md:gap-4 max-md:py-8">
+          {socialLinks.map((social, index) => {
             const Icon = social.icon;
 
             return (
-              <a
+              <motion.a
                 key={social.label}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className="inline-flex h-9 w-9 items-center justify-center text-white transition duration-300 hover:-translate-y-1 hover:text-[#f47a3c] max-md:h-8 max-md:w-8"
+                initial={{ opacity: 0, y: 28, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: 0.18 + index * 0.06,
+                  duration: 0.55,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{
+                  y: -8,
+                  scale: 1.12,
+                  rotate: -3,
+                }}
+                whileTap={{ scale: 0.94 }}
+                className="
+                  group relative inline-flex h-14 w-14 items-center justify-center
+                  rounded-full border border-white/12 text-white/90
+                  transition duration-300
+                  hover:border-[#f47a3c]/70 hover:text-[#f47a3c]
+                  max-md:h-12 max-md:w-12
+                "
               >
-                {Icon ? (
-                  <Icon size={social.size} />
-                ) : (
-                  <span className="text-sm font-medium leading-none">X</span>
-                )}
-              </a>
+                <span className="absolute inset-0 rounded-full bg-[#f47a3c]/0 blur-xl transition duration-300 group-hover:bg-[#f47a3c]/18" />
+
+                <span className="relative z-10">
+                  {Icon ? (
+                    <Icon size={social.size} />
+                  ) : (
+                    <span className="text-lg font-semibold leading-none">X</span>
+                  )}
+                </span>
+              </motion.a>
             );
           })}
         </div>
 
-        <div className="border-t border-white/10 py-4 text-center max-md:border-t-0 max-md:py-5">
-          <p className="mx-auto max-w-2xl text-lg leading-7 text-white/65 md:text-xl md:leading-8">
+        <motion.div
+          initial={{ opacity: 0, y: 22 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.38, duration: 0.75, ease: "easeOut" }}
+          className="border-t border-white/10 py-5 text-center max-md:border-t-0 max-md:py-5"
+        >
+          <p className="mx-auto max-w-3xl text-base leading-7 text-white/60 md:text-lg md:leading-8">
             Copyright &copy;2026 spacepalette - All right reserved | Designed &amp;
             Developed by{" "}
             <a
               href="https://www.ayatiworks.com/"
               target="_blank"
+              rel="noopener noreferrer"
               className="text-white transition hover:text-[#f47a3c]"
             >
               Ayatiworks
             </a>
           </p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
+
+      <style>{`
+        html {
+          scroll-behavior: smooth;
+        }
+
+        @keyframes footerDotMove {
+          0% {
+            transform: translate3d(0, 0, 0) scale(0.75);
+            opacity: 0.1;
+          }
+
+          45% {
+            opacity: 0.55;
+          }
+
+          65% {
+            transform: translate3d(12px, -18px, 0) scale(1.1);
+            opacity: 0.78;
+          }
+
+          100% {
+            transform: translate3d(-10px, 14px, 0) scale(0.72);
+            opacity: 0.12;
+          }
+        }
+
+        .footer-dot {
+          animation-name: footerDotMove;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          will-change: transform, opacity;
+        }
+      `}</style>
     </footer>
   );
 }

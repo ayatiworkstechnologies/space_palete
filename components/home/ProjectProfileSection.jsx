@@ -1,148 +1,248 @@
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+"use client";
+
 import BracketSpaces from "@/components/BracketSpaces";
+import CommonButton from "@/components/CommonButton";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function ProjectProfileSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-black px-6 py-16 text-white md:py-20 lg:px-14 xl:px-20"
+      className="relative overflow-hidden bg-black px-6 py-20 text-white md:py-24 lg:px-14 xl:px-20"
     >
-      <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.045)_1px,transparent_1px)] [background-size:120px_120px] [mask-image:linear-gradient(to_bottom,transparent_0%,black_12%,black_88%,transparent_100%)] md:[background-size:180px_180px]" />
+      {/* Moving dotted background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {Array.from({ length: 52 }).map((_, index) => (
+          <span
+            key={index}
+            className="contact-dot absolute block rounded-full bg-white/40"
+            style={{
+              left: `${(index * 17) % 100}%`,
+              top: `${(index * 29) % 100}%`,
+              width: `${index % 5 === 0 ? 3 : 2}px`,
+              height: `${index % 5 === 0 ? 3 : 2}px`,
+              animationDelay: `${index * 0.13}s`,
+              animationDuration: `${3.2 + (index % 6) * 0.55}s`,
+            }}
+          />
+        ))}
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1500px] gap-14 md:grid-cols-[1.2fr_0.8fr] lg:gap-32 xl:gap-40">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.32)_42%,rgba(0,0,0,0.94)_100%)]" />
+      </div>
+
+      {/* Soft orange glow */}
+      <div className="pointer-events-none absolute right-[-180px] top-1/2 h-[380px] w-[380px] -translate-y-1/2 rounded-full bg-[#f47a3c]/8 blur-[130px]" />
+
+      <motion.div
+        initial={{ opacity: 0, y: 65 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.22 }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        className="
+          relative z-10 mx-auto grid w-full max-w-[1200px]
+          gap-14 md:grid-cols-[1fr_0.72fr]
+          lg:gap-24 xl:gap-28
+        "
+      >
         {/* LEFT FORM */}
-        <div>
-          <h2 className="text-3xl font-medium leading-tight md:text-4xl">
+        <motion.div
+          initial={{ opacity: 0, x: -42 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ delay: 0.12, duration: 0.85, ease: "easeOut" }}
+          className="w-full"
+        >
+          <h2 className="text-[36px] font-medium leading-[1.02] tracking-[-0.04em] md:text-[50px] lg:text-[54px]">
             Project Profile
           </h2>
 
-          <p className="mt-4 text-lg leading-7 text-white/75 md:text-xl md:leading-8 md:text-white/85">
+          <p className="mt-5 max-w-xl text-base leading-7 text-white/58 md:text-lg md:leading-8">
             Let us understand your space and design goals.
           </p>
 
-          <form className="mt-7 space-y-7 md:space-y-8">
-            <div>
-              <input
-                type="text"
-                placeholder="Full Name"
-                suppressHydrationWarning
-                className="w-full border-0 border-b border-white/20 bg-transparent px-4 pb-3.5 text-sm text-white outline-none transition placeholder:text-white/45 focus:border-[#f47a3c]"
-              />
-            </div>
+          <form className="mt-9 max-w-[620px] space-y-7 md:mt-11 md:space-y-8">
+            <input
+              type="text"
+              placeholder="Full Name"
+              suppressHydrationWarning
+              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white/38 focus:border-[#f47a3c] md:text-base"
+            />
 
             <div className="grid gap-8 md:grid-cols-2">
-              <div>
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                  suppressHydrationWarning
-                  className="w-full border-0 border-b border-white/20 bg-transparent px-4 pb-3.5 text-sm text-white outline-none transition placeholder:text-white/45 focus:border-[#f47a3c]"
-                />
-              </div>
-
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  suppressHydrationWarning
-                  className="w-full border-0 border-b border-white/20 bg-transparent px-4 pb-3.5 text-sm text-white outline-none transition placeholder:text-white/45 focus:border-[#f47a3c]"
-                />
-              </div>
-            </div>
-
-            <div>
               <input
-                type="text"
-                placeholder="Project Type"
+                type="tel"
+                placeholder="Phone Number"
                 suppressHydrationWarning
-                className="w-full border-0 border-b border-white/20 bg-transparent px-4 pb-3.5 text-sm text-white outline-none transition placeholder:text-white/45 focus:border-[#f47a3c]"
+                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white/38 focus:border-[#f47a3c] md:text-base"
+              />
+
+              <input
+                type="email"
+                placeholder="Email"
+                suppressHydrationWarning
+                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white/38 focus:border-[#f47a3c] md:text-base"
               />
             </div>
 
-            <div>
-              <textarea
-                rows="2"
-                placeholder="Describe Your Vision"
-                suppressHydrationWarning
-                className="w-full resize-none border-0 border-b border-white/20 bg-transparent px-4 pb-3.5 text-sm text-white outline-none transition placeholder:text-white/45 focus:border-[#f47a3c]"
-              />
-            </div>
+            <input
+              type="text"
+              placeholder="Project Type"
+              suppressHydrationWarning
+              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white/38 focus:border-[#f47a3c] md:text-base"
+            />
 
-            <button
+            <textarea
+              rows="2"
+              placeholder="Describe Your Vision"
+              suppressHydrationWarning
+              className="w-full resize-none border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white/38 focus:border-[#f47a3c] md:text-base"
+            />
+
+            <CommonButton
+              as="button"
               type="submit"
               suppressHydrationWarning
-              className="group inline-flex items-center gap-5 border border-white/70 px-4 py-3 text-[11px] font-semibold text-white transition duration-300 hover:border-[#f47a3c] hover:bg-[#f47a3c] hover:text-black"
+              className="border-white/70 py-3 font-semibold"
             >
               Discover Creations
-              <ArrowRight
-                size={17}
-                className="transition duration-300 group-hover:translate-x-1"
-              />
-            </button>
+            </CommonButton>
           </form>
-        </div>
+        </motion.div>
 
         {/* RIGHT CONTACT */}
-        <div className="md:pl-8">
-          <h2 className="text-3xl font-medium leading-[0.95] tracking-tight md:text-4xl">
+        <motion.div
+          initial={{ opacity: 0, x: 42 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ delay: 0.22, duration: 0.85, ease: "easeOut" }}
+          className="w-full md:pl-0 lg:pt-1"
+        >
+          <h2
+            className="
+              max-w-[420px] text-[36px] font-medium leading-[1.02]
+              tracking-[-0.045em] md:text-[50px] lg:text-[56px]
+            "
+          >
             Share Your <br />
             Vision{" "}
-            <BracketSpaces className="align-middle text-[0.9em]" />
+            <span className="inline-block align-baseline text-[#f47a3c]">
+              <BracketSpaces className="text-[0.78em]" />
+            </span>
           </h2>
 
-          <div className="mt-9 space-y-6 md:space-y-7">
-            <div>
+          <div className="mt-10 max-w-[430px] space-y-7 md:mt-12 md:space-y-8">
+            <div className="group">
               <div className="flex items-center gap-3">
-                <Mail size={20} strokeWidth={1.7} />
-                <h3 className="text-base font-normal text-white md:text-lg">
+                <Mail
+                  size={20}
+                  strokeWidth={1.6}
+                  className="shrink-0 text-white/80 transition group-hover:text-[#f47a3c]"
+                />
+                <h3 className="text-[15px] font-semibold text-white md:text-base">
                   Contact Our Studio
                 </h3>
               </div>
-              <a href="mailto:uma@spacepalette.net" className="mt-3 block pl-8 text-lg leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-lg">
+
+              <a
+                href="mailto:uma@spacepalette.net"
+                className="mt-3 block pl-8 text-base leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-[17px]"
+              >
                 uma@spacepalette.net
               </a>
             </div>
 
-            <div>
+            <div className="group">
               <div className="flex items-center gap-3">
-                <Phone size={20} strokeWidth={1.7} />
-                <h3 className="text-base font-normal text-white md:text-lg">
+                <Phone
+                  size={20}
+                  strokeWidth={1.6}
+                  className="shrink-0 text-white/80 transition group-hover:text-[#f47a3c]"
+                />
+                <h3 className="text-[15px] font-semibold text-white md:text-base">
                   Speak With Our Studio
                 </h3>
               </div>
-              <a href="tel:+918688098077" className="mt-3 block pl-8 text-lg leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-lg">
+
+              <a
+                href="tel:+918688098077"
+                className="mt-3 block pl-8 text-base leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-[17px]"
+              >
                 +91 8688098077
               </a>
             </div>
 
-            <div>
+            <div className="group">
               <div className="flex items-center gap-3">
-                <MapPin size={20} strokeWidth={1.7} />
-                <h3 className="text-base font-normal text-white md:text-lg">Head quarters</h3>
+                <MapPin
+                  size={20}
+                  strokeWidth={1.6}
+                  className="shrink-0 text-white/80 transition group-hover:text-[#f47a3c]"
+                />
+                <h3 className="text-[15px] font-semibold text-white md:text-base">
+                  Head Quarters
+                </h3>
               </div>
-              <p className="mt-3 block pl-8 text-lg leading-7 text-white/45 md:text-xl md:leading-8">
+
+              <p className="mt-3 block pl-8 text-base leading-7 text-white/45 md:text-[17px] md:leading-8">
                 No.46, 3rd Floor, GSquare Building,
                 <br />
-                Rajiv Gandhi Salai, OMR, Kandanchavadi,
+                Rajiv Gandhi Salai, OMR,
                 <br />
-                Chennai, Tamil Nadu 600096.
+                Kandanchavadi, Chennai, Tamil Nadu 600096.
               </p>
             </div>
 
-            <div>
+            <div className="group">
               <div className="flex items-center gap-3">
-                <MapPin size={20} strokeWidth={1.7} />
-                <h3 className="text-base font-normal text-white md:text-lg">
-                  Another Locations
+                <MapPin
+                  size={20}
+                  strokeWidth={1.6}
+                  className="shrink-0 text-white/80 transition group-hover:text-[#f47a3c]"
+                />
+                <h3 className="text-[15px] font-semibold text-white md:text-base">
+                  Other Locations
                 </h3>
               </div>
-              <p className="mt-3 block pl-8 text-lg leading-7 text-white/45 md:text-xl md:leading-8">
+
+              <p className="mt-3 block pl-8 text-base leading-7 text-white/45 md:text-[17px] md:leading-8">
                 Bangalore, Hyderabad, Coimbatore.
               </p>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
+
+      <style>{`
+        @keyframes contactDotMove {
+          0% {
+            transform: translate3d(0, 0, 0) scale(0.75);
+            opacity: 0.1;
+          }
+
+          40% {
+            opacity: 0.55;
+          }
+
+          60% {
+            transform: translate3d(14px, -18px, 0) scale(1.1);
+            opacity: 0.8;
+          }
+
+          100% {
+            transform: translate3d(-12px, 16px, 0) scale(0.75);
+            opacity: 0.12;
+          }
+        }
+
+        .contact-dot {
+          animation-name: contactDotMove;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          will-change: transform, opacity;
+        }
+      `}</style>
     </section>
   );
 }

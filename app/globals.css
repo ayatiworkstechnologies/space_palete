@@ -1,24 +1,32 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
+  --background: #061f1d;
   --foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-primary);
   --font-cabinet: var(--font-primary);
   --font-montserrat: var(--font-secondary);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-primary), Arial, Helvetica, sans-serif;
+  overscroll-behavior: none;
 }
 
+/* Secondary font */
 p,
 input,
 textarea,
@@ -28,6 +36,7 @@ a,
   font-family: var(--font-secondary), Arial, Helvetica, sans-serif;
 }
 
+/* Primary font */
 h1,
 h2,
 h3,

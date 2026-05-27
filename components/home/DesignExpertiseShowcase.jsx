@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import CommonButton from "@/components/CommonButton";
 import { useEffect, useRef, useState } from "react";
 
 const services = [
@@ -139,10 +139,13 @@ export default function DesignExpertiseShowcase() {
                           <p className="text-lg leading-7 text-white/50 md:text-xl md:leading-8">
                             {service.description}
                           </p>
-                          <span className="mt-7 inline-flex items-center gap-3 border border-white/10 px-5 py-3 text-sm font-semibold text-white/25 transition group-hover:border-[#f47a3c] group-hover:text-[#f47a3c]">
+                          <CommonButton
+                            as="span"
+                            className="mt-7 border-white/10 px-5 py-3 text-sm font-semibold text-white/25 hover:bg-transparent hover:text-[#f47a3c] group-hover:border-[#f47a3c] group-hover:text-[#f47a3c]"
+                            iconSize={16}
+                          >
                             Discover Creations
-                            <ArrowRight size={16} />
-                          </span>
+                          </CommonButton>
                         </div>
                       </div>
                     </div>

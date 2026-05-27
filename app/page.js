@@ -7,6 +7,7 @@ import TrustSection from "@/components/home/TrustSection";
 import VisualStorySection from "@/components/home/VisualStorySection";
 import FaqSection from "@/components/home/FaqSection";
 import ScrollMotion from "@/components/home/ScrollMotion";
+import HbaStylePage from "@/components/home/HbaStylePage";
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
@@ -51,8 +52,9 @@ export default function Home() {
       />
       <Hero />
       <PurposeSection />
-      <DesignExpertiseShowcase />
-      <ExpertiseSection />
+      {/* <DesignExpertiseShowcase />
+      <ExpertiseSection /> */}
+      <HbaStylePage />
       <TrustSection />
       <VisualStorySection />
       <ProjectProfileSection />
