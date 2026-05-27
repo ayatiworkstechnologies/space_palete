@@ -23,6 +23,12 @@ const steps = [
     text: "Skilled craftsmen and project managers execute every detail with precision, quality, and seamless coordination.",
     image: "/assets/about/about-3.png",
   },
+  {
+    number: "04",
+    title: "Style & Deliver",
+    text: "Final styling and quality checks ensure your space is completed to perfection and ready to be experienced.",
+    image: "/assets/about/about-4.png",
+  },
 ];
 
 function ProcessStep({ step, index }) {

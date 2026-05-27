@@ -33,6 +33,9 @@ export default function ProjectFullImage({
       <div className="sticky top-0 flex min-h-screen items-center overflow-hidden py-16 md:py-24">
         <div className="mx-auto w-full max-w-[1600px] px-4 md:px-8">
           <motion.div
+            initial={{ clipPath: "inset(0 0 100% 0)", y: 42, opacity: 0 }}
+            animate={{ clipPath: "inset(0 0 0% 0)", y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             style={{
               scale: smoothFrameScale,
               y: smoothFrameY,

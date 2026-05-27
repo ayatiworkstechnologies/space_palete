@@ -26,9 +26,8 @@ function FloatingImage({ item, index, title }) {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 80 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.22 }}
+      initial={{ opacity: 0, y: 80, clipPath: "inset(0 0 100% 0)" }}
+      animate={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }}
       transition={{
         duration: 0.9,
         delay: index * 0.08,

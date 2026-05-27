@@ -30,7 +30,7 @@ function ProjectShowcaseCard({ project, index }) {
   const imageOpacity = useTransform(
     scrollYProgress,
     [0, 0.16, 0.78, 1],
-    [0, 1, 1, 0]
+    [1, 1, 1, 0]
   );
 
   const imageRadius = useTransform(
@@ -106,6 +106,9 @@ function ProjectShowcaseCard({ project, index }) {
         <div className="relative z-10 mx-auto grid w-full max-w-[1500px] gap-8 px-5 py-20 md:px-10 lg:px-14">
           {/* Image */}
           <motion.div
+            initial={{ clipPath: "inset(0 0 100% 0)", y: 40, opacity: 0 }}
+            animate={{ clipPath: "inset(0 0 0% 0)", y: 0, opacity: 1 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             style={{
               scale: smoothImageScale,
               y: smoothImageY,

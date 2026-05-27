@@ -9,7 +9,7 @@ export default function ProjectsPage() {
     <main className="relative min-h-screen overflow-hidden bg-black text-white">
       <BackgroundVectors />
       <div className="relative z-10">
-        <ProjectHero title="Projects" image="/project/hero.jpg" />
+        <ProjectHero title="Projects" image="/assets/project/projects-hero.png" />
         <ProjectList />
       </div>
     </main>

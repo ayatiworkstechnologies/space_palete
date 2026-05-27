@@ -48,7 +48,7 @@ export default function Header() {
           className={`
             mx-auto flex w-full items-center justify-between
             px-6 transition-all duration-700 md:px-8 lg:px-10
-            ${isScrolled ? "h-[78px]" : "h-[116px]"}
+            ${isScrolled ? "h-[70px]" : "h-[92px]"}
           `}
         >
           {/* Logo */}
@@ -61,17 +61,17 @@ export default function Header() {
               className="origin-left"
             >
               <Image
-                src="/space-logo.svg"
+                src="/sp-logo.svg"
                 alt="Space Palette Logo"
                 width={150}
                 height={60}
                 priority
                 className="
-                  h-[80px] w-[92px]
+                  h-[54px] w-[62px]
                   brightness-0 invert
                   transition duration-500
-                  md:w-[120px]
-                  lg:w-[150px]
+                  md:h-[60px] md:w-[72px]
+                  lg:h-[66px] lg:w-[82px]
                 "
               />
             </motion.div>
@@ -151,7 +151,7 @@ export default function Header() {
                   width={180}
                   height={80}
                   priority
-                  className="h-auto w-[120px] brightness-0 invert"
+                  className="h-auto w-[84px] brightness-0 invert md:w-[96px]"
                 />
               </Link>
 
