@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 function SocialIcon({ children, size = 22 }) {
@@ -148,18 +149,21 @@ export default function Footer() {
           transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
           className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 py-9 text-lg text-white max-md:block max-md:border-b max-md:border-white/10 max-md:py-4 max-md:text-center max-md:text-xl"
         >
-          <a href="#home" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
+          <Link href="/" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
             Home
-          </a>
-          <a href="#about" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
+          </Link>
+          <Link href="/about" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
             About us
-          </a>
-          <a href="#projects" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
+          </Link>
+          <Link href="/projects" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
             Projects
-          </a>
-          <a href="#contact" className="transition duration-300 hover:text-[#f47a3c]">
+          </Link>
+          {/* <Link href="/studios" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
+            Studios
+          </Link> */}
+          <Link href="/contact" className="transition duration-300 hover:text-[#f47a3c]">
             Contact Us
-          </a>
+          </Link>
         </motion.nav>
 
         <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-5 pb-8 max-md:grid max-md:grid-cols-4 max-md:border-b max-md:border-white/10 max-md:gap-4 max-md:py-8">

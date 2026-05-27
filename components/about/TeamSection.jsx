@@ -11,7 +11,7 @@ export default function TeamSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="mx-auto max-w-6xl text-center"
+        className="relative z-10 mx-auto max-w-6xl text-center"
       >
         <h2 className="text-[30px] font-light tracking-[-0.03em] md:text-[42px]">
           About the <span className="text-[#f47a3c]">Team</span>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import DotPattern from "@/components/DotPattern";
 
 const founders = [
   {
@@ -19,6 +20,7 @@ const founders = [
 export default function FoundersSection() {
   return (
     <section className="relative bg-black px-6 py-12 text-white md:px-12 md:py-20">
+      <DotPattern variant="radial" density="low" accent />
       <motion.div
         initial={{ opacity: 0, y: 55 }}
         whileInView={{ opacity: 1, y: 0 }}

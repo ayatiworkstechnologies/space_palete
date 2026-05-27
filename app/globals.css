@@ -168,3 +168,73 @@ img {
   transform: perspective(900px) rotateX(66deg) rotateZ(-7deg) scale(1.22);
   transform-origin: top center;
 }
+
+/* ── Premium Dot Pattern Animations ── */
+@keyframes dot-blink-soft {
+  0%, 100% { opacity: 0.08; transform: scale(0.85); }
+  50% { opacity: 0.45; transform: scale(1.05); }
+}
+
+@keyframes dot-blink-drift {
+  0% { opacity: 0.06; transform: translate3d(0, 0, 0) scale(0.7); }
+  33% { opacity: 0.6; transform: translate3d(8px, -12px, 0) scale(1.1); }
+  66% { opacity: 0.3; transform: translate3d(-6px, 8px, 0) scale(0.9); }
+  100% { opacity: 0.06; transform: translate3d(0, 0, 0) scale(0.7); }
+}
+
+@keyframes dot-blink-glow {
+  0%, 100% { opacity: 0.05; transform: scale(0.6); box-shadow: 0 0 0 transparent; }
+  50% { opacity: 0.75; transform: scale(1.2); box-shadow: 0 0 12px rgba(244, 122, 60, 0.25); }
+}
+
+@keyframes pattern-breathe {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+@keyframes pattern-pan-diagonal {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100px 100px; }
+}
+
+@keyframes pattern-rotate-slow {
+  0% { transform: rotate(0deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1.2); }
+}
+
+@keyframes wave-undulate {
+  0%, 100% { transform: perspective(900px) rotateX(66deg) rotateZ(-7deg) scale(1.22) translateY(0); }
+  50% { transform: perspective(900px) rotateX(62deg) rotateZ(-5deg) scale(1.25) translateY(-15px); }
+}
+
+.dot-blink-soft {
+  animation: dot-blink-soft 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: opacity, transform;
+}
+
+.dot-blink-drift {
+  animation: dot-blink-drift 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: opacity, transform;
+}
+
+.dot-blink-glow {
+  animation: dot-blink-glow 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: opacity, transform;
+}
+
+.pattern-breathe {
+  animation: pattern-breathe 8s ease-in-out infinite;
+}
+
+.pattern-pan-diagonal {
+  animation: pattern-pan-diagonal 15s linear infinite;
+}
+
+.pattern-rotate-slow {
+  animation: pattern-rotate-slow 60s linear infinite;
+}
+
+.pattern-wave-anim {
+  animation: wave-undulate 12s ease-in-out infinite;
+  transform-origin: top center;
+}

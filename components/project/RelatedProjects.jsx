@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import DotPattern from "@/components/DotPattern";
 import { projectEntries } from "./projectData";
 
 export default function RelatedProjects({ currentSlug }) {
@@ -11,8 +12,9 @@ export default function RelatedProjects({ currentSlug }) {
   );
 
   return (
-    <section className="bg-black px-6 py-20 text-white md:px-12 md:py-28 lg:px-20">
-      <div className="mx-auto max-w-6xl">
+    <section className="relative bg-black px-6 py-20 text-white md:px-12 md:py-28 lg:px-20 overflow-hidden">
+      <DotPattern variant="wave" density="low" />
+      <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

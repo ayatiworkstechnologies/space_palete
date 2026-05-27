@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { projectEntries } from "@/components/project/projectData";
+import CommonButton from "@/components/CommonButton";
 
 function ProjectShowcaseCard({ project, index }) {
   const sectionRef = useRef(null);
@@ -14,90 +15,61 @@ function ProjectShowcaseCard({ project, index }) {
     offset: ["start end", "end start"],
   });
 
-  // Upgraded cinematic scroll animation
+  // Scroll-driven dramatic growth animation
   const imageScale = useTransform(
     scrollYProgress,
-    [0, 0.22, 0.58, 1],
-    [1.26, 1.08, 1, 0.94]
-  );
-
-  const imageY = useTransform(
-    scrollYProgress,
-    [0, 0.32, 0.72, 1],
-    [190, 0, -45, -170]
-  );
-
-  const imageOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.16, 0.78, 1],
-    [1, 1, 1, 0]
+    [0, 0.35, 1],
+    [0.35, 1, 0.85]
   );
 
   const imageRadius = useTransform(
     scrollYProgress,
-    [0, 0.34, 0.85],
-    [54, 18, 0]
+    [0, 0.35, 1],
+    [150, 12, 40]
   );
 
-  const contentY = useTransform(
+  const imageOpacity = useTransform(
     scrollYProgress,
-    [0, 0.28, 0.78, 1],
-    [130, 0, -20, -120]
+    [0, 0.15, 0.35],
+    [0, 0.5, 1]
   );
 
-  const contentOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.18, 0.75, 1],
-    [0, 1, 1, 0]
-  );
-
-  const metaY = useTransform(
-    scrollYProgress,
-    [0.1, 0.38, 0.82, 1],
-    [90, 0, -20, -95]
-  );
-
-  const metaOpacity = useTransform(
-    scrollYProgress,
-    [0.1, 0.32, 0.76, 1],
-    [0, 1, 1, 0]
-  );
-
-  // Smooth spring settings
   const smoothImageScale = useSpring(imageScale, {
     stiffness: 65,
     damping: 32,
     mass: 1,
   });
 
-  const smoothImageY = useSpring(imageY, {
-    stiffness: 65,
-    damping: 34,
-    mass: 1,
-  });
-
-  const smoothContentY = useSpring(contentY, {
-    stiffness: 75,
-    damping: 30,
-    mass: 0.9,
-  });
-
-  const smoothMetaY = useSpring(metaY, {
-    stiffness: 75,
-    damping: 30,
-    mass: 0.9,
-  });
-
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[175vh] bg-black"
+      className="relative min-h-[130vh] bg-black"
       style={{ zIndex: projectEntries.length - index }}
     >
       <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-black">
+        {/* Blinking dot particles */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          {Array.from({ length: 18 }).map((_, i) => (
+            <span
+              key={i}
+              className={`absolute block rounded-full ${i % 3 === 0 ? "dot-blink-glow bg-[#f47a3c]/50" : "dot-blink-soft bg-white/40"}`}
+              style={{
+                left: `${(i * 29 + 7) % 100}%`,
+                top: `${(i * 37 + 13) % 100}%`,
+                width: i % 4 === 0 ? 4 : 2,
+                height: i % 4 === 0 ? 4 : 2,
+                animationDuration: `${3 + (i % 5) * 0.8}s`,
+                animationDelay: `${i * 0.22}s`,
+              }}
+            />
+          ))}
+        </div>
+
         {/* Project Number */}
         <motion.div
-          style={{ opacity: contentOpacity }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
           className="pointer-events-none absolute right-5 top-20 z-0 text-[90px] font-light leading-none tracking-[-0.08em] text-white/6 md:right-10 md:text-[180px] lg:text-[230px]"
         >
           0{index + 1}
@@ -106,14 +78,10 @@ function ProjectShowcaseCard({ project, index }) {
         <div className="relative z-10 mx-auto grid w-full max-w-[1500px] gap-8 px-5 py-20 md:px-10 lg:px-14">
           {/* Image */}
           <motion.div
-            initial={{ clipPath: "inset(0 0 100% 0)", y: 40, opacity: 0 }}
-            animate={{ clipPath: "inset(0 0 0% 0)", y: 0, opacity: 1 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             style={{
               scale: smoothImageScale,
-              y: smoothImageY,
-              opacity: imageOpacity,
               borderRadius: imageRadius,
+              opacity: imageOpacity,
             }}
             className="
               relative mx-auto h-[350px] w-full overflow-hidden
@@ -134,9 +102,11 @@ function ProjectShowcaseCard({ project, index }) {
           {/* Bottom Content */}
           <div className="grid items-end gap-8 md:grid-cols-[1.15fr_1.35fr]">
             <motion.div
-              style={{
-                y: smoothContentY,
-                opacity: contentOpacity,
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.9,
+                ease: [0.22, 1, 0.36, 1],
               }}
             >
               <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.34em] text-white/50">
@@ -153,24 +123,22 @@ function ProjectShowcaseCard({ project, index }) {
                 {project.title}
               </h2>
 
-              <Link
+              <CommonButton
+                as={Link}
                 href={`/projects/${project.slug}`}
-                className="
-                  mt-7 inline-flex items-center rounded-full
-                  border border-white/75 px-7 py-3
-                  text-xs font-semibold uppercase tracking-[0.18em]
-                  text-white transition duration-300
-                  hover:bg-white hover:text-black
-                "
+                className="mt-7 !px-7 !py-3"
               >
                 View Project
-              </Link>
+              </CommonButton>
             </motion.div>
 
             <motion.div
-              style={{
-                y: smoothMetaY,
-                opacity: metaOpacity,
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.9,
+                delay: 0.15,
+                ease: [0.22, 1, 0.36, 1],
               }}
               className="
                 grid gap-5 border-t border-white/15 pt-6
@@ -214,22 +182,8 @@ function ProjectShowcaseCard({ project, index }) {
 }
 
 export default function HbaStylePage() {
-  const { scrollYProgress } = useScroll();
-
-  const progressScale = useSpring(scrollYProgress, {
-    stiffness: 70,
-    damping: 26,
-    mass: 0.75,
-  });
-
   return (
-    <main className="min-h-screen overflow-x-hidden bg-black text-white">
-      {/* Thin top scroll progress line */}
-      <motion.div
-        style={{ scaleX: progressScale }}
-        className="fixed left-0 top-0 z-[999] h-px w-full origin-left bg-white/75"
-      />
-
+    <div className="overflow-x-hidden bg-black text-white">
       <section className="relative bg-black">
         {projectEntries.map((project, index) => (
           <ProjectShowcaseCard
@@ -239,6 +193,6 @@ export default function HbaStylePage() {
           />
         ))}
       </section>
-    </main>
+    </div>
   );
 }

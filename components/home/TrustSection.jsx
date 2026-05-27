@@ -41,7 +41,27 @@ export default function TrustSection() {
 
   return (
     <section className="relative -mt-px overflow-hidden bg-black px-0 py-24 text-white md:px-6 md:py-32">
-      {/* Smooth top blending from previous section */}
+      {/* Blinking dot particles */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 opacity-70">
+          {Array.from({ length: 24 }).map((_, i) => (
+            <span
+              key={i}
+              className={`absolute block rounded-full ${i % 4 === 0 ? "dot-blink-glow bg-[#f47a3c]/40" : "dot-blink-drift bg-white/35"}`}
+              style={{
+                left: `${(i * 23 + 5) % 100}%`,
+                top: `${(i * 31 + 9) % 100}%`,
+                width: i % 5 === 0 ? 4 : i % 3 === 0 ? 3 : 2,
+                height: i % 5 === 0 ? 4 : i % 3 === 0 ? 3 : 2,
+                animationDuration: `${3.5 + (i % 6) * 0.6}s`,
+                animationDelay: `${i * 0.19}s`,
+              }}
+            />
+          ))}
+        </div>
+        {/* Soft dark mask */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_50%,rgba(0,0,0,0.85)_100%)]" />
+      </div>
 
       {/* Soft background glow */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-[120px]" />
@@ -60,7 +80,7 @@ export default function TrustSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl font-medium tracking-tight text-white md:text-6xl lg:text-7xl"
+            className="text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[54px]"
           >
             Trust Across{" "}
             <BracketSpaces />

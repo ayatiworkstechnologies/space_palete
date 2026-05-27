@@ -1,11 +1,13 @@
 "use client";
 
 import CommonButton from "@/components/CommonButton";
+import DotPattern from "@/components/DotPattern";
 
 export default function PurposeSection() {
   return (
     <section id="about" className="relative min-h-[58vh] overflow-hidden bg-black px-6 py-20 text-white md:py-28">
       <div className="pointer-events-none absolute inset-0 bg-[url('/line.png')] bg-cover bg-center bg-no-repeat opacity-35 md:opacity-45" />
+      <DotPattern variant="radial" density="low" />
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
         <h2 className="text-3xl font-medium leading-tight md:text-5xl">
@@ -20,10 +22,10 @@ export default function PurposeSection() {
         </p>
 
         <CommonButton
-          href="#projects"
+          href="/about"
           className="mt-8"
         >
-          Explore Our Work
+          Discover Our Story
         </CommonButton>
       </div>
     </section>

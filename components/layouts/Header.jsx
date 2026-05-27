@@ -3,18 +3,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const navLinks = [
   { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
-  { label: "Studios", href: "/studios" },
+  // { label: "Studios", href: "/studios" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,10 +40,9 @@ export default function Header() {
           fixed left-0 top-0 z-50 w-full
           
           transition-all duration-700
-          ${
-            isScrolled
-              ? "bg-black/35 backdrop-blur-md"
-              : "bg-transparent backdrop-blur-0"
+          ${isScrolled
+            ? "bg-black/35 backdrop-blur-md"
+            : "bg-transparent backdrop-blur-0"
           }
         `}
       >
@@ -80,36 +82,41 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden flex-1 items-center justify-center lg:flex">
             <ul className="flex w-full max-w-[940px] items-center justify-between">
-              {navLinks.map((item, index) => (
-                <motion.li
-                  key={item.label}
-                  initial={{ opacity: 0, y: -12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.15 + index * 0.08,
-                    duration: 0.55,
-                    ease: "easeOut",
-                  }}
-                >
-                  <Link
-                    href={item.href}
-                    className="
-                      group relative text-[13px] font-semibold uppercase
-                      tracking-[0.08em] text-white transition duration-300
-                      hover:text-white/70
-                    "
-                  >
-                    {item.label}
+              {navLinks.map((item, index) => {
+                const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
-                    <span
-                      className="
-                        absolute -bottom-2 left-0 h-px w-0 bg-white
-                        transition-all duration-300 group-hover:w-full
-                      "
-                    />
-                  </Link>
-                </motion.li>
-              ))}
+                return (
+                  <motion.li
+                    key={item.label}
+                    initial={{ opacity: 0, y: -12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      delay: 0.15 + index * 0.08,
+                      duration: 0.55,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <Link
+                      href={item.href}
+                      className={`
+                        group relative text-[13px] font-semibold uppercase
+                        tracking-[0.08em] transition duration-300
+                        ${isActive ? 'text-[#f47a3c]' : 'text-white hover:text-white/70'}
+                      `}
+                    >
+                      {item.label}
+
+                      <span
+                        className={`
+                          absolute -bottom-2 left-0 h-px bg-[#f47a3c]
+                          transition-all duration-300 
+                          ${isActive ? 'w-full' : 'w-0 group-hover:w-full bg-white'}
+                        `}
+                      />
+                    </Link>
+                  </motion.li>
+                );
+              })}
             </ul>
           </nav>
 
@@ -175,29 +182,34 @@ export default function Header() {
               className="px-6 pt-12"
             >
               <ul className="space-y-7">
-                {navLinks.map((item, index) => (
-                  <motion.li
-                    key={item.label}
-                    initial={{ opacity: 0, x: -24 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: 0.08 + index * 0.07,
-                      duration: 0.45,
-                    }}
-                  >
-                    <Link
-                      href={item.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="
-                        block border-b border-white/12 pb-5
-                        text-[34px] font-light uppercase tracking-[-0.04em]
-                        transition hover:text-white/60
-                      "
+                {navLinks.map((item, index) => {
+                  const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+
+                  return (
+                    <motion.li
+                      key={item.label}
+                      initial={{ opacity: 0, x: -24 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: 0.08 + index * 0.07,
+                        duration: 0.45,
+                      }}
                     >
-                      {item.label}
-                    </Link>
-                  </motion.li>
-                ))}
+                      <Link
+                        href={item.href}
+                        onClick={() => setMenuOpen(false)}
+                        className={`
+                          block border-b border-white/12 pb-5
+                          text-[34px] font-light uppercase tracking-[-0.04em]
+                          transition hover:text-white/60
+                          ${isActive ? 'text-[#f47a3c] border-[#f47a3c]/30' : 'text-white'}
+                        `}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.li>
+                  );
+                })}
               </ul>
             </motion.nav>
           </motion.div>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
+import DotPattern from "@/components/DotPattern";
 
 const steps = [
   {
@@ -55,17 +56,18 @@ function ProcessStep({ step, index }) {
   const reverse = index % 2 === 1;
 
   return (
-    <motion.div
+    <div
       ref={ref}
-      initial={{ opacity: 0, y: 75 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.28 }}
-      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
       className={`grid items-center gap-12 py-14 md:grid-cols-2 md:py-20 ${
         reverse ? "md:[&>*:first-child]:order-2" : ""
       }`}
     >
-      <div>
+      <motion.div
+        initial={{ opacity: 0, x: reverse ? 50 : -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.28 }}
+        transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+      >
         <h3 className="text-[70px] font-light leading-none tracking-[0.14em] md:text-[92px]">
           {step.number}
         </h3>
@@ -79,26 +81,34 @@ function ProcessStep({ step, index }) {
         <p className="mt-6 max-w-[520px] text-[12px] leading-6 tracking-[0.2em] text-white/65 md:text-[13px]">
           {step.text}
         </p>
-      </div>
+      </motion.div>
 
       <motion.div
-        style={{ y: smoothY, scale: smoothScale }}
-        className="relative mx-auto h-[260px] w-full max-w-[360px] overflow-hidden md:h-[330px]"
+        initial={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.28 }}
+        transition={{ duration: 0.9, delay: 0, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Image
-          src={step.image}
-          alt={step.title}
-          fill
-          className="object-cover"
-        />
+        <motion.div
+          style={{ y: smoothY, scale: smoothScale }}
+          className="relative mx-auto h-[260px] w-full max-w-[360px] overflow-hidden md:h-[330px]"
+        >
+          <Image
+            src={step.image}
+            alt={step.title}
+            fill
+            className="object-cover"
+          />
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 
 export default function ServicesProcess() {
   return (
     <section id="services" className="relative bg-black px-6 py-16 text-white md:px-12 lg:px-20">
+      <DotPattern variant="stardust" density="low" />
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 55 }}
