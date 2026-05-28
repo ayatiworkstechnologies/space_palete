@@ -27,7 +27,7 @@ export default function ProjectList() {
   }, [cursorX, cursorY]);
 
   return (
-    <section className="bg-black px-6 py-20 text-white md:px-12 md:py-28 lg:px-20 relative">
+    <section className="relative bg-black px-6 py-14 text-white md:px-12 md:py-20 lg:px-20">
       
       {/* Custom Cursor Follower */}
       <motion.div
@@ -51,7 +51,7 @@ export default function ProjectList() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.28 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-14"
+          className="mb-10"
         >
           <p className="mb-4 text-[11px] uppercase tracking-[0.35em] text-white">
             Selected Works

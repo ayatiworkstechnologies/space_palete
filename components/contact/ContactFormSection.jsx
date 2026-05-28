@@ -5,8 +5,8 @@ import CommonButton from "@/components/CommonButton";
 
 export default function ContactFormSection() {
   return (
-    <section className="px-6 py-12 md:px-12 lg:px-20 mb-20">
-      <div className="mx-auto max-w-6xl grid gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-24">
+    <section className="mb-12 px-6 py-10 md:px-12 lg:px-20">
+      <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
         
         {/* Contact Details Column */}
         <motion.div
@@ -17,11 +17,11 @@ export default function ContactFormSection() {
           className="flex flex-col justify-between"
         >
           <div>
-            <h2 className="text-[28px] font-light tracking-[-0.03em] md:text-[38px] mb-8">
+            <h2 className="mb-6 text-[28px] font-light tracking-[-0.03em] md:text-[38px]">
               Studio Locations
             </h2>
             
-            <div className="space-y-10">
+            <div className="space-y-8">
               {/* Chennai Studio */}
               <div>
                 <p className="text-[11px] uppercase tracking-[0.25em] text-[#f47a3c] mb-2">
@@ -55,7 +55,7 @@ export default function ContactFormSection() {
                 </p>
               </div>
 
-              <div className="pt-6 border-t border-white/10">
+              <div className="border-t border-white/10 pt-5">
                 <p className="text-[11px] uppercase tracking-[0.25em] text-white mb-2">
                   Direct Contact
                 </p>
@@ -80,7 +80,7 @@ export default function ContactFormSection() {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="bg-white/[0.03] border border-white/10 p-8 md:p-12 backdrop-blur-md">
+          <div className="border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md md:p-8">
             <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="relative">

@@ -5,7 +5,7 @@ import DotPattern from "@/components/DotPattern";
 
 export default function PurposeSection() {
   return (
-    <section id="about" className="relative min-h-[58vh] overflow-hidden bg-black px-6 py-20 text-white md:py-28">
+    <section id="about" className="relative min-h-[52vh] overflow-hidden bg-black px-6 py-14 text-white md:py-20">
       <div className="pointer-events-none absolute inset-0 bg-[url('/line.png')] bg-cover bg-center bg-no-repeat opacity-35 md:opacity-45" />
       <DotPattern variant="radial" density="low" />
 

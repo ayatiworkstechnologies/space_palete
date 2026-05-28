@@ -34,12 +34,12 @@ export default function FaqSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="relative min-h-[82vh] overflow-hidden bg-black px-6 py-20 text-white md:py-32">
+    <section className="relative min-h-[70vh] overflow-hidden bg-black px-6 py-14 text-white md:py-20">
       {/* Background Fade */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-1/3 bg-gradient-to-r from-white/[0.03] to-transparent" />
       <div className="pointer-events-none absolute right-0 top-1/2 h-80 w-80 -translate-y-1/2 rounded-full bg-[#f47a3c]/5 blur-[120px]" />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-16 md:grid-cols-[0.8fr_1.2fr] lg:gap-24">
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Left Content */}
         <div>
           <h2 className="text-5xl font-medium leading-[0.95] text-white md:text-7xl">

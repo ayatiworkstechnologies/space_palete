@@ -6,9 +6,9 @@ import DotPattern from "@/components/DotPattern";
 
 export default function AboutIntro() {
   return (
-    <section className="relative bg-black px-6 py-20 text-white md:px-12 md:py-28 lg:px-20">
+    <section className="relative bg-black px-6 py-14 text-white md:px-12 md:py-20 lg:px-20">
       <DotPattern variant="scatter" density="low" accent />
-      <div className="mx-auto grid max-w-6xl items-center gap-16 md:grid-cols-[1fr_0.75fr]">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[1fr_0.75fr] lg:gap-14">
         <motion.div
           initial={{ opacity: 0, x: -55 }}
           whileInView={{ opacity: 1, x: 0 }}

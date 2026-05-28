@@ -8,7 +8,7 @@ export default function ProjectProfileSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-black px-6 py-6 text-white md:py-24 lg:px-14 xl:px-10"
+      className="relative overflow-hidden bg-black px-6 py-10 text-white md:py-16 lg:px-14 xl:px-10"
     >
       {/* Moving dotted background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -40,8 +40,8 @@ export default function ProjectProfileSection() {
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         className="
           relative z-10 mx-auto grid w-full max-w-[1200px]
-          gap-14 md:grid-cols-[1fr_0.72fr]
-          lg:gap-24 xl:gap-28
+          gap-10 md:grid-cols-[1fr_0.72fr]
+          lg:gap-16 xl:gap-20
         "
       >
         {/* LEFT FORM */}

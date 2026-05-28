@@ -8,9 +8,9 @@ export default function ProjectDetailsIntro({ project }) {
   const [highlightWord, ...restTitle] = project.title.split(" ");
 
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-20 text-white md:px-12 md:py-28 lg:px-20">
+    <section className="relative overflow-hidden bg-black px-6 py-14 text-white md:px-12 md:py-20 lg:px-20">
       <DotPattern variant="oval" density="normal" />
-      <div className="relative z-10 mx-auto grid max-w-6xl gap-16 md:grid-cols-[1fr_0.82fr] lg:gap-28">
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-10 md:grid-cols-[1fr_0.82fr] lg:gap-16">
         <motion.div
           initial={{ opacity: 0, x: -55 }}
           whileInView={{ opacity: 1, x: 0 }}
