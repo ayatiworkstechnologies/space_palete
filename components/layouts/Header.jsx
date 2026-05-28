@@ -63,7 +63,7 @@ export default function Header() {
               className="origin-left"
             >
               <Image
-                src="/sp-logo.svg"
+                src="/sp-logo-1.svg"
                 alt="Space Palette Logo"
                 width={150}
                 height={60}

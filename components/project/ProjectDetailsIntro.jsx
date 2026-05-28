@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import DotPattern from "@/components/DotPattern";
 
@@ -48,13 +47,17 @@ export default function ProjectDetailsIntro({ project }) {
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.28 }}
           transition={{ delay: 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="relative ml-auto h-[420px] w-full max-w-[430px] overflow-hidden md:h-[560px]"
+          className="relative ml-auto h-[520px] w-full max-w-[460px] overflow-hidden md:h-[650px]"
         >
-          <Image
-            src={project.coverImage}
-            alt={`${project.title} interior`}
-            fill
-            className="object-cover transition duration-700 hover:scale-105"
+          <video
+            key={project.introVideo}
+            src={project.introVideo}
+            className="absolute inset-0 h-full w-full object-cover opacity-80"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
           />
         </motion.div>
       </div>

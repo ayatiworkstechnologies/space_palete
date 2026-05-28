@@ -1,13 +1,14 @@
 export const projectEntries = [
   {
     slug: "seed-workspace",
-    title: "SEED Workspace",
+    title: "Space Palette Workspace",
     location: "Chennai",
     studio: "Space Palette Studio",
     type: "Design & Build",
     year: "2025",
     size: "3200 sq.ft",
     heroImage: "/assets/project/project-hero.png",
+    introVideo: "/assets/intro.mp4",
     coverImage: "/assets/project/project-1.png",
     fullImage: "/assets/project/project-1-4.png",
     gallery: [
@@ -41,13 +42,14 @@ export const projectEntries = [
   },
   {
     slug: "seed-workspace-1",
-    title: "SEED Workspace 1",
+    title: "Space Palette Workspace 1",
     location: "Chennai",
     studio: "Space Palette Studio",
     type: "Design & Build",
     year: "2025",
     size: "3200 sq.ft",
     heroImage: "/assets/project/project-hero.png",
+    introVideo: "/assets/intro.mp4",
     coverImage: "/assets/project/project-2.png",
     fullImage: "/assets/project/project-1-4.png",
     gallery: [
