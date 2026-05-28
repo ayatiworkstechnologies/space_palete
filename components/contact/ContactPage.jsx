@@ -3,6 +3,7 @@
 import BackgroundVectors from "@/components/layouts/BackgroundVectors";
 import ContactHero from "./ContactHero";
 import ContactFormSection from "./ContactFormSection";
+import ContactMapSection from "./ContactMapSection";
 import DotPattern from "@/components/DotPattern";
 
 export default function ContactPage() {
@@ -13,6 +14,7 @@ export default function ContactPage() {
       <div className="relative z-10">
         <ContactHero />
         <ContactFormSection />
+        <ContactMapSection />
       </div>
     </main>
   );

@@ -16,7 +16,7 @@ const localBusinessJsonLd = {
   name: "Space Palette",
   url: "https://spacepalette.net",
   email: "uma@spacepalette.net",
-  telephone: "+91 8688098077",
+  telephone: "+91 7338811688",
   address: {
     "@type": "PostalAddress",
     streetAddress:

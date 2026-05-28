@@ -161,10 +161,10 @@ export default function ProjectProfileSection() {
               </div>
 
               <a
-                href="tel:+918688098077"
+                href="tel:+917338811688"
                 className="mt-3 block pl-8 text-base leading-relaxed text-white transition hover:text-[#f47a3c] md:text-[17px]"
               >
-                +91 8688098077
+                +91 7338811688
               </a>
             </div>
 

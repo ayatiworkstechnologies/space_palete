@@ -18,55 +18,55 @@ export default function ContactFormSection() {
         >
           <div>
             <h2 className="mb-6 text-[28px] font-light tracking-[-0.03em] md:text-[38px]">
-              Studio Locations
+              Contact Our Studio
             </h2>
             
             <div className="space-y-8">
-              {/* Chennai Studio */}
               <div>
                 <p className="text-[11px] uppercase tracking-[0.25em] text-[#f47a3c] mb-2">
-                  Chennai (HQ)
+                  Head Quarters
                 </p>
-                <p className="text-[13px] leading-7 tracking-[0.1em] text-white max-w-[280px]">
-                  123 Design Avenue, 4th Floor,<br />
-                  Besant Nagar, Chennai 600090
+                <p className="max-w-[320px] text-[13px] leading-7 tracking-[0.1em] text-white">
+                  No.46, 3rd Floor, GSquare Building,
+                  <br />
+                  Rajiv Gandhi Salai, OMR,
+                  <br />
+                  Kandanchavadi, Chennai, Tamil Nadu 600096.
                 </p>
+
               </div>
 
-              {/* Hyderabad Studio */}
               <div>
                 <p className="text-[11px] uppercase tracking-[0.25em] text-white mb-2">
-                  Hyderabad
+                  Other Locations
                 </p>
-                <p className="text-[13px] leading-7 tracking-[0.1em] text-white max-w-[280px]">
-                  45 Jubilee Hills Road No. 36,<br />
-                  Hyderabad, Telangana 500033
-                </p>
-              </div>
-
-              {/* Bangalore Studio */}
-              <div>
-                <p className="text-[11px] uppercase tracking-[0.25em] text-white mb-2">
-                  Bangalore
-                </p>
-                <p className="text-[13px] leading-7 tracking-[0.1em] text-white max-w-[280px]">
-                  89 Indiranagar 100ft Road,<br />
-                  Bengaluru, Karnataka 560038
+                <p className="max-w-[320px] text-[13px] leading-7 tracking-[0.1em] text-white">
+                  Bangalore, Hyderabad, Coimbatore.
                 </p>
               </div>
 
               <div className="border-t border-white/10 pt-5">
                 <p className="text-[11px] uppercase tracking-[0.25em] text-white mb-2">
-                  Direct Contact
+                  Email
                 </p>
-                <p className="text-[14px] tracking-[0.1em] text-white">
-                  <a href="mailto:hello@spacepalette.net" className="hover:text-[#f47a3c] transition-colors block mb-1">
-                    hello@spacepalette.net
-                  </a>
-                  <a href="tel:+919876543210" className="hover:text-[#f47a3c] transition-colors">
-                    +91 98765 43210
-                  </a>
+                <a
+                  href="mailto:uma@spacepalette.net"
+                  className="block text-[14px] tracking-[0.1em] text-white transition-colors hover:text-[#f47a3c]"
+                >
+                  uma@spacepalette.net
+                </a>
+              </div>
+
+              <div className="border-t border-white/10 pt-5">
+                <p className="text-[11px] uppercase tracking-[0.25em] text-white mb-2">
+                  Phone
                 </p>
+                <a
+                  href="tel:+917338811688"
+                  className="block text-[14px] tracking-[0.1em] text-white transition-colors hover:text-[#f47a3c]"
+                >
+                  +91 7338811688
+                </a>
               </div>
             </div>
           </div>

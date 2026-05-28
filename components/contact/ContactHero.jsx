@@ -15,7 +15,7 @@ export default function ContactHero() {
           Get in Touch
         </p>
 
-        <h1 className="text-[42px] font-light leading-[0.92] tracking-[-0.04em] md:text-[68px] lg:text-[86px]">
+        <h1 className="text-3xl font-medium tracking-tight md:text-5xl">
           Let&apos;s build <br className="hidden md:block" />
           <span className="text-white">something beautiful.</span>
         </h1>

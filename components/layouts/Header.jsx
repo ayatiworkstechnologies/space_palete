@@ -70,7 +70,6 @@ export default function Header() {
                 priority
                 className="
                   h-[54px] w-[62px]
-                  brightness-0 invert
                   transition duration-500
                   md:h-[60px] md:w-[72px]
                   lg:h-[66px] lg:w-[82px]
@@ -158,7 +157,7 @@ export default function Header() {
                   width={180}
                   height={80}
                   priority
-                  className="h-auto w-[84px] brightness-0 invert md:w-[96px]"
+                  className="h-auto w-[84px] md:w-[96px]"
                 />
               </Link>
 
