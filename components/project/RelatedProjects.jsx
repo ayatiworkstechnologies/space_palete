@@ -12,7 +12,7 @@ export default function RelatedProjects({ currentSlug }) {
   );
 
   return (
-    <section className="relative bg-black px-6 py-20 text-white md:px-12 md:py-28 lg:px-20 overflow-hidden">
+    <section className="relative bg-black px-6 py-6 text-white md:px-12 md:py-12 lg:px-20 overflow-hidden">
       <DotPattern variant="wave" density="low" />
       <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div
@@ -22,7 +22,7 @@ export default function RelatedProjects({ currentSlug }) {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="mb-14"
         >
-          <p className="mb-4 text-[11px] uppercase tracking-[0.35em] text-white/45">
+          <p className="mb-4 text-[11px] uppercase tracking-[0.35em] text-white">
             Explore Next
           </p>
 
@@ -61,7 +61,7 @@ export default function RelatedProjects({ currentSlug }) {
                       <h3 className="text-2xl font-light tracking-[-0.03em] md:text-3xl">
                         {project.title}
                       </h3>
-                      <p className="mt-2 text-[11px] uppercase tracking-[0.26em] text-white/45">
+                      <p className="mt-2 text-[11px] uppercase tracking-[0.26em] text-white">
                         {project.location}
                       </p>
                     </div>
@@ -82,7 +82,7 @@ export default function RelatedProjects({ currentSlug }) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="border border-white/10 px-6 py-12 text-center md:px-10"
           >
-            <p className="text-lg leading-8 text-white/60 md:text-xl">
+            <p className="text-lg leading-8 text-white md:text-xl">
               More projects will appear here as new work is added.
             </p>
           </motion.div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import BracketSpaces from "@/components/BracketSpaces";
 
 const faqs = [
   {
@@ -50,10 +49,10 @@ export default function FaqSection() {
             <br />
             Inspired
             <br />
-            <BracketSpaces className="mt-5" />
+            <span className="text-[#f47a3c]">Spaces</span>
           </h2>
 
-          <p className="mt-10 max-w-sm text-lg leading-7 text-white/65 md:text-xl md:leading-8">
+          <p className="mt-10 max-w-sm text-lg leading-7 text-white md:text-xl md:leading-8">
             Find clear answers to common questions about our design process,
             timelines, materials, and turnkey execution. We believe every
             successful project begins with transparency, thoughtful planning, and
@@ -78,7 +77,7 @@ export default function FaqSection() {
               >
                 <h3
                   className={`text-lg font-semibold transition duration-300 md:text-xl ${
-                    isActive ? "text-white" : "text-white/70"
+                    isActive ? "text-white" : "text-white"
                   }`}
                 >
                   {index + 1}. {faq.question}
@@ -92,7 +91,7 @@ export default function FaqSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="max-w-3xl text-lg leading-7 text-white/72 md:text-xl md:leading-8">
+                    <p className="max-w-3xl text-lg leading-7 text-white md:text-xl md:leading-8">
                       {faq.answer}
                     </p>
                   </div>

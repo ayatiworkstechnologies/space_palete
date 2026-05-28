@@ -53,7 +53,7 @@ export default function ProjectList() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="mb-14"
         >
-          <p className="mb-4 text-[11px] uppercase tracking-[0.35em] text-white/45">
+          <p className="mb-4 text-[11px] uppercase tracking-[0.35em] text-white">
             Selected Works
           </p>
 
@@ -95,7 +95,7 @@ export default function ProjectList() {
                     <h3 className="text-2xl font-light tracking-[-0.03em] md:text-3xl">
                       {project.title}
                     </h3>
-                    <p className="mt-2 text-[11px] uppercase tracking-[0.26em] text-white/45">
+                    <p className="mt-2 text-[11px] uppercase tracking-[0.26em] text-white">
                       {project.location}
                     </p>
                   </div>

@@ -51,8 +51,8 @@ export default function ProjectFloatingGallery({
   title = "Project",
 }) {
   return (
-    <section className="relative min-h-[1050px] bg-black px-6 py-12 text-white md:px-12 lg:px-20">
-      <div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-3 md:items-start">
+    <section className="relative bg-black px-6 py-10 text-white md:px-12 md:py-14 lg:px-20">
+      <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3 md:items-start">
         {gallery.map((item, index) => (
           <FloatingImage
             key={`${title}-${item.image}-${index}`}

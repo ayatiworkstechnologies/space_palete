@@ -27,7 +27,7 @@ export default function ContactFormSection() {
                 <p className="text-[11px] uppercase tracking-[0.25em] text-[#f47a3c] mb-2">
                   Chennai (HQ)
                 </p>
-                <p className="text-[13px] leading-7 tracking-[0.1em] text-white/80 max-w-[280px]">
+                <p className="text-[13px] leading-7 tracking-[0.1em] text-white max-w-[280px]">
                   123 Design Avenue, 4th Floor,<br />
                   Besant Nagar, Chennai 600090
                 </p>
@@ -35,10 +35,10 @@ export default function ContactFormSection() {
 
               {/* Hyderabad Studio */}
               <div>
-                <p className="text-[11px] uppercase tracking-[0.25em] text-white/40 mb-2">
+                <p className="text-[11px] uppercase tracking-[0.25em] text-white mb-2">
                   Hyderabad
                 </p>
-                <p className="text-[13px] leading-7 tracking-[0.1em] text-white/80 max-w-[280px]">
+                <p className="text-[13px] leading-7 tracking-[0.1em] text-white max-w-[280px]">
                   45 Jubilee Hills Road No. 36,<br />
                   Hyderabad, Telangana 500033
                 </p>
@@ -46,20 +46,20 @@ export default function ContactFormSection() {
 
               {/* Bangalore Studio */}
               <div>
-                <p className="text-[11px] uppercase tracking-[0.25em] text-white/40 mb-2">
+                <p className="text-[11px] uppercase tracking-[0.25em] text-white mb-2">
                   Bangalore
                 </p>
-                <p className="text-[13px] leading-7 tracking-[0.1em] text-white/80 max-w-[280px]">
+                <p className="text-[13px] leading-7 tracking-[0.1em] text-white max-w-[280px]">
                   89 Indiranagar 100ft Road,<br />
                   Bengaluru, Karnataka 560038
                 </p>
               </div>
 
               <div className="pt-6 border-t border-white/10">
-                <p className="text-[11px] uppercase tracking-[0.25em] text-white/40 mb-2">
+                <p className="text-[11px] uppercase tracking-[0.25em] text-white mb-2">
                   Direct Contact
                 </p>
-                <p className="text-[14px] tracking-[0.1em] text-white/80">
+                <p className="text-[14px] tracking-[0.1em] text-white">
                   <a href="mailto:hello@spacepalette.net" className="hover:text-[#f47a3c] transition-colors block mb-1">
                     hello@spacepalette.net
                   </a>
@@ -84,7 +84,7 @@ export default function ContactFormSection() {
             <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="relative">
-                  <label className="block text-[10px] uppercase tracking-[0.2em] text-white/50 mb-2">Full Name *</label>
+                  <label className="block text-[10px] uppercase tracking-[0.2em] text-white mb-2">Full Name *</label>
                   <input 
                     type="text" 
                     className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#f47a3c] focus:outline-none transition-colors"
@@ -93,7 +93,7 @@ export default function ContactFormSection() {
                   />
                 </div>
                 <div className="relative">
-                  <label className="block text-[10px] uppercase tracking-[0.2em] text-white/50 mb-2">Email Address *</label>
+                  <label className="block text-[10px] uppercase tracking-[0.2em] text-white mb-2">Email Address *</label>
                   <input 
                     type="email" 
                     className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#f47a3c] focus:outline-none transition-colors"
@@ -104,7 +104,7 @@ export default function ContactFormSection() {
               </div>
 
               <div className="relative">
-                <label className="block text-[10px] uppercase tracking-[0.2em] text-white/50 mb-2">Phone Number</label>
+                <label className="block text-[10px] uppercase tracking-[0.2em] text-white mb-2">Phone Number</label>
                 <input 
                   type="tel" 
                   className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#f47a3c] focus:outline-none transition-colors"
@@ -113,7 +113,7 @@ export default function ContactFormSection() {
               </div>
 
               <div className="relative">
-                <label className="block text-[10px] uppercase tracking-[0.2em] text-white/50 mb-2">Project Details *</label>
+                <label className="block text-[10px] uppercase tracking-[0.2em] text-white mb-2">Project Details *</label>
                 <textarea 
                   rows="4"
                   className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#f47a3c] focus:outline-none transition-colors resize-none"

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import BracketSpaces from "@/components/BracketSpaces";
 
 const expertiseItems = [
   {
@@ -102,7 +101,7 @@ export default function ExpertiseSection() {
         <div className="mb-12 text-center md:mb-14">
           <h2 className="text-3xl font-normal leading-tight text-white md:text-5xl">
             Design &amp; Expertise{" "}
-            <BracketSpaces />
+            <span className="text-[#f47a3c]">Spaces</span>
           </h2>
         </div>
 
@@ -113,7 +112,7 @@ export default function ExpertiseSection() {
             onClick={prevSlide}
             aria-label="Previous slide"
             suppressHydrationWarning
-            className="absolute left-3 top-1/2 z-30 -translate-y-1/2 text-white/60 transition hover:text-[#f47a3c] md:left-8"
+            className="absolute left-3 top-1/2 z-30 -translate-y-1/2 text-white transition hover:text-[#f47a3c] md:left-8"
           >
             <ChevronLeft size={16} strokeWidth={1.7} />
           </button>
@@ -123,7 +122,7 @@ export default function ExpertiseSection() {
             onClick={nextSlide}
             aria-label="Next slide"
             suppressHydrationWarning
-            className="absolute right-3 top-1/2 z-30 -translate-y-1/2 text-white/60 transition hover:text-[#f47a3c] md:right-8"
+            className="absolute right-3 top-1/2 z-30 -translate-y-1/2 text-white transition hover:text-[#f47a3c] md:right-8"
           >
             <ChevronRight size={16} strokeWidth={1.7} />
           </button>
@@ -157,7 +156,7 @@ export default function ExpertiseSection() {
                   {/* Number */}
                   <div
                     className={`absolute right-2 top-2 z-30 rounded-bl-[22px] rounded-tr-[20px] bg-black px-4 py-3 text-xl font-bold leading-none tracking-wide transition-colors duration-700 md:text-2xl ${
-                      isActive ? "text-white" : "text-white/45"
+                      isActive ? "text-white" : "text-white"
                     }`}
                   >
                     {index + 1} / {total}
@@ -177,7 +176,7 @@ export default function ExpertiseSection() {
                     <div className="absolute bottom-0 left-0 z-20 w-full px-3 pb-3">
                       <h3
                         className={`text-lg font-bold leading-tight transition-colors duration-700 md:text-2xl ${
-                          isActive ? "text-white" : "text-white/60"
+                          isActive ? "text-white" : "text-white"
                         }`}
                       >
                         {item.title}

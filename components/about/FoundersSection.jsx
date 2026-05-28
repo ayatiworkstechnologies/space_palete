@@ -20,7 +20,7 @@ const founders = [
 export default function FoundersSection() {
   return (
     <section className="relative bg-black px-6 py-12 text-white md:px-12 md:py-20">
-      <DotPattern variant="radial" density="low" accent />
+      {/* <DotPattern variant="radial" density="low" accent /> */}
       <motion.div
         initial={{ opacity: 0, y: 55 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -28,11 +28,11 @@ export default function FoundersSection() {
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         className="mx-auto max-w-5xl text-center"
       >
-        <h2 className="text-[30px] font-light tracking-[-0.03em] md:text-[42px]">
+        <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
           About <span className="text-[#f47a3c]">Founders</span>
         </h2>
 
-        <p className="mx-auto mt-6 max-w-3xl text-[12px] leading-6 tracking-[0.2em] text-white/65 md:text-[13px]">
+        <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 tracking-[0.08em] text-white md:text-xl md:leading-9">
           The founders bring together creative vision and executional expertise,
           creating a seamless balance between design intent and delivery.
         </p>
@@ -61,10 +61,10 @@ export default function FoundersSection() {
               </div>
 
               <div className="border-t border-white/10 pt-4">
-                <h3 className="text-sm font-semibold text-white">
+                <h3 className="text-lg font-semibold text-white">
                   {founder.name}
                 </h3>
-                <p className="mt-2 text-[11px] tracking-[0.2em] text-white/55">
+                <p className="mt-2 text-sm tracking-[0.2em] text-white">
                   {founder.role}
                 </p>
               </div>

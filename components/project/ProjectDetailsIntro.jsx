@@ -17,14 +17,14 @@ export default function ProjectDetailsIntro({ project }) {
           viewport={{ once: true, amount: 0.28 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-[32px] font-light tracking-[-0.03em] md:text-[46px]">
+          <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
             {highlightWord}{" "}
             <span className="text-[#f47a3c]">
               {restTitle.join(" ") || "Project"}
             </span>
           </h2>
 
-          <div className="mt-8 max-w-xl space-y-6 text-[12px] leading-6 tracking-[0.2em] text-white/72 md:text-[13px] md:leading-7">
+          <div className="mt-8 max-w-xl space-y-6 text-lg leading-8 tracking-[0.08em] text-white md:text-xl md:leading-9">
             {project.description.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
@@ -37,7 +37,7 @@ export default function ProjectDetailsIntro({ project }) {
                 className="grid grid-cols-[0.7fr_1fr] border-b border-white/12 py-4 text-[13px] tracking-[0.2em]"
               >
                 <span className="text-white">{label}</span>
-                <span className="text-white/65">{value}</span>
+                <span className="text-white">{value}</span>
               </div>
             ))}
           </div>

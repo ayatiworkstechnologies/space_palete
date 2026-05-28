@@ -3,7 +3,6 @@
 import { ChevronDown, ChevronUp, Quote } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import BracketSpaces from "@/components/BracketSpaces";
 
 const stories = [
   {
@@ -55,7 +54,7 @@ export default function VisualStorySection() {
   };
 
   return (
-    <section className="relative min-h-[75vh] overflow-hidden bg-black px-6 py-20 text-white md:py-28">
+    <section className="relative min-h-[75vh] overflow-hidden bg-black px-6 py-6 text-white md:py-10">
       {/* Moving dotted background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 opacity-80">
@@ -97,7 +96,7 @@ export default function VisualStorySection() {
           transition={{ duration: 0.75, ease: "easeOut" }}
           className="text-3xl font-medium tracking-tight md:text-5xl"
         >
-          Stories Behind <BracketSpaces />
+          Stories Behind <span className="text-[#f47a3c]">Spaces</span>
         </motion.h2>
 
         {/* Stories */}
@@ -115,7 +114,7 @@ export default function VisualStorySection() {
             onClick={showPrevious}
             aria-label="Previous story"
             suppressHydrationWarning
-            className="absolute left-1/2 top-0 z-30 -translate-x-1/2 text-white/60 transition duration-300 hover:-translate-y-0.5 hover:text-[#f47a3c]"
+            className="absolute left-1/2 top-0 z-30 -translate-x-1/2 text-white transition duration-300 hover:-translate-y-0.5 hover:text-[#f47a3c]"
           >
             <ChevronUp size={18} strokeWidth={1.6} />
           </button>
@@ -125,7 +124,7 @@ export default function VisualStorySection() {
             onClick={showNext}
             aria-label="Next story"
             suppressHydrationWarning
-            className="absolute bottom-0 left-1/2 z-30 -translate-x-1/2 text-white/60 transition duration-300 hover:translate-y-0.5 hover:text-[#f47a3c]"
+            className="absolute bottom-0 left-1/2 z-30 -translate-x-1/2 text-white transition duration-300 hover:translate-y-0.5 hover:text-[#f47a3c]"
           >
             <ChevronDown size={18} strokeWidth={1.6} />
           </button>
@@ -161,7 +160,7 @@ export default function VisualStorySection() {
                     className={`mx-auto leading-8 ${
                       isActive
                         ? "max-w-2xl text-lg text-white md:text-xl md:leading-9"
-                        : "max-w-2xl text-lg text-white/35 md:text-xl md:leading-9"
+                        : "max-w-2xl text-lg text-white md:text-xl md:leading-9"
                     }`}
                   >
                     {isActive && story.id === 2 ? (

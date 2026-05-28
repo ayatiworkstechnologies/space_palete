@@ -1,6 +1,5 @@
 "use client";
 
-import BracketSpaces from "@/components/BracketSpaces";
 import { motion } from "framer-motion";
 
 const trustLogos = [
@@ -40,7 +39,7 @@ export default function TrustSection() {
   const marqueeLogos = [...trustLogos, ...trustLogos, ...trustLogos];
 
   return (
-    <section className="relative -mt-px overflow-hidden bg-black px-0 py-24 text-white md:px-6 md:py-32">
+    <section className="relative -mt-px overflow-hidden bg-black px-0 py-6 text-white md:px-6 md:py-10">
       {/* Blinking dot particles */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 opacity-70">
@@ -80,10 +79,9 @@ export default function TrustSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl font-medium tracking-tight text-white md:text-5xl lg:text-[54px]"
+            className="text-3xl font-medium tracking-tight text-white md:text-5xl"
           >
-            Trust Across{" "}
-            <BracketSpaces />
+            Trust Across <span className="text-[#f47a3c]">Spaces</span>
           </motion.h2>
         </div>
 
@@ -94,9 +92,9 @@ export default function TrustSection() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ delay: 0.15, duration: 0.9, ease: "easeOut" }}
           className="
-            relative mx-auto mt-16 w-full max-w-full overflow-hidden
+            relative mx-auto mt-4 w-full max-w-full overflow-hidden
             [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]
-            md:mt-24
+            md:mt-8
           "
         >
           <div

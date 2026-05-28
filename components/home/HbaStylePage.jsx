@@ -109,7 +109,7 @@ function ProjectShowcaseCard({ project, index }) {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.34em] text-white/50">
+              <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.34em] text-white">
                 Selected Project
               </p>
 
@@ -143,32 +143,32 @@ function ProjectShowcaseCard({ project, index }) {
               className="
                 grid gap-5 border-t border-white/15 pt-6
                 text-xs font-semibold uppercase tracking-[0.14em]
-                text-white/82 md:grid-cols-4 md:border-t-0 md:pt-0
+                text-white md:grid-cols-4 md:border-t-0 md:pt-0
               "
             >
               <div>
-                <p className="mb-2 text-[10px] tracking-[0.28em] text-white/38">
+                <p className="mb-2 text-[10px] tracking-[0.28em] text-white">
                   Studio
                 </p>
                 <p>{project.studio}</p>
               </div>
 
               <div>
-                <p className="mb-2 text-[10px] tracking-[0.28em] text-white/38">
+                <p className="mb-2 text-[10px] tracking-[0.28em] text-white">
                   Type
                 </p>
                 <p>{project.type}</p>
               </div>
 
               <div>
-                <p className="mb-2 text-[10px] tracking-[0.28em] text-white/38">
+                <p className="mb-2 text-[10px] tracking-[0.28em] text-white">
                   Location
                 </p>
                 <p>{project.location}</p>
               </div>
 
               <div>
-                <p className="mb-2 text-[10px] tracking-[0.28em] text-white/38">
+                <p className="mb-2 text-[10px] tracking-[0.28em] text-white">
                   Year
                 </p>
                 <p>{project.year}</p>

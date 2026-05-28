@@ -193,7 +193,7 @@ export default function Footer() {
                 whileTap={{ scale: 0.94 }}
                 className="
                   group relative inline-flex h-14 w-14 items-center justify-center
-                  rounded-full border border-white/12 text-white/90
+                  rounded-full border border-white/12 text-white
                   transition duration-300
                   hover:border-[#f47a3c]/70 hover:text-[#f47a3c]
                   max-md:h-12 max-md:w-12
@@ -220,7 +220,7 @@ export default function Footer() {
           transition={{ delay: 0.38, duration: 0.75, ease: "easeOut" }}
           className="border-t border-white/10 py-5 text-center max-md:border-t-0 max-md:py-5"
         >
-          <p className="mx-auto max-w-3xl text-base leading-7 text-white/60 md:text-lg md:leading-8">
+          <p className="mx-auto max-w-3xl text-base leading-7 text-white md:text-lg md:leading-8">
             Copyright &copy;2026 spacepalette - All right reserved | Designed &amp;
             Developed by{" "}
             <a

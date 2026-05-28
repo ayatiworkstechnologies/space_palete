@@ -10,11 +10,11 @@ export default function PurposeSection() {
       <DotPattern variant="radial" density="low" />
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
-        <h2 className="text-3xl font-medium leading-tight md:text-5xl">
+        <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
           Who We Are
         </h2>
 
-        <p className="mt-8 max-w-3xl text-lg leading-7 text-white/70 md:mt-10 md:text-xl md:leading-8">
+        <p className="mt-8 max-w-3xl text-lg leading-7 text-white md:mt-10 md:text-xl md:leading-8">
           Space Palette is a multidisciplinary design studio creating thoughtful
           spaces that balance functionality, identity, and experience. Every
           environment is shaped with clarity, precision, and a deep

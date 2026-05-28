@@ -78,7 +78,7 @@ function ProcessStep({ step, index }) {
 
         <div className="mt-8 h-px w-full max-w-[520px] bg-white/18" />
 
-        <p className="mt-6 max-w-[520px] text-[12px] leading-6 tracking-[0.2em] text-white/65 md:text-[13px]">
+        <p className="mt-6 max-w-[520px] text-lg leading-8 tracking-[0.08em] text-white md:text-xl md:leading-9">
           {step.text}
         </p>
       </motion.div>
@@ -116,11 +116,11 @@ export default function ServicesProcess() {
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-[34px] font-light tracking-[-0.03em] md:text-[46px]">
+          <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
             Services
           </h2>
 
-          <p className="mt-6 max-w-4xl text-[12px] leading-6 tracking-[0.2em] text-white/65 md:text-[13px]">
+          <p className="mt-6 max-w-4xl text-lg leading-8 tracking-[0.08em] text-white md:text-xl md:leading-9">
             Space Palette delivers end-to-end turnkey solutions, managing
             design, execution, and final delivery through one integrated
             process.

@@ -30,7 +30,7 @@ export default function ProjectFullImage({
 
   return (
     <section ref={ref} className="relative min-h-[150vh] bg-black">
-      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden py-16 md:py-24">
+      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden py-8 md:py-12">
         <div className="mx-auto w-full max-w-[1600px] px-4 md:px-8">
           <motion.div
             initial={{ clipPath: "inset(0 0 100% 0)", y: 42, opacity: 0 }}
@@ -55,13 +55,6 @@ export default function ProjectFullImage({
               />
             </motion.div>
           </motion.div>
-
-          <motion.p
-            style={{ opacity: captionOpacity }}
-            className="mt-6 text-center text-[11px] uppercase tracking-[0.3em] text-white/45"
-          >
-            Expanded Project View
-          </motion.p>
         </div>
       </div>
     </section>

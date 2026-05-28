@@ -13,11 +13,11 @@ export default function TeamSection() {
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         className="relative z-10 mx-auto max-w-6xl text-center"
       >
-        <h2 className="text-[30px] font-light tracking-[-0.03em] md:text-[42px]">
+        <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
           About the <span className="text-[#f47a3c]">Team</span>
         </h2>
 
-        <p className="mx-auto mt-6 max-w-4xl text-[12px] leading-6 tracking-[0.2em] text-white/65 md:text-[13px]">
+        <p className="mx-auto mt-6 max-w-4xl text-lg leading-8 tracking-[0.08em] text-white md:text-xl md:leading-9">
           A collaborative team of architects, designers, and project specialists
           drives every project with precision and attention to detail.
         </p>
@@ -27,7 +27,7 @@ export default function TeamSection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ delay: 0.15, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto mt-12 h-[260px] max-w-5xl md:h-[360px]"
+          className="relative mx-auto h-[360px] max-w-5xl md:h-[440px]"
         >
           <Image
             src="/assets/about/teams.png"

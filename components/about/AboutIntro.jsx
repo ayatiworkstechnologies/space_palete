@@ -15,11 +15,11 @@ export default function AboutIntro() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-[30px] font-light tracking-[-0.03em] md:text-[42px]">
+          <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
             About <span className="text-[#f47a3c]">Space palette</span>
           </h2>
 
-          <p className="mt-8 max-w-xl text-[13px] leading-7 tracking-[0.18em] text-white/70 md:text-[14px]">
+          <p className="mt-8 max-w-xl text-lg leading-8 tracking-[0.08em] text-white md:text-xl md:leading-9">
             Space Palette is a multidisciplinary design studio creating
             thoughtful spaces that balance functionality, identity, and
             experience. Every environment is shaped with clarity, precision, and

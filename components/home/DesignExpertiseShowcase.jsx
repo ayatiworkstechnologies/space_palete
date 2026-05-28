@@ -86,7 +86,7 @@ export default function DesignExpertiseShowcase() {
 
         <div className="relative z-10 mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1fr_0.72fr] lg:items-center">
           <div>
-            <div className="mb-6 flex items-center gap-4 text-white/35 lg:hidden">
+            <div className="mb-6 flex items-center gap-4 text-white lg:hidden">
               <span className="h-px w-10 bg-white/25" />
               <span className="font-secondary text-xs uppercase tracking-[0.35em]">
                 Chapter 02
@@ -113,14 +113,14 @@ export default function DesignExpertiseShowcase() {
                     <div className="flex items-baseline gap-3">
                       <span
                         className={`text-lg transition duration-500 ${
-                          isActive ? "text-[#f47a3c]" : "text-white/45"
+                          isActive ? "text-[#f47a3c]" : "text-white"
                         }`}
                       >
                         {service.number}
                       </span>
                       <h3
                         className={`text-xl font-medium transition duration-500 ${
-                          isActive ? "text-white" : "text-white/70"
+                          isActive ? "text-white" : "text-white"
                         }`}
                       >
                         {service.title}
@@ -136,12 +136,12 @@ export default function DesignExpertiseShowcase() {
                     >
                       <div className="overflow-hidden">
                         <div className="ml-11 mt-5 max-w-sm">
-                          <p className="text-lg leading-7 text-white/50 md:text-xl md:leading-8">
+                          <p className="text-lg leading-7 text-white md:text-xl md:leading-8">
                             {service.description}
                           </p>
                           <CommonButton
                             as="span"
-                            className="mt-7 border-white/10 px-5 py-3 text-sm font-semibold text-white/25 hover:bg-transparent hover:text-[#f47a3c] group-hover:border-[#f47a3c] group-hover:text-[#f47a3c]"
+                            className="mt-7 border-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-transparent hover:text-[#f47a3c] group-hover:border-[#f47a3c] group-hover:text-[#f47a3c]"
                             iconSize={16}
                           >
                             Discover Creations
@@ -178,7 +178,7 @@ export default function DesignExpertiseShowcase() {
               alt={`${activeService.title} concept`}
               className="aspect-[16/9] w-full object-cover opacity-0 transition duration-700 ease-out [animation:fadeInImage_700ms_ease-out_120ms_forwards]"
             />
-            <p className="max-w-sm text-lg leading-7 text-white/55 md:text-xl md:leading-8">
+            <p className="max-w-sm text-lg leading-7 text-white md:text-xl md:leading-8">
               Exceptional design solutions crafted with precision, creativity,
               and purpose.
             </p>

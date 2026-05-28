@@ -70,7 +70,7 @@ export default function ProjectHero({
             {title}
           </h1>
 
-          <p className="mt-28 text-[10px] tracking-[0.18em] text-white/80 md:mt-36">
+          <p className="mt-28 text-[10px] tracking-[0.18em] text-white md:mt-36">
             Reveal the Elegance
           </p>
         </motion.div>

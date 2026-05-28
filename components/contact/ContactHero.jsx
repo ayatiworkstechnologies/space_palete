@@ -17,10 +17,10 @@ export default function ContactHero() {
 
         <h1 className="text-[42px] font-light leading-[0.92] tracking-[-0.04em] md:text-[68px] lg:text-[86px]">
           Let&apos;s build <br className="hidden md:block" />
-          <span className="text-white/60">something beautiful.</span>
+          <span className="text-white">something beautiful.</span>
         </h1>
 
-        <p className="mx-auto mt-8 max-w-xl text-[13px] leading-7 tracking-[0.18em] text-white/70 md:text-[14px]">
+        <p className="mx-auto mt-8 max-w-xl text-[13px] leading-7 tracking-[0.18em] text-white md:text-[14px]">
           Whether you have a specific project in mind or just want to explore the
           possibilities, our team is ready to listen, design, and deliver spaces
           that exceed your expectations.

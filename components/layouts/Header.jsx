@@ -101,7 +101,7 @@ export default function Header() {
                       className={`
                         group relative text-[13px] font-semibold uppercase
                         tracking-[0.08em] transition duration-300
-                        ${isActive ? 'text-[#f47a3c]' : 'text-white hover:text-white/70'}
+                        ${isActive ? 'text-[#f47a3c]' : 'text-white hover:text-white'}
                       `}
                     >
                       {item.label}
@@ -201,7 +201,7 @@ export default function Header() {
                         className={`
                           block border-b border-white/12 pb-5
                           text-[34px] font-light uppercase tracking-[-0.04em]
-                          transition hover:text-white/60
+                          transition hover:text-white
                           ${isActive ? 'text-[#f47a3c] border-[#f47a3c]/30' : 'text-white'}
                         `}
                       >

@@ -49,7 +49,7 @@ export default function AboutHero() {
         {Array.from({ length: 22 }).map((_, index) => (
           <span
             key={index}
-            className="about-dot absolute block rounded-full bg-white/60"
+            className="about-dot absolute block rounded-full bg-white"
             style={{
               left: `${(index * 23) % 100}%`,
               top: `${(index * 31) % 100}%`,
@@ -72,7 +72,7 @@ export default function AboutHero() {
             About
           </h1>
 
-          <p className="mt-28 text-[10px] tracking-[0.18em] text-white/80 md:mt-36">
+          <p className="mt-28 text-[10px] tracking-[0.18em] text-white md:mt-36">
             Reveal the Elegance
           </p>
         </motion.div>

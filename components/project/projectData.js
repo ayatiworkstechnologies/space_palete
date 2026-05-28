@@ -8,7 +8,7 @@ export const projectEntries = [
     year: "2025",
     size: "3200 sq.ft",
     heroImage: "/assets/project/project-hero.png",
-    coverImage: "/assets/project/project-intro.png",
+    coverImage: "/assets/project/project-1.png",
     fullImage: "/assets/project/project-1-4.png",
     gallery: [
       {
@@ -41,14 +41,14 @@ export const projectEntries = [
   },
   {
     slug: "seed-workspace-1",
-    title: "SEED Workspace",
+    title: "SEED Workspace 1",
     location: "Chennai",
     studio: "Space Palette Studio",
     type: "Design & Build",
     year: "2025",
     size: "3200 sq.ft",
     heroImage: "/assets/project/project-hero.png",
-    coverImage: "/assets/project/project-intro.png",
+    coverImage: "/assets/project/project-2.png",
     fullImage: "/assets/project/project-1-4.png",
     gallery: [
       {

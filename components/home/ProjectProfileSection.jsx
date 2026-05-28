@@ -1,6 +1,5 @@
 "use client";
 
-import BracketSpaces from "@/components/BracketSpaces";
 import CommonButton from "@/components/CommonButton";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
@@ -9,7 +8,7 @@ export default function ProjectProfileSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-black px-6 py-20 text-white md:py-24 lg:px-14 xl:px-20"
+      className="relative overflow-hidden bg-black px-6 py-6 text-white md:py-24 lg:px-14 xl:px-10"
     >
       {/* Moving dotted background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -57,7 +56,7 @@ export default function ProjectProfileSection() {
             Project Profile
           </h2>
 
-          <p className="mt-5 max-w-xl text-base leading-7 text-white/58 md:text-lg md:leading-8">
+          <p className="mt-5 max-w-xl text-base leading-7 text-white md:text-lg md:leading-8">
             Let us understand your space and design goals.
           </p>
 
@@ -66,7 +65,7 @@ export default function ProjectProfileSection() {
               type="text"
               placeholder="Full Name"
               suppressHydrationWarning
-              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white/38 focus:border-[#f47a3c] md:text-base"
+              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#f47a3c] md:text-base"
             />
 
             <div className="grid gap-8 md:grid-cols-2">
@@ -74,14 +73,14 @@ export default function ProjectProfileSection() {
                 type="tel"
                 placeholder="Phone Number"
                 suppressHydrationWarning
-                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white/38 focus:border-[#f47a3c] md:text-base"
+                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#f47a3c] md:text-base"
               />
 
               <input
                 type="email"
                 placeholder="Email"
                 suppressHydrationWarning
-                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white/38 focus:border-[#f47a3c] md:text-base"
+                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#f47a3c] md:text-base"
               />
             </div>
 
@@ -89,14 +88,14 @@ export default function ProjectProfileSection() {
               type="text"
               placeholder="Project Type"
               suppressHydrationWarning
-              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white/38 focus:border-[#f47a3c] md:text-base"
+              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#f47a3c] md:text-base"
             />
 
             <textarea
               rows="2"
               placeholder="Describe Your Vision"
               suppressHydrationWarning
-              className="w-full resize-none border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white/38 focus:border-[#f47a3c] md:text-base"
+              className="w-full resize-none border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#f47a3c] md:text-base"
             />
 
             <CommonButton
@@ -125,10 +124,7 @@ export default function ProjectProfileSection() {
             "
           >
             Share Your <br />
-            Vision{" "}
-            <span className="inline-block align-baseline text-[#f47a3c]">
-              <BracketSpaces className="text-[0.78em]" />
-            </span>
+            Vision <span className="text-[#f47a3c]">Spaces</span>
           </h2>
 
           <div className="mt-10 max-w-[430px] space-y-7 md:mt-12 md:space-y-8">
@@ -137,7 +133,7 @@ export default function ProjectProfileSection() {
                 <Mail
                   size={20}
                   strokeWidth={1.6}
-                  className="shrink-0 text-white/80 transition group-hover:text-[#f47a3c]"
+                  className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
                 />
                 <h3 className="text-[15px] font-semibold text-white md:text-base">
                   Contact Our Studio
@@ -146,7 +142,7 @@ export default function ProjectProfileSection() {
 
               <a
                 href="mailto:uma@spacepalette.net"
-                className="mt-3 block pl-8 text-base leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-[17px]"
+                className="mt-3 block pl-8 text-base leading-relaxed text-white transition hover:text-[#f47a3c] md:text-[17px]"
               >
                 uma@spacepalette.net
               </a>
@@ -157,7 +153,7 @@ export default function ProjectProfileSection() {
                 <Phone
                   size={20}
                   strokeWidth={1.6}
-                  className="shrink-0 text-white/80 transition group-hover:text-[#f47a3c]"
+                  className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
                 />
                 <h3 className="text-[15px] font-semibold text-white md:text-base">
                   Speak With Our Studio
@@ -166,7 +162,7 @@ export default function ProjectProfileSection() {
 
               <a
                 href="tel:+918688098077"
-                className="mt-3 block pl-8 text-base leading-relaxed text-white/45 transition hover:text-[#f47a3c] md:text-[17px]"
+                className="mt-3 block pl-8 text-base leading-relaxed text-white transition hover:text-[#f47a3c] md:text-[17px]"
               >
                 +91 8688098077
               </a>
@@ -177,14 +173,14 @@ export default function ProjectProfileSection() {
                 <MapPin
                   size={20}
                   strokeWidth={1.6}
-                  className="shrink-0 text-white/80 transition group-hover:text-[#f47a3c]"
+                  className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
                 />
                 <h3 className="text-[15px] font-semibold text-white md:text-base">
                   Head Quarters
                 </h3>
               </div>
 
-              <p className="mt-3 block pl-8 text-base leading-7 text-white/45 md:text-[17px] md:leading-8">
+              <p className="mt-3 block pl-8 text-base leading-7 text-white md:text-[17px] md:leading-8">
                 No.46, 3rd Floor, GSquare Building,
                 <br />
                 Rajiv Gandhi Salai, OMR,
@@ -198,14 +194,14 @@ export default function ProjectProfileSection() {
                 <MapPin
                   size={20}
                   strokeWidth={1.6}
-                  className="shrink-0 text-white/80 transition group-hover:text-[#f47a3c]"
+                  className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
                 />
                 <h3 className="text-[15px] font-semibold text-white md:text-base">
                   Other Locations
                 </h3>
               </div>
 
-              <p className="mt-3 block pl-8 text-base leading-7 text-white/45 md:text-[17px] md:leading-8">
+              <p className="mt-3 block pl-8 text-base leading-7 text-white md:text-[17px] md:leading-8">
                 Bangalore, Hyderabad, Coimbatore.
               </p>
             </div>
