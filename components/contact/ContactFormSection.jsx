@@ -123,6 +123,7 @@ export default function ContactFormSection() {
               </div>
 
               <CommonButton
+                as="button"
                 type="submit"
                 className="w-full md:w-auto"
                 showIcon={false}

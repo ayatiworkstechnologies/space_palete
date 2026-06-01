@@ -8,8 +8,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const navLinks = [
+    { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
+
   { label: "Contact", href: "/contact" },
 ];
 
@@ -63,7 +64,7 @@ export default function Header() {
               className="origin-left"
             >
               <Image
-                src="/sp-logo-1.svg"
+                src="/sp-logo.png"
                 alt="Space Palette Logo"
                 width={150}
                 height={60}

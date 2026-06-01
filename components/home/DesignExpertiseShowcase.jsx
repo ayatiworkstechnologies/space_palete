@@ -80,12 +80,12 @@ export default function DesignExpertiseShowcase() {
           <div>
             <div className="mb-6 flex items-center gap-4 text-white lg:hidden">
               <span className="h-px w-10 bg-white/25" />
-              <span className="font-secondary text-xs uppercase tracking-[0.35em]">
+              <span className="font-secondary text-[10px] uppercase tracking-[0.28em]">
                 Chapter 02
               </span>
             </div>
 
-            <h2 className="max-w-sm text-5xl font-normal leading-[0.92] text-white md:text-7xl">
+            <h2 className="max-w-sm text-3xl font-medium leading-tight tracking-tight text-white md:text-5xl">
               Design
               <br />
               &amp; Expertise
@@ -104,14 +104,14 @@ export default function DesignExpertiseShowcase() {
                   >
                     <div className="flex items-baseline gap-3">
                       <span
-                        className={`text-lg transition duration-500 ${
+                        className={`text-base transition duration-500 ${
                           isActive ? "text-[#f47a3c]" : "text-white"
                         }`}
                       >
                         {project.number}
                       </span>
                       <h3
-                        className={`text-xl font-medium transition duration-500 ${
+                        className={`text-base font-medium transition duration-500 md:text-lg ${
                           isActive ? "text-white" : "text-white"
                         }`}
                       >
@@ -128,14 +128,15 @@ export default function DesignExpertiseShowcase() {
                     >
                       <div className="overflow-hidden">
                         <div className="ml-11 mt-5 max-w-sm">
-                          <p className="text-lg leading-7 text-white md:text-xl md:leading-8">
+                          <p className="text-base leading-7 text-white/90 md:text-lg md:leading-8">
                             {project.description}
                           </p>
                           <CommonButton
                             as={Link}
                             href={`/projects/${project.slug}`}
                             transitionTypes={["project-forward"]}
-                            className="mt-7 border-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-transparent hover:text-[#f47a3c] group-hover:border-[#f47a3c] group-hover:text-[#f47a3c]"
+                            variant="outline"
+                            className="mt-7 !px-5 !py-3 !text-[11px] group-hover:border-[#f47a3c]"
                             iconSize={16}
                           >
                             View Project
@@ -184,7 +185,7 @@ export default function DesignExpertiseShowcase() {
                 className="object-cover"
               />
             </div>
-            <p className="max-w-sm text-lg leading-7 text-white md:text-xl md:leading-8">
+            <p className="max-w-sm text-base leading-7 text-white/90 md:text-lg md:leading-8">
               {activeProject.type} in {activeProject.location}, shaped with
               precision, clarity, and purpose.
             </p>

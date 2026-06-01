@@ -42,7 +42,7 @@ export default function FaqSection() {
       <div className="relative z-10 mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         {/* Left Content */}
         <div>
-          <h2 className="text-5xl font-medium leading-[0.95] text-white md:text-7xl">
+          <h2 className="text-3xl font-medium leading-tight tracking-tight text-white md:text-5xl">
             Answers
             <br />
             for
@@ -52,7 +52,7 @@ export default function FaqSection() {
             <span className="text-[#f47a3c]">Spaces</span>
           </h2>
 
-          <p className="mt-10 max-w-sm text-lg leading-7 text-white md:text-xl md:leading-8">
+          <p className="mt-8 max-w-sm text-base leading-7 text-white/90 md:text-lg md:leading-8">
             Find clear answers to common questions about our design process,
             timelines, materials, and turnkey execution. We believe every
             successful project begins with transparency, thoughtful planning, and
@@ -76,7 +76,7 @@ export default function FaqSection() {
                 }`}
               >
                 <h3
-                  className={`text-lg font-semibold transition duration-300 md:text-xl ${
+                  className={`text-base font-semibold transition duration-300 md:text-lg ${
                     isActive ? "text-white" : "text-white"
                   }`}
                 >
@@ -91,7 +91,7 @@ export default function FaqSection() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <p className="max-w-3xl text-lg leading-7 text-white md:text-xl md:leading-8">
+                    <p className="max-w-3xl text-base leading-7 text-white/90 md:text-lg md:leading-8">
                       {faq.answer}
                     </p>
                   </div>

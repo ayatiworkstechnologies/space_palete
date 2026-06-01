@@ -16,7 +16,7 @@ export default function ContactHero() {
           <span className="text-white">something beautiful.</span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-xl text-base leading-7 tracking-[0.08em] text-white md:text-lg md:leading-8">
+        <p className="mx-auto mt-6 max-w-xl text-base leading-7 text-white/90 md:text-lg md:leading-8">
           Whether you have a specific project in mind or just want to explore the
           possibilities, our team is ready to listen, design, and deliver spaces
           that exceed your expectations.

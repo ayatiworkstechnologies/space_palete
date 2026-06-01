@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { projectEntries } from "@/components/project/projectData";
+import CommonButton from "@/components/CommonButton";
 
 function getProjectSequenceImages(project) {
   const images = [
@@ -113,41 +114,43 @@ function ProjectCard({ project, index }) {
           className="z-20 mt-auto w-full bg-gradient-to-t from-black via-black/80 to-transparent px-8 pb-8 pt-32 will-change-transform"
         >
           <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 border-b border-white/10 pb-6 md:flex-row md:items-end">
-            <div className="space-y-4">
-              <h2 className="max-w-xl text-3xl font-light tracking-wide md:text-5xl">
+            <div className="space-y-5">
+              <h2 className="max-w-[12ch] text-[34px] font-light leading-[0.98] tracking-tight md:text-[46px] lg:text-[54px]">
                 {project.title}
               </h2>
-              <Link
+              <CommonButton
+                as={Link}
                 href={`/projects/${project.slug}`}
                 transitionTypes={["project-forward"]}
-                className="group flex w-fit items-center gap-2 rounded-full border border-white/30 px-5 py-2 text-[10px] uppercase tracking-widest transition-all duration-300 hover:bg-white hover:text-black"
+                variant="outline"
+                className="!min-h-10 !px-5 !py-2 !text-[10px]"
+                iconSize={14}
               >
                 View Project
-                <span className="transition-transform group-hover:translate-x-1">-&gt;</span>
-              </Link>
+              </CommonButton>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 text-[10px] font-medium tracking-widest text-white/60 sm:grid-cols-4 md:gap-12 md:text-xs">
-              <div className="space-y-1">
-                <span className="block text-[8px] uppercase text-white/30 md:text-[9px]">
+            <div className="grid grid-cols-2 gap-6 text-[11px] font-medium tracking-[0.14em] text-white/72 sm:grid-cols-4 md:gap-12 md:text-[12px]">
+              <div className="space-y-2">
+                <span className="block text-[9px] uppercase tracking-[0.18em] text-white/36">
                   Direction
                 </span>
                 <p className="leading-relaxed">{project.studio}</p>
               </div>
-              <div className="space-y-1">
-                <span className="block text-[8px] uppercase text-white/30 md:text-[9px]">
+              <div className="space-y-2">
+                <span className="block text-[9px] uppercase tracking-[0.18em] text-white/36">
                   Typology
                 </span>
                 <p>{project.type}</p>
               </div>
-              <div className="space-y-1">
-                <span className="block text-[8px] uppercase text-white/30 md:text-[9px]">
+              <div className="space-y-2">
+                <span className="block text-[9px] uppercase tracking-[0.18em] text-white/36">
                   Location
                 </span>
                 <p>{project.location}</p>
               </div>
-              <div className="space-y-1">
-                <span className="block text-[8px] uppercase text-white/30 md:text-[9px]">
+              <div className="space-y-2">
+                <span className="block text-[9px] uppercase tracking-[0.18em] text-white/36">
                   Timeline
                 </span>
                 <p>{project.year}</p>

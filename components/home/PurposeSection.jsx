@@ -7,7 +7,7 @@ export default function PurposeSection() {
   return (
     <section id="about" className="relative min-h-[52vh] overflow-hidden bg-black px-6 py-12 text-white md:py-16">
       <div className="pointer-events-none absolute inset-0 bg-[url('/line.png')] bg-cover bg-center bg-no-repeat opacity-35 md:opacity-45" />
-      <DotPattern variant="radial" density="low" />
+      {/* <DotPattern variant="radial" density="low" /> */}
 
       <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center text-center">
         <h2 className="text-3xl font-medium tracking-tight md:text-5xl">

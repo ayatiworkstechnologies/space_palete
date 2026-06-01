@@ -102,7 +102,7 @@ export default function ProjectProfileSection() {
               as="button"
               type="submit"
               suppressHydrationWarning
-              className="border-white/70 py-3 font-semibold"
+              className="!py-3"
             >
               Discover Creations
             </CommonButton>

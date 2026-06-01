@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const services = [
   "Architecture",
@@ -15,30 +16,28 @@ const services = [
   "Structural Design",
 ];
 
-function ServiceIcon({ active }) {
+const topRow = services.slice(0, 5);
+const bottomRow = [
+  { title: "Sustainability", index: 8 },
+  { title: "Cost Consultancy", index: 7 },
+  { title: "MEP Design", index: 6 },
+  { title: "Structural Design", index: 5 },
+];
+
+function ServiceIcon({ active, iconNumber }) {
   return (
-    <div className={`relative h-12 w-12 transition duration-500 ${active ? "scale-110" : ""}`}>
-      <div className={`absolute bottom-0 left-0 h-1 w-full transition-colors duration-500 ${active ? "bg-[#f47a3c]" : "bg-white"}`} />
-      <div className={`absolute bottom-0 left-0 h-full w-1 transition-colors duration-500 ${active ? "bg-[#f47a3c]" : "bg-white"}`} />
-      <div className={`absolute bottom-0 right-0 h-full w-1 transition-colors duration-500 ${active ? "bg-[#f47a3c]" : "bg-white"}`} />
-      <div className={`absolute left-1/2 top-2 h-8 w-8 -translate-x-1/2 border-4 border-t-0 transition-colors duration-500 ${active ? "border-[#f47a3c]" : "border-white"}`}>
-        <div className={`absolute -top-3 left-1/2 h-6 w-6 -translate-x-1/2 rotate-45 border-l-4 border-t-4 transition-colors duration-500 ${active ? "border-[#f47a3c]" : "border-white"}`} />
-        <div className={`absolute bottom-0 left-1/2 h-4 w-2 -translate-x-1/2 transition-colors duration-500 ${active ? "bg-[#f47a3c]" : "bg-white"}`} />
-      </div>
-      {Array.from({ length: 6 }).map((_, index) => (
-        <span
-          key={index}
-          className="absolute bottom-0 h-2 w-1 bg-black"
-          style={{ left: `${8 + index * 6}px` }}
-        />
-      ))}
-      {Array.from({ length: 5 }).map((_, index) => (
-        <span
-          key={index}
-          className="absolute left-0 h-1 w-2 bg-black"
-          style={{ top: `${8 + index * 7}px` }}
-        />
-      ))}
+    <div
+      className={`relative h-12 w-12 transition duration-500 ${
+        active ? "scale-110 drop-shadow-[0_0_14px_rgba(244,122,60,0.45)]" : "opacity-95"
+      }`}
+    >
+      <Image
+        src={`/assets/icons/${iconNumber}.png`}
+        alt=""
+        fill
+        sizes="48px"
+        className="object-contain"
+      />
     </div>
   );
 }
@@ -55,7 +54,7 @@ function Connector({ position, active }) {
   );
 }
 
-function ServiceTile({ title, index, active }) {
+function ServiceTile({ title, index, active, className = "" }) {
   const number = String(index + 1).padStart(2, "0");
 
   return (
@@ -75,36 +74,58 @@ function ServiceTile({ title, index, active }) {
       }}
       className={`relative flex h-36 flex-col justify-between border px-4 py-4 transition-colors duration-500 sm:h-40 sm:px-5 ${
         active ? "border-[#f47a3c] shadow-[0_0_34px_rgba(244,122,60,0.12)]" : "border-white/10"
-      }`}
+      } ${className}`}
     >
       <div className="flex items-start justify-between">
         <span className={`select-none text-[56px] font-bold leading-none tracking-[-0.12em] transition-colors duration-500 sm:text-[72px] ${active ? "text-[#f47a3c]/80" : "text-white/35"}`}>
           {number}
         </span>
-        <ServiceIcon active={active} />
+        <ServiceIcon active={active} iconNumber={index + 1} />
       </div>
       <h3 className={`text-center text-[17px] font-semibold leading-7 tracking-[0.24em] transition-colors duration-500 sm:text-[19px] ${active ? "text-[#f47a3c]" : "text-white"}`}>
         {title}
       </h3>
       {index < 4 && <Connector position="top" active={active} />}
-      {index > 4 && <Connector position="bottom" active={active} />}
+      {index > 4 && index < 8 && <Connector position="bottom" active={active} />}
     </motion.article>
   );
 }
 
 export default function ServicesProcess() {
+  const sectionRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return undefined;
+
+    let visible = false;
     const interval = window.setInterval(() => {
+      if (!visible) return;
       setActiveIndex((currentIndex) => (currentIndex + 1) % services.length);
     }, 1400);
 
-    return () => window.clearInterval(interval);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visible = entry.isIntersecting;
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(section);
+
+    return () => {
+      window.clearInterval(interval);
+      observer.disconnect();
+    };
   }, []);
 
   return (
-    <section id="services" className="relative overflow-hidden bg-black px-6 py-16 text-white md:px-12 lg:px-20">
+    <section
+      id="services"
+      ref={sectionRef}
+      className="relative overflow-hidden bg-black px-6 py-16 text-white md:px-12 lg:px-20"
+    >
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -125,7 +146,7 @@ export default function ServicesProcess() {
         </motion.div>
 
         <div className="relative mx-auto mt-12 grid max-w-[1000px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {services.slice(0, 5).map((service, index) => (
+          {topRow.map((service, index) => (
             <ServiceTile
               key={service}
               title={service}
@@ -133,24 +154,23 @@ export default function ServicesProcess() {
               active={index === activeIndex}
             />
           ))}
+
+          {bottomRow.map((service, index) => (
+            <ServiceTile
+              key={service.title}
+              title={service.title}
+              index={service.index}
+              active={service.index === activeIndex}
+              className={index === 0 ? "lg:col-start-2" : ""}
+            />
+          ))}
+
+          <div
+            className={`pointer-events-none hidden rounded-r-lg border-y border-r transition-colors duration-500 lg:absolute lg:bottom-[70px] lg:right-[-46px] lg:block lg:h-[164px] lg:w-[46px] ${
+              activeIndex >= 4 && activeIndex <= 5 ? "border-[#f47a3c]" : "border-white/70"
+            }`}
+          />
         </div>
-
-        <div className="relative mx-auto mt-5 grid max-w-[784px] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {services.slice(5).map((service, index) => {
-            const visualIndex = services.length - index - 1;
-
-            return (
-              <ServiceTile
-                key={service}
-                title={service}
-                index={visualIndex}
-                active={visualIndex === activeIndex}
-              />
-            );
-          })}
-        </div>
-
-        <div className={`pointer-events-none absolute right-[7.6%] top-[49%] hidden h-[160px] w-[46px] rounded-r-lg border-y border-r transition-colors duration-500 lg:block ${activeIndex >= 4 && activeIndex <= 5 ? "border-[#f47a3c]" : "border-white/70"}`} />
       </div>
     </section>
   );

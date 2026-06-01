@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState, ViewTransition } from "react";
 import { projectEntries } from "./projectData";
 
@@ -64,11 +64,11 @@ export default function ProjectList() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="mb-10"
         >
-          <p className="mb-4 text-[11px] uppercase tracking-[0.35em] text-white">
+          <p className="mb-4 text-[10px] uppercase tracking-[0.28em] text-white/80">
             Selected Works
           </p>
 
-          <h2 className="text-[42px] font-light tracking-[-0.04em] md:text-[72px]">
+          <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
             Projects
           </h2>
         </motion.div>

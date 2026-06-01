@@ -12,9 +12,9 @@ export default function AboutHero() {
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.14]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.8, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.12]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const opacity = useTransform(scrollYProgress, [0, 0.82, 1], [1, 0.9, 0.08]);
 
   const smoothScale = useSpring(scale, {
     stiffness: 80,
@@ -42,8 +42,8 @@ export default function AboutHero() {
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-black/8" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/5" />
+      <div className="absolute inset-0 bg-black/5" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-black/5" />
 
       <div className="relative z-10 flex h-full items-center justify-center px-6">
         <motion.div

@@ -8,12 +8,19 @@ export default function CommonButton({
   className = "",
   iconSize = 17,
   showIcon = true,
+  variant = "solid",
   ...props
 }) {
+  const variantClassName =
+    variant === "outline"
+      ? "border border-white/30 bg-transparent text-white hover:border-[#f47a3c]"
+      : "bg-white text-black";
+
   const baseClassName = `
-    group relative inline-flex items-center justify-center gap-3 overflow-hidden 
-    bg-white text-black px-8 py-4 text-[12px] uppercase tracking-[0.25em] 
-    font-medium transition-transform active:scale-[0.98] ${className}
+    group relative inline-flex min-h-11 items-center justify-center gap-3 overflow-hidden 
+    px-7 py-3 text-[11px] uppercase tracking-[0.22em] 
+    font-semibold leading-none transition-transform active:scale-[0.98]
+    ${variantClassName} ${className}
   `.trim();
 
   return (
