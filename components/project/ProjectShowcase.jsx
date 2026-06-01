@@ -228,8 +228,8 @@ export default function ProjectShowcase({ project }) {
             })}
 
             {nextProject && (
-              <section className="ml-12 inline-flex h-[80vh] select-none items-start gap-12 whitespace-normal align-middle md:ml-24 md:gap-24">
-                <div className="flex h-full w-[260px] flex-col justify-between pt-12 md:w-[300px]">
+              <section className="ml-10 inline-flex h-[80vh] w-[100vw] select-none items-start justify-between gap-8 whitespace-normal align-middle pr-10 md:ml-16 md:gap-12 md:pr-16">
+                <div className="flex h-full w-[250px] shrink-0 flex-col justify-between pt-12 md:w-[310px]">
                   <div>
                     <span className="mb-1 block text-xs font-semibold tracking-widest text-white/45">
                       Next Project
@@ -251,7 +251,7 @@ export default function ProjectShowcase({ project }) {
                   transitionTypes={["project-forward"]}
                   onMouseEnter={() => setCursorTipText("Click")}
                   onMouseLeave={() => setCursorTipText("Scroll")}
-                  className="group relative h-full w-[70vw] cursor-pointer overflow-hidden bg-neutral-900 md:w-[40vw]"
+                  className="group relative h-full w-[calc(100vw-330px)] cursor-pointer overflow-hidden bg-neutral-900 md:w-[58vw]"
                 >
                   <div className="absolute inset-0 z-10 bg-neutral-950/0 transition-colors duration-500 group-hover:bg-neutral-950/10" />
                   <motion.div
@@ -263,7 +263,7 @@ export default function ProjectShowcase({ project }) {
                       src={nextProject.coverImage}
                       alt={`${nextProject.title} preview`}
                       fill
-                      sizes="(max-width: 768px) 70vw, 40vw"
+                      sizes="(max-width: 768px) calc(100vw - 330px), 58vw"
                       className="object-cover"
                     />
                   </motion.div>
