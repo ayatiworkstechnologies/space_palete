@@ -10,6 +10,57 @@ function uniqueImages(images) {
   return [...new Set(images.filter(Boolean))];
 }
 
+function getImagePanelSize(image) {
+  const fileName = image.split("/").pop();
+  const wideImages = new Set([
+    "project-1.png",
+    "project-2.png",
+    "project-hero.png",
+    "projects-hero.png",
+    "spacepalette-1.png",
+    "spacepalette-2.png",
+    "spacepalette-5.png",
+    "spacepalette-6.png",
+    "dfmc-1.png",
+    "dfmc-2.png",
+    "vrx-terrace.png",
+    "vrx-terrace-2.png",
+    "vrx-terrace-4.png",
+    "vrx-terrace-5.png",
+  ]);
+  const portraitImages = new Set([
+    "project-1-1.png",
+    "project-1-2.png",
+    "project-1-3.png",
+    "project-intro.png",
+    "spacepalette-3.png",
+    "spacepalette-4.png",
+    "spacepalette-7.png",
+    "spacepalette-8.png",
+    "vrx-terrace-1.png",
+    "vrx-terrace-6.png",
+  ]);
+
+  if (wideImages.has(fileName)) {
+    return {
+      className: "w-[86vw] md:w-[76vw]",
+      sizes: "(max-width: 768px) 86vw, 76vw",
+    };
+  }
+
+  if (portraitImages.has(fileName)) {
+    return {
+      className: "w-[58vw] md:w-[34vw]",
+      sizes: "(max-width: 768px) 58vw, 34vw",
+    };
+  }
+
+  return {
+    className: "w-[70vw] md:w-[46vw]",
+    sizes: "(max-width: 768px) 70vw, 46vw",
+  };
+}
+
 export default function ProjectShowcase({ project }) {
   const targetRef = useRef(null);
   const [showCursorTip, setShowCursorTip] = useState(false);
@@ -156,38 +207,22 @@ export default function ProjectShowcase({ project }) {
             )}
 
             {galleryImages.slice(1).map((image, index) => {
-              const nextImage = galleryImages[index + 2];
-
-              if (index % 2 === 1) {
-                return null;
-              }
+              const panelSize = getImagePanelSize(image);
 
               return (
                 <section
                   key={`${image}-${index}`}
-                  className="inline-flex h-[80vh] gap-8 align-middle"
+                  className="inline-flex h-[80vh] align-middle"
                 >
-                  <div className="group relative h-full w-[45vw] overflow-hidden bg-neutral-900">
+                  <div className={`group relative h-full overflow-hidden bg-neutral-900 ${panelSize.className}`}>
                     <Image
                       src={image}
                       alt={`${project.title} interior view ${index + 1}`}
                       fill
-                      sizes="45vw"
+                      sizes={panelSize.sizes}
                       className="object-cover grayscale-[15%] transition-all duration-700 group-hover:grayscale-0"
                     />
                   </div>
-
-                  {nextImage && (
-                    <div className="group relative h-full w-[35vw] overflow-hidden bg-neutral-900">
-                      <Image
-                        src={nextImage}
-                        alt={`${project.title} detail view ${index + 2}`}
-                        fill
-                        sizes="35vw"
-                        className="object-cover grayscale-[15%] transition-all duration-700 group-hover:grayscale-0"
-                      />
-                    </div>
-                  )}
                 </section>
               );
             })}

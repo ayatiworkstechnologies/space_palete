@@ -25,7 +25,7 @@ export default function ProjectDetailsIntro({ project }) {
               </span>
             </h2>
 
-            <div className="mt-8 max-w-xl space-y-6 text-lg leading-8 tracking-[0.08em] text-white md:text-xl md:leading-9">
+            <div className="mt-7 max-w-xl space-y-5 text-[16px] leading-8 tracking-[0.035em] text-white/90 md:text-[17px] md:leading-9">
               {project.description.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}

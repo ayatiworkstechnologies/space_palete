@@ -80,29 +80,29 @@ function ProjectCard({ project, index }) {
         </motion.div>
 
         <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
-          <div className="relative flex h-full w-full max-w-5xl flex-col items-center justify-center gap-8 px-8 md:flex-row md:gap-24">
+          <div className="relative flex h-full w-full max-w-[1500px] flex-col items-center justify-center gap-8 px-6 md:flex-row md:gap-14 lg:gap-20">
             <motion.div
               style={{ y: yImage1, opacity: opacityImage1 }}
-              className="pointer-events-auto relative h-[340px] w-[260px] overflow-hidden rounded-sm border border-white/5 shadow-2xl will-change-transform md:h-[440px] md:w-[320px]"
+              className="pointer-events-auto relative h-[320px] w-[min(88vw,620px)] overflow-hidden rounded-sm border border-white/5 shadow-2xl will-change-transform md:h-[480px] md:w-[620px] lg:w-[760px]"
             >
               <Image
                 src={firstImage}
                 alt={`${project.title} sequence 1`}
                 fill
-                sizes="(max-width: 768px) 260px, 320px"
+                sizes="(max-width: 768px) 88vw, (max-width: 1024px) 620px, 760px"
                 className="object-cover"
               />
             </motion.div>
 
             <motion.div
               style={{ y: yImage2, opacity: opacityImage2 }}
-              className="pointer-events-auto relative h-[280px] w-[220px] overflow-hidden rounded-sm border border-white/5 shadow-2xl will-change-transform md:mt-32 md:h-[380px] md:w-[280px]"
+              className="pointer-events-auto relative h-[270px] w-[min(82vw,540px)] overflow-hidden rounded-sm border border-white/5 shadow-2xl will-change-transform md:mt-28 md:h-[410px] md:w-[540px] lg:w-[640px]"
             >
               <Image
                 src={secondImage}
                 alt={`${project.title} sequence 2`}
                 fill
-                sizes="(max-width: 768px) 220px, 280px"
+                sizes="(max-width: 768px) 82vw, (max-width: 1024px) 540px, 640px"
                 className="object-cover"
               />
             </motion.div>

@@ -21,7 +21,7 @@ export default function ContactMapSection() {
           </h2>
         </div>
 
-        <div className="overflow-hidden rounded-[28px] border border-white/10">
+        <div className="overflow-hidden rounded border border-white/10">
           <iframe
             title="Space Palette Headquarters Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.090288433109!2d80.2470228!3d12.9660741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dc59fa73829%3A0x3b819ec17a867e8d!2sSpace%20Palette!5e0!3m2!1sen!2sin!4v1779949372561!5m2!1sen!2sin"

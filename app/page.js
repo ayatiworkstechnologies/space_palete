@@ -1,15 +1,11 @@
-import ExpertiseSection from "@/components/home/ExpertiseSection";
-import DesignExpertiseShowcase from "@/components/home/DesignExpertiseShowcase";
 import Hero from "@/components/home/hero";
 import ProjectProfileSection from "@/components/home/ProjectProfileSection";
 import PurposeSection from "@/components/home/PurposeSection";
 import TrustSection from "@/components/home/TrustSection";
 import VisualStorySection from "@/components/home/VisualStorySection";
-import FaqSection from "@/components/home/FaqSection";
 import ScrollMotion from "@/components/home/ScrollMotion";
 import HbaStylePage from "@/components/home/HbaStylePage";
 import BackgroundVectors from "@/components/layouts/BackgroundVectors";
-import ProjectScrollShowcase from "@/components/home/ProjectScrollShowcase";
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
@@ -56,16 +52,11 @@ export default function Home() {
       <div className="relative z-10">
         <Hero />
         <PurposeSection />
-        {/* <DesignExpertiseShowcase /> */}
-        {/* <ExpertiseSection /> */}
         <HbaStylePage />
-       
-        {/* <ProjectScrollShowcase /> */}
         <TrustSection />
         <VisualStorySection />
         <ProjectProfileSection />
       </div>
-      {/* <FaqSection /> */}
     </main>
   );
 }

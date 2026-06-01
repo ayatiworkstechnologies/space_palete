@@ -12,14 +12,14 @@ export default function ProjectList() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
-  const springConfig = { damping: 25, stiffness: 150, mass: 0.5 };
+  const springConfig = { damping: 28, stiffness: 220, mass: 0.45 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
     const moveCursor = (e) => {
-      cursorX.set(e.clientX - 50); // offset by half width (100px / 2)
-      cursorY.set(e.clientY - 50);
+      cursorX.set(e.clientX + 18);
+      cursorY.set(e.clientY + 18);
     };
     
     window.addEventListener("mousemove", moveCursor);
@@ -42,7 +42,7 @@ export default function ProjectList() {
       
       {/* Custom Cursor Follower */}
       <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[100] flex h-[100px] w-[100px] items-center justify-center rounded-full bg-white/10 backdrop-blur-md text-[11px] font-semibold uppercase tracking-[0.2em] text-white"
+        className="pointer-events-none fixed left-0 top-0 z-[100] hidden rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-md md:block"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -92,7 +92,7 @@ export default function ProjectList() {
               <Link
                 href={`/projects/${project.slug}`}
                 transitionTypes={["project-forward"]}
-                className="cursor-none"
+                className="md:cursor-none"
               >
                 <div className="relative h-[360px] overflow-hidden md:h-[520px]">
                   <ViewTransition
