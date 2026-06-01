@@ -19,7 +19,7 @@ const founders = [
 
 export default function FoundersSection() {
   return (
-    <section className="relative bg-black px-6 py-12 text-white md:px-12 md:py-20">
+    <section className="relative bg-black px-6 py-10 text-white md:px-12 md:py-16">
       {/* <DotPattern variant="radial" density="low" accent /> */}
       <motion.div
         initial={{ opacity: 0, y: 55 }}
@@ -56,6 +56,7 @@ export default function FoundersSection() {
                   src={founder.image}
                   alt={founder.name}
                   fill
+                  sizes="(max-width: 768px) 100vw, 260px"
                   className="object-contain object-bottom transition duration-700 group-hover:scale-105"
                 />
               </div>

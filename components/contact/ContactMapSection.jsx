@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function ContactMapSection() {
   return (
-    <section className="px-6 pb-14 md:px-12 md:pb-20 lg:px-20">
+    <section className="px-6 pb-10 md:px-12 md:pb-14 lg:px-20">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

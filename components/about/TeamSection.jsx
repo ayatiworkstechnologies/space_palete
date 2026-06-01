@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function TeamSection() {
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-14 text-white md:px-12 md:py-20">
+    <section className="relative overflow-hidden bg-black px-6 py-10 text-white md:px-12 md:py-16">
       <motion.div
         initial={{ opacity: 0, y: 55 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -33,6 +33,7 @@ export default function TeamSection() {
             src="/assets/about/teams.png"
             alt="Space Palette Team"
             fill
+            sizes="(max-width: 1024px) 100vw, 1024px"
             className="object-contain object-bottom"
           />
         </motion.div>

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function ContactHero() {
   return (
-    <section className="relative px-6 py-12 md:px-12 md:py-20 lg:px-20 text-center">
+    <section className="relative px-6 py-10 md:px-12 md:py-16 lg:px-20 text-center">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -20,7 +20,7 @@ export default function ContactHero() {
           <span className="text-white">something beautiful.</span>
         </h1>
 
-        <p className="mx-auto mt-8 max-w-xl text-[13px] leading-7 tracking-[0.18em] text-white md:text-[14px]">
+        <p className="mx-auto mt-6 max-w-xl text-base leading-7 tracking-[0.08em] text-white md:text-lg md:leading-8">
           Whether you have a specific project in mind or just want to explore the
           possibilities, our team is ready to listen, design, and deliver spaces
           that exceed your expectations.

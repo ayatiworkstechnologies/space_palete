@@ -9,6 +9,7 @@ import FaqSection from "@/components/home/FaqSection";
 import ScrollMotion from "@/components/home/ScrollMotion";
 import HbaStylePage from "@/components/home/HbaStylePage";
 import BackgroundVectors from "@/components/layouts/BackgroundVectors";
+import ProjectScrollShowcase from "@/components/home/ProjectScrollShowcase";
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
@@ -55,9 +56,10 @@ export default function Home() {
       <div className="relative z-10">
         <Hero />
         <PurposeSection />
-      {/* <DesignExpertiseShowcase />
+        {/* <DesignExpertiseShowcase />
       <ExpertiseSection /> */}
         <HbaStylePage />
+        {/* <ProjectScrollShowcase /> */}
         <TrustSection />
         <VisualStorySection />
         <ProjectProfileSection />

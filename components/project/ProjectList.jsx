@@ -27,7 +27,7 @@ export default function ProjectList() {
   }, [cursorX, cursorY]);
 
   return (
-    <section className="relative bg-black px-6 py-14 text-white md:px-12 md:py-20 lg:px-20">
+    <section className="relative bg-black px-6 py-12 text-white md:px-12 md:py-16 lg:px-20">
       
       {/* Custom Cursor Follower */}
       <motion.div
@@ -84,6 +84,7 @@ export default function ProjectList() {
                     src={project.coverImage}
                     alt={project.title}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
                     className="object-cover transition duration-[1200ms] group-hover:scale-110"
                   />
 

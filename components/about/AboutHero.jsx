@@ -37,6 +37,7 @@ export default function AboutHero() {
           alt="About Space Palette"
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
       </motion.div>

@@ -58,7 +58,7 @@ function ProcessStep({ step, index }) {
   return (
     <div
       ref={ref}
-      className={`grid items-center gap-12 py-14 md:grid-cols-2 md:py-20 ${
+      className={`grid items-center gap-12 py-10 md:grid-cols-2 md:py-14 ${
         reverse ? "md:[&>*:first-child]:order-2" : ""
       }`}
     >
@@ -97,6 +97,7 @@ function ProcessStep({ step, index }) {
             src={step.image}
             alt={step.title}
             fill
+            sizes="(max-width: 768px) 100vw, 360px"
             className="object-cover"
           />
         </motion.div>
@@ -107,7 +108,7 @@ function ProcessStep({ step, index }) {
 
 export default function ServicesProcess() {
   return (
-    <section id="services" className="relative bg-black px-6 py-16 text-white md:px-12 lg:px-20">
+    <section id="services" className="relative bg-black px-6 py-12 text-white md:px-12 lg:px-20">
       <DotPattern variant="stardust" density="low" />
       <div className="mx-auto max-w-6xl">
         <motion.div

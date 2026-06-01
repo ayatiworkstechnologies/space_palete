@@ -8,7 +8,7 @@ export default function ProjectProfileSection() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-black px-6 py-10 text-white md:py-16 lg:px-14 xl:px-10"
+      className="relative overflow-hidden bg-black px-6 py-8 text-white md:py-12 lg:px-14 xl:px-10"
     >
       {/* Moving dotted background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -52,11 +52,11 @@ export default function ProjectProfileSection() {
           transition={{ delay: 0.12, duration: 0.85, ease: "easeOut" }}
           className="w-full"
         >
-          <h2 className="text-[36px] font-medium leading-[1.02] tracking-[-0.04em] md:text-[50px] lg:text-[54px]">
+          <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
             Project Profile
           </h2>
 
-          <p className="mt-5 max-w-xl text-base leading-7 text-white md:text-lg md:leading-8">
+          <p className="mt-5 max-w-xl text-lg leading-8 text-white md:text-xl md:leading-9">
             Let us understand your space and design goals.
           </p>
 
@@ -119,15 +119,14 @@ export default function ProjectProfileSection() {
         >
           <h2
             className="
-              max-w-[420px] text-[36px] font-medium leading-[1.02]
-              tracking-[-0.045em] md:text-[50px] lg:text-[56px]
+              max-w-[420px] text-3xl font-medium tracking-tight md:text-5xl
             "
           >
             Share Your <br />
             Vision <span className="text-[#f47a3c]">Spaces</span>
           </h2>
 
-          <div className="mt-10 max-w-[430px] space-y-7 md:mt-12 md:space-y-8">
+          <div className="mt-8 max-w-[430px] space-y-6 md:mt-10 md:space-y-7">
             <div className="group">
               <div className="flex items-center gap-3">
                 <Mail
@@ -135,14 +134,14 @@ export default function ProjectProfileSection() {
                   strokeWidth={1.6}
                   className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
                 />
-                <h3 className="text-[15px] font-semibold text-white md:text-base">
+                <h3 className="text-[14px] font-semibold text-white md:text-[15px]">
                   Contact Our Studio
                 </h3>
               </div>
 
               <a
                 href="mailto:uma@spacepalette.net"
-                className="mt-3 block pl-8 text-base leading-relaxed text-white transition hover:text-[#f47a3c] md:text-[17px]"
+                className="mt-2 block pl-8 text-[14px] leading-relaxed text-white transition hover:text-[#f47a3c] md:text-base"
               >
                 uma@spacepalette.net
               </a>
@@ -155,14 +154,14 @@ export default function ProjectProfileSection() {
                   strokeWidth={1.6}
                   className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
                 />
-                <h3 className="text-[15px] font-semibold text-white md:text-base">
+                <h3 className="text-[14px] font-semibold text-white md:text-[15px]">
                   Speak With Our Studio
                 </h3>
               </div>
 
               <a
                 href="tel:+917338811688"
-                className="mt-3 block pl-8 text-base leading-relaxed text-white transition hover:text-[#f47a3c] md:text-[17px]"
+                className="mt-2 block pl-8 text-[14px] leading-relaxed text-white transition hover:text-[#f47a3c] md:text-base"
               >
                 +91 7338811688
               </a>
@@ -175,12 +174,12 @@ export default function ProjectProfileSection() {
                   strokeWidth={1.6}
                   className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
                 />
-                <h3 className="text-[15px] font-semibold text-white md:text-base">
+                <h3 className="text-[14px] font-semibold text-white md:text-[15px]">
                   Head Quarters
                 </h3>
               </div>
 
-              <p className="mt-3 block pl-8 text-base leading-7 text-white md:text-[17px] md:leading-8">
+              <p className="mt-2 block pl-8 text-[14px] leading-6 text-white md:text-base md:leading-7">
                 No.46, 3rd Floor, GSquare Building,
                 <br />
                 Rajiv Gandhi Salai, OMR,
@@ -196,12 +195,12 @@ export default function ProjectProfileSection() {
                   strokeWidth={1.6}
                   className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
                 />
-                <h3 className="text-[15px] font-semibold text-white md:text-base">
+                <h3 className="text-[14px] font-semibold text-white md:text-[15px]">
                   Other Locations
                 </h3>
               </div>
 
-              <p className="mt-3 block pl-8 text-base leading-7 text-white md:text-[17px] md:leading-8">
+              <p className="mt-2 block pl-8 text-[14px] leading-6 text-white md:text-base md:leading-7">
                 Bangalore, Hyderabad, Coimbatore.
               </p>
             </div>

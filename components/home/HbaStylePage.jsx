@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import { useRef } from "react";
 import { projectEntries } from "@/components/project/projectData";
 import CommonButton from "@/components/CommonButton";
@@ -15,44 +20,170 @@ function ProjectShowcaseCard({ project, index }) {
     offset: ["start end", "end start"],
   });
 
-  // Scroll-driven dramatic growth animation
-  const imageScale = useTransform(
+  /*
+    IMPORTANT:
+    Add stackImages in projectData like this:
+
+    stackImages: [
+      "/projects/project-1-img-1.jpg",
+      "/projects/project-1-img-2.jpg",
+    ]
+
+    If stackImages not available, coverImage will be used.
+  */
+  const firstImage = project.stackImages?.[0] || project.coverImage;
+  const secondImage = project.stackImages?.[1] || project.coverImage;
+
+  // Main section entrance / exit
+  const bgOpacity = useTransform(
     scrollYProgress,
-    [0, 0.35, 1],
-    [0.35, 1, 0.85]
+    [0, 0.12, 0.82, 1],
+    [0, 1, 1, 0]
   );
 
-  const imageRadius = useTransform(
+  const bgScale = useTransform(
     scrollYProgress,
-    [0, 0.35, 1],
-    [150, 12, 40]
+    [0, 0.2, 0.75, 1],
+    [1.16, 1, 1.04, 1.12]
   );
 
-  const imageOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.15, 0.35],
-    [0, 0.5, 1]
-  );
-
-  const smoothImageScale = useSpring(imageScale, {
-    stiffness: 65,
-    damping: 32,
-    mass: 1,
+  const smoothBgScale = useSpring(bgScale, {
+    stiffness: 70,
+    damping: 30,
+    mass: 0.8,
   });
+
+  // Image 1 animation
+  const imageOneY = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.45, 0.62],
+    ["6%", "0%", "-8%", "-100%"]
+  );
+
+  const imageOneScale = useTransform(
+    scrollYProgress,
+    [0, 0.35, 0.62],
+    [1.12, 1, 1.08]
+  );
+
+  const imageOneOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.12, 0.48, 0.62],
+    [0, 1, 1, 0]
+  );
+
+  // Image 2 animation
+  const imageTwoY = useTransform(
+    scrollYProgress,
+    [0.38, 0.58, 0.82, 1],
+    ["100%", "0%", "0%", "-8%"]
+  );
+
+  const imageTwoScale = useTransform(
+    scrollYProgress,
+    [0.38, 0.62, 1],
+    [1.12, 1, 1.08]
+  );
+
+  const imageTwoOpacity = useTransform(
+    scrollYProgress,
+    [0.38, 0.52, 0.86, 1],
+    [0, 1, 1, 0]
+  );
+
+  // Bottom card sticky animation
+  const cardY = useTransform(
+    scrollYProgress,
+    [0, 0.18, 0.82, 1],
+    [80, 0, 0, -70]
+  );
+
+  const cardOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.14, 0.84, 1],
+    [0, 1, 1, 0]
+  );
+
+  // Number animation
+  const numberY = useTransform(
+    scrollYProgress,
+    [0, 0.2, 0.82, 1],
+    [60, 0, 0, -50]
+  );
+
+  const numberOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.14, 0.84, 1],
+    [0, 1, 1, 0]
+  );
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[130vh] bg-black"
+      className="relative h-[230vh] bg-black"
       style={{ zIndex: projectEntries.length - index }}
     >
-      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-black">
-        {/* Blinking dot particles */}
+      <div className="sticky top-0 h-screen overflow-hidden bg-black text-white">
+        {/* Full Screen Stack Background Images */}
+        <motion.div
+          style={{
+            opacity: bgOpacity,
+            scale: smoothBgScale,
+          }}
+          className="absolute inset-0"
+        >
+          {/* Image 1 */}
+          <motion.div
+            style={{
+              y: imageOneY,
+              scale: imageOneScale,
+              opacity: imageOneOpacity,
+            }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={firstImage}
+              alt={`${project.title} image 1`}
+              fill
+              priority={index === 0}
+              sizes="100vw"
+              className="object-cover"
+            />
+          </motion.div>
+
+          {/* Image 2 */}
+          <motion.div
+            style={{
+              y: imageTwoY,
+              scale: imageTwoScale,
+              opacity: imageTwoOpacity,
+            }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={secondImage}
+              alt={`${project.title} image 2`}
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Premium Dark Overlay */}
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-x-0 top-0 h-[32%] bg-gradient-to-b from-black/60 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[62%] bg-gradient-to-t from-black via-black/60 to-transparent" />
+
+        {/* Small Blinking Particles */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           {Array.from({ length: 18 }).map((_, i) => (
             <span
               key={i}
-              className={`absolute block rounded-full ${i % 3 === 0 ? "dot-blink-glow bg-[#f47a3c]/50" : "dot-blink-soft bg-white/40"}`}
+              className={`absolute block rounded-full ${i % 3 === 0
+                ? "dot-blink-glow bg-[#f47a3c]/45"
+                : "dot-blink-soft bg-white/35"
+                }`}
               style={{
                 left: `${(i * 29 + 7) % 100}%`,
                 top: `${(i * 37 + 13) % 100}%`,
@@ -65,59 +196,40 @@ function ProjectShowcaseCard({ project, index }) {
           ))}
         </div>
 
-        {/* Project Number */}
+        {/* Bottom Sticky Project Card */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="pointer-events-none absolute right-5 top-20 z-0 text-[90px] font-light leading-none tracking-[-0.08em] text-white/6 md:right-10 md:text-[180px] lg:text-[230px]"
+          style={{
+            y: cardY,
+            opacity: cardOpacity,
+          }}
+          className="
+            absolute bottom-0 left-0 z-30 w-full
+            px-5 pb-7
+            md:px-10 md:pb-10
+            lg:px-14 lg:pb-12
+          "
         >
-          0{index + 1}
-        </motion.div>
-
-        <div className="relative z-10 mx-auto grid w-full max-w-[1500px] gap-8 px-5 py-20 md:px-10 lg:px-14">
-          {/* Image */}
-          <motion.div
-            style={{
-              scale: smoothImageScale,
-              borderRadius: imageRadius,
-              opacity: imageOpacity,
-            }}
+          <div
             className="
-              relative mx-auto h-[350px] w-full overflow-hidden
-              md:h-[560px] md:w-[88%]
-              lg:h-[630px] lg:w-[84%]
+              mx-auto flex w-full max-w-[1500px] flex-col gap-7
+              border-t border-white/25 pt-6
+              md:grid md:grid-cols-[1.05fr_1.4fr]
+              md:items-end md:gap-10
             "
           >
-            <Image
-              src={project.coverImage}
-              alt={project.title}
-              fill
-              priority={index === 0}
-              sizes="(max-width: 768px) 100vw, 84vw"
-              className="object-cover"
-            />
-          </motion.div>
-
-          {/* Bottom Content */}
-          <div className="grid items-end gap-8 md:grid-cols-[1.15fr_1.35fr]">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.9,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-            >
-              <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.34em] text-white">
+            {/* Left Content */}
+            <div>
+              <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.36em] text-white/80">
                 Selected Project
               </p>
 
               <h2
                 className="
-                  max-w-[12ch] text-[42px] font-light leading-[0.92]
+                  max-w-[11ch] text-[42px] font-light leading-[0.9]
                   tracking-[-0.06em] text-white
-                  md:text-[68px] lg:text-[86px]
+                  sm:text-[54px]
+                  md:text-[74px]
+                  lg:text-[96px]
                 "
               >
                 {project.title}
@@ -130,52 +242,65 @@ function ProjectShowcaseCard({ project, index }) {
               >
                 View Project
               </CommonButton>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.9,
-                delay: 0.15,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+            {/* Right Project Details */}
+            <div
               className="
-                grid gap-5 border-t border-white/15 pt-6
-                text-xs font-semibold uppercase tracking-[0.14em]
-                text-white md:grid-cols-4 md:border-t-0 md:pt-0
+                grid gap-5 text-[11px] font-semibold uppercase
+                tracking-[0.16em] text-white
+                sm:grid-cols-2
+                md:grid-cols-4 md:pb-2
               "
             >
               <div>
-                <p className="mb-2 text-[10px] tracking-[0.28em] text-white">
+                <p className="mb-2 text-[9px] tracking-[0.3em] text-white/55">
                   Studio
                 </p>
                 <p>{project.studio}</p>
               </div>
 
               <div>
-                <p className="mb-2 text-[10px] tracking-[0.28em] text-white">
+                <p className="mb-2 text-[9px] tracking-[0.3em] text-white/55">
                   Type
                 </p>
                 <p>{project.type}</p>
               </div>
 
               <div>
-                <p className="mb-2 text-[10px] tracking-[0.28em] text-white">
+                <p className="mb-2 text-[9px] tracking-[0.3em] text-white/55">
                   Location
                 </p>
                 <p>{project.location}</p>
               </div>
 
               <div>
-                <p className="mb-2 text-[10px] tracking-[0.28em] text-white">
+                <p className="mb-2 text-[9px] tracking-[0.3em] text-white/55">
                   Year
                 </p>
                 <p>{project.year}</p>
               </div>
-            </motion.div>
+            </div>
           </div>
-        </div>
+        </motion.div>
+
+        {/* Bottom Right Number */}
+        <motion.div
+          style={{
+            y: numberY,
+            opacity: numberOpacity,
+          }}
+          className="
+            pointer-events-none absolute bottom-6 right-5 z-20
+            text-[82px] font-light leading-none tracking-[-0.08em]
+            text-white/20
+            sm:text-[110px]
+            md:bottom-8 md:right-10 md:text-[160px]
+            lg:bottom-9 lg:right-14 lg:text-[210px]
+          "
+        >
+          {String(index + 1).padStart(2, "0")}
+        </motion.div>
       </div>
     </section>
   );

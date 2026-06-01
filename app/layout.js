@@ -84,6 +84,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       className={`${cabinetGrotesk.variable} ${montserrat.variable} h-full scroll-smooth antialiased`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col">
         <Header />

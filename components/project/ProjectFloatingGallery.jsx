@@ -40,6 +40,7 @@ function FloatingImage({ item, index, title }) {
         src={item.image}
         alt={`${title} gallery ${index + 1}`}
         fill
+        sizes="(max-width: 768px) 100vw, 240px"
         className="object-cover"
       />
     </motion.div>
@@ -51,7 +52,7 @@ export default function ProjectFloatingGallery({
   title = "Project",
 }) {
   return (
-    <section className="relative bg-black px-6 py-10 text-white md:px-12 md:py-14 lg:px-20">
+    <section className="relative bg-black px-6 py-8 text-white md:px-12 md:py-10 lg:px-20">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3 md:items-start">
         {gallery.map((item, index) => (
           <FloatingImage

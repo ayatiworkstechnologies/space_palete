@@ -12,7 +12,7 @@ export default function RelatedProjects({ currentSlug }) {
   );
 
   return (
-    <section className="relative bg-black px-6 py-6 text-white md:px-12 md:py-12 lg:px-20 overflow-hidden">
+    <section className="relative bg-black px-6 py-6 text-white md:px-12 md:py-8 lg:px-20 overflow-hidden">
       <DotPattern variant="wave" density="low" />
       <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div
@@ -20,7 +20,7 @@ export default function RelatedProjects({ currentSlug }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-14"
+          className="mb-10"
         >
           <p className="mb-4 text-[11px] uppercase tracking-[0.35em] text-white">
             Explore Next
@@ -52,6 +52,7 @@ export default function RelatedProjects({ currentSlug }) {
                       src={project.coverImage}
                       alt={project.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
                       className="object-cover transition duration-[1200ms] group-hover:scale-105"
                     />
                   </div>
