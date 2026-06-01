@@ -42,25 +42,8 @@ export default function AboutHero() {
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-black/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-black/10" />
-
-      {/* Small dotted particles */}
-      <div className="pointer-events-none absolute inset-0">
-        {Array.from({ length: 22 }).map((_, index) => (
-          <span
-            key={index}
-            className="about-dot absolute block rounded-full bg-white"
-            style={{
-              left: `${(index * 23) % 100}%`,
-              top: `${(index * 31) % 100}%`,
-              width: index % 4 === 0 ? 3 : 2,
-              height: index % 4 === 0 ? 3 : 2,
-              animationDelay: `${index * 0.18}s`,
-            }}
-          />
-        ))}
-      </div>
+      <div className="absolute inset-0 bg-black/8" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/5" />
 
       <div className="relative z-10 flex h-full items-center justify-center px-6">
         <motion.div
@@ -72,52 +55,8 @@ export default function AboutHero() {
           <h1 className="text-[42px] font-light tracking-[0.22em] md:text-[62px] lg:text-[78px]">
             About
           </h1>
-
-          <p className="mt-28 text-[10px] tracking-[0.18em] text-white md:mt-36">
-            Reveal the Elegance
-          </p>
         </motion.div>
       </div>
-
-      <motion.p
-        initial={{ opacity: 0, x: -30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.45, duration: 0.8 }}
-        className="absolute left-8 top-1/2 z-10 max-w-[120px] text-[12px] tracking-[0.22em] text-white"
-      >
-        Crafted Living Spaces
-      </motion.p>
-
-      <motion.p
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.55, duration: 0.8 }}
-        className="absolute right-8 top-1/2 z-10 text-[12px] tracking-[0.22em] text-white"
-      >
-        Chennai
-      </motion.p>
-
-      <style>{`
-        @keyframes aboutDotBlink {
-          0% {
-            transform: translate3d(0, 0, 0) scale(0.7);
-            opacity: 0.16;
-          }
-          50% {
-            transform: translate3d(10px, -12px, 0) scale(1.2);
-            opacity: 0.9;
-          }
-          100% {
-            transform: translate3d(-8px, 10px, 0) scale(0.75);
-            opacity: 0.12;
-          }
-        }
-
-        .about-dot {
-          animation: aboutDotBlink 4s ease-in-out infinite alternate;
-          will-change: transform, opacity;
-        }
-      `}</style>
     </section>
   );
 }

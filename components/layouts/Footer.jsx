@@ -220,9 +220,8 @@ export default function Footer() {
           transition={{ delay: 0.38, duration: 0.75, ease: "easeOut" }}
           className="border-t border-white/10 py-5 text-center max-md:border-t-0 max-md:py-5"
         >
-          <p className="mx-auto max-w-3xl text-base leading-7 text-white md:text-lg md:leading-8">
-            Copyright &copy;2026 spacepalette - All right reserved | Designed &amp;
-            Developed by{" "}
+          <p className="mx-auto whitespace-nowrap text-[11px] uppercase leading-5 tracking-[0.12em] text-white/80 md:text-xs">
+            Copyright &copy;2026 Spacepalette - All Right Reserved | Designed &amp; Developed By{" "}
             <a
               href="https://www.ayatiworks.com/"
               target="_blank"

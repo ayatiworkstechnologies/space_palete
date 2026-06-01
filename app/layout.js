@@ -1,4 +1,4 @@
-import { Montserrat } from "next/font/google";
+import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/layouts/Header";
@@ -11,9 +11,10 @@ const cabinetGrotesk = localFont({
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const poppins = Poppins({
   variable: "--font-secondary",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -83,7 +84,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${cabinetGrotesk.variable} ${montserrat.variable} h-full scroll-smooth antialiased`}
+      className={`${cabinetGrotesk.variable} ${poppins.variable} h-full scroll-smooth antialiased`}
       data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col">

@@ -119,3 +119,13 @@ export const projectEntries = [
 export function getProjectBySlug(slug) {
   return projectEntries.find((project) => project.slug === slug);
 }
+
+export function getNextProject(slug) {
+  const currentIndex = projectEntries.findIndex((project) => project.slug === slug);
+
+  if (currentIndex === -1 || projectEntries.length <= 1) {
+    return null;
+  }
+
+  return projectEntries[(currentIndex + 1) % projectEntries.length];
+}

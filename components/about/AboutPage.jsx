@@ -9,7 +9,7 @@ import ServicesProcess from "./ServicesProcess";
 
 export default function AboutPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-black text-white">
+    <main className="relative min-h-screen overflow-x-hidden bg-black text-white">
       <BackgroundVectors />
       <div className="relative z-10">
         <AboutHero />

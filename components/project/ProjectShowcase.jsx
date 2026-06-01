@@ -2,190 +2,211 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useMemo, useRef, ViewTransition } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { getNextProject } from "./projectData";
 
-const projectImages = [
-  "/projects/project-1.jpg",
-  "/projects/project-2.jpg",
-  "/projects/project-3.jpg",
-  "/projects/project-4.jpg",
-];
+function uniqueImages(images) {
+  return [...new Set(images.filter(Boolean))];
+}
 
-export default function ProjectShowcase() {
-  const galleryRef = useRef(null);
-  const sectionRef = useRef(null);
+export default function ProjectShowcase({ project }) {
+  const targetRef = useRef(null);
+  const nextProject = getNextProject(project.slug);
+
+  const galleryImages = useMemo(
+    () =>
+      uniqueImages([
+        project.coverImage,
+        project.heroImage,
+        ...(project.images || []),
+        ...(project.gallery || []).map((item) => item.image),
+        project.fullImage,
+      ]),
+    [project]
+  );
 
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
+    target: targetRef,
   });
 
-  const imageScale = useTransform(scrollYProgress, [0, 0.35], [1.08, 1]);
-  const textY = useTransform(scrollYProgress, [0, 0.35], [80, 0]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
-
-  const scrollGallery = (direction) => {
-    if (!galleryRef.current) return;
-
-    galleryRef.current.scrollBy({
-      left: direction === "next" ? window.innerWidth * 0.75 : -window.innerWidth * 0.75,
-      behavior: "smooth",
-    });
-  };
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-78%"]);
 
   return (
-    <main ref={sectionRef} className="relative min-h-screen bg-white text-black">
-      {/* Header */}
-      
-
-      {/* Intro Split Section */}
-      <section className="grid min-h-screen grid-cols-1 pt-28 md:grid-cols-[58%_42%] md:pt-0">
-        {/* Left Content */}
-        <div className="flex items-center px-6 py-16 md:px-24 lg:px-40">
+    <ViewTransition
+      enter={{
+        "project-forward": "project-forward",
+        default: "none",
+      }}
+      exit={{
+        "project-forward": "project-forward",
+        default: "none",
+      }}
+      default="none"
+    >
+    <main className="bg-black font-sans text-white antialiased selection:bg-white/20">
+      <div ref={targetRef} className="relative h-[400vh] bg-black">
+        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div
-            style={{ y: textY, opacity: textOpacity }}
-            className="max-w-[780px]"
+            style={{ x }}
+            className="flex h-full items-center gap-12 whitespace-nowrap pl-6 pr-[20vw] will-change-transform md:pl-12"
           >
-            <p className="mb-1 text-lg font-semibold uppercase tracking-[-0.04em] text-neutral-400">
-              Residential
-            </p>
+            <section className="inline-flex h-[80vh] select-none items-start gap-10 whitespace-normal align-middle md:gap-16">
+              <div className="flex h-full w-[180px] flex-col justify-between pt-12 md:w-[220px]">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-white/45">
+                    {project.type}
+                  </span>
+                </div>
 
-            <h1 className="mb-4 text-6xl font-black uppercase leading-[0.85] tracking-[-0.08em] md:text-8xl">
-              Zoha
-            </h1>
+                <div className="whitespace-pre-line text-xs leading-relaxed tracking-wider text-white/55">
+                  {project.location}
+                  {"\n"}
+                  {project.year}
+                </div>
+              </div>
 
-            <div className="space-y-5 text-[15px] leading-[1.15] tracking-[-0.04em] text-neutral-500 md:text-[17px]">
-              <p>
-                Zoha, a residence in Kotakkal, seamlessly blends art, crafts, and
-                architecture, unfolding poetry with every step. The dramatic roof
-                positioning and integration of built and unbuilt spaces initiate a
-                dialogue between nature and architecture.
-              </p>
+              <div className="flex h-full w-[760px] flex-col justify-between pt-24">
+                <div className="max-w-[680px]">
+                  <ViewTransition
+                    name={`project-title-${project.slug}`}
+                    share="project-title-morph"
+                  >
+                    <h1 className="mb-8 text-6xl font-light leading-none tracking-wide text-white md:text-7xl">
+                      {project.title}
+                    </h1>
+                  </ViewTransition>
+                  <div className="space-y-6 text-justify text-[13px] font-light leading-relaxed text-white/58">
+                  {project.description.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                  </div>
+                </div>
 
-              <p>
-                The design articulates spaces through courtyards and corridors,
-                inducing curiosity and a sensual connection. Craftsmanship shines,
-                revealing a high-end collection of artisanal elements.
-              </p>
+                <dl className="grid w-full grid-cols-5 border-y border-white/15">
+                  {project.details.map(([label, value]) => (
+                    <div
+                      key={label}
+                      className="border-r border-white/15 px-5 py-4 text-xs tracking-wider last:border-r-0"
+                    >
+                      <dt className="mb-4 uppercase text-white/40">{label}</dt>
+                      <dd className="font-medium text-white/80">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </section>
 
-              <p>
-                Zoha’s narrative unfolds a rich story of generations, travel,
-                material quality, and craftsmanship. The material palette features
-                sustainable materials and carefully selected interiors.
-              </p>
-            </div>
+            {galleryImages[0] && (
+              <section className="group relative inline-block h-[80vh] w-[80vw] overflow-hidden bg-neutral-900 align-middle">
+                <motion.div
+                  initial={{ scale: 1.05, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 1.2, ease: "easeOut" }}
+                  className="relative h-full w-full"
+                >
+                  <ViewTransition
+                    name={`project-image-${project.slug}`}
+                    share="project-morph"
+                  >
+                    <Image
+                      src={galleryImages[0]}
+                      alt={`${project.title} exterior view`}
+                      fill
+                      priority
+                      sizes="80vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                  </ViewTransition>
+                </motion.div>
+                <div className="pointer-events-none absolute bottom-6 right-6 rounded-full bg-black/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-white opacity-0 backdrop-blur-md transition-opacity group-hover:opacity-100">
+                  Scroll
+                </div>
+              </section>
+            )}
 
-            <div className="mt-8 text-[17px] leading-[1.1] tracking-[-0.05em] text-neutral-500">
-              <p>Kottakkal</p>
-              <p>2026</p>
-            </div>
+            {galleryImages.slice(1).map((image, index) => {
+              const nextImage = galleryImages[index + 2];
+
+              if (index % 2 === 1) {
+                return null;
+              }
+
+              return (
+                <section
+                  key={`${image}-${index}`}
+                  className="inline-flex h-[80vh] gap-8 align-middle"
+                >
+                  <div className="group relative h-full w-[45vw] overflow-hidden bg-neutral-900">
+                    <Image
+                      src={image}
+                      alt={`${project.title} interior view ${index + 1}`}
+                      fill
+                      sizes="45vw"
+                      className="object-cover grayscale-[15%] transition-all duration-700 group-hover:grayscale-0"
+                    />
+                  </div>
+
+                  {nextImage && (
+                    <div className="group relative h-full w-[35vw] overflow-hidden bg-neutral-900">
+                      <Image
+                        src={nextImage}
+                        alt={`${project.title} detail view ${index + 2}`}
+                        fill
+                        sizes="35vw"
+                        className="object-cover grayscale-[15%] transition-all duration-700 group-hover:grayscale-0"
+                      />
+                    </div>
+                  )}
+                </section>
+              );
+            })}
+
+            {nextProject && (
+              <section className="ml-12 inline-flex h-[80vh] select-none items-start gap-12 whitespace-normal align-middle md:ml-24 md:gap-24">
+                <div className="flex h-full w-[260px] flex-col justify-between pt-12 md:w-[300px]">
+                  <div>
+                    <span className="mb-1 block text-xs font-semibold tracking-widest text-white/45">
+                      Next Project
+                    </span>
+                    <span className="text-[10px] uppercase tracking-widest text-white/40">
+                      {nextProject.type}
+                    </span>
+                    <h2 className="mt-2 text-5xl font-light tracking-wide text-white transition-colors">
+                      {nextProject.title}
+                    </h2>
+                  </div>
+                  <div className="text-xs tracking-wider text-white/45">
+                    {nextProject.location}
+                  </div>
+                </div>
+
+                <Link
+                  href={`/projects/${nextProject.slug}`}
+                  transitionTypes={["project-forward"]}
+                  className="group relative h-full w-[70vw] cursor-pointer overflow-hidden bg-neutral-900 md:w-[40vw]"
+                >
+                  <div className="absolute inset-0 z-10 bg-neutral-950/0 transition-colors duration-500 group-hover:bg-neutral-950/10" />
+                  <motion.div
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                    className="relative h-full w-full"
+                  >
+                    <Image
+                      src={nextProject.coverImage}
+                      alt={`${nextProject.title} preview`}
+                      fill
+                      sizes="(max-width: 768px) 70vw, 40vw"
+                      className="object-cover"
+                    />
+                  </motion.div>
+                </Link>
+              </section>
+            )}
           </motion.div>
         </div>
-
-        {/* Right Hero Image */}
-        <div className="relative min-h-[70vh] overflow-hidden md:min-h-screen">
-          <motion.div style={{ scale: imageScale }} className="absolute inset-0">
-            <Image
-              src="/projects/hero.jpg"
-              alt="Project Hero"
-              fill
-              priority
-              className="object-cover"
-            />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Horizontal Gallery */}
-      <section className="relative min-h-screen bg-white py-28">
-        {/* Left Arrow */}
-        <button
-          onClick={() => scrollGallery("prev")}
-          className="fixed left-5 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-md transition hover:bg-black"
-          aria-label="Previous image"
-        >
-          <ChevronLeft size={22} />
-        </button>
-
-        {/* Right Arrow */}
-        <button
-          onClick={() => scrollGallery("next")}
-          className="fixed right-5 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white backdrop-blur-md transition hover:bg-black"
-          aria-label="Next image"
-        >
-          <ChevronRight size={22} />
-        </button>
-
-        <div
-          ref={galleryRef}
-          className="hide-scrollbar flex snap-x snap-mandatory gap-24 overflow-x-auto scroll-smooth px-6 md:px-16"
-        >
-          {projectImages.map((img, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.96, y: 80 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.35 }}
-              transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="relative h-[72vh] min-w-[86vw] snap-center overflow-hidden bg-neutral-100 md:h-[82vh] md:min-w-[76vw]"
-            >
-              <Image
-                src={img}
-                alt={`Project image ${index + 1}`}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Next Project */}
-      <section className="grid min-h-screen grid-cols-1 bg-white md:grid-cols-[45%_55%]">
-        <div className="flex flex-col items-center justify-center px-6 text-center">
-          <p className="mb-40 text-xl font-semibold tracking-[-0.06em]">
-            Next Project
-          </p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.4 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <p className="text-lg font-semibold uppercase tracking-[-0.04em] text-neutral-400">
-              Residential
-            </p>
-
-            <h2 className="text-6xl font-black uppercase leading-[0.85] tracking-[-0.08em] md:text-8xl">
-              Niyathi
-            </h2>
-
-            <p className="mt-2 text-lg tracking-[-0.05em] text-neutral-500">
-              Thrissur
-            </p>
-          </motion.div>
-        </div>
-
-        <Link href="#" className="group relative min-h-[80vh] overflow-hidden md:min-h-screen">
-          <Image
-            src="/projects/next-project.jpg"
-            alt="Next Project"
-            fill
-            className="object-cover transition duration-700 group-hover:scale-105"
-          />
-
-          <div className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
-
-          <span className="absolute left-1/2 top-1/2 rounded-full bg-white px-4 py-1 text-sm font-medium tracking-[-0.04em] text-black opacity-0 shadow-md transition group-hover:opacity-100">
-            open
-          </span>
-        </Link>
-      </section>
-
-      
+      </div>
     </main>
+    </ViewTransition>
   );
 }

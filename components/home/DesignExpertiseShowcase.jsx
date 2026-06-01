@@ -1,56 +1,43 @@
 "use client";
 
 import CommonButton from "@/components/CommonButton";
+import { projectEntries } from "@/components/project/projectData";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const services = [
-  {
-    number: "01",
-    title: "Commercial Interiors",
+const projectShowcaseItems = projectEntries.map((project, index) => {
+  const galleryImages = (project.gallery || []).map((item) => item.image);
+  const images = [
+    ...(project.stackImages || []),
+    ...(project.images || []),
+    ...galleryImages,
+    project.fullImage,
+    project.coverImage,
+  ].filter(Boolean);
+  const uniqueImages = [...new Set(images)];
+
+  return {
+    ...project,
+    number: String(index + 1).padStart(2, "0"),
     description:
-      "Refined office and retail environments that elevate brand identity and enhance user experience.",
-    mainImage: "/3.png",
-    topImage: "/1.png",
-    bottomImage: "/5.png",
-  },
-  {
-    number: "02",
-    title: "Residential Interiors",
-    description:
-      "Layered homes shaped around comfort, material warmth, and everyday rituals.",
-    mainImage: "/2.png",
-    topImage: "/4.png",
-    bottomImage: "/1.png",
-  },
-  {
-    number: "03",
-    title: "Modular Kitchens",
-    description:
-      "Efficient kitchen systems with refined finishes, ergonomic storage, and lasting detail.",
-    mainImage: "/4.png",
-    topImage: "/3.png",
-    bottomImage: "/2.png",
-  },
-  {
-    number: "04",
-    title: "Custom Design",
-    description:
-      "Bespoke spatial concepts crafted for unique tastes, constraints, and ambitions.",
-    mainImage: "/1.png",
-    topImage: "/5.png",
-    bottomImage: "/3.png",
-  },
-];
+      project.description?.[0] ||
+      `${project.title} is a ${project.type.toLowerCase()} project in ${project.location}.`,
+    mainImage: project.coverImage || project.heroImage,
+    topImage: uniqueImages[1] || uniqueImages[0] || project.coverImage,
+    bottomImage: uniqueImages[2] || uniqueImages[1] || uniqueImages[0] || project.coverImage,
+  };
+});
 
 export default function DesignExpertiseShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef(null);
 
-  const activeService = services[activeIndex];
+  const activeProject = projectShowcaseItems[activeIndex] || projectShowcaseItems[0];
 
   useEffect(() => {
     const updateActiveService = () => {
-      if (!sectionRef.current) return;
+      if (!sectionRef.current || projectShowcaseItems.length === 0) return;
 
       const rect = sectionRef.current.getBoundingClientRect();
       const scrollableDistance = rect.height - window.innerHeight;
@@ -62,7 +49,7 @@ export default function DesignExpertiseShowcase() {
         0.999,
       );
 
-      setActiveIndex(Math.floor(progress * services.length));
+      setActiveIndex(Math.floor(progress * projectShowcaseItems.length));
     };
 
     updateActiveService();
@@ -75,10 +62,15 @@ export default function DesignExpertiseShowcase() {
     };
   }, []);
 
+  if (!activeProject) {
+    return null;
+  }
+
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[260vh] overflow-visible bg-black text-white md:min-h-[320vh]"
+      className="relative overflow-visible bg-black text-white"
+      style={{ minHeight: `${Math.max(projectShowcaseItems.length, 1) * 105}vh` }}
     >
       <div className="sticky top-0 min-h-screen overflow-hidden px-6 py-20 md:px-10 md:py-24">
         <div className="pointer-events-none absolute inset-0 bg-[url('/line.png')] bg-cover bg-center opacity-25" />
@@ -100,12 +92,12 @@ export default function DesignExpertiseShowcase() {
             </h2>
 
             <div className="mt-10 divide-y divide-white/12 border-b border-white/12">
-              {services.map((service, index) => {
+              {projectShowcaseItems.map((project, index) => {
                 const isActive = index === activeIndex;
 
                 return (
                   <button
-                    key={service.number}
+                    key={project.slug}
                     type="button"
                     onClick={() => setActiveIndex(index)}
                     className="group block w-full py-4 text-left"
@@ -116,14 +108,14 @@ export default function DesignExpertiseShowcase() {
                           isActive ? "text-[#f47a3c]" : "text-white"
                         }`}
                       >
-                        {service.number}
+                        {project.number}
                       </span>
                       <h3
                         className={`text-xl font-medium transition duration-500 ${
                           isActive ? "text-white" : "text-white"
                         }`}
                       >
-                        {service.title}
+                        {project.title}
                       </h3>
                     </div>
 
@@ -137,14 +129,16 @@ export default function DesignExpertiseShowcase() {
                       <div className="overflow-hidden">
                         <div className="ml-11 mt-5 max-w-sm">
                           <p className="text-lg leading-7 text-white md:text-xl md:leading-8">
-                            {service.description}
+                            {project.description}
                           </p>
                           <CommonButton
-                            as="span"
+                            as={Link}
+                            href={`/projects/${project.slug}`}
+                            transitionTypes={["project-forward"]}
                             className="mt-7 border-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-transparent hover:text-[#f47a3c] group-hover:border-[#f47a3c] group-hover:text-[#f47a3c]"
                             iconSize={16}
                           >
-                            Discover Creations
+                            View Project
                           </CommonButton>
                         </div>
                       </div>
@@ -156,31 +150,43 @@ export default function DesignExpertiseShowcase() {
           </div>
 
           <div className="relative mx-auto w-full max-w-xl overflow-hidden">
-            <img
-              key={activeService.mainImage}
-              src={activeService.mainImage}
-              alt={`${activeService.title} by Space Palette`}
-              className="aspect-[4/5] w-full object-cover opacity-0 transition duration-700 ease-out [animation:fadeInImage_700ms_ease-out_forwards]"
-            />
+            <div className="relative aspect-[4/5] w-full opacity-0 transition duration-700 ease-out [animation:fadeInImage_700ms_ease-out_forwards]">
+              <Image
+                key={activeProject.mainImage}
+                src={activeProject.mainImage}
+                alt={`${activeProject.title} by Space Palette`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 560px"
+                className="object-cover"
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
           </div>
 
           <div className="grid gap-6">
-            <img
-              key={activeService.topImage}
-              src={activeService.topImage}
-              alt={`${activeService.title} detail`}
-              className="aspect-[16/9] w-full object-cover opacity-0 transition duration-700 ease-out [animation:fadeInImage_700ms_ease-out_forwards]"
-            />
-            <img
-              key={activeService.bottomImage}
-              src={activeService.bottomImage}
-              alt={`${activeService.title} concept`}
-              className="aspect-[16/9] w-full object-cover opacity-0 transition duration-700 ease-out [animation:fadeInImage_700ms_ease-out_120ms_forwards]"
-            />
+            <div className="relative aspect-[16/9] w-full opacity-0 transition duration-700 ease-out [animation:fadeInImage_700ms_ease-out_forwards]">
+              <Image
+                key={activeProject.topImage}
+                src={activeProject.topImage}
+                alt={`${activeProject.title} detail`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 360px"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative aspect-[16/9] w-full opacity-0 transition duration-700 ease-out [animation:fadeInImage_700ms_ease-out_120ms_forwards]">
+              <Image
+                key={activeProject.bottomImage}
+                src={activeProject.bottomImage}
+                alt={`${activeProject.title} concept`}
+                fill
+                sizes="(max-width: 1024px) 100vw, 360px"
+                className="object-cover"
+              />
+            </div>
             <p className="max-w-sm text-lg leading-7 text-white md:text-xl md:leading-8">
-              Exceptional design solutions crafted with precision, creativity,
-              and purpose.
+              {activeProject.type} in {activeProject.location}, shaped with
+              precision, clarity, and purpose.
             </p>
           </div>
         </div>

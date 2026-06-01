@@ -9,7 +9,7 @@ export default function Hero() {
         loop
         playsInline
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/45" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/18" />
     </section>
   );
 }

@@ -11,10 +11,6 @@ export default function ContactHero() {
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         className="mx-auto max-w-4xl"
       >
-        <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.34em] text-[#f47a3c]">
-          Get in Touch
-        </p>
-
         <h1 className="text-3xl font-medium tracking-tight md:text-5xl">
           Let&apos;s build <br className="hidden md:block" />
           <span className="text-white">something beautiful.</span>

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ViewTransition } from "react";
 import { projectEntries } from "./projectData";
 
 export default function ProjectList() {
@@ -27,6 +27,17 @@ export default function ProjectList() {
   }, [cursorX, cursorY]);
 
   return (
+    <ViewTransition
+      enter={{
+        "project-forward": "project-forward",
+        default: "none",
+      }}
+      exit={{
+        "project-forward": "project-forward",
+        default: "none",
+      }}
+      default="none"
+    >
     <section className="relative bg-black px-6 py-12 text-white md:px-12 md:py-16 lg:px-20">
       
       {/* Custom Cursor Follower */}
@@ -78,24 +89,38 @@ export default function ProjectList() {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
-              <Link href={`/projects/${project.slug}`} className="cursor-none">
+              <Link
+                href={`/projects/${project.slug}`}
+                transitionTypes={["project-forward"]}
+                className="cursor-none"
+              >
                 <div className="relative h-[360px] overflow-hidden md:h-[520px]">
-                  <Image
-                    src={project.coverImage}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
-                    className="object-cover transition duration-[1200ms] group-hover:scale-110"
-                  />
+                  <ViewTransition
+                    name={`project-image-${project.slug}`}
+                    share="project-morph"
+                  >
+                    <Image
+                      src={project.coverImage}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
+                      className="object-cover transition duration-[1200ms] group-hover:scale-110"
+                    />
+                  </ViewTransition>
 
                   <div className="absolute inset-0 bg-black/10 transition duration-500 group-hover:bg-black/28" />
                 </div>
 
                 <div className="flex items-end justify-between border-b border-white/12 py-5">
                   <div>
-                    <h3 className="text-2xl font-light tracking-[-0.03em] md:text-3xl">
-                      {project.title}
-                    </h3>
+                    <ViewTransition
+                      name={`project-title-${project.slug}`}
+                      share="project-title-morph"
+                    >
+                      <h3 className="text-2xl font-light tracking-[-0.03em] md:text-3xl">
+                        {project.title}
+                      </h3>
+                    </ViewTransition>
                     <p className="mt-2 text-[11px] uppercase tracking-[0.26em] text-white">
                       {project.location}
                     </p>
@@ -111,5 +136,6 @@ export default function ProjectList() {
         </div>
       </div>
     </section>
+    </ViewTransition>
   );
 }

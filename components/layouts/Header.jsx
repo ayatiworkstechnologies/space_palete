@@ -35,6 +35,7 @@ export default function Header() {
         initial={{ y: -90, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+        style={{ viewTransitionName: "site-header" }}
         className={`
           fixed left-0 top-0 z-50 w-full
           
