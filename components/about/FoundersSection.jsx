@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import DotPattern from "@/components/DotPattern";
 
 const founders = [
   {
@@ -28,34 +27,29 @@ export default function FoundersSection() {
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-12 lg:gap-14"
       >
-        <div className="grid grid-cols-2 items-end gap-6 md:col-span-7 lg:gap-10">
-          {founders.map((founder, index) => (
-            <motion.div
-              key={founder.name}
-              initial={{ opacity: 0, y: 80 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                delay: index * 0.12,
-                duration: 0.9,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="group text-center"
-            >
-              <div className="relative mx-auto h-[260px] w-full overflow-hidden md:h-[420px]">
-                <Image
-                  src={founder.image}
-                  alt={founder.name}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 320px"
-                  className="object-contain object-bottom transition duration-700 group-hover:scale-105"
-                />
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, x: -48, scale: 0.96 }}
+          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="relative h-[340px] overflow-hidden md:col-span-7 md:h-[500px]"
+        >
+          <Image
+            src="/assets/about/founder.png"
+            alt="Space Palette founders"
+            fill
+            sizes="(max-width: 768px) 100vw, 58vw"
+            className="object-contain object-bottom transition duration-700 hover:scale-[1.02]"
+          />
+        </motion.div>
 
-        <div className="md:col-span-5">
+        <motion.div
+          initial={{ opacity: 0, x: 42 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ delay: 0.1, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          className="md:col-span-5"
+        >
           <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
             About <span className="text-[#f47a3c]">Founders</span>
           </h2>
@@ -77,7 +71,7 @@ export default function FoundersSection() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

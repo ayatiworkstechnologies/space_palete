@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useRef, ViewTransition } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useMemo, useRef, useState, ViewTransition } from "react";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { getNextProject } from "./projectData";
 
 function uniqueImages(images) {
@@ -12,7 +12,13 @@ function uniqueImages(images) {
 
 export default function ProjectShowcase({ project }) {
   const targetRef = useRef(null);
+  const [showCursorTip, setShowCursorTip] = useState(false);
+  const [cursorTipText, setCursorTipText] = useState("Scroll");
   const nextProject = getNextProject(project.slug);
+  const cursorX = useMotionValue(0);
+  const cursorY = useMotionValue(0);
+  const smoothCursorX = useSpring(cursorX, { stiffness: 420, damping: 34 });
+  const smoothCursorY = useSpring(cursorY, { stiffness: 420, damping: 34 });
 
   const galleryImages = useMemo(
     () =>
@@ -32,6 +38,11 @@ export default function ProjectShowcase({ project }) {
 
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-78%"]);
 
+  const handleMouseMove = (event) => {
+    cursorX.set(event.clientX + 18);
+    cursorY.set(event.clientY + 18);
+  };
+
   return (
     <ViewTransition
       enter={{
@@ -44,7 +55,26 @@ export default function ProjectShowcase({ project }) {
       }}
       default="none"
     >
-    <main className="bg-black font-sans text-white antialiased selection:bg-white/20">
+    <main
+      className="bg-black font-sans text-white antialiased selection:bg-white/20"
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setShowCursorTip(true)}
+      onMouseLeave={() => {
+        setShowCursorTip(false);
+        setCursorTipText("Scroll");
+      }}
+    >
+      <motion.div
+        style={{ x: smoothCursorX, y: smoothCursorY }}
+        animate={{
+          opacity: showCursorTip ? 1 : 0,
+          scale: showCursorTip ? 1 : 0.94,
+        }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
+        className="pointer-events-none fixed left-0 top-0 z-[80] hidden rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-md md:block"
+      >
+        {cursorTipText}
+      </motion.div>
       <div ref={targetRef} className="relative h-[400vh] bg-black">
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div
@@ -184,6 +214,8 @@ export default function ProjectShowcase({ project }) {
                 <Link
                   href={`/projects/${nextProject.slug}`}
                   transitionTypes={["project-forward"]}
+                  onMouseEnter={() => setCursorTipText("Click")}
+                  onMouseLeave={() => setCursorTipText("Scroll")}
                   className="group relative h-full w-[70vw] cursor-pointer overflow-hidden bg-neutral-900 md:w-[40vw]"
                 >
                   <div className="absolute inset-0 z-10 bg-neutral-950/0 transition-colors duration-500 group-hover:bg-neutral-950/10" />

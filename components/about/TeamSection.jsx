@@ -54,7 +54,7 @@ export default function TeamSection() {
         >
           <motion.div style={{ y: smoothY, scale: smoothScale }} className="absolute inset-0">
             <Image
-              src="/assets/about/teams.png"
+              src="/assets/about/team.png"
               alt="Space Palette Team"
               fill
               sizes="(max-width: 768px) 100vw, 62vw"
