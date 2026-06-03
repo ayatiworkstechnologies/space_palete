@@ -3,7 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
-import CustomCursor from "@/components/CustomCursor";
+import GlobalDottedBg from "@/components/layouts/GlobalDottedBg";
+import GlobalContact from "@/components/layouts/GlobalContact";
 
 const cabinetGrotesk = localFont({
   src: "../public/fonts/CabinetGrotesk-Medium.otf",
@@ -88,11 +89,13 @@ export default function RootLayout({ children }) {
       className={`${cabinetGrotesk.variable} ${poppins.variable} h-full scroll-smooth antialiased`}
       data-scroll-behavior="smooth"
     >
-      <body className="min-h-full flex flex-col">
-        <Header />
-        <CustomCursor />
-        {children}
-        <Footer />
+      <body className="relative min-h-full bg-black">
+        <GlobalDottedBg />
+        <div className="relative z-10 flex min-h-full flex-col">
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

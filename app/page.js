@@ -40,7 +40,7 @@ const localBusinessJsonLd = {
 
 export default function Home() {
   return (
-    <main className="relative overflow-clip bg-black text-white">
+    <main className="relative overflow-clip text-white">
       <BackgroundVectors />
       <ScrollMotion />
       <script

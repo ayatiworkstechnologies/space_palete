@@ -20,7 +20,7 @@ export default function TeamSection() {
 
   return (
     <section className="relative overflow-hidden bg-black px-6 py-8 text-white md:px-12 md:py-12">
-      <ScatteredDotsBackground color="rgba(255, 255, 255, 0.25)" maxDotSize={2.5} />
+      {/* <ScatteredDotsBackground color="rgba(255, 255, 255, 0.25)" maxDotSize={2.5} /> */}
       <motion.div
         initial={{ opacity: 0, y: 55 }}
         whileInView={{ opacity: 1, y: 0 }}

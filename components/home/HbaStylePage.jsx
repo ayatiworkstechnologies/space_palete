@@ -52,8 +52,8 @@ function ProjectCard({ project, index }) {
   const yImage1 = useTransform(scrollYProgress, [0, 0.5, 1], ["60vh", "-5vh", "-50vh"]);
   const opacityImage1 = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
-  const yImage2 = useTransform(scrollYProgress, [0, 0.4, 0.8, 1], ["90vh", "35vh", "-10vh", "-45vh"]);
-  const opacityImage2 = useTransform(scrollYProgress, [0.3, 0.5, 0.9, 1], [0, 1, 1, 0]);
+  const yImage2 = useTransform(scrollYProgress, [0, 0.5, 1], ["60vh", "-5vh", "-50vh"]);
+  const opacityImage2 = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   const textOpacity = useTransform(scrollYProgress, [0.85, 0.98], [1, 0]);
 
@@ -96,7 +96,7 @@ function ProjectCard({ project, index }) {
 
             <motion.div
               style={{ y: yImage2, opacity: opacityImage2 }}
-              className="pointer-events-auto relative h-[270px] w-[min(82vw,540px)] overflow-hidden rounded-sm border border-white/5 shadow-2xl will-change-transform md:mt-28 md:h-[410px] md:w-[540px] lg:w-[640px]"
+              className="pointer-events-auto relative h-[270px] w-[min(82vw,540px)] overflow-hidden rounded-sm border border-white/5 shadow-2xl will-change-transform md:h-[410px] md:w-[540px] lg:w-[640px]"
             >
               <Image
                 src={secondImage}

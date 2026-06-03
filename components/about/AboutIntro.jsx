@@ -20,7 +20,7 @@ export default function AboutIntro() {
 
   return (
     <section className="relative bg-black px-6 py-12 text-white md:px-12 md:py-16 lg:px-20 overflow-hidden">
-      <HalftoneBackground color="rgba(255, 255, 255, 0.25)" dotSize={2} />
+      {/* <HalftoneBackground color="rgba(255, 255, 255, 0.25)" dotSize={2} /> */}
       <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-12 lg:gap-14">
         <motion.div
           initial={{ opacity: 0, x: -55 }}

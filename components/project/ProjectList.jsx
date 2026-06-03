@@ -6,6 +6,12 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState, ViewTransition } from "react";
 import { projectEntries } from "./projectData";
 
+const projectCardImages = {
+  "seed-workspace": "/assets/project/spacepalette-3.png",
+  dfmc: "/assets/project/dfmc-3.png",
+  "vrx-terrace": "/assets/project/vrx-terrace-1.png",
+};
+
 export default function ProjectList() {
   const [isHovered, setIsHovered] = useState(false);
   
@@ -100,11 +106,11 @@ export default function ProjectList() {
                     share="project-morph"
                   >
                     <Image
-                      src={project.coverImage}
+                      src={projectCardImages[project.slug] || project.coverImage}
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition duration-[1200ms] group-hover:scale-110"
+                      className="object-cover object-center transition duration-[1200ms] group-hover:scale-110"
                     />
                   </ViewTransition>
 

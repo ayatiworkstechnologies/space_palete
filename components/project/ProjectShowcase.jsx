@@ -4,62 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useRef, useState, ViewTransition } from "react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
-import { getNextProject } from "./projectData";
+import { getImagePanelSize, getNextProject } from "./projectData";
 import ScatteredDotsBackground from "@/components/ScatteredDotsBackground";
 
 function uniqueImages(images) {
   return [...new Set(images.filter(Boolean))];
-}
-
-function getImagePanelSize(image) {
-  const fileName = image.split("/").pop();
-  const wideImages = new Set([
-    "project-1.png",
-    "project-2.png",
-    "project-hero.png",
-    "projects-hero.png",
-    "spacepalette-1.png",
-    "spacepalette-2.png",
-    "spacepalette-5.png",
-    "spacepalette-6.png",
-    "dfmc-1.png",
-    "dfmc-2.png",
-    "vrx-terrace.png",
-    "vrx-terrace-2.png",
-    "vrx-terrace-4.png",
-    "vrx-terrace-5.png",
-  ]);
-  const portraitImages = new Set([
-    "project-1-1.png",
-    "project-1-2.png",
-    "project-1-3.png",
-    "project-intro.png",
-    "spacepalette-3.png",
-    "spacepalette-4.png",
-    "spacepalette-7.png",
-    "spacepalette-8.png",
-    "vrx-terrace-1.png",
-    "vrx-terrace-6.png",
-  ]);
-
-  if (wideImages.has(fileName)) {
-    return {
-      className: "w-[86vw] md:w-[76vw]",
-      sizes: "(max-width: 768px) 86vw, 76vw",
-    };
-  }
-
-  if (portraitImages.has(fileName)) {
-    return {
-      className: "w-[58vw] md:w-[34vw]",
-      sizes: "(max-width: 768px) 58vw, 34vw",
-    };
-  }
-
-  return {
-    className: "w-[70vw] md:w-[46vw]",
-    sizes: "(max-width: 768px) 70vw, 46vw",
-  };
 }
 
 export default function ProjectShowcase({ project }) {
@@ -129,7 +78,7 @@ export default function ProjectShowcase({ project }) {
         </motion.div>
         <div ref={targetRef} className="relative h-[400vh] bg-black">
           <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-            <ScatteredDotsBackground color="rgba(255, 255, 255, 0.25)" maxDotSize={1.5} density={0.0004} speed={0.2} />
+            {/* <ScatteredDotsBackground color="rgba(255, 255, 255, 0.25)" maxDotSize={1.5} density={0.0004} speed={0.2} /> */}
             <motion.div
               style={{ x }}
               className="flex h-full items-center gap-6 whitespace-nowrap pl-6 pr-[20vw] will-change-transform md:pl-12"
@@ -155,11 +104,11 @@ export default function ProjectShowcase({ project }) {
                       name={`project-title-${project.slug}`}
                       share="project-title-morph"
                     >
-                      <h1 className="mb-8 text-6xl font-light leading-none tracking-wide text-white md:text-7xl">
+                      <h1 className="mb-8 text-5xl font-light leading-none tracking-wide text-white md:text-6xl">
                         {project.title}
                       </h1>
                     </ViewTransition>
-                    <div className="space-y-6 text-justify text-[13px] font-light leading-relaxed text-white/58">
+                    <div className="space-y-6 text-justify text-[16px] font-light leading-[1.8] text-white/64 md:text-[17px]">
                       {project.description.map((paragraph) => (
                         <p key={paragraph}>{paragraph}</p>
                       ))}

@@ -190,6 +190,59 @@ export const projectEntries = [
   },
 ];
 
+export const wideProjectImages = new Set([
+  "project-1.png",
+  "project-2.png",
+  "project-hero.png",
+  "projects-hero.png",
+  "spacepalette-1.png",
+  "spacepalette-2.png",
+  "spacepalette-5.png",
+  "spacepalette-6.png",
+  "dfmc-1.png",
+  "dfmc-2.png",
+  "vrx-terrace.png",
+  "vrx-terrace-2.png",
+  "vrx-terrace-4.png",
+  "vrx-terrace-5.png",
+]);
+
+export const portraitProjectImages = new Set([
+  "project-1-1.png",
+  "project-1-2.png",
+  "project-1-3.png",
+  "project-intro.png",
+  "spacepalette-3.png",
+  "spacepalette-4.png",
+  "spacepalette-7.png",
+  "spacepalette-8.png",
+  "vrx-terrace-1.png",
+  "vrx-terrace-6.png",
+]);
+
+export function getImagePanelSize(image) {
+  const fileName = image.split("/").pop();
+
+  if (wideProjectImages.has(fileName)) {
+    return {
+      className: "w-[86vw] md:w-[76vw]",
+      sizes: "(max-width: 768px) 86vw, 76vw",
+    };
+  }
+
+  if (portraitProjectImages.has(fileName)) {
+    return {
+      className: "w-[58vw] md:w-[34vw]",
+      sizes: "(max-width: 768px) 58vw, 34vw",
+    };
+  }
+
+  return {
+    className: "w-[70vw] md:w-[46vw]",
+    sizes: "(max-width: 768px) 70vw, 46vw",
+  };
+}
+
 export function getProjectBySlug(slug) {
   return projectEntries.find((project) => project.slug === slug);
 }

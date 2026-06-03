@@ -8,9 +8,8 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const navLinks = [
-    { label: "About", href: "/about" },
+  { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
-
   { label: "Contact", href: "/contact" },
 ];
 
@@ -55,17 +54,21 @@ export default function Header() {
           >
             <motion.div
               layoutId="main-logo"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ scale: 3, opacity: 0, y: 10 }}
+              animate={{ scale: 7, opacity: 1, y: 0 }}
+              transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
             >
               <Image
-                src="/sp-logo.png"
+                src="/sp-logo.svg"
                 alt="Space Palette Logo"
-                width={300}
-                height={120}
+                width={150}
+                height={60}
                 priority
-                className="h-[100px] w-auto md:h-[140px] lg:h-[180px]"
+                className="
+                  h-[54px] w-[62px]
+                  md:h-[60px] md:w-[72px]
+                  lg:h-[66px] lg:w-[82px]
+                "
               />
             </motion.div>
           </motion.div>
@@ -106,7 +109,7 @@ export default function Header() {
                 className="origin-left"
               >
                 <Image
-                  src="/sp-logo.png"
+                  src="/sp-logo.svg"
                   alt="Space Palette Logo"
                   width={150}
                   height={60}
