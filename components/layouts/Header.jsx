@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const navLinks = [
@@ -15,9 +15,21 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const pathname = usePathname();
+  const [showSplash, setShowSplash] = useState(pathname === '/');
+
+  useEffect(() => {
+    if (showSplash && pathname === '/') {
+      const timer = setTimeout(() => {
+        setShowSplash(false);
+      }, 1500); // 1.5s in center before moving
+      return () => clearTimeout(timer);
+    } else {
+      setShowSplash(false);
+    }
+  }, [pathname, showSplash]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,11 +43,39 @@ export default function Header() {
   }, []);
 
   return (
-    <>
+    <LayoutGroup>
+      {/* Splash Screen */}
+      <AnimatePresence>
+        {showSplash && (
+          <motion.div
+            key="splash"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black"
+          >
+            <motion.div
+              layoutId="main-logo"
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 1.0, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Image
+                src="/sp-logo.png"
+                alt="Space Palette Logo"
+                width={300}
+                height={120}
+                priority
+                className="h-[100px] w-auto md:h-[140px] lg:h-[180px]"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.header
         initial={{ y: -90, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: pathname === '/' ? 1.5 : 0 }}
         style={{ viewTransitionName: "site-header" }}
         className={`
           fixed left-0 top-0 z-50 w-full
@@ -56,27 +96,30 @@ export default function Header() {
         >
           {/* Logo */}
           <Link href="/" className="relative z-20 inline-flex items-center">
-            <motion.div
-              animate={{
-                scale: isScrolled ? 0.86 : 1,
-              }}
-              transition={{ duration: 0.55, ease: "easeOut" }}
-              className="origin-left"
-            >
-              <Image
-                src="/sp-logo.png"
-                alt="Space Palette Logo"
-                width={150}
-                height={60}
-                priority
-                className="
-                  h-[54px] w-[62px]
-                  transition duration-500
-                  md:h-[60px] md:w-[72px]
-                  lg:h-[66px] lg:w-[82px]
-                "
-              />
-            </motion.div>
+            {!showSplash && (
+              <motion.div
+                layoutId="main-logo"
+                animate={{
+                  scale: isScrolled ? 0.86 : 1,
+                }}
+                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                className="origin-left"
+              >
+                <Image
+                  src="/sp-logo.png"
+                  alt="Space Palette Logo"
+                  width={150}
+                  height={60}
+                  priority
+                  className="
+                    h-[54px] w-[62px]
+                    transition duration-500
+                    md:h-[60px] md:w-[72px]
+                    lg:h-[66px] lg:w-[82px]
+                  "
+                />
+              </motion.div>
+            )}
           </Link>
 
           {/* Desktop Navigation */}
@@ -91,7 +134,7 @@ export default function Header() {
                     initial={{ opacity: 0, y: -12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
-                      delay: 0.15 + index * 0.08,
+                      delay: (pathname === '/' ? 1.8 : 0.15) + index * 0.08,
                       duration: 0.55,
                       ease: "easeOut",
                     }}
@@ -122,7 +165,10 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <div className="relative z-20 flex items-center justify-end">
-            <button
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: pathname === '/' ? 1.8 : 0.15, duration: 0.5 }}
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
               className="
@@ -132,7 +178,7 @@ export default function Header() {
               "
             >
               <FiMenu className="text-[23px]" />
-            </button>
+            </motion.button>
           </div>
         </div>
       </motion.header>
@@ -215,6 +261,6 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </LayoutGroup>
   );
 }

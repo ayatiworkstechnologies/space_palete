@@ -55,8 +55,6 @@ function Connector({ position, active }) {
 }
 
 function ServiceTile({ title, index, active, className = "" }) {
-  const number = String(index + 1).padStart(2, "0");
-
   return (
     <motion.article
       initial={{ opacity: 0, y: 34 }}
@@ -76,10 +74,7 @@ function ServiceTile({ title, index, active, className = "" }) {
         active ? "border-[#f47a3c] shadow-[0_0_34px_rgba(244,122,60,0.12)]" : "border-white/10"
       } ${className}`}
     >
-      <div className="flex items-start justify-between">
-        <span className={`select-none text-[56px] font-bold leading-none tracking-[-0.12em] transition-colors duration-500 sm:text-[72px] ${active ? "text-[#f47a3c]/80" : "text-white/35"}`}>
-          {number}
-        </span>
+      <div className="flex items-center justify-center pt-2">
         <ServiceIcon active={active} iconNumber={index + 1} />
       </div>
       <h3 className={`text-center text-[17px] font-semibold leading-7 tracking-[0.24em] transition-colors duration-500 sm:text-[19px] ${active ? "text-[#f47a3c]" : "text-white"}`}>

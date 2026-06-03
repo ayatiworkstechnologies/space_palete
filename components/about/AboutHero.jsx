@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 export default function AboutHero() {
@@ -12,24 +12,20 @@ export default function AboutHero() {
     offset: ["start start", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.12]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, -90]);
-  const opacity = useTransform(scrollYProgress, [0, 0.82, 1], [1, 0.9, 0.08]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, -38]);
+  const opacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 0.92, 0.6]);
 
-  const smoothScale = useSpring(scale, {
-    stiffness: 80,
-    damping: 28,
-  });
-
-  const smoothY = useSpring(y, {
-    stiffness: 80,
-    damping: 28,
-  });
+  const smoothScale = useSpring(scale, { stiffness: 80, damping: 30 });
+  const smoothY = useSpring(y, { stiffness: 80, damping: 30 });
 
   return (
-    <section ref={ref} className="relative h-[75vh] overflow-hidden bg-black md:h-screen">
+    <section ref={ref} className="relative h-[400px] w-full overflow-hidden bg-black flex items-center justify-center">
       <motion.div
         style={{ scale: smoothScale, y: smoothY, opacity }}
+        initial={{ clipPath: "inset(0 0 100% 0)", y: 36, opacity: 0 }}
+        animate={{ clipPath: "inset(0 0 0% 0)", y: 0, opacity: 1 }}
+        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         className="absolute inset-0"
       >
         <Image
@@ -42,17 +38,17 @@ export default function AboutHero() {
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-black/5" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/28 via-transparent to-black/5" />
+      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/70 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black/85 to-transparent" />
 
-      <div className="relative z-10 flex h-full items-center justify-center px-6">
+      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center justify-center px-6 pt-16 text-center md:px-12 lg:px-20">
         <motion.div
-          initial={{ opacity: 0, y: 45, letterSpacing: "0.35em" }}
-          animate={{ opacity: 1, y: 0, letterSpacing: "0.22em" }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center"
+          initial={{ opacity: 0, y: 26, letterSpacing: "0.22em" }}
+          animate={{ opacity: 1, y: 0, letterSpacing: "0.12em" }}
+          transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h1 className="text-[42px] font-light tracking-[0.22em] md:text-[62px] lg:text-[78px]">
+          <h1 className="text-[34px] font-light uppercase leading-none tracking-[0.12em] text-white md:text-[46px] lg:text-[56px]">
             About
           </h1>
         </motion.div>

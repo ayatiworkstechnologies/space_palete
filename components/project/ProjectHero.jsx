@@ -23,7 +23,7 @@ export default function ProjectHero({
   const smoothY = useSpring(y, { stiffness: 80, damping: 30 });
 
   return (
-    <section ref={ref} className="relative h-[300px] overflow-hidden bg-black">
+    <section ref={ref} className="relative h-[400px] w-full overflow-hidden bg-black flex items-center justify-center">
       <motion.div
         style={{ scale: smoothScale, y: smoothY, opacity }}
         initial={{ clipPath: "inset(0 0 100% 0)", y: 36, opacity: 0 }}

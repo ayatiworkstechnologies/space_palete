@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
+import CustomCursor from "@/components/CustomCursor";
 
 const cabinetGrotesk = localFont({
   src: "../public/fonts/CabinetGrotesk-Medium.otf",
@@ -89,6 +90,7 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <Header />
+        <CustomCursor />
         {children}
         <Footer />
       </body>

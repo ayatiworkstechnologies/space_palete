@@ -56,7 +56,7 @@ export default function ProjectList() {
         View
       </motion.div>
 
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 55 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export default function ProjectList() {
           </h2>
         </motion.div>
 
-        <div className="grid gap-10 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {projectEntries.map((project, index) => (
             <motion.article
               key={project.slug}
@@ -94,7 +94,7 @@ export default function ProjectList() {
                 transitionTypes={["project-forward"]}
                 className="md:cursor-none"
               >
-                <div className="relative h-[360px] overflow-hidden md:h-[520px]">
+                <div className="relative h-[420px] overflow-hidden md:h-[560px] lg:h-[580px]">
                   <ViewTransition
                     name={`project-image-${project.slug}`}
                     share="project-morph"
@@ -103,7 +103,7 @@ export default function ProjectList() {
                       src={project.coverImage}
                       alt={project.title}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover transition duration-[1200ms] group-hover:scale-110"
                     />
                   </ViewTransition>
