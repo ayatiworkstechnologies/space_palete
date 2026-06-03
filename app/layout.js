@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 import GlobalDottedBg from "@/components/layouts/GlobalDottedBg";
-import GlobalContact from "@/components/layouts/GlobalContact";
 
 const cabinetGrotesk = localFont({
   src: "../public/fonts/CabinetGrotesk-Medium.otf",

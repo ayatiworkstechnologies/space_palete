@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useMemo, useRef, useState, ViewTransition } from "react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import { getImagePanelSize, getNextProject } from "./projectData";
-import ScatteredDotsBackground from "@/components/ScatteredDotsBackground";
 
 function uniqueImages(images) {
   return [...new Set(images.filter(Boolean))];
@@ -78,7 +77,6 @@ export default function ProjectShowcase({ project }) {
         </motion.div>
         <div ref={targetRef} className="relative h-[400vh] bg-black">
           <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-            {/* <ScatteredDotsBackground color="rgba(255, 255, 255, 0.25)" maxDotSize={1.5} density={0.0004} speed={0.2} /> */}
             <motion.div
               style={{ x }}
               className="flex h-full items-center gap-6 whitespace-nowrap pl-6 pr-[20vw] will-change-transform md:pl-12"
