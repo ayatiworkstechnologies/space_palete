@@ -92,6 +92,7 @@ function ProjectCard({ project, index }) {
                 fill
                 sizes="(max-width: 768px) 88vw, (max-width: 1024px) 620px, 760px"
                 quality={100}
+                loading={index === 0 ? "eager" : "lazy"}
                 className="object-cover"
               />
             </motion.div>
@@ -106,6 +107,7 @@ function ProjectCard({ project, index }) {
                 fill
                 sizes="(max-width: 768px) 82vw, (max-width: 1024px) 540px, 640px"
                 quality={100}
+                loading={index === 0 ? "eager" : "lazy"}
                 className="object-cover"
               />
             </motion.div>
@@ -116,9 +118,9 @@ function ProjectCard({ project, index }) {
           style={{ opacity: textOpacity }}
           className="z-20 mt-auto w-full bg-gradient-to-t from-black via-black/80 to-transparent px-8 pb-8 pt-32 will-change-transform"
         >
-          <div className="mx-auto grid w-full max-w-[1600px] gap-7 border-b border-white/10 pb-6 md:grid-cols-[180px_minmax(0,1fr)] md:items-end lg:grid-cols-[210px_minmax(0,1fr)]">
-            <div className="space-y-5">
-              <h2 className="max-w-[12ch] text-[34px] font-light leading-[0.98] tracking-tight md:text-[46px] lg:text-[54px]">
+          <div className="mx-auto grid w-full max-w-[1600px] gap-8 border-b border-white/10 pb-6 md:grid-cols-12 md:items-end md:gap-10">
+            <div className="flex flex-col gap-8 md:col-span-4 lg:gap-10">
+              <h2 className="max-w-[9ch] text-[34px] font-light leading-[0.98] tracking-tight md:text-[46px] lg:text-[54px]">
                 {project.title}
               </h2>
               <CommonButton
@@ -126,20 +128,22 @@ function ProjectCard({ project, index }) {
                 href={`/projects/${project.slug}`}
                 transitionTypes={["project-forward"]}
                 variant="outline"
-                className="!min-h-10 !px-5 !py-2 !text-[10px]"
-                iconSize={14}
+                className="!h-12 !w-[220px] !px-6 !py-0 !text-[10px] md:!w-[240px] lg:!w-[260px]"
+                iconSize={15}
               >
                 View Project
               </CommonButton>
             </div>
 
-            <div className="grid grid-cols-2 gap-x-6 gap-y-5 text-[11px] font-medium tracking-[0.08em] text-white/72 sm:grid-cols-3 md:grid-cols-[minmax(240px,1.55fr)_repeat(4,minmax(100px,1fr))] md:gap-x-8 md:text-[12px] lg:grid-cols-[minmax(320px,1.6fr)_repeat(4,minmax(130px,1fr))]">
+            <div className="grid grid-cols-2 items-start gap-x-6 gap-y-5 text-[11px] font-medium tracking-[0.08em] text-white/72 sm:grid-cols-3 md:col-span-8 md:grid-cols-[minmax(220px,1.45fr)_repeat(4,minmax(96px,1fr))] md:gap-x-8 md:text-[12px] lg:grid-cols-[minmax(300px,1.55fr)_repeat(4,minmax(124px,1fr))]">
               {project.details.map(([label, value]) => (
-                <div key={label} className="space-y-2">
+                <div key={label} className="min-w-0 space-y-3">
                   <span className="block text-[9px] uppercase tracking-[0.18em] text-white/36">
                     {label}
                   </span>
-                  <p className="leading-relaxed">{value}</p>
+                  <p className="min-h-[42px] max-w-[24ch] break-words leading-[1.45]">
+                    {value}
+                  </p>
                 </div>
               ))}
             </div>
