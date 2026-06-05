@@ -1,10 +1,64 @@
 "use client";
 
+import { useState } from "react";
 import CommonButton from "@/components/CommonButton";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function ProjectProfileSection() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    phone: "",
+    email: "",
+    projectType: "",
+    vision: "",
+  });
+  const [status, setStatus] = useState("idle"); // "idle" | "loading" | "success" | "error"
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMessage("");
+    try {
+      const response = await fetch("https://api.ayatiworks.com/api/v1/public/space-palette/space-contact/records", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-API-Key": "598a6588dce01e6c698628e1b777202b73ed5ec06791a35ebb186bfb79321ad0",
+        },
+        body: JSON.stringify({
+          data: {
+            full_name: formData.fullName,
+            phone: formData.phone,
+            email: formData.email,
+            project_type: formData.projectType,
+            vision: formData.vision,
+          },
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({
+          fullName: "",
+          phone: "",
+          email: "",
+          projectType: "",
+          vision: "",
+        });
+      } else {
+        const data = await response.json().catch(() => ({}));
+        setStatus("error");
+        setErrorMessage(data?.message || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      console.error("Form submission failed:", err);
+      setStatus("error");
+      setErrorMessage("Network error. Please check your connection and try again.");
+    }
+  };
+
   return (
     <section
       id="contact"
@@ -60,53 +114,128 @@ export default function ProjectProfileSection() {
             Let us understand your space and design goals.
           </p>
 
-          <form className="mt-9 max-w-[620px] space-y-7 md:mt-11 md:space-y-8">
-            <input
-              type="text"
-              placeholder="Full Name"
-              suppressHydrationWarning
-              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#E16E38] md:text-base"
-            />
-
-            <div className="grid gap-8 md:grid-cols-2">
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                suppressHydrationWarning
-                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#E16E38] md:text-base"
-              />
-
-              <input
-                type="email"
-                placeholder="Email"
-                suppressHydrationWarning
-                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#E16E38] md:text-base"
-              />
-            </div>
-
-            <input
-              type="text"
-              placeholder="Project Type"
-              suppressHydrationWarning
-              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#E16E38] md:text-base"
-            />
-
-            <textarea
-              rows="2"
-              placeholder="Describe Your Vision"
-              suppressHydrationWarning
-              className="w-full resize-none border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#E16E38] md:text-base"
-            />
-
-            <CommonButton
-              as="button"
-              type="submit"
-              suppressHydrationWarning
-              className="!py-3"
+          {status === "success" ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mt-9 flex min-h-[350px] flex-col items-center justify-center border border-white/10 bg-white/[0.02] p-8 text-center backdrop-blur-md max-w-[620px]"
             >
-              Discover Creations
-            </CommonButton>
-          </form>
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#E16E38]/10 text-[#E16E38]">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.8}
+                  stroke="currentColor"
+                  className="h-8 w-8"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-medium text-white md:text-2xl">
+                Vision Shared Successfully!
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-white/70 max-w-md font-secondary">
+                Thank you for reaching out. We have received your project details and our team will get in touch with you shortly to bring your spaces to life.
+              </p>
+              <button
+                onClick={() => setStatus("idle")}
+                className="mt-6 text-sm font-medium text-[#E16E38] underline underline-offset-4 hover:text-white transition duration-300 font-secondary cursor-pointer"
+              >
+                Submit another inquiry
+              </button>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="mt-9 max-w-[620px] space-y-7 md:mt-11 md:space-y-8">
+              <div className="flex flex-col relative group">
+                <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-secondary">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.fullName}
+                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                  suppressHydrationWarning
+                  className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-secondary"
+                />
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-2">
+                <div className="flex flex-col relative group">
+                  <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-secondary">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    suppressHydrationWarning
+                    className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-secondary"
+                  />
+                </div>
+
+                <div className="flex flex-col relative group">
+                  <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-secondary">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    suppressHydrationWarning
+                    className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-secondary"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col relative group">
+                <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-secondary">
+                  Project Type
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.projectType}
+                  onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                  suppressHydrationWarning
+                  className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-secondary"
+                />
+              </div>
+
+              <div className="flex flex-col relative group">
+                <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-secondary">
+                  Describe Your Vision
+                </label>
+                <textarea
+                  rows="2"
+                  required
+                  value={formData.vision}
+                  onChange={(e) => setFormData({ ...formData, vision: e.target.value })}
+                  suppressHydrationWarning
+                  className="w-full resize-none border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-secondary"
+                />
+              </div>
+
+              {status === "error" && (
+                <p className="text-sm font-medium text-[#E16E38] font-secondary">
+                  {errorMessage}
+                </p>
+              )}
+
+              <CommonButton
+                as="button"
+                type="submit"
+                suppressHydrationWarning
+                className="!py-3"
+                disabled={status === "loading"}
+              >
+                {status === "loading" ? "Sharing Vision..." : "Discover Creations"}
+              </CommonButton>
+            </form>
+          )}
         </motion.div>
 
         {/* RIGHT CONTACT */}

@@ -9,6 +9,7 @@ export default function CommonButton({
   iconSize = 17,
   showIcon = true,
   variant = "solid",
+  overlayClassName = "bg-[#E16E38]",
   ...props
 }) {
   const variantClassName =
@@ -39,7 +40,7 @@ export default function CommonButton({
           />
         )}
       </span>
-      <div className="absolute inset-0 bg-[#E16E38] translate-y-full transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:translate-y-0" />
+      <div className={`absolute inset-0 translate-y-full transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:translate-y-0 ${overlayClassName}`} />
     </Component>
   );
 }
