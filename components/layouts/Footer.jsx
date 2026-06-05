@@ -149,19 +149,19 @@ export default function Footer() {
           transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
           className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 py-9 text-lg text-white max-md:block max-md:border-b max-md:border-white/10 max-md:py-4 max-md:text-center max-md:text-xl"
         >
-          <Link href="/" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
+          <Link href="/" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
             Home
           </Link>
-          <Link href="/about" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
+          <Link href="/about" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
             About us
           </Link>
-          <Link href="/projects" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
+          <Link href="/projects" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
             Projects
           </Link>
-          {/* <Link href="/studios" className="transition duration-300 hover:text-[#f47a3c] max-md:hidden">
+          {/* <Link href="/studios" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
             Studios
           </Link> */}
-          <Link href="/contact" className="transition duration-300 hover:text-[#f47a3c]">
+          <Link href="/contact" className="transition duration-300 hover:text-[#E16E38]">
             Contact Us
           </Link>
         </motion.nav>
@@ -195,11 +195,11 @@ export default function Footer() {
                   group relative inline-flex h-14 w-14 items-center justify-center
                   rounded-full border border-white/12 text-white
                   transition duration-300
-                  hover:border-[#f47a3c]/70 hover:text-[#f47a3c]
+                  hover:border-[#E16E38]/70 hover:text-[#E16E38]
                   max-md:h-12 max-md:w-12
                 "
               >
-                <span className="absolute inset-0 rounded-full bg-[#f47a3c]/0 blur-xl transition duration-300 group-hover:bg-[#f47a3c]/18" />
+                <span className="absolute inset-0 rounded-full bg-[#E16E38]/0 blur-xl transition duration-300 group-hover:bg-[#E16E38]/18" />
 
                 <span className="relative z-10">
                   {Icon ? (
@@ -226,7 +226,7 @@ export default function Footer() {
               href="https://www.ayatiworks.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white transition hover:text-[#f47a3c]"
+              className="text-white transition hover:text-[#E16E38]"
             >
               Ayatiworks
             </a>

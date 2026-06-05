@@ -1,68 +1,66 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+
+const teamPortraits = Array.from({ length: 26 }, (_, index) => ({
+  id: index + 1,
+  src: `/assets/teams/${index + 1}.png`,
+}));
 
 export default function TeamSection() {
-  const imageRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: imageRef,
-    offset: ["start end", "end start"],
-  });
-
-  const imageY = useTransform(scrollYProgress, [0, 1], [22, -22]);
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1.03, 1]);
-  const smoothY = useSpring(imageY, { stiffness: 80, damping: 28 });
-  const smoothScale = useSpring(imageScale, { stiffness: 80, damping: 28 });
-
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-8 text-white md:px-12 md:py-12">
-      <motion.div
-        initial={{ opacity: 0, y: 55 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-12 lg:gap-12"
-      >
+    <section className="relative overflow-hidden bg-black px-7 py-12 text-white md:px-10 md:py-16 lg:px-14">
+      <div className="mx-auto max-w-[1500px]">
         <motion.div
-          initial={{ opacity: 0, x: -42 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ delay: 0.08, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="md:col-span-5"
+          initial={{ opacity: 0, y: 34 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="grid gap-8 pb-12 md:grid-cols-[0.7fr_1fr] md:items-start md:gap-16 lg:pb-20"
         >
-          <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
-            About the <span className="text-[#f47a3c]">Team</span>
+          <h2 className="max-w-[220px] text-[30px] font-medium leading-[0.95] tracking-normal text-white md:text-[38px]">
+            Meet
+            <br />
+            Our Team
           </h2>
 
-          <p className="mt-6 max-w-xl text-base leading-7 text-white/90 md:text-lg md:leading-8">
-            A collaborative team of architects, designers, and project specialists
-            drives every project with precision and attention to detail.
+          <p className="max-w-[790px] text-[12px] font-medium uppercase leading-[1.75] tracking-[0.28em] text-white/72 md:text-[13px]">
+            Our team brings together expertise in Interior Design, Workplace
+            Strategy, Project Coordination and Turnkey execution to craft
+            environments that balance aesthetics with business functionality,
+            Every project is approached collaboratively, ensuring precision,
+            innovation and seamless delivery at every stage.
           </p>
-
         </motion.div>
 
-        <motion.div
-          ref={imageRef}
-          initial={{ opacity: 0, y: 80, scale: 0.96 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ delay: 0.15, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="relative h-[300px] overflow-hidden md:col-span-7 md:h-[360px] lg:h-[400px]"
-        >
-          <motion.div style={{ y: smoothY, scale: smoothScale }} className="absolute inset-0">
-            <Image
-              src="/assets/about/team.png"
-              alt="Space Palette Team"
-              fill
-              sizes="(max-width: 768px) 100vw, 62vw"
-              className="object-contain object-center"
-            />
-          </motion.div>
-        </motion.div>
-      </motion.div>
+        <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:gap-x-7 md:grid-cols-3 md:gap-y-10 lg:grid-cols-4 lg:gap-x-9 lg:gap-y-12">
+          {teamPortraits.map((portrait, index) => (
+            <motion.div
+              key={portrait.id}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -10, scale: 1.025 }}
+              viewport={{ once: true, amount: 0.12 }}
+              transition={{
+                duration: 0.7,
+                delay: Math.min(index * 0.025, 0.18),
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="group relative aspect-[0.9] overflow-hidden rounded-[14px] bg-neutral-100 shadow-[0_18px_45px_rgba(0,0,0,0.28)] transition-shadow duration-500 hover:shadow-[0_28px_70px_rgba(225,110,56,0.16)]"
+            >
+              <Image
+                src={portrait.src}
+                alt={`Space Palette team member ${portrait.id}`}
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                className="object-cover object-center grayscale transition duration-700 ease-out group-hover:scale-[1.06] group-hover:grayscale-0"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/18 via-transparent to-white/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

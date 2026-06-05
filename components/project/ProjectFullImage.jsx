@@ -52,6 +52,7 @@ export default function ProjectFullImage({
                 alt={`${title} full interior`}
                 fill
                 sizes="100vw"
+                quality={100}
                 className="object-cover"
               />
             </motion.div>

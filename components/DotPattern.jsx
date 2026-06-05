@@ -136,7 +136,7 @@ function ScatterDots({ density, accent, className }) {
           const isAccent = accent && i % 4 === 0;
           const isGlow = i % 5 === 0;
           const animClass = isAccent
-            ? "dot-blink-glow bg-[#f47a3c]/40"
+            ? "dot-blink-glow bg-[#E16E38]/40"
             : isGlow
               ? "dot-blink-drift bg-white/50"
               : "dot-blink-soft bg-white/35";

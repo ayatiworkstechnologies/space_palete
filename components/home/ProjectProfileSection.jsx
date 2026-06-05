@@ -31,7 +31,7 @@ export default function ProjectProfileSection() {
       </div>
 
       {/* Soft orange glow */}
-      <div className="pointer-events-none absolute right-[-180px] top-1/2 h-[380px] w-[380px] -translate-y-1/2 rounded-full bg-[#f47a3c]/8 blur-[130px]" />
+      <div className="pointer-events-none absolute right-[-180px] top-1/2 h-[380px] w-[380px] -translate-y-1/2 rounded-full bg-[#E16E38]/8 blur-[130px]" />
 
       <motion.div
         initial={{ opacity: 0, y: 65 }}
@@ -65,7 +65,7 @@ export default function ProjectProfileSection() {
               type="text"
               placeholder="Full Name"
               suppressHydrationWarning
-              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#f47a3c] md:text-base"
+              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#E16E38] md:text-base"
             />
 
             <div className="grid gap-8 md:grid-cols-2">
@@ -73,14 +73,14 @@ export default function ProjectProfileSection() {
                 type="tel"
                 placeholder="Phone Number"
                 suppressHydrationWarning
-                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#f47a3c] md:text-base"
+                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#E16E38] md:text-base"
               />
 
               <input
                 type="email"
                 placeholder="Email"
                 suppressHydrationWarning
-                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#f47a3c] md:text-base"
+                className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#E16E38] md:text-base"
               />
             </div>
 
@@ -88,14 +88,14 @@ export default function ProjectProfileSection() {
               type="text"
               placeholder="Project Type"
               suppressHydrationWarning
-              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#f47a3c] md:text-base"
+              className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#E16E38] md:text-base"
             />
 
             <textarea
               rows="2"
               placeholder="Describe Your Vision"
               suppressHydrationWarning
-              className="w-full resize-none border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#f47a3c] md:text-base"
+              className="w-full resize-none border-0 border-b border-white/18 bg-transparent px-1 pb-4 text-[15px] text-white outline-none transition placeholder:text-white focus:border-[#E16E38] md:text-base"
             />
 
             <CommonButton
@@ -123,7 +123,7 @@ export default function ProjectProfileSection() {
             "
           >
             Share Your <br />
-            Vision <span className="text-[#f47a3c]">Spaces</span>
+            Vision <span className="text-[#E16E38]">Spaces</span>
           </h2>
 
           <div className="mt-8 max-w-[430px] space-y-6 md:mt-10 md:space-y-7">
@@ -132,7 +132,7 @@ export default function ProjectProfileSection() {
                 <Mail
                   size={20}
                   strokeWidth={1.6}
-                  className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
+                  className="shrink-0 text-white transition group-hover:text-[#E16E38]"
                 />
                 <h3 className="text-[14px] font-semibold text-white md:text-[15px]">
                   Contact Our Studio
@@ -141,7 +141,7 @@ export default function ProjectProfileSection() {
 
               <a
                 href="mailto:uma@spacepalette.net"
-                className="mt-2 block pl-8 text-[14px] leading-relaxed text-white transition hover:text-[#f47a3c] md:text-base"
+                className="mt-2 block pl-8 text-[14px] leading-relaxed text-white transition hover:text-[#E16E38] md:text-base"
               >
                 uma@spacepalette.net
               </a>
@@ -152,7 +152,7 @@ export default function ProjectProfileSection() {
                 <Phone
                   size={20}
                   strokeWidth={1.6}
-                  className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
+                  className="shrink-0 text-white transition group-hover:text-[#E16E38]"
                 />
                 <h3 className="text-[14px] font-semibold text-white md:text-[15px]">
                   Speak With Our Studio
@@ -161,7 +161,7 @@ export default function ProjectProfileSection() {
 
               <a
                 href="tel:+917338811688"
-                className="mt-2 block pl-8 text-[14px] leading-relaxed text-white transition hover:text-[#f47a3c] md:text-base"
+                className="mt-2 block pl-8 text-[14px] leading-relaxed text-white transition hover:text-[#E16E38] md:text-base"
               >
                 +91 7338811688
               </a>
@@ -172,7 +172,7 @@ export default function ProjectProfileSection() {
                 <MapPin
                   size={20}
                   strokeWidth={1.6}
-                  className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
+                  className="shrink-0 text-white transition group-hover:text-[#E16E38]"
                 />
                 <h3 className="text-[14px] font-semibold text-white md:text-[15px]">
                   Head Quarters
@@ -193,7 +193,7 @@ export default function ProjectProfileSection() {
                 <MapPin
                   size={20}
                   strokeWidth={1.6}
-                  className="shrink-0 text-white transition group-hover:text-[#f47a3c]"
+                  className="shrink-0 text-white transition group-hover:text-[#E16E38]"
                 />
                 <h3 className="text-[14px] font-semibold text-white md:text-[15px]">
                   Other Locations

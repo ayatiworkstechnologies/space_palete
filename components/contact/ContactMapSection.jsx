@@ -13,11 +13,11 @@ export default function ContactMapSection() {
         className="mx-auto max-w-6xl"
       >
         <div className="mb-6">
-          <p className="mb-2 text-[11px] uppercase tracking-[0.25em] text-[#f47a3c]">
+          <p className="mb-2 text-[11px] uppercase tracking-[0.25em] text-[#E16E38]">
             Studio Map
           </p>
           <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
-            Visit Our <span className="text-[#f47a3c]">Chennai Studio</span>
+            Visit Our <span className="text-[#E16E38]">Chennai Studio</span>
           </h2>
         </div>
 

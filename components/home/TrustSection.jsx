@@ -46,7 +46,7 @@ export default function TrustSection() {
           {Array.from({ length: 24 }).map((_, i) => (
             <span
               key={i}
-              className={`absolute block rounded-full ${i % 4 === 0 ? "dot-blink-glow bg-[#f47a3c]/40" : "dot-blink-drift bg-white/35"}`}
+              className={`absolute block rounded-full ${i % 4 === 0 ? "dot-blink-glow bg-[#E16E38]/40" : "dot-blink-drift bg-white/35"}`}
               style={{
                 left: `${(i * 23 + 5) % 100}%`,
                 top: `${(i * 31 + 9) % 100}%`,
@@ -81,7 +81,7 @@ export default function TrustSection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-3xl font-medium tracking-tight text-white md:text-5xl"
           >
-            Trust Across <span className="text-[#f47a3c]">Spaces</span>
+            Trust Across <span className="text-[#E16E38]">Spaces</span>
           </motion.h2>
         </div>
 

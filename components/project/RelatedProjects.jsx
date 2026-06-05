@@ -53,6 +53,7 @@ export default function RelatedProjects({ currentSlug }) {
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 550px"
+                      quality={100}
                       className="object-cover transition duration-[1200ms] group-hover:scale-105"
                     />
                   </div>
@@ -67,7 +68,7 @@ export default function RelatedProjects({ currentSlug }) {
                       </p>
                     </div>
 
-                    <span className="text-[12px] uppercase tracking-[0.22em] text-[#f47a3c]">
+                    <span className="text-[12px] uppercase tracking-[0.22em] text-[#E16E38]">
                       View
                     </span>
                   </div>

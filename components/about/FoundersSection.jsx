@@ -51,7 +51,7 @@ export default function FoundersSection() {
           className="md:col-span-5"
         >
           <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
-            About <span className="text-[#f47a3c]">Founders</span>
+            About <span className="text-[#E16E38]">Founders</span>
           </h2>
 
           <p className="mt-6 max-w-xl text-base leading-7 text-white/90 md:text-lg md:leading-8">

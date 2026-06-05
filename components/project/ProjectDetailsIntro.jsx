@@ -20,7 +20,7 @@ export default function ProjectDetailsIntro({ project }) {
           >
             <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
               {highlightWord}{" "}
-              <span className="text-[#f47a3c]">
+              <span className="text-[#E16E38]">
                 {restTitle.join(" ") || "Project"}
               </span>
             </h2>

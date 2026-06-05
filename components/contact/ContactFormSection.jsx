@@ -23,7 +23,7 @@ export default function ContactFormSection() {
 
             <div className="space-y-6">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.25em] text-[#f47a3c] mb-2 font-bold">
+                <p className="text-[10px] uppercase tracking-[0.25em] text-[#E16E38] mb-2 font-bold">
                   Head Quarters
                 </p>
                 <p className="max-w-[320px] text-[14px] leading-relaxed text-white/95 font-secondary">
@@ -51,7 +51,7 @@ export default function ContactFormSection() {
                 </p>
                 <a
                   href="mailto:uma@spacepalette.net"
-                  className="block text-[15px] font-medium text-white transition-colors hover:text-[#f47a3c]"
+                  className="block text-[15px] font-medium text-white transition-colors hover:text-[#E16E38]"
                 >
                   uma@spacepalette.net
                 </a>
@@ -63,7 +63,7 @@ export default function ContactFormSection() {
                 </p>
                 <a
                   href="tel:+917338811688"
-                  className="block text-[15px] font-medium text-white transition-colors hover:text-[#f47a3c]"
+                  className="block text-[15px] font-medium text-white transition-colors hover:text-[#E16E38]"
                 >
                   +91 7338811688
                 </a>
@@ -87,7 +87,7 @@ export default function ContactFormSection() {
                   <label className="block text-[10px] uppercase tracking-[0.2em] text-white mb-2">Full Name *</label>
                   <input
                     type="text"
-                    className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#f47a3c] focus:outline-none transition-colors"
+                    className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#E16E38] focus:outline-none transition-colors"
                     placeholder="John Doe"
                     required
                   />
@@ -96,7 +96,7 @@ export default function ContactFormSection() {
                   <label className="block text-[10px] uppercase tracking-[0.2em] text-white mb-2">Email Address *</label>
                   <input
                     type="email"
-                    className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#f47a3c] focus:outline-none transition-colors"
+                    className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#E16E38] focus:outline-none transition-colors"
                     placeholder="john@example.com"
                     required
                   />
@@ -107,7 +107,7 @@ export default function ContactFormSection() {
                 <label className="block text-[10px] uppercase tracking-[0.2em] text-white mb-2">Phone Number</label>
                 <input
                   type="tel"
-                  className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#f47a3c] focus:outline-none transition-colors"
+                  className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#E16E38] focus:outline-none transition-colors"
                   placeholder="+91"
                 />
               </div>
@@ -116,7 +116,7 @@ export default function ContactFormSection() {
                 <label className="block text-[10px] uppercase tracking-[0.2em] text-white mb-2">Project Details *</label>
                 <textarea
                   rows="4"
-                  className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#f47a3c] focus:outline-none transition-colors resize-none"
+                  className="w-full bg-transparent border-b border-white/20 py-2 text-[14px] text-white placeholder-white/20 focus:border-[#E16E38] focus:outline-none transition-colors resize-none"
                   placeholder="Tell us about your space, requirements, and vision..."
                   required
                 ></textarea>

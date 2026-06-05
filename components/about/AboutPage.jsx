@@ -32,11 +32,11 @@ export default function AboutPage() {
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-black text-white">
       <BackgroundVectors />
-      <div className="pointer-events-none fixed left-[-18vw] top-[22vh] z-0 h-[46vw] w-[46vw] rounded-full bg-[#f47a3c]/[0.035] blur-[120px]" />
+      <div className="pointer-events-none fixed left-[-18vw] top-[22vh] z-0 h-[46vw] w-[46vw] rounded-full bg-[#E16E38]/[0.035] blur-[120px]" />
       <div className="pointer-events-none fixed right-[-20vw] top-[58vh] z-0 h-[42vw] w-[42vw] rounded-full bg-white/[0.025] blur-[120px]" />
       <motion.div
         style={{ scaleX }}
-        className="fixed left-0 top-0 z-[70] h-[2px] w-full origin-left bg-[#f47a3c]"
+        className="fixed left-0 top-0 z-[70] h-[2px] w-full origin-left bg-[#E16E38]"
       />
       <div className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-28 bg-gradient-to-b from-black/45 to-transparent" />
       <div className="relative z-10">

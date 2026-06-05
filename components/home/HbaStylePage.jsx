@@ -74,6 +74,7 @@ function ProjectCard({ project, index }) {
             fill
             priority={index === 0}
             sizes="100vw"
+            quality={100}
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/80" />
@@ -90,6 +91,7 @@ function ProjectCard({ project, index }) {
                 alt={`${project.title} sequence 1`}
                 fill
                 sizes="(max-width: 768px) 88vw, (max-width: 1024px) 620px, 760px"
+                quality={100}
                 className="object-cover"
               />
             </motion.div>
@@ -103,6 +105,7 @@ function ProjectCard({ project, index }) {
                 alt={`${project.title} sequence 2`}
                 fill
                 sizes="(max-width: 768px) 82vw, (max-width: 1024px) 540px, 640px"
+                quality={100}
                 className="object-cover"
               />
             </motion.div>
@@ -113,7 +116,7 @@ function ProjectCard({ project, index }) {
           style={{ opacity: textOpacity }}
           className="z-20 mt-auto w-full bg-gradient-to-t from-black via-black/80 to-transparent px-8 pb-8 pt-32 will-change-transform"
         >
-          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 border-b border-white/10 pb-6 md:flex-row md:items-end">
+          <div className="mx-auto grid w-full max-w-[1600px] gap-7 border-b border-white/10 pb-6 md:grid-cols-[180px_minmax(0,1fr)] md:items-end lg:grid-cols-[210px_minmax(0,1fr)]">
             <div className="space-y-5">
               <h2 className="max-w-[12ch] text-[34px] font-light leading-[0.98] tracking-tight md:text-[46px] lg:text-[54px]">
                 {project.title}
@@ -130,31 +133,15 @@ function ProjectCard({ project, index }) {
               </CommonButton>
             </div>
 
-            <div className="grid grid-cols-2 gap-6 text-[11px] font-medium tracking-[0.14em] text-white/72 sm:grid-cols-4 md:gap-12 md:text-[12px]">
-              <div className="space-y-2">
-                <span className="block text-[9px] uppercase tracking-[0.18em] text-white/36">
-                  Direction
-                </span>
-                <p className="leading-relaxed">{project.studio}</p>
-              </div>
-              <div className="space-y-2">
-                <span className="block text-[9px] uppercase tracking-[0.18em] text-white/36">
-                  Typology
-                </span>
-                <p>{project.type}</p>
-              </div>
-              <div className="space-y-2">
-                <span className="block text-[9px] uppercase tracking-[0.18em] text-white/36">
-                  Location
-                </span>
-                <p>{project.location}</p>
-              </div>
-              <div className="space-y-2">
-                <span className="block text-[9px] uppercase tracking-[0.18em] text-white/36">
-                  Timeline
-                </span>
-                <p>{project.year}</p>
-              </div>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-5 text-[11px] font-medium tracking-[0.08em] text-white/72 sm:grid-cols-3 md:grid-cols-[minmax(240px,1.55fr)_repeat(4,minmax(100px,1fr))] md:gap-x-8 md:text-[12px] lg:grid-cols-[minmax(320px,1.6fr)_repeat(4,minmax(130px,1fr))]">
+              {project.details.map(([label, value]) => (
+                <div key={label} className="space-y-2">
+                  <span className="block text-[9px] uppercase tracking-[0.18em] text-white/36">
+                    {label}
+                  </span>
+                  <p className="leading-relaxed">{value}</p>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>

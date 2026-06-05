@@ -41,6 +41,7 @@ function FloatingImage({ item, index, title }) {
         alt={`${title} gallery ${index + 1}`}
         fill
         sizes="(max-width: 768px) 100vw, 240px"
+        quality={100}
         className="object-cover"
       />
     </motion.div>

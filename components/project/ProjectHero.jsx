@@ -37,6 +37,7 @@ export default function ProjectHero({
           fill
           priority
           sizes="100vw"
+          quality={100}
           className="object-cover"
         />
       </motion.div>

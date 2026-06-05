@@ -145,6 +145,7 @@ export default function ProjectShowcase({ project }) {
                         fill
                         priority
                         sizes="80vw"
+                        quality={100}
                         className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                       />
                     </ViewTransition>
@@ -169,6 +170,7 @@ export default function ProjectShowcase({ project }) {
                         alt={`${project.title} interior view ${index + 1}`}
                         fill
                         sizes={panelSize.sizes}
+                        quality={100}
                         className="object-cover grayscale-[15%] transition-all duration-700 group-hover:grayscale-0"
                       />
                     </div>
@@ -213,6 +215,7 @@ export default function ProjectShowcase({ project }) {
                         alt={`${nextProject.title} preview`}
                         fill
                         sizes="(max-width: 768px) calc(100vw - 330px), 58vw"
+                        quality={100}
                         className="object-cover"
                       />
                     </motion.div>

@@ -49,7 +49,7 @@ function Connector({ position, active }) {
         position === "top"
           ? "absolute left-full top-[55%] h-px w-7 border-t"
           : "absolute right-full top-[55%] h-px w-7 border-t"
-      } ${active ? "border-[#f47a3c]" : "border-white/70"}`}
+      } ${active ? "border-[#E16E38]" : "border-white/70"}`}
     />
   );
 }
@@ -71,13 +71,13 @@ function ServiceTile({ title, index, active, className = "" }) {
         backgroundColor: { duration: 0.45 },
       }}
       className={`relative flex h-36 flex-col justify-between border px-4 py-4 transition-colors duration-500 sm:h-40 sm:px-5 ${
-        active ? "border-[#f47a3c] shadow-[0_0_34px_rgba(244,122,60,0.12)]" : "border-white/10"
+        active ? "border-[#E16E38] shadow-[0_0_34px_rgba(244,122,60,0.12)]" : "border-white/10"
       } ${className}`}
     >
       <div className="flex items-center justify-center pt-2">
         <ServiceIcon active={active} iconNumber={index + 1} />
       </div>
-      <h3 className={`text-center text-[17px] font-semibold leading-7 tracking-[0.24em] transition-colors duration-500 sm:text-[19px] ${active ? "text-[#f47a3c]" : "text-white"}`}>
+      <h3 className={`text-center text-[17px] font-semibold leading-7 tracking-[0.24em] transition-colors duration-500 sm:text-[19px] ${active ? "text-[#E16E38]" : "text-white"}`}>
         {title}
       </h3>
       {index < 4 && <Connector position="top" active={active} />}
@@ -162,7 +162,7 @@ export default function ServicesProcess() {
 
           <div
             className={`pointer-events-none hidden rounded-r-lg border-y border-r transition-colors duration-500 lg:absolute lg:bottom-[70px] lg:right-[-46px] lg:block lg:h-[164px] lg:w-[46px] ${
-              activeIndex >= 4 && activeIndex <= 5 ? "border-[#f47a3c]" : "border-white/70"
+              activeIndex >= 4 && activeIndex <= 5 ? "border-[#E16E38]" : "border-white/70"
             }`}
           />
         </div>

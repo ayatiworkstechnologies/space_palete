@@ -147,14 +147,14 @@ export default function Header() {
                       className={`
                         group relative text-[13px] font-semibold uppercase
                         tracking-[0.08em] transition duration-300
-                        ${isActive ? 'text-[#f47a3c]' : 'text-white hover:text-white'}
+                        ${isActive ? 'text-[#E16E38]' : 'text-white hover:text-white'}
                       `}
                     >
                       {item.label}
 
                       <span
                         className={`
-                          absolute -bottom-2 left-0 h-px bg-[#f47a3c]
+                          absolute -bottom-2 left-0 h-px bg-[#E16E38]
                           transition-all duration-300 
                           ${isActive ? 'w-full' : 'w-0 group-hover:w-full bg-white'}
                         `}
@@ -251,7 +251,7 @@ export default function Header() {
                           block border-b border-white/12 pb-5
                           text-[34px] font-light uppercase tracking-[-0.04em]
                           transition hover:text-white
-                          ${isActive ? 'text-[#f47a3c] border-[#f47a3c]/30' : 'text-white'}
+                          ${isActive ? 'text-[#E16E38] border-[#E16E38]/30' : 'text-white'}
                         `}
                       >
                         {item.label}

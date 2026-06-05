@@ -79,7 +79,7 @@ export default function VisualStorySection() {
       </div>
 
       {/* Soft Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f47a3c]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#E16E38]/10 blur-[120px]" />
 
       <motion.div
         initial={{ opacity: 0, y: 70 }}
@@ -96,7 +96,7 @@ export default function VisualStorySection() {
           transition={{ duration: 0.75, ease: "easeOut" }}
           className="text-3xl font-medium tracking-tight md:text-5xl"
         >
-          Stories Behind <span className="text-[#f47a3c]">Spaces</span>
+          Stories Behind <span className="text-[#E16E38]">Spaces</span>
         </motion.h2>
 
         {/* Stories */}
@@ -114,7 +114,7 @@ export default function VisualStorySection() {
             onClick={showPrevious}
             aria-label="Previous story"
             suppressHydrationWarning
-            className="absolute left-1/2 top-0 z-30 -translate-x-1/2 text-white transition duration-300 hover:-translate-y-0.5 hover:text-[#f47a3c]"
+            className="absolute left-1/2 top-0 z-30 -translate-x-1/2 text-white transition duration-300 hover:-translate-y-0.5 hover:text-[#E16E38]"
           >
             <ChevronUp size={18} strokeWidth={1.6} />
           </button>
@@ -124,7 +124,7 @@ export default function VisualStorySection() {
             onClick={showNext}
             aria-label="Next story"
             suppressHydrationWarning
-            className="absolute bottom-0 left-1/2 z-30 -translate-x-1/2 text-white transition duration-300 hover:translate-y-0.5 hover:text-[#f47a3c]"
+            className="absolute bottom-0 left-1/2 z-30 -translate-x-1/2 text-white transition duration-300 hover:translate-y-0.5 hover:text-[#E16E38]"
           >
             <ChevronDown size={18} strokeWidth={1.6} />
           </button>
@@ -139,7 +139,7 @@ export default function VisualStorySection() {
                   key={story.id}
                   className={`absolute left-0 right-0 top-1/2 mx-auto w-[min(100%,900px)] border-y border-white/10 px-8 py-8 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:px-28 ${
                     isActive
-                      ? "z-20 max-w-4xl opacity-100 before:absolute before:bottom-[-1px] before:left-[10%] before:right-[10%] before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.75),transparent)] before:content-[''] after:absolute after:-bottom-5 after:left-[18%] after:right-[18%] after:h-9 after:rounded-full after:bg-[#f47a3c]/15 after:blur-2xl after:content-['']"
+                      ? "z-20 max-w-4xl opacity-100 before:absolute before:bottom-[-1px] before:left-[10%] before:right-[10%] before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.75),transparent)] before:content-[''] after:absolute after:-bottom-5 after:left-[18%] after:right-[18%] after:h-9 after:rounded-full after:bg-[#E16E38]/15 after:blur-2xl after:content-['']"
                       : "z-10 max-w-3xl opacity-20 blur-[0.4px]"
                   }`}
                   style={{
@@ -177,7 +177,7 @@ export default function VisualStorySection() {
                   </p>
 
                   {isActive && (
-                    <h3 className="mt-4 text-xl font-bold text-[#f47a3c] md:text-2xl">
+                    <h3 className="mt-4 text-xl font-bold text-[#E16E38] md:text-2xl">
                       {story.name}
                     </h3>
                   )}
@@ -187,13 +187,13 @@ export default function VisualStorySection() {
           </div>
 
           <div
-            className={`pointer-events-none absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-gradient-to-b from-[#f47a3c] to-transparent transition-opacity duration-500 ${
+            className={`pointer-events-none absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-gradient-to-b from-[#E16E38] to-transparent transition-opacity duration-500 ${
               isPaused ? "opacity-0" : "opacity-60"
             }`}
           />
 
           <div
-            className={`pointer-events-none absolute bottom-0 left-1/2 h-10 w-px -translate-x-1/2 bg-gradient-to-t from-[#f47a3c] to-transparent transition-opacity duration-500 ${
+            className={`pointer-events-none absolute bottom-0 left-1/2 h-10 w-px -translate-x-1/2 bg-gradient-to-t from-[#E16E38] to-transparent transition-opacity duration-500 ${
               isPaused ? "opacity-0" : "opacity-60"
             }`}
           />

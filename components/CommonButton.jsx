@@ -13,7 +13,7 @@ export default function CommonButton({
 }) {
   const variantClassName =
     variant === "outline"
-      ? "border border-white/30 bg-transparent text-white hover:border-[#f47a3c]"
+      ? "border border-white/30 bg-transparent text-white hover:border-[#E16E38]"
       : "bg-white text-black";
 
   const baseClassName = `
@@ -39,7 +39,7 @@ export default function CommonButton({
           />
         )}
       </span>
-      <div className="absolute inset-0 bg-[#f47a3c] translate-y-full transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:translate-y-0" />
+      <div className="absolute inset-0 bg-[#E16E38] translate-y-full transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:translate-y-0" />
     </Component>
   );
 }

@@ -29,7 +29,7 @@ export default function AboutIntro() {
         >
           <h2 className="text-[34px] font-medium leading-[1.08] tracking-tight text-white md:text-[44px] lg:text-[48px]">
             About{" "}
-            <span className="inline-block text-[#f47a3c]">
+            <span className="inline-block text-[#E16E38]">
               Space Palette
             </span>
           </h2>
