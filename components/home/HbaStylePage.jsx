@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useRef } from "react";
+import React, { useRef, ViewTransition } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { projectEntries } from "@/components/project/projectData";
 import CommonButton from "@/components/CommonButton";
@@ -86,15 +86,26 @@ function ProjectCard({ project, index }) {
               style={{ y: yImage1, opacity: opacityImage1 }}
               className="pointer-events-auto relative h-[320px] w-[min(88vw,620px)] overflow-hidden rounded-sm border border-white/5 shadow-2xl will-change-transform md:h-[480px] md:w-[620px] lg:w-[760px]"
             >
-              <Image
-                src={firstImage}
-                alt={`${project.title} sequence 1`}
-                fill
-                sizes="(max-width: 768px) 88vw, (max-width: 1024px) 620px, 760px"
-                quality={100}
-                loading={index === 0 ? "eager" : "lazy"}
-                className="object-cover"
-              />
+              <Link
+                href={`/projects/${project.slug}`}
+                transitionTypes={["project-forward"]}
+                className="group block h-full w-full"
+              >
+                <ViewTransition
+                  name={`project-image-${project.slug}`}
+                  share="project-morph"
+                >
+                  <Image
+                    src={firstImage}
+                    alt={`${project.title} sequence 1`}
+                    fill
+                    sizes="(max-width: 768px) 88vw, (max-width: 1024px) 620px, 760px"
+                    quality={100}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    className="object-cover transition duration-[1200ms] group-hover:scale-[1.04]"
+                  />
+                </ViewTransition>
+              </Link>
             </motion.div>
 
             <motion.div
@@ -120,9 +131,14 @@ function ProjectCard({ project, index }) {
         >
           <div className="mx-auto grid w-full max-w-[1600px] gap-8 border-b border-white/10 pb-6 md:grid-cols-12 md:items-end md:gap-10">
             <div className="flex flex-col gap-8 md:col-span-4 lg:gap-10">
-              <h2 className="max-w-[9ch] text-[34px] font-light leading-[0.98] tracking-tight md:text-[46px] lg:text-[54px]">
-                {project.title}
-              </h2>
+              <ViewTransition
+                name={`project-title-${project.slug}`}
+                share="project-title-morph"
+              >
+                <h2 className="max-w-[9ch] text-[34px] font-light leading-[0.98] tracking-tight md:text-[46px] lg:text-[54px]">
+                  {project.title}
+                </h2>
+              </ViewTransition>
               <CommonButton
                 as={Link}
                 href={`/projects/${project.slug}`}

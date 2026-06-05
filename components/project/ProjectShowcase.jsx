@@ -179,10 +179,10 @@ export default function ProjectShowcase({ project }) {
               })}
 
               {nextProject && (
-                <section className="ml-10 inline-flex h-[80vh] w-[100vw] select-none items-start justify-between gap-8 whitespace-normal align-middle pr-10 md:ml-16 md:gap-12 md:pr-16">
-                  <div className="flex h-full w-[250px] shrink-0 flex-col justify-between pt-12 md:w-[310px]">
+                <section className="ml-6 inline-grid h-[80vh] w-[88vw] select-none grid-cols-[220px_minmax(0,1fr)] gap-6 border-l border-white/15 pl-6 whitespace-normal align-middle md:ml-10 md:w-[78vw] md:grid-cols-[300px_minmax(0,1fr)] md:gap-8 md:pl-10 lg:w-[76vw] lg:grid-cols-[320px_minmax(0,1fr)]">
+                  <div className="flex h-full min-w-0 flex-col justify-between py-12">
                     <div>
-                      <span className="mb-1 block text-xs font-semibold tracking-widest text-white/45">
+                      <span className="mb-4 block text-[10px] font-semibold uppercase tracking-[0.26em] text-[#E16E38]">
                         Next Project
                       </span>
                       <span className="text-[10px] uppercase tracking-widest text-white/40">
@@ -191,6 +191,16 @@ export default function ProjectShowcase({ project }) {
                       <h2 className="mt-2 text-5xl font-light tracking-wide text-white transition-colors">
                         {nextProject.title}
                       </h2>
+                      <Link
+                        href={`/projects/${nextProject.slug}`}
+                        transitionTypes={["project-forward"]}
+                        onMouseEnter={() => setCursorTipText("Click")}
+                        onMouseLeave={() => setCursorTipText("Scroll")}
+                        className="mt-8 inline-flex items-center gap-3 border border-white/20 px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-white transition hover:border-[#E16E38] hover:text-[#E16E38]"
+                      >
+                        View Next Project
+                        <span aria-hidden="true">→</span>
+                      </Link>
                     </div>
                     <div className="text-xs tracking-wider text-white/45">
                       {nextProject.location}
@@ -202,7 +212,7 @@ export default function ProjectShowcase({ project }) {
                     transitionTypes={["project-forward"]}
                     onMouseEnter={() => setCursorTipText("Click")}
                     onMouseLeave={() => setCursorTipText("Scroll")}
-                    className="group relative h-full w-[calc(100vw-330px)] cursor-pointer overflow-hidden bg-neutral-900 md:w-[58vw]"
+                    className="group relative h-full w-full cursor-pointer overflow-hidden bg-neutral-900"
                   >
                     <div className="absolute inset-0 z-10 bg-neutral-950/0 transition-colors duration-500 group-hover:bg-neutral-950/10" />
                     <motion.div
@@ -214,10 +224,13 @@ export default function ProjectShowcase({ project }) {
                         src={nextProject.coverImage}
                         alt={`${nextProject.title} preview`}
                         fill
-                        sizes="(max-width: 768px) calc(100vw - 330px), 58vw"
+                        sizes="(max-width: 768px) calc(88vw - 220px), 52vw"
                         quality={100}
                         className="object-cover"
                       />
+                      <div className="pointer-events-none absolute bottom-6 right-6 border border-white/20 bg-black/20 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-white backdrop-blur-md">
+                        Open Project
+                      </div>
                     </motion.div>
                   </Link>
                 </section>
