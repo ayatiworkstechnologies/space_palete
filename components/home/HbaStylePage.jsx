@@ -26,10 +26,15 @@ function getProjectSequenceImages(project) {
 }
 
 export default function HbaStylePage() {
+  const featuredSlugs = ["dr-akshaya-clinic", "space-palette", "mohr"];
+  const featuredProjects = featuredSlugs
+    .map((slug) => projectEntries.find((p) => p.slug === slug))
+    .filter(Boolean);
+
   return (
     <main className="min-h-screen bg-[#050a09] text-white antialiased selection:bg-white selection:text-black">
       <div className="relative">
-        {projectEntries.map((project, index) => (
+        {featuredProjects.map((project, index) => (
           <ProjectCard key={project.slug} project={project} index={index} />
         ))}
       </div>
@@ -47,7 +52,6 @@ function ProjectCard({ project, index }) {
   });
 
   const bgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.03, 1, 0.97]);
-  const bgOpacity = useTransform(scrollYProgress, [0.8, 1], [1, 0]);
 
   const yImage1 = useTransform(scrollYProgress, [0, 0.5, 1], ["60vh", "-5vh", "-50vh"]);
   const opacityImage1 = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
@@ -65,7 +69,7 @@ function ProjectCard({ project, index }) {
     >
       <div className="sticky top-0 flex h-screen w-full flex-col justify-between overflow-hidden">
         <motion.div
-          style={{ scale: bgScale, opacity: bgOpacity }}
+          style={{ scale: bgScale }}
           className="absolute inset-0 -z-20 h-full w-full will-change-transform"
         >
           <Image
@@ -95,15 +99,17 @@ function ProjectCard({ project, index }) {
                   name={`project-image-${project.slug}`}
                   share="project-morph"
                 >
-                  <Image
-                    src={firstImage}
-                    alt={`${project.title} sequence 1`}
-                    fill
-                    sizes="(max-width: 768px) 88vw, (max-width: 1024px) 620px, 760px"
-                    quality={100}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    className="object-cover transition duration-[1200ms] group-hover:scale-[1.04]"
-                  />
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={firstImage}
+                      alt={`${project.title} sequence 1`}
+                      fill
+                      sizes="(max-width: 768px) 88vw, (max-width: 1024px) 620px, 760px"
+                      quality={100}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      className="object-cover transition duration-[1200ms] group-hover:scale-[1.04]"
+                    />
+                  </div>
                 </ViewTransition>
               </Link>
             </motion.div>

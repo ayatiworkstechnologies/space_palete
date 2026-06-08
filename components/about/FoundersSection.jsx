@@ -7,12 +7,10 @@ const founders = [
   {
     name: "Riya",
     role: "Founder of Space Palette",
-    image: "/assets/about/member-1.png",
   },
   {
     name: "Rahul",
     role: "CEO of Space Palette",
-    image: "/assets/about/member-2.png",
   },
 ];
 
@@ -27,22 +25,39 @@ export default function FoundersSection() {
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-12 lg:gap-14"
       >
+        {/* Left Column: Single founder image with side-by-side names below */}
         <motion.div
           initial={{ opacity: 0, x: -48, scale: 0.96 }}
           whileInView={{ opacity: 1, x: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="relative h-[340px] overflow-hidden md:col-span-7 md:h-[500px]"
+          className="md:col-span-7 flex flex-col"
         >
-          <Image
-            src="/assets/about/founder.png"
-            alt="Space Palette founders"
-            fill
-            sizes="(max-width: 768px) 100vw, 58vw"
-            className="object-contain object-bottom transition duration-700 hover:scale-[1.02]"
-          />
+          <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm bg-neutral-900 border border-white/5">
+            <Image
+              src="/assets/about/founder.png"
+              alt="Space Palette Founders"
+              fill
+              sizes="(max-width: 768px) 100vw, 60vw"
+              className="object-cover transition duration-700 hover:scale-[1.02]"
+              priority
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-6 mt-6">
+            {founders.map((founder) => (
+              <div key={founder.name} className="flex flex-col">
+                <h3 className="text-lg font-semibold text-white">
+                  {founder.name}
+                </h3>
+                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-white/60">
+                  {founder.role}
+                </p>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
+        {/* Right Column: Title and description (founder names list removed) */}
         <motion.div
           initial={{ opacity: 0, x: 42 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -58,21 +73,9 @@ export default function FoundersSection() {
             The founders bring together creative vision and executional expertise,
             creating a seamless balance between design intent and delivery.
           </p>
-
-          <div className="mt-9 divide-y divide-white/10 border-y border-white/10">
-            {founders.map((founder) => (
-              <div key={founder.name} className="py-5">
-                <h3 className="text-xl font-semibold text-white">
-                  {founder.name}
-                </h3>
-                <p className="mt-2 text-xs uppercase tracking-[0.16em] text-white/80">
-                  {founder.role}
-                </p>
-              </div>
-            ))}
-          </div>
         </motion.div>
       </motion.div>
     </section>
   );
 }
+

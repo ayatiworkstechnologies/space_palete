@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const trustLogos = [
   {
@@ -36,7 +38,56 @@ const trustLogos = [
 ];
 
 export default function TrustSection() {
-  const marqueeLogos = [...trustLogos, ...trustLogos, ...trustLogos];
+  const scrollRef = useRef(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const marqueeLogos = [...trustLogos, ...trustLogos, ...trustLogos, ...trustLogos];
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    let animationId;
+    let lastTime = performance.now();
+    let currentScroll = el.scrollLeft;
+
+    const handleScroll = () => {
+      // Sync manual scrolling/dragging or arrow clicks with animation position
+      currentScroll = el.scrollLeft;
+    };
+
+    el.addEventListener("scroll", handleScroll, { passive: true });
+
+    const step = (time) => {
+      const delta = (time - lastTime) / 1000;
+      lastTime = time;
+
+      if (!isHovering) {
+        currentScroll += 48 * delta; // speed in pixels per second
+
+        // Loop seamlessly
+        const halfWidth = el.scrollWidth / 2;
+        if (currentScroll >= halfWidth) {
+          currentScroll -= halfWidth;
+        }
+        el.scrollLeft = Math.round(currentScroll);
+      }
+
+      animationId = requestAnimationFrame(step);
+    };
+
+    animationId = requestAnimationFrame(step);
+    return () => {
+      cancelAnimationFrame(animationId);
+      el.removeEventListener("scroll", handleScroll);
+    };
+  }, [isHovering]);
+
+  const scroll = (direction) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const offset = direction === "left" ? -240 : 240;
+    el.scrollBy({ left: offset, behavior: "smooth" });
+  };
 
   return (
     <section className="relative -mt-px overflow-hidden bg-black px-0 py-6 text-white md:px-6 md:py-10">
@@ -70,7 +121,7 @@ export default function TrustSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 mx-auto w-full max-w-7xl"
+        className="relative z-10 mx-auto w-full max-w-[1400px]"
       >
         {/* Title */}
         <div className="text-center">
@@ -85,70 +136,78 @@ export default function TrustSection() {
           </motion.h2>
         </div>
 
-        {/* Logos */}
+        {/* Logos Slider Wrapper with Navigation Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 45 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ delay: 0.15, duration: 0.9, ease: "easeOut" }}
-          className="
-            relative mx-auto mt-4 w-full max-w-full overflow-hidden
-            [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]
-            md:mt-8
-          "
+          className="relative mx-auto mt-4 w-full flex items-center justify-center px-10 md:mt-8 md:px-14"
         >
+          {/* Left Arrow Button */}
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-1 md:left-2 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-md transition duration-300 hover:bg-[#E16E38] hover:border-[#E16E38] hover:scale-110 active:scale-95 cursor-pointer shadow-lg"
+            aria-label="Previous logos"
+          >
+            <ChevronLeft size={20} />
+          </button>
+
+          {/* Scrolling Logos Container */}
           <div
+            ref={scrollRef}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+            onTouchStart={() => setIsHovering(true)}
+            onTouchEnd={() => setIsHovering(false)}
             className="
-              flex w-max items-center gap-12 py-8
-              will-change-transform
-              [animation:trust-marquee_32s_linear_infinite]
-              md:gap-28 md:py-10
+              flex w-full overflow-x-auto scrollbar-none gap-8 py-6
+              scroll-smooth select-none cursor-grab active:cursor-grabbing
+              [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]
+              md:gap-12 md:py-8
             "
           >
             {marqueeLogos.map((logo, index) => (
               <div
                 key={`${logo.id}-${index}`}
                 className="
-                  group flex h-24 w-[230px] shrink-0 items-center justify-center
+                  group flex h-20 w-[150px] shrink-0 items-center justify-center
                   opacity-90 transition duration-500 hover:opacity-100
-                  sm:w-[280px]
-                  md:h-32 md:w-[380px]
-                  lg:w-[440px]
+                  sm:w-[190px]
+                  md:h-28 md:w-[240px]
+                  lg:w-[280px]
                 "
               >
                 <img
                   src={logo.image}
                   alt={logo.name}
                   className="
-                    max-h-16 max-w-[210px] object-contain
+                    max-h-12 max-w-[130px] object-contain
                     grayscale brightness-0 invert
                     transition duration-700 ease-out
                     group-hover:scale-110 group-hover:grayscale-0
-                    sm:max-h-20 sm:max-w-[260px]
-                    md:max-h-24 md:max-w-[340px]
-                    lg:max-h-28 lg:max-w-[400px]
+                    sm:max-h-16 sm:max-w-[160px]
+                    md:max-h-20 md:max-w-[200px]
+                    lg:max-h-24 lg:max-w-[240px]
                   "
                 />
               </div>
             ))}
           </div>
+
+          {/* Right Arrow Button */}
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-1 md:right-2 z-20 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white backdrop-blur-md transition duration-300 hover:bg-[#E16E38] hover:border-[#E16E38] hover:scale-110 active:scale-95 cursor-pointer shadow-lg"
+            aria-label="Next logos"
+          >
+            <ChevronRight size={20} />
+          </button>
         </motion.div>
       </motion.div>
 
       {/* Bottom blending */}
       <div className="pointer-events-none absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t from-black to-transparent" />
-
-      <style>{`
-        @keyframes trust-marquee {
-          from {
-            transform: translate3d(0, 0, 0);
-          }
-
-          to {
-            transform: translate3d(-33.333%, 0, 0);
-          }
-        }
-      `}</style>
     </section>
   );
 }

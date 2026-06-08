@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function PurposeSection() {
   return (
-    <section id="about" className="relative flex h-[650px] w-full flex-col items-center justify-center overflow-hidden bg-black px-6 text-white">
+    <section id="about" className="relative flex min-h-[600px] md:min-h-[650px] py-16 md:py-24 w-full flex-col items-center justify-center overflow-hidden bg-black px-6 text-white">
       {/* Static Background Image with Sweeping Light Effect */}
       <div
         className="pointer-events-none absolute inset-0 opacity-60"
@@ -37,7 +37,7 @@ export default function PurposeSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl font-light tracking-[0.05em] md:text-6xl"
+          className="text-center text-4xl font-light tracking-[0.05em] md:text-6xl"
         >
           Who We Are
         </motion.h2>
@@ -47,7 +47,7 @@ export default function PurposeSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="mt-8 max-w-3xl text-lg leading-loose text-white/90 md:mt-12 md:text-2xl md:leading-relaxed font-light"
+          className="text-center mt-8 max-w-3xl text-lg leading-loose text-white/90 md:mt-12 md:text-2xl md:leading-relaxed font-light"
         >
           Space Palette is a multidisciplinary design studio creating thoughtful
           spaces that balance functionality, identity, and experience. Every
@@ -60,6 +60,7 @@ export default function PurposeSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="flex justify-center w-full"
         >
           <CommonButton
             href="/about"

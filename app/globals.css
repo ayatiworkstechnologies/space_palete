@@ -12,8 +12,8 @@
   --color-accent: var(--accent);
 
   --font-sans: var(--font-primary);
-  --font-cabinet: var(--font-primary);
-  --font-poppins: var(--font-secondary);
+  --font-cabinet: var(--font-secondary);
+  --font-poppins: var(--font-primary);
 }
 
 * {
@@ -126,23 +126,23 @@ body {
   }
 }
 
-/* Secondary font */
-p,
-input,
-textarea,
-button,
-a,
-.font-secondary {
-  font-family: var(--font-secondary), Arial, Helvetica, sans-serif;
-}
-
-/* Primary font */
+/* Secondary font (CabinetGrotesk) */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
+.font-secondary {
+  font-family: var(--font-secondary), Arial, Helvetica, sans-serif;
+}
+
+/* Primary font (Poppins) */
+p,
+input,
+textarea,
+button,
+a,
 .font-primary {
   font-family: var(--font-primary), Arial, Helvetica, sans-serif;
 }
@@ -621,6 +621,6 @@ img {
 }
 
 /* Allow global dotted background to show through structural wrappers */
-main.bg-black, section.bg-black, footer.bg-black {
+main.bg-black, section.bg-black {
   background-color: transparent !important;
 }

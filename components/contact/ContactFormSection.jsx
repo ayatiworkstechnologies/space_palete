@@ -80,7 +80,7 @@ export default function ContactFormSection() {
                 <p className="text-[10px] uppercase tracking-[0.25em] text-[#E16E38] mb-2 font-bold">
                   Head Quarters
                 </p>
-                <p className="max-w-[320px] text-[14px] leading-relaxed text-white/95 font-secondary">
+                <p className="max-w-[320px] text-[14px] leading-relaxed text-white/95 font-primary">
                   No.46, 3rd Floor, GSquare Building,
                   <br />
                   Rajiv Gandhi Salai, OMR,
@@ -94,7 +94,7 @@ export default function ContactFormSection() {
                 <p className="text-[10px] uppercase tracking-[0.25em] text-white/50 mb-2 font-bold">
                   Other Locations
                 </p>
-                <p className="max-w-[320px] text-[14px] leading-relaxed text-white/95 font-secondary">
+                <p className="max-w-[320px] text-[14px] leading-relaxed text-white/95 font-primary">
                   Bangalore, Hyderabad, Coimbatore.
                 </p>
               </div>
@@ -157,12 +157,12 @@ export default function ContactFormSection() {
                 <h3 className="text-xl font-medium text-white md:text-2xl">
                   Vision Shared Successfully!
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/70 max-w-md font-secondary">
+                <p className="mt-3 text-sm leading-relaxed text-white/70 max-w-md font-primary">
                   Thank you for reaching out. We have received your project details and our team will get in touch with you shortly to bring your spaces to life.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="mt-6 text-sm font-medium text-[#E16E38] underline underline-offset-4 hover:text-white transition duration-300 font-secondary cursor-pointer"
+                  className="mt-6 text-sm font-medium text-[#E16E38] underline underline-offset-4 hover:text-white transition duration-300 font-primary cursor-pointer"
                 >
                   Submit another inquiry
                 </button>
@@ -170,7 +170,7 @@ export default function ContactFormSection() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-7 md:space-y-8">
                 <div className="flex flex-col relative group">
-                  <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-secondary">
+                  <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-primary">
                     Full Name
                   </label>
                   <input
@@ -178,25 +178,25 @@ export default function ContactFormSection() {
                     required
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-secondary"
+                    className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-primary"
                   />
                 </div>
 
                 <div className="grid gap-8 md:grid-cols-2">
                   <div className="flex flex-col relative group">
-                    <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-secondary">
+                    <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-primary">
                       Phone Number
                     </label>
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-secondary"
+                      className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-primary"
                     />
                   </div>
 
                   <div className="flex flex-col relative group">
-                    <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-secondary">
+                    <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-primary">
                       Email
                     </label>
                     <input
@@ -204,13 +204,13 @@ export default function ContactFormSection() {
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-secondary"
+                      className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-primary"
                     />
                   </div>
                 </div>
 
                 <div className="flex flex-col relative group">
-                  <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-secondary">
+                  <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-primary">
                     Project Type
                   </label>
                   <input
@@ -218,12 +218,12 @@ export default function ContactFormSection() {
                     required
                     value={formData.projectType}
                     onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                    className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-secondary"
+                    className="w-full border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-primary"
                   />
                 </div>
 
                 <div className="flex flex-col relative group">
-                  <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-secondary">
+                  <label className="text-[15px] md:text-[16px] font-normal tracking-wide text-white/90 mb-1 transition-colors duration-300 group-focus-within:text-[#E16E38] font-primary">
                     Describe Your Vision
                   </label>
                   <textarea
@@ -231,12 +231,12 @@ export default function ContactFormSection() {
                     required
                     value={formData.vision}
                     onChange={(e) => setFormData({ ...formData, vision: e.target.value })}
-                    className="w-full resize-none border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-secondary"
+                    className="w-full resize-none border-0 border-b border-white/18 bg-transparent px-1 pb-3 text-[15px] text-white outline-none transition duration-300 focus:border-[#E16E38] md:text-base font-primary"
                   />
                 </div>
 
                 {status === "error" && (
-                  <p className="text-sm font-medium text-[#E16E38] font-secondary">
+                  <p className="text-sm font-medium text-[#E16E38] font-primary">
                     {errorMessage}
                   </p>
                 )}

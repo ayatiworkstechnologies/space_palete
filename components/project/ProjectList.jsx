@@ -38,7 +38,7 @@ export default function ProjectList() {
       }}
       default="none"
     >
-    <section className="relative bg-black px-6 py-12 text-white md:px-12 md:py-16 lg:px-20">
+    <section className="relative bg-black px-6 pt-28 pb-12 text-white md:px-12 md:pt-36 md:pb-16 lg:px-20">
       
       {/* Custom Cursor Follower */}
       <motion.div
@@ -99,14 +99,16 @@ export default function ProjectList() {
                     name={`project-image-${project.slug}`}
                     share="project-morph"
                   >
-                    <Image
-                      src={project.coverImage}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      quality={100}
-                      className="object-cover object-center transition duration-[1200ms] group-hover:scale-110"
-                    />
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={project.coverImage}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        quality={100}
+                        className="object-cover object-center transition duration-[1200ms] group-hover:scale-110"
+                      />
+                    </div>
                   </ViewTransition>
 
                   <div className="absolute inset-0 bg-black/10 transition duration-500 group-hover:bg-black/28" />

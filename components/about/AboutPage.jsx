@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useSpring } from "framer-motion";
 import BackgroundVectors from "@/components/layouts/BackgroundVectors";
-import AboutHero from "./AboutHero";
 import AboutIntro from "./AboutIntro";
 import FoundersSection from "./FoundersSection";
 import TeamSection from "./TeamSection";
@@ -40,7 +39,6 @@ export default function AboutPage() {
       />
       <div className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-28 bg-gradient-to-b from-black/45 to-transparent" />
       <div className="relative z-10">
-        <AboutHero />
         <PageSection>
           <AboutIntro />
         </PageSection>

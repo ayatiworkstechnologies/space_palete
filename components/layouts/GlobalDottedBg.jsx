@@ -58,9 +58,9 @@ export default function GlobalDottedBg() {
       dot.glow += (influence - dot.glow) * 0.18;
 
       const y = dot.y + dot.lift;
-      const radius = 1 + dot.glow * 0.45;
-      const gray = Math.round(48 + dot.glow * 207);
-      const alpha = 0.34 + dot.glow * 0.66;
+      const radius = 1 + dot.glow * 0.35;
+      const gray = Math.round(36 + dot.glow * 180);
+      const alpha = 0.12 + dot.glow * 0.48;
 
       ctx.beginPath();
       ctx.fillStyle = `rgba(${gray}, ${gray}, ${gray}, ${alpha})`;
@@ -121,7 +121,7 @@ export default function GlobalDottedBg() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 z-0 bg-black"
+      className="pointer-events-none fixed inset-0 z-0"
     />
   );
 }

@@ -114,27 +114,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-black px-6 text-white md:px-6">
-      {/* Animated dotted background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {Array.from({ length: 38 }).map((_, index) => (
-          <span
-            key={index}
-            className="footer-dot absolute block rounded-full bg-white/35"
-            style={{
-              left: `${(index * 23) % 100}%`,
-              top: `${(index * 37) % 100}%`,
-              width: `${index % 5 === 0 ? 3 : 2}px`,
-              height: `${index % 5 === 0 ? 3 : 2}px`,
-              animationDelay: `${index * 0.14}s`,
-              animationDuration: `${3.5 + (index % 5) * 0.65}s`,
-            }}
-          />
-        ))}
-
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.34)_42%,rgba(0,0,0,0.96)_100%)]" />
-      </div>
-
+    <footer className="relative z-20 overflow-hidden bg-black px-6 text-white md:px-6">
       <motion.div
         initial={{ opacity: 0, y: 55 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -237,35 +217,6 @@ export default function Footer() {
       <style>{`
         html {
           scroll-behavior: smooth;
-        }
-
-        @keyframes footerDotMove {
-          0% {
-            transform: translate3d(0, 0, 0) scale(0.75);
-            opacity: 0.1;
-          }
-
-          45% {
-            opacity: 0.55;
-          }
-
-          65% {
-            transform: translate3d(12px, -18px, 0) scale(1.1);
-            opacity: 0.78;
-          }
-
-          100% {
-            transform: translate3d(-10px, 14px, 0) scale(0.72);
-            opacity: 0.12;
-          }
-        }
-
-        .footer-dot {
-          animation-name: footerDotMove;
-          animation-timing-function: ease-in-out;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
-          will-change: transform, opacity;
         }
       `}</style>
     </footer>

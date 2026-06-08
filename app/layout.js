@@ -7,13 +7,13 @@ import GlobalDottedBg from "@/components/layouts/GlobalDottedBg";
 
 const cabinetGrotesk = localFont({
   src: "../public/fonts/CabinetGrotesk-Medium.otf",
-  variable: "--font-primary",
-  weight: "700",
+  variable: "--font-secondary",
+  weight: "500",
   display: "swap",
 });
 
 const poppins = Poppins({
-  variable: "--font-secondary",
+  variable: "--font-primary",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",

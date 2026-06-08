@@ -61,7 +61,7 @@ export default function ProjectDetailsIntro({ project }) {
           className="mt-16 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-b border-white/12 py-8 md:grid-cols-5"
         >
           {project.details.map(([label, value]) => (
-            <div key={label} className="flex flex-col gap-2.5 font-secondary">
+            <div key={label} className="flex flex-col gap-2.5 font-primary">
               <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50">
                 {label}
               </span>

@@ -139,15 +139,17 @@ export default function ProjectShowcase({ project }) {
                       name={`project-image-${project.slug}`}
                       share="project-morph"
                     >
-                      <Image
-                        src={galleryImages[0]}
-                        alt={`${project.title} exterior view`}
-                        fill
-                        priority
-                        sizes="80vw"
-                        quality={100}
-                        className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                      />
+                      <div className="relative h-full w-full">
+                        <Image
+                          src={galleryImages[0]}
+                          alt={`${project.title} exterior view`}
+                          fill
+                          priority
+                          sizes="80vw"
+                          quality={100}
+                          className="object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                        />
+                      </div>
                     </ViewTransition>
                   </motion.div>
                   <div className="pointer-events-none absolute bottom-6 right-6 rounded-full bg-black/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-white opacity-0 backdrop-blur-md transition-opacity group-hover:opacity-100">
@@ -171,7 +173,7 @@ export default function ProjectShowcase({ project }) {
                         fill
                         sizes={panelSize.sizes}
                         quality={100}
-                        className="object-cover grayscale-[15%] transition-all duration-700 group-hover:grayscale-0"
+                        className="object-contain grayscale-[15%] transition-all duration-700 group-hover:grayscale-0"
                       />
                     </div>
                   </section>
