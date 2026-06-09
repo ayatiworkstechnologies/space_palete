@@ -21,11 +21,10 @@ export default function ProjectProfileSection() {
     setStatus("loading");
     setErrorMessage("");
     try {
-      const response = await fetch("https://api.ayatiworks.com/api/v1/public/space-palette/space-contact/records", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-API-Key": "3a77c11915da7c75ef5208dd5a72a7061a0198234326e872becdfdc13bdfcd54",
         },
         body: JSON.stringify({
           data: {
