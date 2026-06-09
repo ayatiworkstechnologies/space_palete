@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -127,7 +126,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1, duration: 0.7, ease: "easeOut" }}
-          className="flex flex-wrap items-center justify-center gap-x-16 gap-y-6 py-9 text-lg text-white max-md:block max-md:border-b max-md:border-white/10 max-md:py-4 max-md:text-center max-md:text-xl"
+          className="hidden flex-wrap items-center justify-center gap-x-16 gap-y-6 py-9 text-lg text-white max-md:border-b max-md:border-white/10 max-md:py-4 max-md:text-center max-md:text-xl"
         >
           <Link href="/" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
             Home
@@ -138,15 +137,12 @@ export default function Footer() {
           <Link href="/projects" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
             Projects
           </Link>
-          {/* <Link href="/studios" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
-            Studios
-          </Link> */}
           <Link href="/contact" className="transition duration-300 hover:text-[#E16E38]">
             Contact Us
           </Link>
         </motion.nav>
 
-        <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-5 pb-8 max-md:grid max-md:grid-cols-4 max-md:border-b max-md:border-white/10 max-md:gap-4 max-md:py-8">
+        <div className="mx-auto flex max-w-2xl flex-wrap items-center justify-center gap-5 py-8 max-md:grid max-md:grid-cols-4 max-md:border-b max-md:border-white/10 max-md:gap-4">
           {socialLinks.map((social, index) => {
             const Icon = social.icon;
 
@@ -200,7 +196,7 @@ export default function Footer() {
           transition={{ delay: 0.38, duration: 0.75, ease: "easeOut" }}
           className="border-t border-white/10 py-5 text-center max-md:border-t-0 max-md:py-5"
         >
-          <p className="mx-auto whitespace-nowrap text-[11px] uppercase leading-5 tracking-[0.12em] text-white/80 md:text-xs">
+          <p className="mx-auto max-w-5xl text-[11px] uppercase leading-5 tracking-[0.12em] text-white/80 md:text-xs">
             Copyright &copy;2026 Spacepalette - All Right Reserved | Designed &amp; Developed By{" "}
             <a
               href="https://www.ayatiworks.com/"
