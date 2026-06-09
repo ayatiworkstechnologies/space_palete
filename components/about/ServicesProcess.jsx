@@ -77,9 +77,9 @@ function ServiceTile({ title, index, active, className = "" }) {
       <div className="flex items-center justify-center pt-2">
         <ServiceIcon active={active} iconNumber={index + 1} />
       </div>
-      <h3 className={`font-primary text-center text-[17px] font-semibold leading-7 tracking-[0.24em] transition-colors duration-500 sm:text-[19px] ${active ? "text-[#E16E38]" : "text-white"}`}>
+      <h2 className={`font-primary text-center text-[16px] font-semibold leading-7 tracking-[0.24em] transition-colors duration-500 sm:text-[16px] ${active ? "text-[#E16E38]" : "text-white"}`}>
         {title}
-      </h3>
+      </h2>
       {index < 4 && <Connector position="top" active={active} />}
       {index > 4 && index < 8 && <Connector position="bottom" active={active} />}
     </motion.article>
