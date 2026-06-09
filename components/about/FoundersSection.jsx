@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const founders = [
   {
-    name: "Riya",
+    name: "UMA",
     role: "Founder of Space Palette",
   },
   {
@@ -33,13 +33,16 @@ export default function FoundersSection() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="md:col-span-7 flex flex-col"
         >
-          <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm bg-neutral-900 border border-white/5">
+          <div className="relative mx-auto w-full max-w-[620px] overflow-hidden rounded-sm bg-white">
             <Image
               src="/assets/about/founder.png"
               alt="Space Palette Founders"
-              fill
-              sizes="(max-width: 768px) 100vw, 60vw"
-              className="object-cover transition duration-700 hover:scale-[1.02]"
+              width={1000}
+              height={1000}
+              sizes="(max-width: 768px) calc(100vw - 48px), 620px"
+              quality={100}
+              unoptimized
+              className="relative z-10 block h-auto w-full"
               priority
             />
           </div>

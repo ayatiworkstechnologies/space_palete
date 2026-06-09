@@ -693,26 +693,134 @@ export const portraitProjectImages = new Set([
   "vrx-360-7.png",
 ]);
 
+export const projectImageDimensions = {
+  "dfmc-1.png": [1440, 600],
+  "dfmc-2.png": [1440, 600],
+  "dfmc-3.png": [576, 600],
+  "dfmc-4.png": [576, 600],
+  "dfmc-5.png": [576, 600],
+  "dfmc-6.png": [576, 600],
+  "dfmc-7.png": [576, 600],
+  "dfmc-8.png": [576, 600],
+  "dfmc-9.png": [576, 600],
+  "dr-akshaya-1.png": [1440, 600],
+  "dr-akshaya-2.png": [576, 600],
+  "dr-akshaya-3.png": [453, 600],
+  "dr-akshaya-4.png": [1440, 600],
+  "dr-akshaya-5.png": [576, 600],
+  "dr-akshaya-6.png": [1440, 600],
+  "dr-akshaya-7.png": [576, 600],
+  "mohr-1.png": [1440, 600],
+  "mohr-2.png": [576, 600],
+  "mohr-3.png": [453, 600],
+  "mohr-4.png": [1440, 600],
+  "mohr-5.png": [576, 600],
+  "mohr-6.png": [1440, 600],
+  "mohr-7.png": [576, 600],
+  "ncompass-1.png": [1440, 600],
+  "ncompass-2.png": [1440, 600],
+  "ncompass-3.png": [1440, 600],
+  "ncompass-4.png": [1440, 600],
+  "ncompass-5.png": [1440, 600],
+  "ncompass-6.png": [1440, 600],
+  "project-1.png": [1440, 600],
+  "project-1-1.png": [272, 446],
+  "project-1-2.png": [272, 446],
+  "project-1-3.png": [272, 446],
+  "project-1-4.png": [1472, 982],
+  "project-2.png": [1440, 600],
+  "project-hero.png": [1440, 600],
+  "project-intro.png": [465, 570],
+  "projects-hero.png": [1440, 600],
+  "spa-1.png": [576, 600],
+  "spa-2.png": [576, 600],
+  "spa-3.png": [576, 600],
+  "spa-4.png": [576, 600],
+  "spa-5.png": [576, 600],
+  "spacepalette-1.png": [1440, 600],
+  "spacepalette-2.png": [1440, 600],
+  "spacepalette-3.png": [453, 600],
+  "spacepalette-4.png": [453, 600],
+  "spacepalette-5.png": [1440, 600],
+  "spacepalette-6.png": [1440, 600],
+  "spacepalette-7.png": [453, 600],
+  "spacepalette-8.png": [453, 600],
+  "tvs-electranics-1.png": [453, 600],
+  "tvs-electranics-2.png": [453, 600],
+  "tvs-electranics-3.png": [582, 600],
+  "tvs-electranics-4.png": [453, 600],
+  "tvs-electranics-5.png": [453, 600],
+  "tvs-electranics-6.png": [1440, 600],
+  "tvs-electranics-7.png": [453, 600],
+  "tvs-electranics-8.png": [453, 600],
+  "tvs-electranics-9.png": [453, 600],
+  "vrx-360-1.png": [576, 600],
+  "vrx-360-2.png": [576, 600],
+  "vrx-360-3.png": [576, 600],
+  "vrx-360-4.png": [576, 600],
+  "vrx-360-5.png": [576, 600],
+  "vrx-360-6.png": [576, 600],
+  "vrx-360-7.png": [576, 600],
+  "vrx-terrace-1.png": [1440, 600],
+  "vrx-terrace-2.png": [1440, 600],
+  "vrx-terrace-3.png": [1440, 600],
+  "vrx-terrace-4.png": [1440, 600],
+  "vrx-terrace-5.png": [576, 600],
+  "vrx-terrace-6.png": [453, 600],
+  "vrx-terrace-7.png": [576, 600],
+  "vrx-terrace-8.png": [453, 600],
+};
+
 export function getImagePanelSize(image) {
   const fileName = image.split("/").pop();
+  const dimensions = projectImageDimensions[fileName];
+
+  if (dimensions) {
+    const [width, height] = dimensions;
+    const ratio = Number((width / height).toFixed(3));
+
+    return {
+      className: "h-[62vh] w-[calc(62vh*var(--image-ratio))] md:h-[72vh] md:w-[calc(72vh*var(--image-ratio))]",
+      sizes: `(max-width: 768px) calc(62vh * ${ratio}), calc(72vh * ${ratio})`,
+      width,
+      height,
+      ratio,
+      style: {
+        "--image-ratio": ratio,
+        aspectRatio: `${width} / ${height}`,
+      },
+    };
+  }
 
   if (wideProjectImages.has(fileName)) {
     return {
-      className: "w-[86vw] md:w-[76vw]",
-      sizes: "(max-width: 768px) 86vw, 76vw",
+      className: "h-[62vh] aspect-[16/9] md:h-[72vh]",
+      sizes: "(max-width: 768px) 110vh, 128vh",
+      width: 16,
+      height: 9,
+      ratio: 16 / 9,
+      style: undefined,
     };
   }
 
   if (portraitProjectImages.has(fileName)) {
     return {
-      className: "w-[58vw] md:w-[34vw]",
-      sizes: "(max-width: 768px) 58vw, 34vw",
+      className: "h-[62vh] aspect-[3/4] md:h-[72vh]",
+      sizes: "(max-width: 768px) 47vh, 54vh",
+      width: 3,
+      height: 4,
+      ratio: 3 / 4,
+      style: undefined,
     };
   }
 
   return {
-    className: "w-[70vw] md:w-[46vw]",
-    sizes: "(max-width: 768px) 70vw, 46vw",
+    className: "h-[62vh] aspect-[4/3] md:h-[72vh]",
+    sizes: "(max-width: 768px) 83vh, 96vh",
+    width: 4,
+    height: 3,
+    ratio: 4 / 3,
+    style: undefined,
   };
 }
 

@@ -10,6 +10,32 @@ function uniqueImages(images) {
   return [...new Set(images.filter(Boolean))];
 }
 
+function MobileProjectImage({ image, title, index, priority = false }) {
+  const panel = getImagePanelSize(image);
+
+  return (
+    <motion.figure
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.18 }}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      className="relative w-full overflow-hidden"
+      style={{ aspectRatio: `${panel.width} / ${panel.height}` }}
+    >
+      <Image
+        src={image}
+        alt={`${title} project image ${index + 1}`}
+        fill
+        priority={priority}
+        sizes="100vw"
+        quality={100}
+        unoptimized
+        className="object-contain"
+      />
+    </motion.figure>
+  );
+}
+
 export default function ProjectShowcase({ project }) {
   const targetRef = useRef(null);
   const [showCursorTip, setShowCursorTip] = useState(false);
@@ -31,6 +57,12 @@ export default function ProjectShowcase({ project }) {
       ]),
     [project]
   );
+  const firstGalleryPanel = galleryImages[0]
+    ? getImagePanelSize(galleryImages[0])
+    : null;
+  const nextProjectPanel = nextProject
+    ? getImagePanelSize(nextProject.coverImage)
+    : null;
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -75,7 +107,97 @@ export default function ProjectShowcase({ project }) {
         >
           {cursorTipText}
         </motion.div>
-        <div ref={targetRef} className="relative h-[400vh] bg-black">
+
+        <div className="block px-5 pb-16 pt-28 md:hidden">
+          <section className="border-b border-white/12 pb-8">
+            <span className="text-[10px] font-bold uppercase tracking-[0.26em] text-[#E16E38]">
+              {project.type}
+            </span>
+            <ViewTransition
+              name={`project-title-mobile-${project.slug}`}
+              share="project-title-morph"
+            >
+              <h1 className="mt-4 text-[38px] font-light leading-[1.02] text-white">
+                {project.title}
+              </h1>
+            </ViewTransition>
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[11px] uppercase tracking-[0.18em] text-white/50">
+              <span>{project.location}</span>
+              <span>{project.year}</span>
+              <span>{project.size}</span>
+            </div>
+          </section>
+
+          <section className="space-y-5 py-8 text-[15px] font-light leading-8 text-white/72">
+            {project.description.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </section>
+
+          <dl className="grid grid-cols-2 border-y border-white/12 text-[11px]">
+            {project.details.map(([label, value]) => (
+              <div
+                key={label}
+                className="border-b border-white/10 px-3 py-4 odd:border-r last:border-b-0 [&:nth-last-child(2)]:border-b-0"
+              >
+                <dt className="mb-2 uppercase tracking-[0.22em] text-white/40">
+                  {label}
+                </dt>
+                <dd className="font-medium leading-5 text-white/82">{value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <section className="space-y-6 py-8">
+            {galleryImages.map((image, index) => (
+              <MobileProjectImage
+                key={`${project.slug}-mobile-${image}`}
+                image={image}
+                title={project.title}
+                index={index}
+                priority={index === 0}
+              />
+            ))}
+          </section>
+
+          {nextProject && nextProjectPanel && (
+            <section className="border-t border-white/12 pt-8">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.26em] text-[#E16E38]">
+                Next Project
+              </span>
+              <h2 className="mt-3 text-[32px] font-light leading-tight text-white">
+                {nextProject.title}
+              </h2>
+              <Link
+                href={`/projects/${nextProject.slug}`}
+                transitionTypes={["project-forward"]}
+                className="mt-6 block"
+              >
+                <div
+                  className="relative w-full overflow-hidden"
+                  style={{
+                    aspectRatio: `${nextProjectPanel.width} / ${nextProjectPanel.height}`,
+                  }}
+                >
+                  <Image
+                    src={nextProject.coverImage}
+                    alt={`${nextProject.title} preview`}
+                    fill
+                    sizes="100vw"
+                    quality={100}
+                    unoptimized
+                    className="object-contain"
+                  />
+                </div>
+                <span className="mt-5 inline-flex border border-white/20 px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.22em] text-white">
+                  View Next Project
+                </span>
+              </Link>
+            </section>
+          )}
+        </div>
+
+        <div ref={targetRef} className="relative hidden h-[400vh] bg-black md:block">
           <div className="sticky top-0 flex h-screen items-center overflow-hidden">
             <motion.div
               style={{ x }}
@@ -127,13 +249,14 @@ export default function ProjectShowcase({ project }) {
                 </div>
               </section>
 
-              {galleryImages[0] && (
-                <section className="group relative inline-block h-[80vh] w-[80vw] overflow-hidden bg-neutral-900 align-middle">
+              {galleryImages[0] && firstGalleryPanel && (
+                <section className="group relative inline-flex h-[80vh] items-center align-middle">
                   <motion.div
                     initial={{ scale: 1.05, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="relative h-full w-full"
+                    className={`relative overflow-hidden ${firstGalleryPanel.className}`}
+                    style={firstGalleryPanel.style}
                   >
                     <ViewTransition
                       name={`project-image-${project.slug}`}
@@ -145,9 +268,10 @@ export default function ProjectShowcase({ project }) {
                           alt={`${project.title} exterior view`}
                           fill
                           priority
-                          sizes="80vw"
+                          sizes={firstGalleryPanel.sizes}
                           quality={100}
-                          className="object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+                          unoptimized
+                          className="object-contain"
                         />
                       </div>
                     </ViewTransition>
@@ -164,16 +288,20 @@ export default function ProjectShowcase({ project }) {
                 return (
                   <section
                     key={`${image}-${index}`}
-                    className="inline-flex h-[80vh] align-middle"
+                    className="inline-flex h-[80vh] items-center align-middle"
                   >
-                    <div className={`group relative h-full overflow-hidden bg-neutral-900 ${panelSize.className}`}>
+                    <div
+                      className={`group relative overflow-hidden ${panelSize.className}`}
+                      style={panelSize.style}
+                    >
                       <Image
                         src={image}
                         alt={`${project.title} interior view ${index + 1}`}
                         fill
                         sizes={panelSize.sizes}
                         quality={100}
-                        className="object-contain grayscale-[15%] transition-all duration-700 group-hover:grayscale-0"
+                        unoptimized
+                        className="object-contain"
                       />
                     </div>
                   </section>
