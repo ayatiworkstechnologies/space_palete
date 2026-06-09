@@ -138,7 +138,7 @@ export default function ServicesProcess() {
           >
             <span className="text-[#E16E38]">Services</span>
           </motion.h2>
-          <p className="text-center mt-8 max-w-3xl text-lg leading-loose text-white/90 md:mt-12 md:leading-relaxed font-light">
+          <p className="text-center mt-8 max-w-4xl text-lg leading-loose text-white/90 md:mt-12 md:leading-relaxed font-light">
             Space Palette delivers end-to-end turnkey solutions, managing
             design, execution, and final delivery through one integrated
             process. The result is a seamless experience with spaces completed
