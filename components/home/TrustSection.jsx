@@ -1,8 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const AUTO_SLIDE_MS = 1800;
+const SLIDE_DURATION_MS = 650;
+const MANUAL_PAUSE_MS = 900;
+
+const getLogoStep = (el) => {
+  const firstLogo = el.firstElementChild;
+  if (!firstLogo) return 260;
+
+  const styles = window.getComputedStyle(el);
+  const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+  return firstLogo.getBoundingClientRect().width + gap;
+};
 
 const trustLogos = [
   {
@@ -39,54 +52,70 @@ const trustLogos = [
 
 export default function TrustSection() {
   const scrollRef = useRef(null);
-  const [isHovering, setIsHovering] = useState(false);
+  const pauseUntilRef = useRef(0);
   const marqueeLogos = [...trustLogos, ...trustLogos, ...trustLogos, ...trustLogos];
 
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
-    let animationId;
-    let lastTime = performance.now();
-    let currentScroll = el.scrollLeft;
+    let normalizeTimeout;
 
-    const handleScroll = () => {
-      // Sync manual scrolling/dragging or arrow clicks with animation position
-      currentScroll = el.scrollLeft;
-    };
+    const getLoopWidth = () => el.scrollWidth / 2;
+    const normalizeScroll = (direction = "right") => {
+      const loopWidth = getLoopWidth();
+      if (!loopWidth) return;
 
-    el.addEventListener("scroll", handleScroll, { passive: true });
-
-    const step = (time) => {
-      const delta = (time - lastTime) / 1000;
-      lastTime = time;
-
-      if (!isHovering) {
-        currentScroll += 48 * delta; // speed in pixels per second
-
-        // Loop seamlessly
-        const halfWidth = el.scrollWidth / 2;
-        if (currentScroll >= halfWidth) {
-          currentScroll -= halfWidth;
-        }
-        el.scrollLeft = Math.round(currentScroll);
+      if (direction === "right" && el.scrollLeft >= loopWidth) {
+        el.scrollLeft -= loopWidth;
+      } else if (direction === "left" && el.scrollLeft <= 0) {
+        el.scrollLeft += loopWidth;
       }
-
-      animationId = requestAnimationFrame(step);
     };
 
-    animationId = requestAnimationFrame(step);
+    const slide = () => {
+      if (document.hidden || performance.now() < pauseUntilRef.current) return;
+
+      normalizeScroll("right");
+      el.scrollBy({ left: getLogoStep(el), behavior: "smooth" });
+
+      window.clearTimeout(normalizeTimeout);
+      normalizeTimeout = window.setTimeout(() => normalizeScroll("right"), SLIDE_DURATION_MS);
+    };
+
+    normalizeTimeout = window.setTimeout(slide, 500);
+    const intervalId = window.setInterval(slide, AUTO_SLIDE_MS);
+
     return () => {
-      cancelAnimationFrame(animationId);
-      el.removeEventListener("scroll", handleScroll);
+      window.clearInterval(intervalId);
+      window.clearTimeout(normalizeTimeout);
     };
-  }, [isHovering]);
+  }, []);
 
   const scroll = (direction) => {
     const el = scrollRef.current;
     if (!el) return;
-    const offset = direction === "left" ? -240 : 240;
+
+    const loopWidth = el.scrollWidth / 2;
+    if (loopWidth && el.scrollLeft >= loopWidth) {
+      el.scrollLeft -= loopWidth;
+    }
+
+    const logoStep = getLogoStep(el);
+
+    if (loopWidth && el.scrollLeft <= logoStep && direction === "left") {
+      el.scrollLeft += loopWidth;
+    }
+
+    const offset = direction === "left" ? -logoStep : logoStep;
+    pauseUntilRef.current = performance.now() + MANUAL_PAUSE_MS;
     el.scrollBy({ left: offset, behavior: "smooth" });
+
+    window.setTimeout(() => {
+      if (direction === "right" && loopWidth && el.scrollLeft >= loopWidth) {
+        el.scrollLeft -= loopWidth;
+      }
+    }, SLIDE_DURATION_MS);
   };
 
   return (
@@ -156,10 +185,6 @@ export default function TrustSection() {
           {/* Scrolling Logos Container */}
           <div
             ref={scrollRef}
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-            onTouchStart={() => setIsHovering(true)}
-            onTouchEnd={() => setIsHovering(false)}
             className="
               flex w-full overflow-x-auto scrollbar-none gap-8 py-6
               scroll-smooth select-none cursor-grab active:cursor-grabbing
