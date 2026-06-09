@@ -112,6 +112,8 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="relative z-20 overflow-hidden bg-black px-6 text-white md:px-6">
       <motion.div
@@ -197,7 +199,7 @@ export default function Footer() {
           className="border-t border-white/10 py-5 text-center max-md:border-t-0 max-md:py-5"
         >
           <p className="mx-auto max-w-5xl text-[11px] uppercase leading-5 tracking-[0.12em] text-white/80 md:text-xs">
-            Copyright &copy;2026 Spacepalette - All Right Reserved | Designed &amp; Developed By{" "}
+            Copyright &copy;{currentYear} Spacepalette - All Right Reserved | Designed &amp; Developed By{" "}
             <a
               href="https://www.ayatiworks.com/"
               target="_blank"
