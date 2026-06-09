@@ -48,7 +48,7 @@ export default function AboutHero() {
           animate={{ opacity: 1, y: 0, letterSpacing: "0.12em" }}
           transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h1 className="text-[34px] font-light uppercase leading-none tracking-[0.12em] text-white md:text-[46px] lg:text-[56px]">
+          <h1 className="font-primary text-[34px] font-light uppercase leading-none tracking-[0.12em] text-white md:text-[46px] lg:text-[56px]">
             About
           </h1>
         </motion.div>

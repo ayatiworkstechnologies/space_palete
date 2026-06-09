@@ -13,14 +13,20 @@ export default function AboutIntro() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto"
         >
-          <h2 className="mx-auto max-w-[680px] text-[31px] font-medium leading-[1.12] text-white md:text-[44px] lg:text-[48px]">
+          <motion.h2
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-3xl font-medium tracking-tight text-white md:text-5xl"
+          >
             About{" "}
             <span className="inline-block text-[#E16E38]">
               Space Palette
             </span>
-          </h2>
+          </motion.h2>
 
-          <p className="font-secondary mx-auto mt-7 max-w-3xl text-[15px] font-normal tracking-[0.02em] text-white/90 md:text-[17px] md:tracking-[0.035em]">
+          <p className="text-center mt-8 max-w-3xl text-lg leading-loose text-white/90 md:mt-12 md:leading-relaxed font-light">
             Space Palette is a multidisciplinary design studio creating
             thoughtful spaces that balance functionality, identity, and
             experience. Every environment is shaped with clarity, precision, and

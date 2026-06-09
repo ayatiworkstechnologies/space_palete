@@ -77,7 +77,7 @@ function ServiceTile({ title, index, active, className = "" }) {
       <div className="flex items-center justify-center pt-2">
         <ServiceIcon active={active} iconNumber={index + 1} />
       </div>
-      <h3 className={`text-center text-[17px] font-semibold leading-7 tracking-[0.24em] transition-colors duration-500 sm:text-[19px] ${active ? "text-[#E16E38]" : "text-white"}`}>
+      <h3 className={`font-primary text-center text-[17px] font-semibold leading-7 tracking-[0.24em] transition-colors duration-500 sm:text-[19px] ${active ? "text-[#E16E38]" : "text-white"}`}>
         {title}
       </h3>
       {index < 4 && <Connector position="top" active={active} />}
@@ -129,10 +129,16 @@ export default function ServicesProcess() {
           transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto max-w-4xl text-center"
         >
-          <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
-            Services
-          </h2>
-          <p className="font-secondary mt-7 text-sm tracking-[0.28em] text-white/85 md:text-base">
+          <motion.h2
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-3xl font-medium tracking-tight text-white md:text-5xl"
+          >
+            <span className="text-[#E16E38]">Services</span>
+          </motion.h2>
+          <p className="text-center mt-8 max-w-3xl text-lg leading-loose text-white/90 md:mt-12 md:leading-relaxed font-light">
             Space Palette delivers end-to-end turnkey solutions, managing
             design, execution, and final delivery through one integrated
             process. The result is a seamless experience with spaces completed

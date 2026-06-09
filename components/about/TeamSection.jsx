@@ -61,13 +61,19 @@ export default function TeamSection() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-4"
           >
-            <h2 className="text-[34px] font-medium leading-[1.05] tracking-normal text-[#E16E38] md:text-[40px] uppercase font-secondary">
+            <motion.h2
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-3xl font-medium tracking-tight text-white md:text-5xl"
+            >
               Meet
               <br />
-              Our Team
-            </h2>
+              <span className="text-[#E16E38]">Our Team</span>
+            </motion.h2>
 
-            <p className="font-secondary mt-6 text-[15px] font-normal text-white/70 text-justify md:text-[16px]">
+            <p className="text-left mt-8 max-w-3xl text-lg leading-loose text-white/90 md:mt-12 md:leading-relaxed font-light">
               Our team brings together expertise in Interior Design, Workplace
               Strategy, Project Coordination and Turnkey execution to craft
               environments that balance aesthetics with business functionality,

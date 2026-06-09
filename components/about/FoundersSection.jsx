@@ -49,10 +49,10 @@ export default function FoundersSection() {
           <div className="grid grid-cols-2 gap-6 mt-6">
             {founders.map((founder) => (
               <div key={founder.name} className="flex flex-col">
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="font-primary text-lg font-semibold text-white">
                   {founder.name}
                 </h3>
-                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-white/60">
+                <p className="font-secondary mt-1 text-xs uppercase tracking-[0.16em] text-white/60">
                   {founder.role}
                 </p>
               </div>
@@ -68,11 +68,17 @@ export default function FoundersSection() {
           transition={{ delay: 0.1, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="md:col-span-5"
         >
-          <h2 className="text-3xl font-medium tracking-tight md:text-5xl">
+          <motion.h2
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-3xl font-medium tracking-tight text-white md:text-5xl"
+          >
             About <span className="text-[#E16E38]">Founders</span>
-          </h2>
+          </motion.h2>
 
-          <p className="font-secondary mt-6 max-w-xl text-base text-white/90 md:text-lg">
+          <p className="text-left mt-8 max-w-3xl text-lg leading-loose text-white/90 md:mt-12 md:leading-relaxed font-light">
             The founders bring together creative vision and executional expertise,
             creating a seamless balance between design intent and delivery.
           </p>
