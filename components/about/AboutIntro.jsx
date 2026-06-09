@@ -18,8 +18,8 @@ export default function AboutIntro() {
   const smoothScale = useSpring(imageScale, { stiffness: 80, damping: 30 });
 
   return (
-    <section className="relative bg-black px-6 py-12 text-white md:px-12 md:py-16 lg:px-20 overflow-hidden">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-12 lg:gap-14">
+    <section className="relative overflow-hidden bg-black px-6 pb-12 pt-32 text-white md:px-12 md:pb-16 md:pt-36 lg:px-20 lg:pt-40">
+      <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-12 lg:gap-14">
         <motion.div
           initial={{ opacity: 0, x: -55 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -27,14 +27,14 @@ export default function AboutIntro() {
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
           className="md:col-span-5"
         >
-          <h2 className="text-[34px] font-medium leading-[1.08] tracking-tight text-white md:text-[44px] lg:text-[48px]">
+          <h2 className="max-w-[420px] text-[31px] font-medium leading-[1.12] text-white md:text-[44px] lg:text-[48px]">
             About{" "}
             <span className="inline-block text-[#E16E38]">
               Space Palette
             </span>
           </h2>
 
-          <p className="mt-7 max-w-xl text-[16px] font-normal leading-8 tracking-[0.035em] text-white/90 md:text-[17px] md:leading-9">
+          <p className="mt-7 max-w-xl text-[15px] font-normal leading-8 tracking-[0.02em] text-white/90 md:text-[17px] md:leading-9 md:tracking-[0.035em]">
             Space Palette is a multidisciplinary design studio creating
             thoughtful spaces that balance functionality, identity, and
             experience. Every environment is shaped with clarity, precision, and
