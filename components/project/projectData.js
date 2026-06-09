@@ -776,7 +776,15 @@ export function getImagePanelSize(image) {
   const dimensions = projectImageDimensions[fileName];
 
   if (dimensions) {
-    const [width, height] = dimensions;
+    const [sourceWidth, sourceHeight] = dimensions;
+    const sourceRatio = sourceWidth / sourceHeight;
+    const width =
+      sourceRatio >= 2
+        ? 900
+        : sourceRatio > 0.98
+          ? Math.round(600 * sourceRatio)
+          : sourceWidth;
+    const height = 600;
     const ratio = Number((width / height).toFixed(3));
 
     return {
@@ -785,6 +793,10 @@ export function getImagePanelSize(image) {
       width,
       height,
       ratio,
+      sourceWidth,
+      sourceHeight,
+      sourceRatio: Number(sourceRatio.toFixed(3)),
+      imageClassName: sourceRatio >= 2 ? "object-cover" : "object-contain",
       style: {
         "--image-ratio": ratio,
         aspectRatio: `${width} / ${height}`,
@@ -799,6 +811,7 @@ export function getImagePanelSize(image) {
       width: 16,
       height: 9,
       ratio: 16 / 9,
+      imageClassName: "object-cover",
       style: undefined,
     };
   }
@@ -810,6 +823,7 @@ export function getImagePanelSize(image) {
       width: 3,
       height: 4,
       ratio: 3 / 4,
+      imageClassName: "object-contain",
       style: undefined,
     };
   }
@@ -820,6 +834,7 @@ export function getImagePanelSize(image) {
     width: 4,
     height: 3,
     ratio: 4 / 3,
+    imageClassName: "object-contain",
     style: undefined,
   };
 }

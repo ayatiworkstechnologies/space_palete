@@ -30,7 +30,7 @@ function MobileProjectImage({ image, title, index, priority = false }) {
         sizes="100vw"
         quality={100}
         unoptimized
-        className="object-contain"
+        className={panel.imageClassName}
       />
     </motion.figure>
   );
@@ -271,7 +271,7 @@ export default function ProjectShowcase({ project }) {
                           sizes={firstGalleryPanel.sizes}
                           quality={100}
                           unoptimized
-                          className="object-contain"
+                          className={firstGalleryPanel.imageClassName}
                         />
                       </div>
                     </ViewTransition>
@@ -301,7 +301,7 @@ export default function ProjectShowcase({ project }) {
                         sizes={panelSize.sizes}
                         quality={100}
                         unoptimized
-                        className="object-contain"
+                        className={panelSize.imageClassName}
                       />
                     </div>
                   </section>
