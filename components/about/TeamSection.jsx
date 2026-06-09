@@ -67,7 +67,7 @@ export default function TeamSection() {
               Our Team
             </h2>
 
-            <p className="mt-6 text-[15px] font-normal leading-relaxed text-white/70 font-primary text-justify md:text-[16px]">
+            <p className="font-secondary mt-6 text-[15px] font-normal text-white/70 text-justify md:text-[16px]">
               Our team brings together expertise in Interior Design, Workplace
               Strategy, Project Coordination and Turnkey execution to craft
               environments that balance aesthetics with business functionality,
@@ -83,7 +83,7 @@ export default function TeamSection() {
             <div className="hidden lg:grid grid-cols-6 gap-3 w-full">
               {gridCells.map((cell, index) => {
                 if (cell.type === "empty") {
-                  return <div key={`empty-${index}`} className="aspect-square bg-transparent" />;
+                  return <div key={`empty-${index}`} className="aspect-[312/344] bg-transparent" />;
                 }
 
                 return (
@@ -93,14 +93,14 @@ export default function TeamSection() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: (index % 6) * 0.05 }}
-                    className="relative aspect-square overflow-hidden bg-neutral-900 border border-white/5"
+                    className="relative aspect-[312/344] overflow-hidden bg-neutral-900 border border-white/5"
                   >
                     <Image
                       src={`/assets/teams/${cell.id}.png`}
                       alt={`Space Palette team member ${cell.id}`}
                       fill
                       sizes="(max-width: 1024px) 16vw, 12vw"
-                      className="object-cover object-center grayscale"
+                      className="object-contain object-center grayscale"
                     />
                   </motion.div>
                 );
@@ -116,14 +116,14 @@ export default function TeamSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: Math.min(index * 0.03, 0.15) }}
-                  className="relative aspect-square overflow-hidden bg-neutral-900 border border-white/5"
+                  className="relative aspect-[312/344] overflow-hidden bg-neutral-900 border border-white/5"
                 >
                   <Image
                     src={`/assets/teams/${cell.id}.png`}
                     alt={`Space Palette team member ${cell.id}`}
                     fill
                     sizes="(max-width: 640px) 46vw, (max-width: 1024px) 30vw"
-                    className="object-cover object-center grayscale"
+                    className="object-contain object-center grayscale"
                   />
                 </motion.div>
               ))}

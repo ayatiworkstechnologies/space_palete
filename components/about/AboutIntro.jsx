@@ -20,7 +20,7 @@ export default function AboutIntro() {
             </span>
           </h2>
 
-          <p className="mx-auto mt-7 max-w-3xl text-[15px] font-normal leading-8 tracking-[0.02em] text-white/90 md:text-[17px] md:leading-9 md:tracking-[0.035em]">
+          <p className="font-secondary mx-auto mt-7 max-w-3xl text-[15px] font-normal tracking-[0.02em] text-white/90 md:text-[17px] md:tracking-[0.035em]">
             Space Palette is a multidisciplinary design studio creating
             thoughtful spaces that balance functionality, identity, and
             experience. Every environment is shaped with clarity, precision, and

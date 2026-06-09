@@ -132,7 +132,7 @@ export default function ServicesProcess() {
           <h2 className="text-3xl font-medium tracking-tight md:text-4xl">
             Services
           </h2>
-          <p className="mt-7 text-sm leading-7 tracking-[0.28em] text-white/85 md:text-base">
+          <p className="font-secondary mt-7 text-sm tracking-[0.28em] text-white/85 md:text-base">
             Space Palette delivers end-to-end turnkey solutions, managing
             design, execution, and final delivery through one integrated
             process. The result is a seamless experience with spaces completed

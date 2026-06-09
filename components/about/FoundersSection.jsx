@@ -72,7 +72,7 @@ export default function FoundersSection() {
             About <span className="text-[#E16E38]">Founders</span>
           </h2>
 
-          <p className="mt-6 max-w-xl text-base leading-7 text-white/90 md:text-lg md:leading-8">
+          <p className="font-secondary mt-6 max-w-xl text-base text-white/90 md:text-lg">
             The founders bring together creative vision and executional expertise,
             creating a seamless balance between design intent and delivery.
           </p>
