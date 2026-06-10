@@ -94,7 +94,7 @@ export default function ProjectList() {
                 transitionTypes={["project-forward"]}
                 className="md:cursor-none"
               >
-                <div className="relative h-[300px] overflow-hidden md:h-[350px] lg:h-[400px]">
+                <div className="relative h-[225px] overflow-hidden md:h-[250px] lg:h-[300px]">
                   <ViewTransition
                     name={`project-image-${project.slug}`}
                     share="project-morph"
