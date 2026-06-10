@@ -763,7 +763,7 @@ export const projectImageDimensions = {
   "vrx-360-4.png": [1500, 1000],
   "vrx-360-5.png": [1500, 1000],
   "vrx-360-6.png": [1500, 1000],
-  "vrx-360-7.png": [576, 600],
+  "vrx-360-7.png": [1500, 1000],
   "vrx-terrace-1.png": [1500, 1000],
   "vrx-terrace-2.png": [1500, 1000],
   "vrx-terrace-3.png": [1500, 1000],

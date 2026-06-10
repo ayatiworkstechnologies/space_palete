@@ -48,7 +48,7 @@ export default function FoundersSection() {
           </div>
           <div className="grid grid-cols-2 gap-6 mt-6">
             {founders.map((founder) => (
-              <div key={founder.name} className="flex flex-col">
+              <div key={founder.name} className="flex flex-col ml-5">
                 <h3 className="font-primary text-lg font-semibold text-white">
                   {founder.name}
                 </h3>
