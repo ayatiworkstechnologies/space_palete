@@ -18,6 +18,8 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(pathname === '/');
+  
+  const isHeaderVisible = pathname !== '/' || isScrolled;
 
   useEffect(() => {
     if (showSplash && pathname === '/') {
@@ -82,7 +84,7 @@ export default function Header() {
         style={{ viewTransitionName: "site-header" }}
         className={`
           fixed left-0 top-0 z-50 w-full
-          
+          ${isHeaderVisible ? 'pointer-events-auto' : 'pointer-events-none'}
           transition-all duration-700
           ${isScrolled
             ? "bg-black/35 backdrop-blur-md"
@@ -102,10 +104,13 @@ export default function Header() {
             {!showSplash && (
               <motion.div
                 layoutId="main-logo"
+                initial={{ opacity: 0, y: -20 }}
                 animate={{
                   scale: isScrolled ? 0.86 : 1,
+                  opacity: isHeaderVisible ? 1 : 0,
+                  y: isHeaderVisible ? 0 : -20
                 }}
-                transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="origin-left"
               >
                 <Image
@@ -134,10 +139,13 @@ export default function Header() {
                 return (
                   <motion.li
                     key={item.label}
-                    initial={{ opacity: 0, y: -12 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ 
+                      opacity: isHeaderVisible ? 1 : 0, 
+                      y: isHeaderVisible ? 0 : -20 
+                    }}
                     transition={{
-                      delay: (pathname === '/' ? 1.8 : 0.15) + index * 0.08,
+                      delay: isHeaderVisible ? (pathname === '/' && !isScrolled ? 1.8 : 0.1) + index * 0.1 : 0,
                       duration: 0.55,
                       ease: "easeOut",
                     }}
@@ -169,9 +177,12 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <div className="relative z-20 flex items-center justify-end">
             <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: pathname === '/' ? 1.8 : 0.15, duration: 0.5 }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ 
+                opacity: isHeaderVisible ? 1 : 0, 
+                y: isHeaderVisible ? 0 : -20 
+              }}
+              transition={{ delay: isHeaderVisible ? (pathname === '/' && !isScrolled ? 1.8 : 0.4) : 0, duration: 0.5 }}
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
               className="
