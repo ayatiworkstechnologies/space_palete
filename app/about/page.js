@@ -1,4 +1,5 @@
 import AboutPage from "@/components/about/AboutPage";
+import Footer from "@/components/layouts/Footer";
 
 export const metadata = {
   title: "About",
@@ -42,5 +43,8 @@ export const metadata = {
 };
 
 export default function Page() {
-  return <AboutPage />;
+  return <>
+    <AboutPage />
+    <Footer />
+  </>;
 }

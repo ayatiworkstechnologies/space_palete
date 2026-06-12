@@ -1,4 +1,5 @@
 import ContactPage from "@/components/contact/ContactPage";
+import Footer from "@/components/layouts/Footer";
 
 export const metadata = {
   title: "Contact Us",
@@ -12,5 +13,8 @@ export const metadata = {
 };
 
 export default function Contact() {
-  return <ContactPage />;
+  return <>
+    <ContactPage />
+    <Footer />
+  </>;
 }

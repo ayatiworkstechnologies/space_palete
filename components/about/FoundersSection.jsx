@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 const founders = [
   {
     name: "Uma Maheshwari",
-    role: "Founder of Space Palette",
+    role: "Founder & Principal architect",
   },
   {
     name: "V.Vasudevan",
-    role: "CEO of Space Palette",
+    role: "Managing director",
   },
 ];
 

@@ -281,8 +281,7 @@ export default function ProjectShowcase({ project }) {
                   </div>
                 </section>
               )}
-
-              {galleryImages.slice(1).map((image, index) => {
+              {galleryImages.slice(1).map((image, index) => {
                 const panelSize = getImagePanelSize(image);
 
                 return (
@@ -308,9 +307,9 @@ export default function ProjectShowcase({ project }) {
                 );
               })}
 
-              {nextProject && (
-                <section className="ml-6 inline-grid h-[80vh] w-[88vw] select-none grid-cols-[220px_minmax(0,1fr)] gap-6 border-l border-white/15 pl-6 whitespace-normal align-middle md:ml-10 md:w-[78vw] md:grid-cols-[300px_minmax(0,1fr)] md:gap-8 md:pl-10 lg:w-[76vw] lg:grid-cols-[320px_minmax(0,1fr)]">
-                  <div className="flex h-full min-w-0 flex-col justify-between py-12">
+              {nextProject && nextProjectPanel && (
+                <section className="ml-6 inline-flex h-[80vh] select-none items-center gap-6 whitespace-normal border-l border-white/15 pl-6 align-middle md:ml-10 md:gap-8 md:pl-10">
+                  <div className="flex h-[72vh] w-[220px] flex-col justify-between py-0 md:w-[300px] lg:w-[320px]">
                     <div>
                       <span className="mb-4 block text-[10px] font-semibold uppercase tracking-[0.26em] text-[#E16E38]">
                         Next Project
@@ -342,7 +341,8 @@ export default function ProjectShowcase({ project }) {
                     transitionTypes={["project-forward"]}
                     onMouseEnter={() => setCursorTipText("Click")}
                     onMouseLeave={() => setCursorTipText("Scroll")}
-                    className="group relative h-full w-full cursor-pointer overflow-hidden bg-neutral-900"
+                    className={`group relative block shrink-0 cursor-pointer overflow-hidden bg-neutral-900 ${nextProjectPanel.className}`}
+                    style={nextProjectPanel.style}
                   >
                     <div className="absolute inset-0 z-10 bg-neutral-950/0 transition-colors duration-500 group-hover:bg-neutral-950/10" />
                     <motion.div
@@ -354,9 +354,10 @@ export default function ProjectShowcase({ project }) {
                         src={nextProject.coverImage}
                         alt={`${nextProject.title} preview`}
                         fill
-                        sizes="(max-width: 768px) calc(88vw - 220px), 52vw"
+                        sizes={nextProjectPanel.sizes}
                         quality={100}
-                        className="object-cover"
+                        unoptimized
+                        className={nextProjectPanel.imageClassName}
                       />
                       <div className="pointer-events-none absolute bottom-6 right-6 border border-white/20 bg-black/20 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-white backdrop-blur-md">
                         Open Project

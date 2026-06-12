@@ -6,6 +6,7 @@ import VisualStorySection from "@/components/home/VisualStorySection";
 import ScrollMotion from "@/components/home/ScrollMotion";
 import HbaStylePage from "@/components/home/HbaStylePage";
 import BackgroundVectors from "@/components/layouts/BackgroundVectors";
+import Footer from "@/components/layouts/Footer";
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
@@ -56,6 +57,7 @@ export default function Home() {
         <TrustSection />
         <VisualStorySection />
         <ProjectProfileSection />
+        <Footer />
       </div>
     </main>
   );

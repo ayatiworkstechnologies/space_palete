@@ -18,7 +18,7 @@ const gridCells = [
   { type: "image", id: 8 },
   { type: "image", id: 9 },
   { type: "empty" },
-  { type: "image", id: 10 },
+  { type: "empty" },
   
   // Row 3
   { type: "image", id: 11 },

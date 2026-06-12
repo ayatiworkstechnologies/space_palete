@@ -93,7 +93,7 @@ export default function RootLayout({ children }) {
         <div className="relative z-10 flex min-h-full flex-col">
           <Header />
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </body>
     </html>
