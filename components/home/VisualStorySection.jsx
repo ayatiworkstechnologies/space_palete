@@ -7,18 +7,23 @@ import { motion } from "framer-motion";
 const stories = [
   {
     id: 1,
-    text: "From concept to completion, the experience was seamless and highly professional. The final outcome exceeded our expectations in every way.",
-    name: "Luxury Apartment Client",
+    text: "It’s very hard to fi nd interior design & execution company who dedicate their thoughts and creativity into each and every project they work on. Space Palette is one company who is great at doing it. The result supersedes the design always. Keep your good work team ✨",
+    name: "Umesh - Ncompass & Residence",
   },
   {
     id: 2,
-    text: "Space Palette transformed our home into a sophisticated and functional masterpiece. Every detail was executed with remarkable precision and creativity.",
-    name: "Homeowner, Chennai",
+    text: "Working with Space Palette was a great experience. They are a team of both young and experienced professionals who bring a keen eye for detail and innovative designs to every project. Their ability to blend creativity with exceptional execution ensured that our project was delivered seamlessly. We highly appreciate their commitment to quality and would highly recommend them for any interior design needs.",
+    name: "Balaji - TVS",
   },
   {
     id: 3,
-    text: "Their attention to detail, material selection, and execution quality were exceptional. Our interiors now truly reflect our lifestyle.",
-    name: "Villa Owner, OMR",
+    text: "Execution was carried out precisely as per the previously shared 3D image with no deviations. Additionally, the quality standards have been met 100% and completed the 15k sqft in 60 days with no deviations.We are highly satisfi ed with the work delivered and appreciate the SP professionalism and dedication.",
+    name: "Giri - TVS",
+  },
+  {
+    id: 4,
+    text: "Space Palette delivered a truly one of a kind design for our WorkLife Experience Centre in Chennai. Their team was highly approachable throughout the process, making collaboration seamless. Every element felt carefully curated, with thoughtful concepts and designs that perfectly balanced creativity, functionality, and user experience. Their ability to translate ideas into meaningful spaces resulted in an environment that has exceeded our expectations.",
+    name: "Moumitha, Chairé Studio",
   },
 ];
 
@@ -114,9 +119,9 @@ export default function VisualStorySection() {
             onClick={showPrevious}
             aria-label="Previous story"
             suppressHydrationWarning
-            className="absolute left-1/2 top-0 z-30 -translate-x-1/2 text-white transition duration-300 hover:-translate-y-0.5 hover:text-[#E16E38]"
+            className="absolute left-1/2 top-0 z-30 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full text-white transition duration-300 hover:bg-white/10 hover:text-[#E16E38]"
           >
-            <ChevronUp size={18} strokeWidth={1.6} />
+            <ChevronUp size={28} strokeWidth={1.5} />
           </button>
 
           <button
@@ -124,9 +129,9 @@ export default function VisualStorySection() {
             onClick={showNext}
             aria-label="Next story"
             suppressHydrationWarning
-            className="absolute bottom-0 left-1/2 z-30 -translate-x-1/2 text-white transition duration-300 hover:translate-y-0.5 hover:text-[#E16E38]"
+            className="absolute bottom-0 left-1/2 z-30 flex h-12 w-12 -translate-x-1/2 items-center justify-center rounded-full text-white transition duration-300 hover:bg-white/10 hover:text-[#E16E38]"
           >
-            <ChevronDown size={18} strokeWidth={1.6} />
+            <ChevronDown size={28} strokeWidth={1.5} />
           </button>
 
           <div className="absolute inset-x-0 top-1/2 h-[340px] -translate-y-1/2 md:h-[380px]">
@@ -137,43 +142,30 @@ export default function VisualStorySection() {
               return (
                 <article
                   key={story.id}
-                  className={`absolute left-0 right-0 top-1/2 mx-auto w-[min(100%,900px)] border-y border-white/10 px-8 py-8 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:px-28 ${
-                    isActive
-                      ? "z-20 max-w-4xl opacity-100 before:absolute before:bottom-[-1px] before:left-[10%] before:right-[10%] before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.75),transparent)] before:content-[''] after:absolute after:-bottom-5 after:left-[18%] after:right-[18%] after:h-9 after:rounded-full after:bg-[#E16E38]/15 after:blur-2xl after:content-['']"
-                      : "z-10 max-w-3xl opacity-20 blur-[0.4px]"
-                  }`}
+                  className={`absolute left-0 right-0 top-1/2 mx-auto w-[min(100%,900px)] border-y border-white/10 px-8 py-8 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:px-28 ${isActive
+                    ? "z-20 max-w-4xl bg-black opacity-100 before:absolute before:bottom-[-1px] before:left-[10%] before:right-[10%] before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.75),transparent)] before:content-[''] after:absolute after:-bottom-5 after:left-[18%] after:right-[18%] after:h-9 after:rounded-full after:bg-[#E16E38]/15 after:blur-2xl after:content-['']"
+                    : "z-10 max-w-3xl opacity-30"
+                    }`}
                   style={{
-                    transform: `translateY(calc(-50% + ${
-                      position * 165
-                    }px)) scale(${isActive ? 1 : 0.92})`,
+                    transform: `translateY(calc(-50% + ${position * 165
+                      }px)) scale(${isActive ? 1 : 0.92})`,
                     pointerEvents: isActive ? "auto" : "none",
                   }}
                 >
                   {isActive && (
                     <>
-                      <Quote className="absolute left-3 top-1/2 h-9 w-9 -translate-y-1/2 fill-white text-white md:left-8 md:h-14 md:w-14" />
-                      <Quote className="absolute bottom-1/2 right-3 h-9 w-9 translate-y-1/2 rotate-180 fill-white text-white md:right-8 md:h-14 md:w-14" />
+                      <Quote className="absolute left-4 top-4 h-8 w-8 fill-white/50 text-white md:left-6 md:top-6 md:h-12 md:w-12" />
+                      <Quote className="absolute bottom-4 right-4 h-8 w-8 rotate-180 fill-white/50 text-white md:bottom-6 md:right-6 md:h-12 md:w-12" />
                     </>
                   )}
 
                   <p
-                    className={`mx-auto leading-8 ${
-                      isActive
-                        ? "max-w-2xl text-lg text-white md:text-xl md:leading-9"
-                        : "max-w-2xl text-lg text-white md:text-xl md:leading-9"
-                    }`}
+                    className={`mx-auto leading-8 ${isActive
+                      ? "max-w-2xl text-lg text-white md:text-xl md:leading-9"
+                      : "max-w-2xl text-lg text-white md:text-xl md:leading-9"
+                      }`}
                   >
-                    {isActive && story.id === 2 ? (
-                      <>
-                        <strong>Space Palette</strong> transformed our home into
-                        a sophisticated and <strong>functional</strong>{" "}
-                        masterpiece. Every detail was executed with remarkable{" "}
-                        <strong>precision</strong> and{" "}
-                        <strong>creativity.</strong>
-                      </>
-                    ) : (
-                      story.text
-                    )}
+                    {story.text}
                   </p>
 
                   {isActive && (
@@ -187,15 +179,13 @@ export default function VisualStorySection() {
           </div>
 
           <div
-            className={`pointer-events-none absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-gradient-to-b from-[#E16E38] to-transparent transition-opacity duration-500 ${
-              isPaused ? "opacity-0" : "opacity-60"
-            }`}
+            className={`pointer-events-none absolute left-1/2 top-0 h-10 w-px -translate-x-1/2 bg-gradient-to-b from-[#E16E38] to-transparent transition-opacity duration-500 ${isPaused ? "opacity-0" : "opacity-60"
+              }`}
           />
 
           <div
-            className={`pointer-events-none absolute bottom-0 left-1/2 h-10 w-px -translate-x-1/2 bg-gradient-to-t from-[#E16E38] to-transparent transition-opacity duration-500 ${
-              isPaused ? "opacity-0" : "opacity-60"
-            }`}
+            className={`pointer-events-none absolute bottom-0 left-1/2 h-10 w-px -translate-x-1/2 bg-gradient-to-t from-[#E16E38] to-transparent transition-opacity duration-500 ${isPaused ? "opacity-0" : "opacity-60"
+              }`}
           />
         </motion.div>
       </motion.div>

@@ -35,7 +35,7 @@ export default function FoundersSection() {
         >
           <div className="relative mx-auto w-full max-w-[620px] overflow-hidden rounded-sm bg-white">
             <Image
-              src="/assets/about/founder.png"
+              src="/assets/about/founder-sp.png"
               alt="Space Palette Founders"
               width={1000}
               height={1000}
@@ -48,7 +48,7 @@ export default function FoundersSection() {
           </div>
           <div className="grid grid-cols-2 gap-6 mt-6">
             {founders.map((founder) => (
-              <div key={founder.name} className="flex flex-col ml-5">
+              <div key={founder.name} className="flex flex-col items-center text-center">
                 <h3 className="font-primary text-lg font-semibold text-white">
                   {founder.name}
                 </h3>

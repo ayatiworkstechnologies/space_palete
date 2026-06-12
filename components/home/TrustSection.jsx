@@ -17,38 +17,11 @@ const getLogoStep = (el) => {
   return firstLogo.getBoundingClientRect().width + gap;
 };
 
-const trustLogos = [
-  {
-    id: 1,
-    name: "NCompass",
-    image: "/logo-1.png",
-  },
-  {
-    id: 2,
-    name: "Pinnacle Studio",
-    image: "/logo-2.png",
-  },
-  {
-    id: 3,
-    name: "Purva Somerset",
-    image: "/logo-3.png",
-  },
-  {
-    id: 4,
-    name: "NCompass",
-    image: "/logo-1.png",
-  },
-  {
-    id: 5,
-    name: "Pinnacle Studio",
-    image: "/logo-2.png",
-  },
-  {
-    id: 6,
-    name: "Purva Somerset",
-    image: "/logo-3.png",
-  },
-];
+const trustLogos = Array.from({ length: 25 }).map((_, i) => ({
+  id: i + 1,
+  name: `Client ${i + 1}`,
+  image: `/assets/logos/logo-${i + 1}.png`,
+}));
 
 export default function TrustSection() {
   const scrollRef = useRef(null);
@@ -208,9 +181,8 @@ export default function TrustSection() {
                   alt={logo.name}
                   className="
                     max-h-12 max-w-[130px] object-contain
-                    grayscale brightness-0 invert
                     transition duration-700 ease-out
-                    group-hover:scale-110 group-hover:grayscale-0
+                    group-hover:scale-110
                     sm:max-h-16 sm:max-w-[160px]
                     md:max-h-20 md:max-w-[200px]
                     lg:max-h-24 lg:max-w-[240px]
