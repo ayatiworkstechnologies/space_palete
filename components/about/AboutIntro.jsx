@@ -75,6 +75,7 @@ export default function AboutIntro() {
               Every project is a chance to learn from the land, give back to the community, and create something that leaves a positive mark long after it is built.
             </p>
           </motion.div>
+
         </motion.div>
       </div>
     </section>
