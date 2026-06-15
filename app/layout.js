@@ -88,7 +88,26 @@ export default function RootLayout({ children }) {
       className={`${cabinetGrotesk.variable} ${poppins.variable} h-full scroll-smooth antialiased`}
       data-scroll-behavior="smooth"
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MBJ3LCXR');`,
+          }}
+        />
+      </head>
       <body className="relative min-h-full bg-black">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MBJ3LCXR"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         <GlobalDottedBg />
         <div className="relative z-10 flex min-h-full flex-col">
           <Header />

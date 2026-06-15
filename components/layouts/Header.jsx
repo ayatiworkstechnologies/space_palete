@@ -61,7 +61,7 @@ export default function Header() {
               transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
             >
               <Image
-                src="/sp-logo.svg"
+                src="/sp-logo-new.svg"
                 alt="Space Palette Logo"
                 width={150}
                 height={60}
@@ -114,7 +114,7 @@ export default function Header() {
                 className="origin-left"
               >
                 <Image
-                  src="/sp-logo.svg"
+                  src="/sp-logo-new.svg"
                   alt="Space Palette Logo"
                   width={150}
                   height={60}
@@ -213,7 +213,7 @@ export default function Header() {
                 className="inline-flex items-center"
               >
                 <Image
-                  src="/sp-logo.svg"
+                  src="/sp-logo-new.svg"
                   alt="Space Palette Logo"
                   width={180}
                   height={80}
