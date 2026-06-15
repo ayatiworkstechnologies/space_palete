@@ -18,7 +18,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(pathname === '/');
-  
+
   const isHeaderVisible = pathname !== '/' || isScrolled;
 
   useEffect(() => {
@@ -140,9 +140,9 @@ export default function Header() {
                   <motion.li
                     key={item.label}
                     initial={{ opacity: 0, y: -20 }}
-                    animate={{ 
-                      opacity: isHeaderVisible ? 1 : 0, 
-                      y: isHeaderVisible ? 0 : -20 
+                    animate={{
+                      opacity: isHeaderVisible ? 1 : 0,
+                      y: isHeaderVisible ? 0 : -20
                     }}
                     transition={{
                       delay: isHeaderVisible ? (pathname === '/' && !isScrolled ? 1.8 : 0.1) + index * 0.1 : 0,
@@ -178,9 +178,9 @@ export default function Header() {
           <div className="relative z-20 flex items-center justify-end">
             <motion.button
               initial={{ opacity: 0, y: -20 }}
-              animate={{ 
-                opacity: isHeaderVisible ? 1 : 0, 
-                y: isHeaderVisible ? 0 : -20 
+              animate={{
+                opacity: isHeaderVisible ? 1 : 0,
+                y: isHeaderVisible ? 0 : -20
               }}
               transition={{ delay: isHeaderVisible ? (pathname === '/' && !isScrolled ? 1.8 : 0.4) : 0, duration: 0.5 }}
               onClick={() => setMenuOpen(true)}
@@ -213,7 +213,7 @@ export default function Header() {
                 className="inline-flex items-center"
               >
                 <Image
-                  src="/space-logo.svg"
+                  src="/sp-logo.svg"
                   alt="Space Palette Logo"
                   width={180}
                   height={80}

@@ -110,7 +110,7 @@ export default function VisualStorySection() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ delay: 0.15, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto mt-10 h-[430px] max-w-5xl overflow-hidden md:mt-12 md:h-[480px]"
+          className="relative mx-auto mt-10 h-[480px] max-w-5xl overflow-hidden md:mt-12 md:h-[480px]"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
@@ -134,7 +134,7 @@ export default function VisualStorySection() {
             <ChevronDown size={28} strokeWidth={1.5} />
           </button>
 
-          <div className="absolute inset-x-0 top-1/2 h-[340px] -translate-y-1/2 md:h-[380px]">
+          <div className="absolute inset-x-0 top-1/2 h-[400px] -translate-y-1/2 md:h-[380px]">
             {stories.map((story, index) => {
               const position = getPosition(index);
               const isActive = position === 0;
@@ -142,7 +142,7 @@ export default function VisualStorySection() {
               return (
                 <article
                   key={story.id}
-                  className={`absolute left-0 right-0 top-1/2 mx-auto w-[min(100%,900px)] border-y border-white/10 px-8 py-8 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:px-28 ${isActive
+                  className={`absolute left-0 right-0 top-1/2 mx-auto w-[min(100%,900px)] border-y border-white/10 px-5 py-6 transition-all duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:px-28 md:py-8 ${isActive
                     ? "z-20 max-w-4xl bg-black opacity-100 before:absolute before:bottom-[-1px] before:left-[10%] before:right-[10%] before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(244,122,60,0.75),transparent)] before:content-[''] after:absolute after:-bottom-5 after:left-[18%] after:right-[18%] after:h-9 after:rounded-full after:bg-[#E16E38]/15 after:blur-2xl after:content-['']"
                     : "z-10 max-w-3xl opacity-30"
                     }`}
@@ -154,22 +154,22 @@ export default function VisualStorySection() {
                 >
                   {isActive && (
                     <>
-                      <Quote className="absolute left-4 top-4 h-8 w-8 fill-white/50 text-white md:left-6 md:top-6 md:h-12 md:w-12" />
-                      <Quote className="absolute bottom-4 right-4 h-8 w-8 rotate-180 fill-white/50 text-white md:bottom-6 md:right-6 md:h-12 md:w-12" />
+                      <Quote className="absolute left-3 top-3 h-5 w-5 fill-white/50 text-white md:left-6 md:top-6 md:h-12 md:w-12" />
+                      <Quote className="absolute bottom-3 right-3 h-5 w-5 rotate-180 fill-white/50 text-white md:bottom-6 md:right-6 md:h-12 md:w-12" />
                     </>
                   )}
 
                   <p
-                    className={`mx-auto leading-8 ${isActive
-                      ? "max-w-2xl text-lg text-white md:text-xl md:leading-9"
-                      : "max-w-2xl text-lg text-white md:text-xl md:leading-9"
+                    className={`mx-auto leading-relaxed md:leading-8 ${isActive
+                      ? "max-w-2xl text-[14px] text-white md:text-xl md:leading-9"
+                      : "max-w-2xl text-[14px] text-white md:text-xl md:leading-9"
                       }`}
                   >
                     {story.text}
                   </p>
 
                   {isActive && (
-                    <h3 className="mt-4 text-xl font-bold text-[#E16E38] md:text-2xl">
+                    <h3 className="mt-4 text-sm font-bold text-[#E16E38] md:mt-6 md:text-2xl">
                       {story.name}
                     </h3>
                   )}
