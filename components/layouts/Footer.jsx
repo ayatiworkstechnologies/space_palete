@@ -133,13 +133,13 @@ export default function Footer() {
           <Link href="/" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
             Home
           </Link>
-          <Link href="/about" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
+          <Link href="/about-us" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
             About us
           </Link>
           <Link href="/projects" className="transition duration-300 hover:text-[#E16E38] max-md:hidden">
             Projects
           </Link>
-          <Link href="/contact" className="transition duration-300 hover:text-[#E16E38]">
+          <Link href="/contact-us" className="transition duration-300 hover:text-[#E16E38]">
             Contact Us
           </Link>
         </motion.nav>

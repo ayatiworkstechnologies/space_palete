@@ -63,7 +63,7 @@ export default function PurposeSection() {
           className="flex justify-center w-full"
         >
           <CommonButton
-            href="/about"
+            href="/about-us"
             className="mt-12"
           >
             Discover Our Story

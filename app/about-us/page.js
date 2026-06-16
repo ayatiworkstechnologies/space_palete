@@ -14,13 +14,13 @@ export const metadata = {
     "space planning Chennai",
   ],
   alternates: {
-    canonical: "/about",
+    canonical: "/about-us",
   },
   openGraph: {
     title: "About Space Palette",
     description:
       "Meet Space Palette, a Chennai-based multidisciplinary design studio creating thoughtful environments with identity, precision, and purpose.",
-    url: "/about",
+    url: "/about-us",
     siteName: "Space Palette",
     images: [
       {
