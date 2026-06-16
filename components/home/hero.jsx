@@ -10,7 +10,7 @@ export default function Hero() {
         playsInline
       />
       <video
-        className="block md:hidden absolute inset-0 h-full w-full object-cover"
+        className="block md:hidden absolute inset-0 h-full w-full object-contain"
         src="/hero-video-mob.mp4"
         autoPlay
         muted
