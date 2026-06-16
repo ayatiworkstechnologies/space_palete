@@ -79,6 +79,9 @@ export const metadata = {
     },
   },
   category: "Interior Design",
+  verification: {
+    google: "3CzzXzZoTFvIpbebm-XOt1WbI551a6lTXCfj7GugRLo",
+  },
 };
 
 export default function RootLayout({ children }) {

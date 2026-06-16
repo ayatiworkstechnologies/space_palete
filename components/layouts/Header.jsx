@@ -8,9 +8,9 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const navLinks = [
-  { label: "About", href: "/about" },
+  { label: "About", href: "/about-us" },
   { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/contact-us" },
 ];
 
 export default function Header() {
